@@ -82,55 +82,21 @@
                 </p>
             </div>
             <div class="program-timeline">
-                <div class="timeline-item">
-                    <div class="timeline-time">08:00 - 09:00</div>
-                    <div class="timeline-content">
-                        <h3>Credenciamento e Coffee Break</h3>
-                        <p>Recepção dos participantes e networking inicial</p>
+                <?php for ($i = 1; $i <= 7; $i++): 
+                    $time = get_theme_mod("seminario_program_item{$i}_time");
+                    $title = get_theme_mod("seminario_program_item{$i}_title");
+                    $description = get_theme_mod("seminario_program_item{$i}_description");
+                    if ($time && $title): ?>
+                    <div class="timeline-item">
+                        <div class="timeline-time"><?php echo esc_html($time); ?></div>
+                        <div class="timeline-content">
+                            <h3><?php echo esc_html($title); ?></h3>
+                            <?php if ($description): ?>
+                                <p><?php echo esc_html($description); ?></p>
+                            <?php endif; ?>
+                        </div>
                     </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-time">09:00 - 10:30</div>
-                    <div class="timeline-content">
-                        <h3>Abertura: Panorama da Segurança no Audiovisual</h3>
-                        <p>Visão geral dos principais desafios e oportunidades do setor</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-time">10:45 - 12:00</div>
-                    <div class="timeline-content">
-                        <h3>Ergonomia em Estúdios de Gravação</h3>
-                        <p>Práticas para prevenção de lesões ocupacionais</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-time">12:00 - 13:30</div>
-                    <div class="timeline-content">
-                        <h3>Almoço e Networking</h3>
-                        <p>Oportunidade para conexões profissionais</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-time">13:30 - 15:00</div>
-                    <div class="timeline-content">
-                        <h3>Segurança em Sets de Filmagem</h3>
-                        <p>Protocolos e equipamentos de proteção essenciais</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-time">15:15 - 16:30</div>
-                    <div class="timeline-content">
-                        <h3>Saúde Mental na Indústria Audiovisual</h3>
-                        <p>Estratégias para bem-estar psicológico no trabalho</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-time">16:45 - 18:00</div>
-                    <div class="timeline-content">
-                        <h3>Mesa Redonda e Encerramento</h3>
-                        <p>Discussão aberta e considerações finais</p>
-                    </div>
-                </div>
+                <?php endif; endfor; ?>
             </div>
         </div>
     </section>
@@ -145,36 +111,29 @@
                 </p>
             </div>
             <div class="speakers-grid">
-                <div class="speaker-card">
-                    <div class="speaker-photo">
-                        <i class="fas fa-user-circle"></i>
+                <?php for ($i = 1; $i <= 3; $i++): 
+                    $name = get_theme_mod("seminario_speaker{$i}_name");
+                    $title = get_theme_mod("seminario_speaker{$i}_title");
+                    $bio = get_theme_mod("seminario_speaker{$i}_bio");
+                    $image = get_theme_mod("seminario_speaker{$i}_image");
+                    if ($name): ?>
+                    <div class="speaker-card">
+                        <div class="speaker-photo">
+                            <?php if ($image): ?>
+                                <img src="<?php echo esc_url($image); ?>" alt="<?php echo esc_attr($name); ?>" />
+                            <?php else: ?>
+                                <i class="fas fa-user-circle"></i>
+                            <?php endif; ?>
+                        </div>
+                        <h3 class="speaker-name"><?php echo esc_html($name); ?></h3>
+                        <?php if ($title): ?>
+                            <p class="speaker-title"><?php echo esc_html($title); ?></p>
+                        <?php endif; ?>
+                        <?php if ($bio): ?>
+                            <p class="speaker-bio"><?php echo esc_html($bio); ?></p>
+                        <?php endif; ?>
                     </div>
-                    <h3 class="speaker-name">Dr. Carlos Silva</h3>
-                    <p class="speaker-title">Especialista em Ergonomia</p>
-                    <p class="speaker-bio">
-                        20 anos de experiência em ergonomia ocupacional
-                    </p>
-                </div>
-                <div class="speaker-card">
-                    <div class="speaker-photo">
-                        <i class="fas fa-user-circle"></i>
-                    </div>
-                    <h3 class="speaker-name">Dra. Maria Santos</h3>
-                    <p class="speaker-title">Psicóloga Ocupacional</p>
-                    <p class="speaker-bio">
-                        Especialista em saúde mental no trabalho
-                    </p>
-                </div>
-                <div class="speaker-card">
-                    <div class="speaker-photo">
-                        <i class="fas fa-user-circle"></i>
-                    </div>
-                    <h3 class="speaker-name">Eng. João Costa</h3>
-                    <p class="speaker-title">Engenheiro de Segurança</p>
-                    <p class="speaker-bio">
-                        Consultor em segurança para a indústria audiovisual
-                    </p>
-                </div>
+                <?php endif; endfor; ?>
             </div>
         </div>
     </section>
@@ -195,73 +154,33 @@
                     </p>
                 </div>
                 <div class="exhibitors-grid">
-                    <div class="exhibitor-card">
-                        <div class="exhibitor-logo">
-                            <i class="fas fa-building"></i>
+                    <?php 
+                    $icons = ['fas fa-building', 'fas fa-shield-alt', 'fas fa-heartbeat', 'fas fa-tools', 'fas fa-first-aid', 'fas fa-certificate'];
+                    for ($i = 1; $i <= 6; $i++): 
+                        $name = get_theme_mod("seminario_exhibitor{$i}_name");
+                        $description = get_theme_mod("seminario_exhibitor{$i}_description");
+                        $booth = get_theme_mod("seminario_exhibitor{$i}_booth");
+                        if ($name): ?>
+                        <div class="exhibitor-card">
+                            <div class="exhibitor-logo">
+                                <i class="<?php echo $icons[$i-1]; ?>"></i>
+                            </div>
+                            <h3 class="exhibitor-name"><?php echo esc_html($name); ?></h3>
+                            <?php if ($description): ?>
+                                <p class="exhibitor-description"><?php echo esc_html($description); ?></p>
+                            <?php endif; ?>
+                            <?php if ($booth): ?>
+                                <div class="exhibitor-booth"><?php echo esc_html($booth); ?></div>
+                            <?php endif; ?>
                         </div>
-                        <h3 class="exhibitor-name">TechSafety Pro</h3>
-                        <p class="exhibitor-description">
-                            Equipamentos de proteção individual especializados para audiovisual
-                        </p>
-                        <div class="exhibitor-booth">Estande A1</div>
-                    </div>
-                    <div class="exhibitor-card">
-                        <div class="exhibitor-logo">
-                            <i class="fas fa-shield-alt"></i>
-                        </div>
-                        <h3 class="exhibitor-name">ErgoMedia Solutions</h3>
-                        <p class="exhibitor-description">
-                            Móveis ergonômicos e soluções para estúdios
-                        </p>
-                        <div class="exhibitor-booth">Estande A2</div>
-                    </div>
-                    <div class="exhibitor-card">
-                        <div class="exhibitor-logo">
-                            <i class="fas fa-heartbeat"></i>
-                        </div>
-                        <h3 class="exhibitor-name">WellBeing Media</h3>
-                        <p class="exhibitor-description">
-                            Programas de bem-estar e saúde ocupacional
-                        </p>
-                        <div class="exhibitor-booth">Estande A3</div>
-                    </div>
-                    <div class="exhibitor-card">
-                        <div class="exhibitor-logo">
-                            <i class="fas fa-tools"></i>
-                        </div>
-                        <h3 class="exhibitor-name">AudioSafe Tech</h3>
-                        <p class="exhibitor-description">
-                            Tecnologia em monitoramento de segurança em sets
-                        </p>
-                        <div class="exhibitor-booth">Estande B1</div>
-                    </div>
-                    <div class="exhibitor-card">
-                        <div class="exhibitor-logo">
-                            <i class="fas fa-first-aid"></i>
-                        </div>
-                        <h3 class="exhibitor-name">Emergency AV</h3>
-                        <p class="exhibitor-description">
-                            Kits de primeiros socorros e treinamentos de emergência
-                        </p>
-                        <div class="exhibitor-booth">Estande B2</div>
-                    </div>
-                    <div class="exhibitor-card">
-                        <div class="exhibitor-logo">
-                            <i class="fas fa-certificate"></i>
-                        </div>
-                        <h3 class="exhibitor-name">CertifiAV</h3>
-                        <p class="exhibitor-description">
-                            Certificações e auditorias em segurança audiovisual
-                        </p>
-                        <div class="exhibitor-booth">Estande B3</div>
-                    </div>
+                    <?php endif; endfor; ?>
                 </div>
                 <div class="exhibition-cta">
-                    <h3>Interessado em expor?</h3>
-                    <p>Entre em contato conosco para conhecer nossas oportunidades de patrocínio</p>
+                    <h3><?php echo get_theme_mod('seminario_exhibition_cta_title', 'Interessado em expor?'); ?></h3>
+                    <p><?php echo get_theme_mod('seminario_exhibition_cta_text', 'Entre em contato conosco para conhecer nossas oportunidades de patrocínio'); ?></p>
                     <a href="#contato" class="cta-button-secondary">
                         <i class="fas fa-handshake"></i>
-                        Seja um Expositor
+                        <?php echo get_theme_mod('seminario_exhibition_cta_button', 'Seja um Expositor'); ?>
                     </a>
                 </div>
             </div>

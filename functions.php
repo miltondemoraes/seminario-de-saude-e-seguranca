@@ -438,6 +438,52 @@ function seminario_customize_register($wp_customize) {
         'type'     => 'text',
     ));
     
+    // Timeline Items (7 items as in the original)
+    $timeline_defaults = array(
+        1 => array('time' => '08:00 - 09:00', 'title' => 'Credenciamento e Coffee Break', 'description' => 'Recepção dos participantes e networking inicial'),
+        2 => array('time' => '09:00 - 10:30', 'title' => 'Abertura: Panorama da Segurança no Audiovisual', 'description' => 'Visão geral dos principais desafios e oportunidades do setor'),
+        3 => array('time' => '10:45 - 12:00', 'title' => 'Ergonomia em Estúdios de Gravação', 'description' => 'Práticas para prevenção de lesões ocupacionais'),
+        4 => array('time' => '12:00 - 13:30', 'title' => 'Almoço e Networking', 'description' => 'Oportunidade para conexões profissionais'),
+        5 => array('time' => '13:30 - 15:00', 'title' => 'Segurança em Sets de Filmagem', 'description' => 'Protocolos e equipamentos de proteção essenciais'),
+        6 => array('time' => '15:15 - 16:30', 'title' => 'Saúde Mental na Indústria Audiovisual', 'description' => 'Estratégias para bem-estar psicológico no trabalho'),
+        7 => array('time' => '16:45 - 18:00', 'title' => 'Mesa Redonda e Encerramento', 'description' => 'Discussão aberta e considerações finais')
+    );
+    
+    for ($i = 1; $i <= 7; $i++) {
+        // Time
+        $wp_customize->add_setting("seminario_program_item{$i}_time", array(
+            'default' => $timeline_defaults[$i]['time'],
+            'sanitize_callback' => 'sanitize_text_field',
+        ));
+        $wp_customize->add_control("seminario_program_item{$i}_time", array(
+            'label'    => "Item {$i} - Horário",
+            'section'  => 'seminario_program',
+            'type'     => 'text',
+        ));
+        
+        // Title
+        $wp_customize->add_setting("seminario_program_item{$i}_title", array(
+            'default' => $timeline_defaults[$i]['title'],
+            'sanitize_callback' => 'sanitize_text_field',
+        ));
+        $wp_customize->add_control("seminario_program_item{$i}_title", array(
+            'label'    => "Item {$i} - Título",
+            'section'  => 'seminario_program',
+            'type'     => 'text',
+        ));
+        
+        // Description
+        $wp_customize->add_setting("seminario_program_item{$i}_description", array(
+            'default' => $timeline_defaults[$i]['description'],
+            'sanitize_callback' => 'sanitize_textarea_field',
+        ));
+        $wp_customize->add_control("seminario_program_item{$i}_description", array(
+            'label'    => "Item {$i} - Descrição",
+            'section'  => 'seminario_program',
+            'type'     => 'textarea',
+        ));
+    }
+    
     // Speakers Section
     $wp_customize->add_section('seminario_speakers', array(
         'title'    => 'Seção Palestrantes',
@@ -463,6 +509,58 @@ function seminario_customize_register($wp_customize) {
         'section'  => 'seminario_speakers',
         'type'     => 'text',
     ));
+    
+    // Individual Speakers (3 speakers as in the original)
+    $speakers_defaults = array(
+        1 => array('name' => 'Dr. Carlos Silva', 'title' => 'Especialista em Ergonomia', 'bio' => '20 anos de experiência em ergonomia ocupacional'),
+        2 => array('name' => 'Dra. Maria Santos', 'title' => 'Psicóloga Ocupacional', 'bio' => 'Especialista em saúde mental no trabalho'),
+        3 => array('name' => 'Eng. João Costa', 'title' => 'Engenheiro de Segurança', 'bio' => 'Consultor em segurança para a indústria audiovisual')
+    );
+    
+    for ($i = 1; $i <= 3; $i++) {
+        // Speaker Name
+        $wp_customize->add_setting("seminario_speaker{$i}_name", array(
+            'default' => $speakers_defaults[$i]['name'],
+            'sanitize_callback' => 'sanitize_text_field',
+        ));
+        $wp_customize->add_control("seminario_speaker{$i}_name", array(
+            'label'    => "Palestrante {$i} - Nome",
+            'section'  => 'seminario_speakers',
+            'type'     => 'text',
+        ));
+        
+        // Speaker Title/Specialty
+        $wp_customize->add_setting("seminario_speaker{$i}_title", array(
+            'default' => $speakers_defaults[$i]['title'],
+            'sanitize_callback' => 'sanitize_text_field',
+        ));
+        $wp_customize->add_control("seminario_speaker{$i}_title", array(
+            'label'    => "Palestrante {$i} - Especialidade",
+            'section'  => 'seminario_speakers',
+            'type'     => 'text',
+        ));
+        
+        // Speaker Bio
+        $wp_customize->add_setting("seminario_speaker{$i}_bio", array(
+            'default' => $speakers_defaults[$i]['bio'],
+            'sanitize_callback' => 'sanitize_textarea_field',
+        ));
+        $wp_customize->add_control("seminario_speaker{$i}_bio", array(
+            'label'    => "Palestrante {$i} - Descrição",
+            'section'  => 'seminario_speakers',
+            'type'     => 'textarea',
+        ));
+        
+        // Speaker Image
+        $wp_customize->add_setting("seminario_speaker{$i}_image", array(
+            'default' => '',
+            'sanitize_callback' => 'esc_url_raw',
+        ));
+        $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, "seminario_speaker{$i}_image", array(
+            'label'    => "Palestrante {$i} - Foto",
+            'section'  => 'seminario_speakers',
+        )));
+    }
     
     // Exhibition Section
     $wp_customize->add_section('seminario_exhibition', array(
@@ -498,6 +596,82 @@ function seminario_customize_register($wp_customize) {
         'label'    => 'Texto da Seção',
         'section'  => 'seminario_exhibition',
         'type'     => 'textarea',
+    ));
+    
+    // Exhibitors (6 exhibitors as in the original)
+    $exhibitors_defaults = array(
+        1 => array('name' => 'TechSafety Pro', 'description' => 'Equipamentos de proteção individual especializados para audiovisual', 'booth' => 'Estande A1'),
+        2 => array('name' => 'ErgoMedia Solutions', 'description' => 'Móveis ergonômicos e soluções para estúdios', 'booth' => 'Estande A2'),
+        3 => array('name' => 'WellBeing Media', 'description' => 'Programas de bem-estar e saúde ocupacional', 'booth' => 'Estande A3'),
+        4 => array('name' => 'AudioSafe Tech', 'description' => 'Tecnologia em monitoramento de segurança em sets', 'booth' => 'Estande B1'),
+        5 => array('name' => 'Emergency AV', 'description' => 'Kits de primeiros socorros e treinamentos de emergência', 'booth' => 'Estande B2'),
+        6 => array('name' => 'CertifiAV', 'description' => 'Certificações e auditorias em segurança audiovisual', 'booth' => 'Estande B3')
+    );
+    
+    for ($i = 1; $i <= 6; $i++) {
+        // Exhibitor Name
+        $wp_customize->add_setting("seminario_exhibitor{$i}_name", array(
+            'default' => $exhibitors_defaults[$i]['name'],
+            'sanitize_callback' => 'sanitize_text_field',
+        ));
+        $wp_customize->add_control("seminario_exhibitor{$i}_name", array(
+            'label'    => "Expositor {$i} - Nome da Empresa",
+            'section'  => 'seminario_exhibition',
+            'type'     => 'text',
+        ));
+        
+        // Exhibitor Description
+        $wp_customize->add_setting("seminario_exhibitor{$i}_description", array(
+            'default' => $exhibitors_defaults[$i]['description'],
+            'sanitize_callback' => 'sanitize_textarea_field',
+        ));
+        $wp_customize->add_control("seminario_exhibitor{$i}_description", array(
+            'label'    => "Expositor {$i} - Descrição",
+            'section'  => 'seminario_exhibition',
+            'type'     => 'textarea',
+        ));
+        
+        // Exhibitor Booth
+        $wp_customize->add_setting("seminario_exhibitor{$i}_booth", array(
+            'default' => $exhibitors_defaults[$i]['booth'],
+            'sanitize_callback' => 'sanitize_text_field',
+        ));
+        $wp_customize->add_control("seminario_exhibitor{$i}_booth", array(
+            'label'    => "Expositor {$i} - Estande",
+            'section'  => 'seminario_exhibition',
+            'type'     => 'text',
+        ));
+    }
+    
+    // Exhibition CTA Section
+    $wp_customize->add_setting('seminario_exhibition_cta_title', array(
+        'default' => 'Interessado em expor?',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('seminario_exhibition_cta_title', array(
+        'label'    => 'Título do CTA',
+        'section'  => 'seminario_exhibition',
+        'type'     => 'text',
+    ));
+    
+    $wp_customize->add_setting('seminario_exhibition_cta_text', array(
+        'default' => 'Entre em contato conosco para conhecer nossas oportunidades de patrocínio',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('seminario_exhibition_cta_text', array(
+        'label'    => 'Texto do CTA',
+        'section'  => 'seminario_exhibition',
+        'type'     => 'text',
+    ));
+    
+    $wp_customize->add_setting('seminario_exhibition_cta_button', array(
+        'default' => 'Seja um Expositor',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('seminario_exhibition_cta_button', array(
+        'label'    => 'Texto do Botão CTA',
+        'section'  => 'seminario_exhibition',
+        'type'     => 'text',
     ));
     
     // Registration Section
