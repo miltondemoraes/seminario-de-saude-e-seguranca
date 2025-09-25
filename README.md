@@ -1,131 +1,241 @@
-# Seminário de Saúde e Segurança no Audiovisual
-## Landing Page
+# Tema WordPress - Seminário de Saúde e Segurança no Audiovisual
 
-Esta é uma landing page completa para o evento "Seminário de Saúde e Segurança no Audiovisual", desenvolvida com HTML5, CSS3 e JavaScript vanilla.
+🚀 **Tema WordPress completo e profissional para eventos corporativos**
 
-## 🎨 Design e Cores
+Este é um tema WordPress personalizado desenvolvido especificamente para o "Seminário de Saúde e Segurança no Audiovisual", com sistema de cadastro integrado, painel administrativo e design responsivo usando as cores amarelo e preto.
+
+## ⚡ Início Rápido
+
+### 📦 Instalação
+1. **Via WordPress Admin**: Compacte esta pasta em ZIP → Aparência → Temas → Enviar tema
+2. **Via FTP**: Upload desta pasta para `/wp-content/themes/seminario-av/` → Ativar tema
+
+### ⚙️ Configuração (3 minutos)
+1. **Página**: Criar página → Template "Seminário Landing Page" → Definir como inicial
+2. **Menu**: Aparência → Menus → Criar menu com links (#evento, #programacao, #palestrantes, #cadastro)
+3. **Personalizar**: Aparência → Personalizar → Configurações do Seminário
+
+### ✅ Pronto!
+- Formulário de cadastro funcional com AJAX
+- Painel admin para gerenciar inscrições
+- E-mails automáticos de confirmação
+- Design totalmente responsivo
+
+📖 **Guia completo**: `GUIA-INICIALIZACAO-WORDPRESS.md`
+
+---
+
+## 📋 Características do Tema
+
+### ✅ Funcionalidades WordPress
+- **Tema responsivo** totalmente compatível com WordPress
+- **Sistema de cadastro** com AJAX e banco de dados
+- **Painel administrativo** para visualizar inscrições
+- **E-mails automáticos** de confirmação
+- **Personalização via Customizer** WordPress
+- **Sistema de menus** WordPress integrado
+- **Widgets** para footer personalizáveis
+
+### 🎨 Design e Layout
 - **Cores principais**: Amarelo (#FFD700) e Preto (#1a1a1a)
-- **Design**: Moderno e responsivo
-- **Tipografia**: Inter (Google Fonts)
-- **Ícones**: Font Awesome 6
+- **Design responsivo** para todos os dispositivos
+- **Animações CSS** suaves e profissionais
+- **Tipografia otimizada** com Google Fonts (Inter)
+- **Ícones Font Awesome** 6.0
 
-## 📱 Recursos Implementados
+### 📱 Seções da Landing Page
+1. **Hero Section** - Chamada principal com informações do evento
+2. **Sobre o Evento** - Descrição detalhada e estatísticas  
+3. **Programação** - Timeline interativo com horários das atividades
+4. **Palestrantes** - Cards dos especialistas com informações
+5. **Exposição** - Área de exibidores e estandes de parceiros
+6. **Inscrição** - Formulário funcional com validação AJAX
+7. **Como Chegar** - Mapa interativo e opções de transporte
+8. **Sobre o Sindcine** - Informações institucionais
+9. **Footer** - Informações de contato e redes sociais
 
-### ✅ Layout Responsivo
-- Design adaptável para desktop, tablet e mobile
-- Menu mobile com hambúrguer
-- Grid flexível e breakpoints otimizados
+### 📄 Páginas Especiais
+- **Página de Patrocínio** (`page-patrocinio.php`) - Níveis Ouro, Prata e Bronze
+- **Formulário de Interesse** - Para potenciais patrocinadores
+- **Área Administrativa** - Gestão completa de inscrições
 
-### ✅ Seções da Página
-1. **Header** - Navegação fixa com logo e menu
-2. **Hero Section** - Chamada principal com informações do evento
-3. **Sobre o Evento** - Descrição e estatísticas
-4. **Programação** - Timeline com horários das palestras
-5. **Palestrantes** - Cards dos especialistas
-6. **Cadastro** - Formulário de inscrição gratuita
-7. **Footer** - Informações de contato e redes sociais
+## 🚀 Instalação
 
-### ✅ Funcionalidades
-- **Formulário de cadastro** completo com validação
-- **Validação em tempo real** dos campos
-- **Formatação automática** de telefone
-- **Modal de sucesso** após cadastro
-- **Smooth scrolling** entre seções
-- **Animações CSS** suaves
-- **Menu mobile** funcional
+### Método 1: Upload via Admin WordPress
+1. Acesse **Aparência > Temas** no seu WordPress
+2. Clique em **Adicionar novo > Enviar tema**
+3. Faça upload do arquivo ZIP da pasta `wordpress-theme`
+4. Ative o tema
 
-### ✅ Validações do Formulário
-- Campos obrigatórios marcados com *
-- Validação de email
-- Validação de telefone brasileiro
-- Validação de nome (apenas letras)
-- Checkbox de termos obrigatório
-- Mensagens de erro personalizadas
-- Estados visuais (erro/sucesso)
+### Método 2: FTP/cPanel
+1. Faça upload da pasta `wordpress-theme` para `/wp-content/themes/`
+2. Renomeie para `seminario-av` (opcional)
+3. Ative o tema no admin WordPress
 
-## 🚀 Como Visualizar
+## ⚙️ Configuração
 
-### Método 1: Abrir diretamente no navegador
-1. Navegue até a pasta do projeto
-2. Clique duas vezes no arquivo `index.html`
-3. O arquivo será aberto no seu navegador padrão
+### 1. Após Ativação
+O tema automaticamente:
+- Cria a tabela no banco de dados para inscrições
+- Registra os menus necessários
+- Configura as áreas de widgets
 
-### Método 2: Usando um servidor local (recomendado)
-```bash
-# Usando Python 3
-python -m http.server 8000
+### 2. Configurar Menu
+1. Vá em **Aparência > Menus**
+2. Crie um novo menu com os links:
+   - Evento (`#evento`)
+   - Programação (`#programacao`) 
+   - Palestrantes (`#palestrantes`)
+   - Exposição (`#exposicao`)
+   - Contato (`#contato`)
+   - Patrocínio (link para página de patrocínio)
+   - Como Chegar (`#como-chegar`)
+   - Inscreva-se (`#cadastro`)
+3. Defina como "Menu Principal"
 
-# Usando Node.js (se tiver npx instalado)
-npx http-server
-```
+### 3. Configurar Página de Patrocínio
+1. Crie uma nova página no WordPress
+2. Defina o template como "Página de Patrocínio"
+3. Publique e adicione ao menu principal
+   - Cadastre-se (`#cadastro`)
+3. Atribua ao local "Menu Principal"
 
-## 📁 Estrutura de Arquivos
-```
-Seminario/
-├── index.html          # Página principal
-├── css/
-│   └── style.css       # Estilos CSS
-├── js/
-│   └── script.js       # JavaScript funcional
-├── fonts/              # Fontes personalizadas (se necessário)
-└── images/             # Imagens do projeto
-```
+### 3. Personalizar via Customizer
+1. Acesse **Aparência > Personalizar**
+2. Na seção "Configurações do Seminário":
+   - Data do Evento
+   - Horário do Evento  
+   - Local do Evento
 
-## 🎯 Características Técnicas
+### 4. Criar Página Principal
+1. Crie uma nova página
+2. Selecione o template "Seminário Landing Page"
+3. Defina como página inicial em **Configurações > Leitura**
 
-### HTML
-- Estrutura semântica
-- Meta tags para SEO e responsividade
-- Acessibilidade com labels e ARIA
-- Links para fontes externas (Google Fonts, Font Awesome)
+## 📊 Gerenciamento de Inscrições
 
-### CSS
-- Variáveis CSS para consistência de cores
-- Flexbox e CSS Grid para layouts
-- Animações e transições suaves
-- Media queries para responsividade
-- Estados de hover e foco
-- Gradientes nas cores principais
+### Visualizar Inscrições
+- Acesse **Seminário AV** no menu admin
+- Visualize todas as inscrições em formato de tabela
+- Informações incluem: nome, email, telefone, empresa, etc.
 
-### JavaScript
-- ES6+ (const/let, arrow functions)
-- Event listeners organizados
-- Validação de formulário robusta
-- Formatação de dados (telefone)
-- Modal dinâmico de sucesso
-- Smooth scrolling
-- Menu mobile funcional
+### Exportar Dados
+- Na página de inscrições, adicione `?export_seminario=csv` na URL
+- Exemplo: `seu-site.com/wp-admin/admin.php?page=seminario-inscricoes&export_seminario=csv`
+- Baixe arquivo CSV com todos os dados
 
-## 🎨 Paleta de Cores Utilizada
-- **Amarelo Principal**: #FFD700
-- **Amarelo Escuro**: #FFA500
-- **Amarelo Accent**: #FFED4A
-- **Preto Principal**: #1a1a1a
-- **Preto Claro**: #2d2d2d
-- **Branco**: #ffffff
-- **Cinza Claro**: #cccccc
-- **Texto Escuro**: #333333
-
-## 📱 Breakpoints Responsivos
-- **Desktop**: > 768px
-- **Tablet**: 768px - 480px
-- **Mobile**: < 480px
-
-## ✨ Animações e Efeitos
-- Fade in up para seções
-- Hover effects nos cards e botões
-- Loading state no formulário
-- Smooth scrolling entre seções
-- Transições suaves nos elementos interativos
+### E-mails Automáticos
+O tema envia automaticamente:
+- **E-mail de confirmação** para o participante
+- **Notificação** para o administrador do site
 
 ## 🔧 Personalização
 
-Para personalizar o evento, edite as seguintes informações no `index.html`:
+### Alterar Informações do Evento
+Edite o arquivo `functions.php` ou use o Customizer para:
+- Data e horário do evento
+- Local do evento
+- Informações de contato
 
-1. **Data do evento**: Linha ~65 (seção hero)
-2. **Local**: Linha ~70 (seção hero)
-3. **Programação**: Seção `program-timeline` (linhas ~150-200)
-4. **Palestrantes**: Seção `speakers-grid` (linhas ~220-280)
-5. **Informações de contato**: Footer (linhas ~380-400)
+### Modificar Palestrantes
+Edite os arquivos:
+- `index.php` (linha ~150)
+- `page-seminario.php` (linha ~150)
+
+### Personalizar Programação  
+Edite a seção "Program Section" nos templates principais.
+
+### Widgets no Footer
+1. Vá em **Aparência > Widgets**
+2. Adicione widgets nas áreas:
+   - Footer 1
+   - Footer 2  
+   - Footer 3
+
+## 📁 Estrutura de Arquivos
+
+```
+wordpress-theme/
+├── style.css              # Estilos CSS principais + info do tema
+├── functions.php          # Funcionalidades PHP do tema
+├── index.php             # Template principal
+├── header.php            # Cabeçalho do tema
+├── footer.php            # Rodapé do tema
+├── page-seminario.php    # Template personalizado
+├── js/
+│   └── script.js         # JavaScript com jQuery/AJAX
+└── README.md             # Esta documentação
+```
+
+## 🗃️ Banco de Dados
+
+### Tabela: `wp_seminario_registrations`
+Campos criados automaticamente:
+- `id` - ID único
+- `nome` - Nome completo
+- `email` - E-mail  
+- `telefone` - Telefone
+- `empresa` - Empresa/Instituição
+- `cargo` - Cargo/Função
+- `experiencia` - Área de experiência
+- `newsletter` - Aceita newsletter (0/1)
+- `data_cadastro` - Data/hora do cadastro
+
+## 🎯 Funcionalidades Técnicas
+
+### JavaScript/jQuery
+- Validação de formulário em tempo real
+- Formatação automática de telefone
+- Smooth scrolling entre seções
+- Menu mobile responsivo
+- Modal de sucesso após cadastro
+- Sistema de notificações
+
+### PHP/WordPress
+- Hooks e actions WordPress
+- Sistema AJAX nativo
+- Validação e sanitização de dados
+- Envio de e-mails automático
+- Integração com Customizer
+- Suporte a widgets e menus
+
+### Segurança
+- Nonces WordPress para AJAX
+- Sanitização de todos os dados
+- Validação server-side
+- Proteção contra SQL injection
+
+## 🔒 Requisitos
+
+- **WordPress**: 5.0 ou superior
+- **PHP**: 7.4 ou superior  
+- **MySQL**: 5.6 ou superior
+- **Permissões**: Criação de tabelas no banco
+
+## 📞 Suporte
+
+### Problemas Comuns
+
+**Formulário não envia:**
+- Verifique se o jQuery está carregado
+- Confirme se as permissões de AJAX estão corretas
+
+**E-mails não chegam:**
+- Configure SMTP no WordPress
+- Verifique spam/lixo eletrônico
+
+**Tema não ativa:**
+- Verifique se todos os arquivos foram enviados
+- Confirme permissões de arquivo (644/755)
+
+### Personalização Avançada
+Para modificações específicas, edite:
+- `functions.php` - Funcionalidades PHP
+- `style.css` - Estilos visuais  
+- `js/script.js` - Comportamentos JavaScript
 
 ---
+
+**Tema desenvolvido especificamente para promover saúde e segurança na indústria audiovisual.**
+
+*Versão: 1.0 | Compatível com WordPress 5.0+*
