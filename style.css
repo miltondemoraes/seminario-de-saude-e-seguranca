@@ -34,6 +34,71 @@ body {
     overflow-x: hidden;
 }
 
+/* ====================================
+   ELEMENTOR COMPATIBILITY
+==================================== */
+
+/* Reset Elementor containers to use theme width */
+.elementor-section.elementor-section-boxed > .elementor-container {
+    max-width: 1400px;
+}
+
+/* Elementor page content styling */
+.elementor-page-content {
+    padding-top: 100px; /* Account for fixed header */
+}
+
+/* Remove padding for canvas template */
+.elementor-page.elementor-page-canvas .elementor-page-content {
+    padding-top: 0;
+}
+
+/* Ensure Elementor inherits theme colors */
+.elementor-widget-heading h1,
+.elementor-widget-heading h2,
+.elementor-widget-heading h3,
+.elementor-widget-heading h4,
+.elementor-widget-heading h5,
+.elementor-widget-heading h6 {
+    color: inherit;
+}
+
+/* Elementor button styling */
+.elementor-widget-button .elementor-button {
+    border-radius: 30px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.elementor-widget-button .elementor-button.elementor-button-primary {
+    background: var(--gradient-yellow);
+    color: var(--primary-black);
+}
+
+.elementor-widget-button .elementor-button.elementor-button-secondary {
+    background: transparent;
+    color: var(--primary-yellow);
+    border: 2px solid var(--primary-yellow);
+}
+
+/* Elementor icon styling */
+.elementor-widget-icon .elementor-icon {
+    color: var(--primary-yellow);
+}
+
+/* Full width support */
+.elementor-page .container,
+.elementor-page .elementor-container {
+    max-width: 1400px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .elementor-page-content {
+        padding-top: 80px;
+    }
+}
+
 .container {
     max-width: 1400px;
     margin: 0 auto;

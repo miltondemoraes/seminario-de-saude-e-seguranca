@@ -10,6 +10,11 @@ function seminario_theme_setup() {
         'caption',
     ));
     
+    // Suporte para page builders (Elementor, Beaver Builder, etc.)
+    add_theme_support('custom-header');
+    add_theme_support('custom-background');
+    add_theme_support('customize-selective-refresh-widgets');
+    
     register_nav_menus(array(
         'primary' => __('Menu Principal', 'seminario-av'),
     ));
@@ -319,4 +324,46 @@ function seminario_nav_menu_link_attributes($atts, $item, $args) {
     return $atts;
 }
 add_filter('nav_menu_link_attributes', 'seminario_nav_menu_link_attributes', 10, 3);
+
+// ====================================
+// ELEMENTOR COMPATIBILITY
+// ====================================
+
+// Add Elementor support
+function seminario_elementor_support() {
+    // Add theme support for Elementor
+    add_theme_support('elementor');
+    
+    // Add support for full width pages
+    add_theme_support('post-formats', array('aside', 'gallery', 'video', 'audio'));
+}
+add_action('after_setup_theme', 'seminario_elementor_support');
+
+// Remove theme styles on Elementor canvas template
+function seminario_elementor_canvas_body_class($classes) {
+    if(is_page_template('elementor_canvas')) {
+        $classes[] = 'elementor-page elementor-page-canvas';
+    }
+    return $classes;
+}
+add_filter('body_class', 'seminario_elementor_canvas_body_class');
+
+// Elementor Pro Locations support
+function seminario_register_elementor_locations($elementor_theme_manager) {
+    $elementor_theme_manager->register_location('header');
+    $elementor_theme_manager->register_location('footer');
+    $elementor_theme_manager->register_location('single');
+    $elementor_theme_manager->register_location('archive');
+}
+add_action('elementor/theme/register_locations', 'seminario_register_elementor_locations');
+
+// Ensure Elementor content width matches theme
+function seminario_elementor_content_width() {
+    return 1400; // Match our container max-width
+}
+add_filter('elementor/editor/localize_settings', function($settings) {
+    $settings['container_width'] = seminario_elementor_content_width();
+    return $settings;
+});
+
 ?>
