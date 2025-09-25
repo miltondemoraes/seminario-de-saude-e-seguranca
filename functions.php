@@ -21,6 +21,65 @@ function seminario_theme_setup() {
 }
 add_action('after_setup_theme', 'seminario_theme_setup');
 
+// Configurações de upload
+function seminario_upload_settings() {
+    // Aumentar limite de upload se necessário
+    @ini_set('upload_max_filesize', '64M');
+    @ini_set('post_max_size', '64M');
+    @ini_set('max_execution_time', 300);
+    
+    // Verificar e criar pasta de uploads se necessário
+    $upload_dir = wp_upload_dir();
+    
+    if (!wp_mkdir_p($upload_dir['path'])) {
+        // Se não conseguir criar com wp_mkdir_p, tentar criar manualmente
+        $year = date('Y');
+        $month = date('m');
+        
+        $base_dir = $upload_dir['basedir'];
+        $year_dir = $base_dir . '/' . $year;
+        $month_dir = $year_dir . '/' . $month;
+        
+        // Criar pasta do ano
+        if (!file_exists($year_dir)) {
+            wp_mkdir_p($year_dir);
+        }
+        
+        // Criar pasta do mês
+        if (!file_exists($month_dir)) {
+            wp_mkdir_p($month_dir);
+        }
+    }
+}
+add_action('init', 'seminario_upload_settings');
+
+// Permitir tipos de arquivo adicionais
+function seminario_upload_mimes($mimes) {
+    $mimes['svg'] = 'image/svg+xml';
+    $mimes['webp'] = 'image/webp';
+    return $mimes;
+}
+add_filter('upload_mimes', 'seminario_upload_mimes');
+
+// Função para debug de uploads
+function seminario_check_upload_permissions() {
+    $upload_dir = wp_upload_dir();
+    
+    $info = array(
+        'base_dir' => $upload_dir['basedir'],
+        'base_url' => $upload_dir['baseurl'],
+        'path' => $upload_dir['path'],
+        'url' => $upload_dir['url'],
+        'subdir' => $upload_dir['subdir'],
+        'error' => $upload_dir['error'],
+        'base_dir_writable' => is_writable($upload_dir['basedir']),
+        'path_exists' => file_exists($upload_dir['path']),
+        'path_writable' => is_writable($upload_dir['path'])
+    );
+    
+    return $info;
+}
+
 function seminario_scripts_styles() {
     wp_enqueue_style('google-fonts', 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap', array(), '1.0');
     wp_enqueue_style('font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css', array(), '6.0.0');

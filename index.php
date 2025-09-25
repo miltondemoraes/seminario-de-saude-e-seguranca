@@ -82,21 +82,31 @@
                 </p>
             </div>
             <div class="program-timeline">
-                <?php for ($i = 1; $i <= 7; $i++): 
-                    $time = get_theme_mod("seminario_program_item{$i}_time");
-                    $title = get_theme_mod("seminario_program_item{$i}_title");
-                    $description = get_theme_mod("seminario_program_item{$i}_description");
-                    if ($time && $title): ?>
+                <?php 
+                // Valores padrão para a timeline
+                $timeline_defaults = array(
+                    1 => array('time' => '08:00 - 09:00', 'title' => 'Credenciamento e Coffee Break', 'description' => 'Recepção dos participantes e networking inicial'),
+                    2 => array('time' => '09:00 - 10:30', 'title' => 'Abertura: Panorama da Segurança no Audiovisual', 'description' => 'Visão geral dos principais desafios e oportunidades do setor'),
+                    3 => array('time' => '10:45 - 12:00', 'title' => 'Ergonomia em Estúdios de Gravação', 'description' => 'Práticas para prevenção de lesões ocupacionais'),
+                    4 => array('time' => '12:00 - 13:30', 'title' => 'Almoço e Networking', 'description' => 'Oportunidade para conexões profissionais'),
+                    5 => array('time' => '13:30 - 15:00', 'title' => 'Segurança em Sets de Filmagem', 'description' => 'Protocolos e equipamentos de proteção essenciais'),
+                    6 => array('time' => '15:15 - 16:30', 'title' => 'Saúde Mental na Indústria Audiovisual', 'description' => 'Estratégias para bem-estar psicológico no trabalho'),
+                    7 => array('time' => '16:45 - 18:00', 'title' => 'Mesa Redonda e Encerramento', 'description' => 'Discussão aberta e considerações finais')
+                );
+                
+                for ($i = 1; $i <= 7; $i++): 
+                    $time = get_theme_mod("seminario_program_item{$i}_time", $timeline_defaults[$i]['time']);
+                    $title = get_theme_mod("seminario_program_item{$i}_title", $timeline_defaults[$i]['title']);
+                    $description = get_theme_mod("seminario_program_item{$i}_description", $timeline_defaults[$i]['description']);
+                    ?>
                     <div class="timeline-item">
                         <div class="timeline-time"><?php echo esc_html($time); ?></div>
                         <div class="timeline-content">
                             <h3><?php echo esc_html($title); ?></h3>
-                            <?php if ($description): ?>
-                                <p><?php echo esc_html($description); ?></p>
-                            <?php endif; ?>
+                            <p><?php echo esc_html($description); ?></p>
                         </div>
                     </div>
-                <?php endif; endfor; ?>
+                <?php endfor; ?>
             </div>
         </div>
     </section>
@@ -111,12 +121,20 @@
                 </p>
             </div>
             <div class="speakers-grid">
-                <?php for ($i = 1; $i <= 3; $i++): 
-                    $name = get_theme_mod("seminario_speaker{$i}_name");
-                    $title = get_theme_mod("seminario_speaker{$i}_title");
-                    $bio = get_theme_mod("seminario_speaker{$i}_bio");
+                <?php 
+                // Valores padrão para palestrantes
+                $speakers_defaults = array(
+                    1 => array('name' => 'Dr. Carlos Silva', 'title' => 'Especialista em Ergonomia', 'bio' => '20 anos de experiência em ergonomia ocupacional'),
+                    2 => array('name' => 'Dra. Maria Santos', 'title' => 'Psicóloga Ocupacional', 'bio' => 'Especialista em saúde mental no trabalho'),
+                    3 => array('name' => 'Eng. João Costa', 'title' => 'Engenheiro de Segurança', 'bio' => 'Consultor em segurança para a indústria audiovisual')
+                );
+                
+                for ($i = 1; $i <= 3; $i++): 
+                    $name = get_theme_mod("seminario_speaker{$i}_name", $speakers_defaults[$i]['name']);
+                    $title = get_theme_mod("seminario_speaker{$i}_title", $speakers_defaults[$i]['title']);
+                    $bio = get_theme_mod("seminario_speaker{$i}_bio", $speakers_defaults[$i]['bio']);
                     $image = get_theme_mod("seminario_speaker{$i}_image");
-                    if ($name): ?>
+                    ?>
                     <div class="speaker-card">
                         <div class="speaker-photo">
                             <?php if ($image): ?>
@@ -126,14 +144,10 @@
                             <?php endif; ?>
                         </div>
                         <h3 class="speaker-name"><?php echo esc_html($name); ?></h3>
-                        <?php if ($title): ?>
-                            <p class="speaker-title"><?php echo esc_html($title); ?></p>
-                        <?php endif; ?>
-                        <?php if ($bio): ?>
-                            <p class="speaker-bio"><?php echo esc_html($bio); ?></p>
-                        <?php endif; ?>
+                        <p class="speaker-title"><?php echo esc_html($title); ?></p>
+                        <p class="speaker-bio"><?php echo esc_html($bio); ?></p>
                     </div>
-                <?php endif; endfor; ?>
+                <?php endfor; ?>
             </div>
         </div>
     </section>
@@ -155,25 +169,32 @@
                 </div>
                 <div class="exhibitors-grid">
                     <?php 
+                    // Valores padrão para expositores
+                    $exhibitors_defaults = array(
+                        1 => array('name' => 'TechSafety Pro', 'description' => 'Equipamentos de proteção individual especializados para audiovisual', 'booth' => 'Estande A1'),
+                        2 => array('name' => 'ErgoMedia Solutions', 'description' => 'Móveis ergonômicos e soluções para estúdios', 'booth' => 'Estande A2'),
+                        3 => array('name' => 'WellBeing Media', 'description' => 'Programas de bem-estar e saúde ocupacional', 'booth' => 'Estande A3'),
+                        4 => array('name' => 'AudioSafe Tech', 'description' => 'Tecnologia em monitoramento de segurança em sets', 'booth' => 'Estande B1'),
+                        5 => array('name' => 'Emergency AV', 'description' => 'Kits de primeiros socorros e treinamentos de emergência', 'booth' => 'Estande B2'),
+                        6 => array('name' => 'CertifiAV', 'description' => 'Certificações e auditorias em segurança audiovisual', 'booth' => 'Estande B3')
+                    );
+                    
                     $icons = ['fas fa-building', 'fas fa-shield-alt', 'fas fa-heartbeat', 'fas fa-tools', 'fas fa-first-aid', 'fas fa-certificate'];
+                    
                     for ($i = 1; $i <= 6; $i++): 
-                        $name = get_theme_mod("seminario_exhibitor{$i}_name");
-                        $description = get_theme_mod("seminario_exhibitor{$i}_description");
-                        $booth = get_theme_mod("seminario_exhibitor{$i}_booth");
-                        if ($name): ?>
+                        $name = get_theme_mod("seminario_exhibitor{$i}_name", $exhibitors_defaults[$i]['name']);
+                        $description = get_theme_mod("seminario_exhibitor{$i}_description", $exhibitors_defaults[$i]['description']);
+                        $booth = get_theme_mod("seminario_exhibitor{$i}_booth", $exhibitors_defaults[$i]['booth']);
+                        ?>
                         <div class="exhibitor-card">
                             <div class="exhibitor-logo">
                                 <i class="<?php echo $icons[$i-1]; ?>"></i>
                             </div>
                             <h3 class="exhibitor-name"><?php echo esc_html($name); ?></h3>
-                            <?php if ($description): ?>
-                                <p class="exhibitor-description"><?php echo esc_html($description); ?></p>
-                            <?php endif; ?>
-                            <?php if ($booth): ?>
-                                <div class="exhibitor-booth"><?php echo esc_html($booth); ?></div>
-                            <?php endif; ?>
+                            <p class="exhibitor-description"><?php echo esc_html($description); ?></p>
+                            <div class="exhibitor-booth"><?php echo esc_html($booth); ?></div>
                         </div>
-                    <?php endif; endfor; ?>
+                    <?php endfor; ?>
                 </div>
                 <div class="exhibition-cta">
                     <h3><?php echo get_theme_mod('seminario_exhibition_cta_title', 'Interessado em expor?'); ?></h3>
