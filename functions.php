@@ -201,42 +201,457 @@ function seminario_custom_body_classes($classes) {
 add_filter('body_class', 'seminario_custom_body_classes');
 
 function seminario_customize_register($wp_customize) {
-    $wp_customize->add_section('seminario_settings', array(
-        'title' => 'Configurações do Seminário',
+    // Hero Section
+    $wp_customize->add_section('seminario_hero', array(
+        'title'    => 'Seção Hero (Principal)',
         'priority' => 30,
     ));
     
+    // Hero Title Line 1
+    $wp_customize->add_setting('seminario_hero_title_line1', array(
+        'default' => 'Seminário de',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('seminario_hero_title_line1', array(
+        'label'    => 'Título Principal - Linha 1',
+        'section'  => 'seminario_hero',
+        'type'     => 'text',
+    ));
+    
+    // Hero Title Line 2
+    $wp_customize->add_setting('seminario_hero_title_line2', array(
+        'default' => 'Saúde e Segurança',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('seminario_hero_title_line2', array(
+        'label'    => 'Título Principal - Linha 2',
+        'section'  => 'seminario_hero',
+        'type'     => 'text',
+    ));
+    
+    // Hero Title Line 3
+    $wp_customize->add_setting('seminario_hero_title_line3', array(
+        'default' => 'no Audiovisual',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('seminario_hero_title_line3', array(
+        'label'    => 'Título Principal - Linha 3',
+        'section'  => 'seminario_hero',
+        'type'     => 'text',
+    ));
+    
+    // Hero Description
+    $wp_customize->add_setting('seminario_hero_description', array(
+        'default' => 'Um evento essencial para profissionais que buscam conhecimento em práticas seguras e saudáveis na indústria audiovisual.',
+        'sanitize_callback' => 'sanitize_textarea_field',
+    ));
+    $wp_customize->add_control('seminario_hero_description', array(
+        'label'    => 'Descrição Principal',
+        'section'  => 'seminario_hero',
+        'type'     => 'textarea',
+    ));
+    
+    // Hero CTA Button Text
+    $wp_customize->add_setting('seminario_hero_cta', array(
+        'default' => 'Cadastre-se Gratuitamente',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('seminario_hero_cta', array(
+        'label'    => 'Texto do Botão Principal',
+        'section'  => 'seminario_hero',
+        'type'     => 'text',
+    ));
+    
+    // Event Information Section
+    $wp_customize->add_section('seminario_event_info', array(
+        'title'    => 'Informações do Evento',
+        'priority' => 35,
+    ));
+    
+    // Event Date
     $wp_customize->add_setting('seminario_event_date', array(
         'default' => '15 de Dezembro, 2025',
         'sanitize_callback' => 'sanitize_text_field',
     ));
-    
     $wp_customize->add_control('seminario_event_date', array(
-        'label' => 'Data do Evento',
-        'section' => 'seminario_settings',
-        'type' => 'text',
+        'label'    => 'Data do Evento',
+        'section'  => 'seminario_event_info',
+        'type'     => 'text',
     ));
     
-    $wp_customize->add_setting('seminario_event_time', array(
-        'default' => '8h às 18h',
-        'sanitize_callback' => 'sanitize_text_field',
-    ));
-    
-    $wp_customize->add_control('seminario_event_time', array(
-        'label' => 'Horário do Evento',
-        'section' => 'seminario_settings',
-        'type' => 'text',
-    ));
-    
+    // Event Location
     $wp_customize->add_setting('seminario_event_location', array(
         'default' => 'Centro de Convenções - São Paulo',
         'sanitize_callback' => 'sanitize_text_field',
     ));
-    
     $wp_customize->add_control('seminario_event_location', array(
-        'label' => 'Local do Evento',
-        'section' => 'seminario_settings',
-        'type' => 'text',
+        'label'    => 'Local do Evento',
+        'section'  => 'seminario_event_info',
+        'type'     => 'text',
+    ));
+    
+    // Event Time
+    $wp_customize->add_setting('seminario_event_time', array(
+        'default' => '8h às 18h',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('seminario_event_time', array(
+        'label'    => 'Horário do Evento',
+        'section'  => 'seminario_event_info',
+        'type'     => 'text',
+    ));
+    
+    // About Section
+    $wp_customize->add_section('seminario_about', array(
+        'title'    => 'Seção Sobre o Evento',
+        'priority' => 40,
+    ));
+    
+    // About Title
+    $wp_customize->add_setting('seminario_about_title', array(
+        'default' => 'Sobre o Evento',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('seminario_about_title', array(
+        'label'    => 'Título da Seção',
+        'section'  => 'seminario_about',
+        'type'     => 'text',
+    ));
+    
+    // About Subtitle
+    $wp_customize->add_setting('seminario_about_subtitle', array(
+        'default' => 'Conectando profissionais para um audiovisual mais seguro e saudável',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('seminario_about_subtitle', array(
+        'label'    => 'Subtítulo da Seção',
+        'section'  => 'seminario_about',
+        'type'     => 'text',
+    ));
+    
+    // About Text 1
+    $wp_customize->add_setting('seminario_about_text1', array(
+        'default' => 'O Seminário de Saúde e Segurança no Audiovisual é um evento único que reúne especialistas, profissionais e estudantes da área para discutir as melhores práticas em segurança ocupacional e bem-estar no setor audiovisual.',
+        'sanitize_callback' => 'sanitize_textarea_field',
+    ));
+    $wp_customize->add_control('seminario_about_text1', array(
+        'label'    => 'Primeiro Parágrafo',
+        'section'  => 'seminario_about',
+        'type'     => 'textarea',
+    ));
+    
+    // About Text 2
+    $wp_customize->add_setting('seminario_about_text2', array(
+        'default' => 'Durante um dia completo de palestras, workshops e networking, você terá acesso a conteúdos exclusivos sobre ergonomia, segurança em sets de filmagem, prevenção de acidentes e muito mais.',
+        'sanitize_callback' => 'sanitize_textarea_field',
+    ));
+    $wp_customize->add_control('seminario_about_text2', array(
+        'label'    => 'Segundo Parágrafo',
+        'section'  => 'seminario_about',
+        'type'     => 'textarea',
+    ));
+    
+    // About Stats
+    $wp_customize->add_setting('seminario_about_stat1_number', array(
+        'default' => '500+',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('seminario_about_stat1_number', array(
+        'label'    => 'Estatística 1 - Número',
+        'section'  => 'seminario_about',
+        'type'     => 'text',
+    ));
+    
+    $wp_customize->add_setting('seminario_about_stat1_label', array(
+        'default' => 'Participantes Esperados',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('seminario_about_stat1_label', array(
+        'label'    => 'Estatística 1 - Texto',
+        'section'  => 'seminario_about',
+        'type'     => 'text',
+    ));
+    
+    $wp_customize->add_setting('seminario_about_stat2_number', array(
+        'default' => '15+',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('seminario_about_stat2_number', array(
+        'label'    => 'Estatística 2 - Número',
+        'section'  => 'seminario_about',
+        'type'     => 'text',
+    ));
+    
+    $wp_customize->add_setting('seminario_about_stat2_label', array(
+        'default' => 'Palestrantes Especialistas',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('seminario_about_stat2_label', array(
+        'label'    => 'Estatística 2 - Texto',
+        'section'  => 'seminario_about',
+        'type'     => 'text',
+    ));
+    
+    $wp_customize->add_setting('seminario_about_stat3_number', array(
+        'default' => '8h',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('seminario_about_stat3_number', array(
+        'label'    => 'Estatística 3 - Número',
+        'section'  => 'seminario_about',
+        'type'     => 'text',
+    ));
+    
+    $wp_customize->add_setting('seminario_about_stat3_label', array(
+        'default' => 'de Conteúdo Intensivo',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('seminario_about_stat3_label', array(
+        'label'    => 'Estatística 3 - Texto',
+        'section'  => 'seminario_about',
+        'type'     => 'text',
+    ));
+    
+    // Program Section
+    $wp_customize->add_section('seminario_program', array(
+        'title'    => 'Seção Programação',
+        'priority' => 45,
+    ));
+    
+    $wp_customize->add_setting('seminario_program_title', array(
+        'default' => 'Programação',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('seminario_program_title', array(
+        'label'    => 'Título da Seção',
+        'section'  => 'seminario_program',
+        'type'     => 'text',
+    ));
+    
+    $wp_customize->add_setting('seminario_program_subtitle', array(
+        'default' => 'Agenda completa com palestras e workshops especializados',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('seminario_program_subtitle', array(
+        'label'    => 'Subtítulo da Seção',
+        'section'  => 'seminario_program',
+        'type'     => 'text',
+    ));
+    
+    // Speakers Section
+    $wp_customize->add_section('seminario_speakers', array(
+        'title'    => 'Seção Palestrantes',
+        'priority' => 50,
+    ));
+    
+    $wp_customize->add_setting('seminario_speakers_title', array(
+        'default' => 'Palestrantes',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('seminario_speakers_title', array(
+        'label'    => 'Título da Seção',
+        'section'  => 'seminario_speakers',
+        'type'     => 'text',
+    ));
+    
+    $wp_customize->add_setting('seminario_speakers_subtitle', array(
+        'default' => 'Especialistas reconhecidos na área de saúde e segurança ocupacional',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('seminario_speakers_subtitle', array(
+        'label'    => 'Subtítulo da Seção',
+        'section'  => 'seminario_speakers',
+        'type'     => 'text',
+    ));
+    
+    // Exhibition Section
+    $wp_customize->add_section('seminario_exhibition', array(
+        'title'    => 'Seção Exposição',
+        'priority' => 55,
+    ));
+    
+    $wp_customize->add_setting('seminario_exhibition_title', array(
+        'default' => 'Exposição',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('seminario_exhibition_title', array(
+        'label'    => 'Título da Seção',
+        'section'  => 'seminario_exhibition',
+        'type'     => 'text',
+    ));
+    
+    $wp_customize->add_setting('seminario_exhibition_subtitle', array(
+        'default' => 'Conheça as empresas parceiras e suas soluções inovadoras',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('seminario_exhibition_subtitle', array(
+        'label'    => 'Subtítulo da Seção',
+        'section'  => 'seminario_exhibition',
+        'type'     => 'text',
+    ));
+    
+    $wp_customize->add_setting('seminario_exhibition_text', array(
+        'default' => 'Durante todo o evento, você poderá visitar os estandes de nossos parceiros e conhecer as mais recentes tecnologias e serviços voltados para saúde e segurança no audiovisual.',
+        'sanitize_callback' => 'sanitize_textarea_field',
+    ));
+    $wp_customize->add_control('seminario_exhibition_text', array(
+        'label'    => 'Texto da Seção',
+        'section'  => 'seminario_exhibition',
+        'type'     => 'textarea',
+    ));
+    
+    // Registration Section
+    $wp_customize->add_section('seminario_registration', array(
+        'title'    => 'Seção Inscrições',
+        'priority' => 60,
+    ));
+    
+    $wp_customize->add_setting('seminario_registration_title', array(
+        'default' => 'Faça sua Inscrição',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('seminario_registration_title', array(
+        'label'    => 'Título da Seção',
+        'section'  => 'seminario_registration',
+        'type'     => 'text',
+    ));
+    
+    $wp_customize->add_setting('seminario_registration_subtitle', array(
+        'default' => 'Garanta sua vaga neste evento imperdível!',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('seminario_registration_subtitle', array(
+        'label'    => 'Subtítulo da Seção',
+        'section'  => 'seminario_registration',
+        'type'     => 'text',
+    ));
+    
+    $wp_customize->add_setting('seminario_registration_free_text', array(
+        'default' => 'Inscrições totalmente gratuitas',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('seminario_registration_free_text', array(
+        'label'    => 'Texto "Gratuito"',
+        'section'  => 'seminario_registration',
+        'type'     => 'text',
+    ));
+    
+    // How to Get There Section
+    $wp_customize->add_section('seminario_location', array(
+        'title'    => 'Seção Como Chegar',
+        'priority' => 65,
+    ));
+    
+    $wp_customize->add_setting('seminario_location_title', array(
+        'default' => 'Como Chegar',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('seminario_location_title', array(
+        'label'    => 'Título da Seção',
+        'section'  => 'seminario_location',
+        'type'     => 'text',
+    ));
+    
+    $wp_customize->add_setting('seminario_location_subtitle', array(
+        'default' => 'Todas as informações para sua chegada ao evento',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('seminario_location_subtitle', array(
+        'label'    => 'Subtítulo da Seção',
+        'section'  => 'seminario_location',
+        'type'     => 'text',
+    ));
+    
+    $wp_customize->add_setting('seminario_location_venue_name', array(
+        'default' => 'Centro de Convenções - São Paulo',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('seminario_location_venue_name', array(
+        'label'    => 'Nome do Local',
+        'section'  => 'seminario_location',
+        'type'     => 'text',
+    ));
+    
+    $wp_customize->add_setting('seminario_location_address', array(
+        'default' => 'Rua das Convenções, 1000\nVila Olímpia - São Paulo/SP\nCEP: 04551-000',
+        'sanitize_callback' => 'sanitize_textarea_field',
+    ));
+    $wp_customize->add_control('seminario_location_address', array(
+        'label'    => 'Endereço Completo',
+        'section'  => 'seminario_location',
+        'type'     => 'textarea',
+    ));
+    
+    // About Sindcine Section
+    $wp_customize->add_section('seminario_sindcine', array(
+        'title'    => 'Seção Sobre o Sindcine',
+        'priority' => 70,
+    ));
+    
+    $wp_customize->add_setting('seminario_sindcine_title', array(
+        'default' => 'Sobre o Sindcine',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('seminario_sindcine_title', array(
+        'label'    => 'Título da Seção',
+        'section'  => 'seminario_sindcine',
+        'type'     => 'text',
+    ));
+    
+    $wp_customize->add_setting('seminario_sindcine_subtitle', array(
+        'default' => 'Conheça o Sindicato dos Trabalhadores nas Indústrias Cinematográficas e do Audiovisual',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('seminario_sindcine_subtitle', array(
+        'label'    => 'Subtítulo da Seção',
+        'section'  => 'seminario_sindcine',
+        'type'     => 'text',
+    ));
+    
+    $wp_customize->add_setting('seminario_sindcine_text1', array(
+        'default' => 'O Sindcine é o sindicato que representa os trabalhadores da indústria cinematográfica e audiovisual, lutando por melhores condições de trabalho, segurança e bem-estar de todos os profissionais do setor.',
+        'sanitize_callback' => 'sanitize_textarea_field',
+    ));
+    $wp_customize->add_control('seminario_sindcine_text1', array(
+        'label'    => 'Primeiro Parágrafo',
+        'section'  => 'seminario_sindcine',
+        'type'     => 'textarea',
+    ));
+    
+    $wp_customize->add_setting('seminario_sindcine_text2', array(
+        'default' => 'Fundado com o objetivo de promover os direitos trabalhistas e a segurança ocupacional, o Sindcine tem sido um pilar fundamental na organização de eventos como este seminário, sempre focado na educação e capacitação dos profissionais.',
+        'sanitize_callback' => 'sanitize_textarea_field',
+    ));
+    $wp_customize->add_control('seminario_sindcine_text2', array(
+        'label'    => 'Segundo Parágrafo',
+        'section'  => 'seminario_sindcine',
+        'type'     => 'textarea',
+    ));
+    
+    // Header/Footer Section
+    $wp_customize->add_section('seminario_header_footer', array(
+        'title'    => 'Header e Footer',
+        'priority' => 75,
+    ));
+    
+    $wp_customize->add_setting('seminario_site_name', array(
+        'default' => 'Seminário AV',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('seminario_site_name', array(
+        'label'    => 'Nome do Site (Logo)',
+        'section'  => 'seminario_header_footer',
+        'type'     => 'text',
+    ));
+    
+    $wp_customize->add_setting('seminario_footer_description', array(
+        'default' => 'Promovendo saúde e segurança na indústria audiovisual.',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('seminario_footer_description', array(
+        'label'    => 'Descrição do Footer',
+        'section'  => 'seminario_header_footer',
+        'type'     => 'text',
     ));
 }
 add_action('customize_register', 'seminario_customize_register');
@@ -365,5 +780,41 @@ add_filter('elementor/editor/localize_settings', function($settings) {
     $settings['container_width'] = seminario_elementor_content_width();
     return $settings;
 });
+
+// Add custom CSS classes to body for Elementor pages
+function seminario_elementor_body_classes($classes) {
+    if (class_exists('\\Elementor\\Plugin')) {
+        $elementor = \Elementor\Plugin::$instance;
+        if ($elementor->editor->is_edit_mode()) {
+            $classes[] = 'elementor-edit-mode';
+        }
+        if ($elementor->preview->is_preview_mode()) {
+            $classes[] = 'elementor-preview-mode';
+        }
+    }
+    return $classes;
+}
+add_filter('body_class', 'seminario_elementor_body_classes');
+
+// Elementor theme colors integration
+function seminario_add_elementor_theme_colors() {
+    if (class_exists('\\Elementor\\Core\\Kits\\Documents\\Tabs\\Global_Colors')) {
+        // This will be handled by Elementor's system colors
+        add_theme_support('elementor-color-scheme');
+    }
+}
+add_action('after_setup_theme', 'seminario_add_elementor_theme_colors');
+
+// Custom Elementor widgets support
+function seminario_elementor_widget_categories($elements_manager) {
+    $elements_manager->add_category(
+        'seminario-widgets',
+        [
+            'title' => __('Seminário Widgets', 'seminario-av'),
+            'icon' => 'fa fa-plug',
+        ]
+    );
+}
+add_action('elementor/elements/categories_registered', 'seminario_elementor_widget_categories');
 
 ?>

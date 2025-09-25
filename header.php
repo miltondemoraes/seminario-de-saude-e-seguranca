@@ -13,7 +13,7 @@
                 <div class="logo">
                     <i class="fas fa-video"></i>
                     <span><?php 
-                        $site_name = get_bloginfo('name');
+                        $site_name = get_theme_mod('seminario_site_name', get_bloginfo('name'));
                         if ($site_name && $site_name !== 'My WordPress Website') {
                             echo $site_name;
                         } else {

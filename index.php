@@ -7,13 +7,12 @@
         <div class="container">
             <div class="hero-content">
                 <h1 class="hero-title">
-                    <span class="highlight">Seminário de</span><br>
-                    Saúde e Segurança<br>
-                    <span class="highlight">no Audiovisual</span>
+                    <span class="highlight"><?php echo get_theme_mod('seminario_hero_title_line1', 'Seminário de'); ?></span><br>
+                    <?php echo get_theme_mod('seminario_hero_title_line2', 'Saúde e Segurança'); ?><br>
+                    <span class="highlight"><?php echo get_theme_mod('seminario_hero_title_line3', 'no Audiovisual'); ?></span>
                 </h1>
                 <p class="hero-description">
-                    Um evento essencial para profissionais que buscam conhecimento em práticas seguras
-                    e saudáveis na indústria audiovisual.
+                    <?php echo get_theme_mod('seminario_hero_description', 'Um evento essencial para profissionais que buscam conhecimento em práticas seguras e saudáveis na indústria audiovisual.'); ?>
                 </p>
                 <div class="hero-info">
                     <div class="info-item">
@@ -31,7 +30,7 @@
                 </div>
                 <a href="#cadastro" class="cta-button">
                     <i class="fas fa-user-plus"></i>
-                    Cadastre-se Gratuitamente
+                    <?php echo get_theme_mod('seminario_hero_cta', 'Cadastre-se Gratuitamente'); ?>
                 </a>
             </div>
         </div>
@@ -41,36 +40,32 @@
     <section id="evento" class="about">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Sobre o Evento</h2>
+                <h2 class="section-title"><?php echo get_theme_mod('seminario_about_title', 'Sobre o Evento'); ?></h2>
                 <p class="section-subtitle">
-                    Conectando profissionais para um audiovisual mais seguro e saudável
+                    <?php echo get_theme_mod('seminario_about_subtitle', 'Conectando profissionais para um audiovisual mais seguro e saudável'); ?>
                 </p>
             </div>
             <div class="about-content">
                 <div class="about-text">
                     <p>
-                        O Seminário de Saúde e Segurança no Audiovisual é um evento único que reúne
-                        especialistas, profissionais e estudantes da área para discutir as melhores
-                        práticas em segurança ocupacional e bem-estar no setor audiovisual.
+                        <?php echo get_theme_mod('seminario_about_text1', 'O Seminário de Saúde e Segurança no Audiovisual é um evento único que reúne especialistas, profissionais e estudantes da área para discutir as melhores práticas em segurança ocupacional e bem-estar no setor audiovisual.'); ?>
                     </p>
                     <p>
-                        Durante um dia completo de palestras, workshops e networking, você terá acesso
-                        a conteúdos exclusivos sobre ergonomia, segurança em sets de filmagem,
-                        prevenção de acidentes e muito mais.
+                        <?php echo get_theme_mod('seminario_about_text2', 'Durante um dia completo de palestras, workshops e networking, você terá acesso a conteúdos exclusivos sobre ergonomia, segurança em sets de filmagem, prevenção de acidentes e muito mais.'); ?>
                     </p>
                 </div>
                 <div class="stats">
                     <div class="stat-item">
-                        <div class="stat-number">500+</div>
-                        <div class="stat-label">Participantes Esperados</div>
+                        <div class="stat-number"><?php echo get_theme_mod('seminario_about_stat1_number', '500+'); ?></div>
+                        <div class="stat-label"><?php echo get_theme_mod('seminario_about_stat1_label', 'Participantes Esperados'); ?></div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-number">15+</div>
-                        <div class="stat-label">Palestrantes Especialistas</div>
+                        <div class="stat-number"><?php echo get_theme_mod('seminario_about_stat2_number', '15+'); ?></div>
+                        <div class="stat-label"><?php echo get_theme_mod('seminario_about_stat2_label', 'Palestrantes Especialistas'); ?></div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-number">8h</div>
-                        <div class="stat-label">de Conteúdo Intensivo</div>
+                        <div class="stat-number"><?php echo get_theme_mod('seminario_about_stat3_number', '8h'); ?></div>
+                        <div class="stat-label"><?php echo get_theme_mod('seminario_about_stat3_label', 'de Conteúdo Intensivo'); ?></div>
                     </div>
                 </div>
             </div>
@@ -81,9 +76,9 @@
     <section id="programacao" class="program">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Programação</h2>
+                <h2 class="section-title"><?php echo get_theme_mod('seminario_program_title', 'Programação'); ?></h2>
                 <p class="section-subtitle">
-                    Agenda completa com palestras e workshops especializados
+                    <?php echo get_theme_mod('seminario_program_subtitle', 'Agenda completa com palestras e workshops especializados'); ?>
                 </p>
             </div>
             <div class="program-timeline">
@@ -144,9 +139,9 @@
     <section id="palestrantes" class="speakers">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Palestrantes</h2>
+                <h2 class="section-title"><?php echo get_theme_mod('seminario_speakers_title', 'Palestrantes'); ?></h2>
                 <p class="section-subtitle">
-                    Especialistas reconhecidos na área de saúde e segurança ocupacional
+                    <?php echo get_theme_mod('seminario_speakers_subtitle', 'Especialistas reconhecidos na área de saúde e segurança ocupacional'); ?>
                 </p>
             </div>
             <div class="speakers-grid">
@@ -188,17 +183,15 @@
     <section id="exposicao" class="exhibition">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Exposição</h2>
+                <h2 class="section-title"><?php echo get_theme_mod('seminario_exhibition_title', 'Exposição'); ?></h2>
                 <p class="section-subtitle">
-                    Conheça as empresas parceiras e suas soluções inovadoras
+                    <?php echo get_theme_mod('seminario_exhibition_subtitle', 'Conheça as empresas parceiras e suas soluções inovadoras'); ?>
                 </p>
             </div>
             <div class="exhibition-content">
                 <div class="exhibition-info">
                     <p>
-                        Durante todo o evento, você poderá visitar os estandes de nossos parceiros
-                        e conhecer as mais recentes tecnologias e serviços voltados para saúde
-                        e segurança no audiovisual.
+                        <?php echo get_theme_mod('seminario_exhibition_text', 'Durante todo o evento, você poderá visitar os estandes de nossos parceiros e conhecer as mais recentes tecnologias e serviços voltados para saúde e segurança no audiovisual.'); ?>
                     </p>
                 </div>
                 <div class="exhibitors-grid">
@@ -280,10 +273,10 @@
         <div class="container">
             <div class="registration-content">
                 <div class="registration-info">
-                    <h2 class="section-title">Faça sua Inscrição</h2>
+                    <h2 class="section-title"><?php echo get_theme_mod('seminario_registration_title', 'Faça sua Inscrição'); ?></h2>
                     <p class="section-subtitle">
-                        Garanta sua vaga neste evento imperdível!<br>
-                        <strong>Inscrições totalmente gratuitas</strong>
+                        <?php echo get_theme_mod('seminario_registration_subtitle', 'Garanta sua vaga neste evento imperdível!'); ?><br>
+                        <strong><?php echo get_theme_mod('seminario_registration_free_text', 'Inscrições totalmente gratuitas'); ?></strong>
                     </p>
                     <div class="benefits-list">
                         <div class="benefit-item">
@@ -372,9 +365,9 @@
     <section id="como-chegar" class="how-to-get-there">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Como Chegar</h2>
+                <h2 class="section-title"><?php echo get_theme_mod('seminario_location_title', 'Como Chegar'); ?></h2>
                 <p class="section-subtitle">
-                    Todas as informações para sua chegada ao evento
+                    <?php echo get_theme_mod('seminario_location_subtitle', 'Todas as informações para sua chegada ao evento'); ?>
                 </p>
             </div>
             <div class="location-content">
@@ -385,11 +378,9 @@
                         </div>
                         <div class="address-details">
                             <h3>Local do Evento</h3>
-                            <p class="venue-name"><?php echo get_theme_mod('seminario_event_location', 'Centro de Convenções - São Paulo'); ?></p>
+                            <p class="venue-name"><?php echo get_theme_mod('seminario_location_venue_name', get_theme_mod('seminario_event_location', 'Centro de Convenções - São Paulo')); ?></p>
                             <p class="full-address">
-                                Rua das Convenções, 1000<br>
-                                Vila Olímpia - São Paulo/SP<br>
-                                CEP: 04551-000
+                                <?php echo nl2br(get_theme_mod('seminario_location_address', 'Rua das Convenções, 1000\nVila Olímpia - São Paulo/SP\nCEP: 04551-000')); ?>
                             </p>
                         </div>
                     </div>
@@ -493,23 +484,19 @@
     <section id="sobre-sindcine" class="about-sindcine">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Sobre o Sindcine</h2>
+                <h2 class="section-title"><?php echo get_theme_mod('seminario_sindcine_title', 'Sobre o Sindcine'); ?></h2>
                 <p class="section-subtitle">
-                    Conheça o Sindicato dos Trabalhadores nas Indústrias Cinematográficas e do Audiovisual
+                    <?php echo get_theme_mod('seminario_sindcine_subtitle', 'Conheça o Sindicato dos Trabalhadores nas Indústrias Cinematográficas e do Audiovisual'); ?>
                 </p>
             </div>
             <div class="sindcine-content">
                 <div class="sindcine-info">
                     <div class="sindcine-text">
                         <p>
-                            O Sindcine é o sindicato que representa os trabalhadores da indústria cinematográfica 
-                            e audiovisual, lutando por melhores condições de trabalho, segurança e bem-estar 
-                            de todos os profissionais do setor.
+                            <?php echo get_theme_mod('seminario_sindcine_text1', 'O Sindcine é o sindicato que representa os trabalhadores da indústria cinematográfica e audiovisual, lutando por melhores condições de trabalho, segurança e bem-estar de todos os profissionais do setor.'); ?>
                         </p>
                         <p>
-                            Fundado com o objetivo de promover os direitos trabalhistas e a segurança ocupacional, 
-                            o Sindcine tem sido um pilar fundamental na organização de eventos como este seminário, 
-                            sempre focado na educação e capacitação dos profissionais.
+                            <?php echo get_theme_mod('seminario_sindcine_text2', 'Fundado com o objetivo de promover os direitos trabalhistas e a segurança ocupacional, o Sindcine tem sido um pilar fundamental na organização de eventos como este seminário, sempre focado na educação e capacitação dos profissionais.'); ?>
                         </p>
                     </div>
                     <div class="sindcine-stats">

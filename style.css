@@ -515,10 +515,34 @@ section {
 .registration {
     background: var(--gradient-dark);
     color: var(--text-white);
+    position: relative;
+}
+
+.registration::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+}
+
+.registration .container {
+    position: relative;
+    z-index: 2;
 }
 
 .registration .section-title {
     color: var(--text-white);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    font-weight: 700;
+}
+
+.registration .section-subtitle {
+    color: var(--text-white);
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
 }
 
 .registration-content {
@@ -528,16 +552,18 @@ section {
     align-items: start;
 }
 
-.benefits-list {
+.registration .benefits-list {
     margin-top: 2rem;
 }
 
-.benefit-item {
+.registration .benefit-item {
     display: flex;
     align-items: center;
     gap: 1rem;
     margin-bottom: 1rem;
     font-size: 1.1rem;
+    color: var(--text-white);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
 }
 
 .benefit-item i {
@@ -1948,5 +1974,137 @@ html {
     .header.scrolled {
         background: rgba(26, 26, 26, 0.95);
         backdrop-filter: blur(10px);
+    }
+}
+
+/* ====================================
+   ADDITIONAL ELEMENTOR STYLES
+==================================== */
+
+/* Elementor widgets color inheritance */
+.elementor-widget-text-editor,
+.elementor-widget-text-editor p,
+.elementor-widget-text-editor div {
+    color: inherit;
+}
+
+/* Elementor sections with theme backgrounds */
+.elementor-section.elementor-section-height-full {
+    min-height: 100vh;
+}
+
+/* Theme color classes for Elementor */
+.elementor-yellow-text {
+    color: var(--primary-yellow) !important;
+}
+
+.elementor-black-text {
+    color: var(--primary-black) !important;
+}
+
+.elementor-white-text {
+    color: var(--text-white) !important;
+}
+
+.elementor-yellow-bg {
+    background: var(--gradient-yellow) !important;
+}
+
+.elementor-dark-bg {
+    background: var(--gradient-dark) !important;
+}
+
+/* Elementor form styling */
+.elementor-widget-form .elementor-field-group > label {
+    color: var(--text-dark);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.elementor-widget-form .elementor-field {
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.elementor-widget-form .elementor-field:focus {
+    border-color: var(--primary-yellow);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.1);
+}
+
+.elementor-widget-form .elementor-button {
+    background: var(--gradient-yellow);
+    color: var(--primary-black);
+    border: none;
+    border-radius: 30px;
+    padding: 0.75rem 2rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.elementor-widget-form .elementor-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+}
+
+/* Elementor heading styles */
+.elementor-widget-heading .elementor-heading-title {
+    line-height: 1.2;
+}
+
+/* Elementor divider with theme colors */
+.elementor-widget-divider .elementor-divider-separator {
+    border-color: var(--primary-yellow);
+}
+
+/* Elementor icon list with theme colors */
+.elementor-widget-icon-list .elementor-icon-list-icon {
+    color: var(--primary-yellow);
+}
+
+/* Elementor counter with theme colors */
+.elementor-widget-counter .elementor-counter-number-wrapper {
+    color: var(--primary-yellow);
+}
+
+/* Elementor testimonial styling */
+.elementor-widget-testimonial .elementor-testimonial-content {
+    color: inherit;
+}
+
+.elementor-widget-testimonial .elementor-testimonial-name {
+    color: var(--primary-yellow);
+}
+
+/* Elementor social icons */
+.elementor-widget-social-icons .elementor-social-icon {
+    background: var(--primary-yellow);
+    color: var(--primary-black);
+    transition: all 0.3s ease;
+}
+
+.elementor-widget-social-icons .elementor-social-icon:hover {
+    background: var(--dark-yellow);
+    transform: translateY(-2px);
+}
+
+/* Fix Elementor popup z-index issues */
+.elementor-popup-modal {
+    z-index: 999999;
+}
+
+/* Elementor container spacing */
+.elementor-container {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+@media (max-width: 768px) {
+    .elementor-container {
+        padding-left: 15px;
+        padding-right: 15px;
     }
 }

@@ -4,9 +4,9 @@
                 <div class="footer-section">
                     <div class="logo">
                         <i class="fas fa-video"></i>
-                        <span>Seminário AV</span>
+                        <span><?php echo get_theme_mod('seminario_site_name', 'Seminário AV'); ?></span>
                     </div>
-                    <p>Promovendo saúde e segurança na indústria audiovisual.</p>
+                    <p><?php echo get_theme_mod('seminario_footer_description', 'Promovendo saúde e segurança na indústria audiovisual.'); ?></p>
                 </div>
                 
                 <?php if(is_active_sidebar('footer-1') || is_active_sidebar('footer-2') || is_active_sidebar('footer-3')): ?>
