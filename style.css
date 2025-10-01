@@ -16,7 +16,7 @@ Text Domain: seminario-av
 :root {
     --primary-yellow: #FFD700;
     --dark-yellow: #FFA500;
-    --primary-black: #1a1a1a;
+    --primary-black: #0d0d0d;
     --light-black: #2d2d2d;
     --text-white: #ffffff;
     --text-gray: #cccccc;
@@ -156,6 +156,40 @@ body {
 
 .logo i {
     font-size: 1.8rem;
+}
+
+/* Logo image styles */
+.logo-image {
+    max-height: 60px;
+    max-width: 200px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    transition: all 0.3s ease;
+}
+
+/* Remover Archives e Categories do footer */
+.footer .widget_archive,
+.footer .widget_categories,
+.footer-section .widget_archive,
+.footer-section .widget_categories,
+aside[class*="widget_archive"],
+aside[class*="widget_categories"] {
+    display: none !important;
+}
+
+/* Remover qualquer elemento que contenha Archives ou Categories */
+.footer *:has-text("Archives"),
+.footer *:has-text("Categories"),
+.footer *:has-text("Uncategorized"),
+.footer *:has-text("September 2025") {
+    display: none !important;
+}
+
+/* Remover listas específicas */
+.footer ul:has(li:contains("September 2025")),
+.footer ul:has(li:contains("Uncategorized")) {
+    display: none !important;
 }
 
 .nav-links {
@@ -961,9 +995,12 @@ html {
 
 .exhibitors-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 30px;
     margin-top: 50px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .exhibitor-card {
@@ -1769,6 +1806,24 @@ html {
 /* ====================================
    RESPONSIVE DESIGN - NEW SECTIONS
 ==================================== */
+
+/* Large screens - maintain 3 columns */
+@media (min-width: 1200px) {
+    .exhibitors-grid {
+        grid-template-columns: repeat(3, 1fr);
+        max-width: 1200px;
+    }
+}
+
+/* Medium screens - 2 columns */
+@media (max-width: 1199px) and (min-width: 769px) {
+    .exhibitors-grid {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 800px;
+    }
+}
+
+/* Mobile - 1 column */
 @media (max-width: 768px) {
     .exhibitors-grid {
         grid-template-columns: 1fr;
@@ -1901,6 +1956,16 @@ html {
         font-size: 1.6rem;
     }
     
+    .logo-image {
+        max-height: 50px;
+        max-width: 160px;
+    }
+    
+    .logo-image {
+        max-height: 50px;
+        max-width: 160px;
+    }
+    
     .mobile-menu-toggle {
         display: none !important;
     }
@@ -1980,8 +2045,13 @@ html {
     }
     
     .header.scrolled {
-        background: rgba(26, 26, 26, 0.95);
+        background: rgba(13, 13, 13, 0.95);
         backdrop-filter: blur(10px);
+    }
+    
+    .logo-image {
+        max-height: 40px;
+        max-width: 120px;
     }
 }
 

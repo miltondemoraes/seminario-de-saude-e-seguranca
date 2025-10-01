@@ -11,15 +11,7 @@
         <div class="container">
             <nav class="nav">
                 <div class="logo">
-                    <i class="fas fa-video"></i>
-                    <span><?php 
-                        $site_name = get_theme_mod('seminario_site_name', get_bloginfo('name'));
-                        if ($site_name && $site_name !== 'My WordPress Website') {
-                            echo $site_name;
-                        } else {
-                            echo 'Seminário AV';
-                        }
-                    ?></span>
+                    <img src="<?php echo get_template_directory_uri(); ?>/Image.png" alt="2º Seminário de Saúde e Segurança em Filmagens - Sindcine" class="logo-image">
                 </div>
                 <?php
                 wp_nav_menu(array(

@@ -867,12 +867,24 @@ function seminario_customize_register($wp_customize) {
         'priority' => 75,
     ));
     
+    // Logo Upload
+    $wp_customize->add_setting('seminario_logo', array(
+        'default' => '',
+        'sanitize_callback' => 'esc_url_raw',
+    ));
+    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'seminario_logo', array(
+        'label'    => 'Logo do Seminário',
+        'description' => 'Faça upload da logo que aparecerá no header. Se não configurada, mostrará o nome do site.',
+        'section'  => 'seminario_header_footer',
+    )));
+    
     $wp_customize->add_setting('seminario_site_name', array(
         'default' => 'Seminário AV',
         'sanitize_callback' => 'sanitize_text_field',
     ));
     $wp_customize->add_control('seminario_site_name', array(
-        'label'    => 'Nome do Site (Logo)',
+        'label'    => 'Nome do Site (texto alternativo)',
+        'description' => 'Texto que aparece quando não há logo configurada.',
         'section'  => 'seminario_header_footer',
         'type'     => 'text',
     ));
@@ -1049,5 +1061,68 @@ function seminario_elementor_widget_categories($elements_manager) {
     );
 }
 add_action('elementor/elements/categories_registered', 'seminario_elementor_widget_categories');
+
+// Remover widgets indesejados do footer
+function seminario_remove_unwanted_widgets() {
+    unregister_widget('WP_Widget_Archives');
+    unregister_widget('WP_Widget_Categories');
+}
+add_action('widgets_init', 'seminario_remove_unwanted_widgets', 11);
+
+// JavaScript para remover Archives e Categories do footer
+function seminario_remove_footer_elements() {
+    ?>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Função para remover elementos que contenham textos específicos
+        function removeElementsWithText(texts) {
+            texts.forEach(function(text) {
+                // Procurar por elementos que contenham o texto
+                const elements = document.querySelectorAll('*');
+                elements.forEach(function(element) {
+                    if (element.textContent && element.textContent.trim().includes(text)) {
+                        // Se for um título (H1-H6), remover o elemento pai ou o próprio elemento
+                        if (element.tagName && element.tagName.match(/^H[1-6]$/)) {
+                            const parent = element.closest('.widget') || element.closest('aside') || element.closest('.footer-section > div');
+                            if (parent) {
+                                parent.remove();
+                            } else {
+                                element.remove();
+                            }
+                        }
+                        // Se for uma lista que contém o texto, remover a lista toda
+                        else if (element.tagName === 'UL' || element.tagName === 'LI') {
+                            const widget = element.closest('.widget') || element.closest('aside') || element.closest('.footer-section > div');
+                            if (widget) {
+                                widget.remove();
+                            } else {
+                                element.remove();
+                            }
+                        }
+                    }
+                });
+            });
+        }
+        
+        // Lista de textos a serem removidos
+        const textsToRemove = [
+            'Archives',
+            'Categories', 
+            'Uncategorized',
+            'September 2025'
+        ];
+        
+        // Executar remoção
+        removeElementsWithText(textsToRemove);
+        
+        // Executar novamente após um pequeno delay para elementos carregados dinamicamente
+        setTimeout(function() {
+            removeElementsWithText(textsToRemove);
+        }, 500);
+    });
+    </script>
+    <?php
+}
+add_action('wp_footer', 'seminario_remove_footer_elements');
 
 ?>
