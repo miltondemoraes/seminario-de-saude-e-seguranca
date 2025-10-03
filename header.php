@@ -11,7 +11,7 @@
         <div class="container">
             <nav class="nav">
                 <div class="logo">
-                    <img src="<?php echo get_template_directory_uri(); ?>/Image.png" alt="2º Seminário de Saúde e Segurança em Filmagens - Sindcine" class="logo-image">
+                    <span class="logo-text"><?php echo get_theme_mod('seminario_site_name', 'Seminário AV'); ?></span>
                 </div>
                 <?php
                 wp_nav_menu(array(

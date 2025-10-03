@@ -47,7 +47,7 @@
                 <?php endif; ?>
             </div>
             <div class="footer-bottom">
-                <p>&copy; <?php echo date('Y'); ?> Seminário de Saúde e Segurança no Audiovisual. Todos os direitos reservados.</p>
+                <p>&copy; <?php echo date('Y'); ?> 2º Seminário de Saúde e Segurança no Audiovisual. Todos os direitos reservados.</p>
             </div>
         </div>
     </footer>

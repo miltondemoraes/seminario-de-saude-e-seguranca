@@ -323,6 +323,51 @@ aside[class*="widget_categories"] {
     box-shadow: 0 12px 30px rgba(255, 215, 0, 0.4);
 }
 
+/* Sindcine Logo in Hero Section */
+.sindcine-hero-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2.5rem;
+    padding-top: 1rem;
+}
+
+.sindcine-logo-hero {
+    max-height: 80px;
+    max-width: 300px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    transition: all 0.3s ease;
+    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3));
+}
+
+.sindcine-logo-hero:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
+}
+
+/* Logo text styles */
+.logo-text {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--primary-yellow);
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+.logo-text:hover {
+    color: #ffd700;
+    text-shadow: 0 2px 4px rgba(255, 215, 0, 0.3);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
 /* Section Styles */
 section {
     padding: 5rem 0;
@@ -1360,6 +1405,27 @@ html {
     color: var(--primary-black) !important;
 }
 
+/* Logo do Sindcine */
+.sindcine-logo-container {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.sindcine-logo {
+    max-height: 120px;
+    max-width: 300px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    filter: brightness(1.1);
+    transition: all 0.3s ease;
+}
+
+.sindcine-logo:hover {
+    transform: scale(1.05);
+    filter: brightness(1.2);
+}
+
 .sindcine-content {
     margin-top: 50px;
 }
@@ -1858,6 +1924,27 @@ html {
         gap: 40px;
     }
 
+    .sindcine-logo {
+        max-height: 80px;
+        max-width: 200px;
+    }
+    
+    /* Sindcine hero logo adjustments */
+    .sindcine-logo-hero {
+        max-height: 50px;
+        max-width: 200px;
+    }
+    
+    .sindcine-hero-logo {
+        margin-bottom: 1.5rem;
+        padding-top: 0.5rem;
+    }
+    
+    /* Header logo text adjustments */
+    .logo-text {
+        font-size: 0.9rem;
+    }
+
     .mission-grid {
         grid-template-columns: 1fr;
     }
@@ -1961,9 +2048,25 @@ html {
         max-width: 160px;
     }
     
-    .logo-image {
-        max-height: 50px;
-        max-width: 160px;
+    .sindcine-logo {
+        max-height: 100px;
+        max-width: 250px;
+    }
+    
+    /* Sindcine hero logo adjustments */
+    .sindcine-logo-hero {
+        max-height: 60px;
+        max-width: 250px;
+    }
+    
+    .sindcine-hero-logo {
+        margin-bottom: 2rem;
+        padding-top: 0.8rem;
+    }
+    
+    /* Header logo text adjustments */
+    .logo-text {
+        font-size: 1rem;
     }
     
     .mobile-menu-toggle {

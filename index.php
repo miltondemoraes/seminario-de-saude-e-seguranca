@@ -6,8 +6,12 @@
         <div class="hero-background"></div>
         <div class="container">
             <div class="hero-content">
+                <!-- Sindcine Logo -->
+                <div class="sindcine-hero-logo">
+                    <img src="<?php echo get_template_directory_uri(); ?>/logo_sindicine.png" alt="Sindcine" class="sindcine-logo-hero">
+                </div>
                 <h1 class="hero-title">
-                    <span class="highlight"><?php echo get_theme_mod('seminario_hero_title_line1', 'Seminário de'); ?></span><br>
+                    <span class="highlight"><?php echo get_theme_mod('seminario_hero_title_line1', '2º Seminário de'); ?></span><br>
                     <?php echo get_theme_mod('seminario_hero_title_line2', 'Saúde e Segurança'); ?><br>
                     <span class="highlight"><?php echo get_theme_mod('seminario_hero_title_line3', 'no Audiovisual'); ?></span>
                 </h1>
@@ -48,7 +52,7 @@
             <div class="about-content">
                 <div class="about-text">
                     <p>
-                        <?php echo get_theme_mod('seminario_about_text1', 'O Seminário de Saúde e Segurança no Audiovisual é um evento único que reúne especialistas, profissionais e estudantes da área para discutir as melhores práticas em segurança ocupacional e bem-estar no setor audiovisual.'); ?>
+                        <?php echo get_theme_mod('seminario_about_text1', 'O 2º Seminário de Saúde e Segurança no Audiovisual é um evento único que reúne especialistas, profissionais e estudantes da área para discutir as melhores práticas em segurança ocupacional e bem-estar no setor audiovisual.'); ?>
                     </p>
                     <p>
                         <?php echo get_theme_mod('seminario_about_text2', 'Durante um dia completo de palestras, workshops e networking, você terá acesso a conteúdos exclusivos sobre ergonomia, segurança em sets de filmagem, prevenção de acidentes e muito mais.'); ?>
@@ -424,6 +428,9 @@
     <section id="sobre-sindcine" class="about-sindcine">
         <div class="container">
             <div class="section-header">
+                <div class="sindcine-logo-container">
+                    <img src="<?php echo get_template_directory_uri(); ?>/logo_sindicine.png" alt="Logo Sindcine" class="sindcine-logo">
+                </div>
                 <h2 class="section-title"><?php echo get_theme_mod('seminario_sindcine_title', 'Sobre o Sindcine'); ?></h2>
                 <p class="section-subtitle">
                     <?php echo get_theme_mod('seminario_sindcine_subtitle', 'Conheça o Sindicato dos Trabalhadores nas Indústrias Cinematográficas e do Audiovisual'); ?>

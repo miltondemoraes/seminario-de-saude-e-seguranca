@@ -314,7 +314,7 @@ jQuery(document).ready(function($) {
                         </div>
                         <h3>Cadastro Realizado com Sucesso!</h3>
                         <p>
-                            Obrigado por se inscrever no Seminário de Saúde e Segurança no Audiovisual.
+                            Obrigado por se inscrever no 2º Seminário de Saúde e Segurança no Audiovisual.
                             Você receberá um e-mail de confirmação em breve com mais detalhes sobre o evento.
                         </p>
                         <div class="success-details">

@@ -12,7 +12,7 @@ get_header(); ?>
         <div class="container">
             <div class="hero-content">
                 <h1 class="hero-title">
-                    <span class="highlight">Seminário de</span><br>
+                    <span class="highlight">2º Seminário de</span><br>
                     Saúde e Segurança<br>
                     <span class="highlight">no Audiovisual</span>
                 </h1>
@@ -58,7 +58,7 @@ get_header(); ?>
                             <?php the_content(); ?>
                         <?php else: ?>
                             <p>
-                                O Seminário de Saúde e Segurança no Audiovisual é um evento único que reúne
+                                O 2º Seminário de Saúde e Segurança no Audiovisual é um evento único que reúne
                                 especialistas, profissionais e estudantes da área para discutir as melhores
                                 práticas em segurança ocupacional e bem-estar no setor audiovisual.
                             </p>

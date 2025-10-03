@@ -268,7 +268,7 @@ function seminario_customize_register($wp_customize) {
     
     // Hero Title Line 1
     $wp_customize->add_setting('seminario_hero_title_line1', array(
-        'default' => 'Seminário de',
+        'default' => '2º Seminário de',
         'sanitize_callback' => 'sanitize_text_field',
     ));
     $wp_customize->add_control('seminario_hero_title_line1', array(
@@ -883,8 +883,8 @@ function seminario_customize_register($wp_customize) {
         'sanitize_callback' => 'sanitize_text_field',
     ));
     $wp_customize->add_control('seminario_site_name', array(
-        'label'    => 'Nome do Site (texto alternativo)',
-        'description' => 'Texto que aparece quando não há logo configurada.',
+        'label'    => 'Texto da Logo',
+        'description' => 'Texto que aparece no header no lugar da logo (ex: Seminário AV).',
         'section'  => 'seminario_header_footer',
         'type'     => 'text',
     ));
