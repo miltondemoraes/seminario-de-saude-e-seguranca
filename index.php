@@ -95,10 +95,12 @@
                     4 => array('time' => '12:00 - 13:30', 'title' => 'Almoço e Networking', 'description' => 'Oportunidade para conexões profissionais'),
                     5 => array('time' => '13:30 - 15:00', 'title' => 'Segurança em Sets de Filmagem', 'description' => 'Protocolos e equipamentos de proteção essenciais'),
                     6 => array('time' => '15:15 - 16:30', 'title' => 'Saúde Mental na Indústria Audiovisual', 'description' => 'Estratégias para bem-estar psicológico no trabalho'),
-                    7 => array('time' => '16:45 - 18:00', 'title' => 'Mesa Redonda e Encerramento', 'description' => 'Discussão aberta e considerações finais')
+                    7 => array('time' => '16:45 - 17:30', 'title' => 'Tecnologias Emergentes em Segurança', 'description' => 'Inovações e ferramentas digitais para prevenção de acidentes'),
+                    8 => array('time' => '17:30 - 18:15', 'title' => 'Legislação e Normas Regulamentárias', 'description' => 'Atualizações sobre leis trabalhistas e normas de segurança'),
+                    9 => array('time' => '18:15 - 19:00', 'title' => 'Mesa Redonda e Encerramento', 'description' => 'Discussão aberta e considerações finais')
                 );
                 
-                for ($i = 1; $i <= 7; $i++): 
+                for ($i = 1; $i <= 9; $i++): 
                     $time = get_theme_mod("seminario_program_item{$i}_time", $timeline_defaults[$i]['time']);
                     $title = get_theme_mod("seminario_program_item{$i}_title", $timeline_defaults[$i]['title']);
                     $description = get_theme_mod("seminario_program_item{$i}_description", $timeline_defaults[$i]['description']);

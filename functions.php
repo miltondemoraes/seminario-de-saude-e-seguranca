@@ -497,7 +497,7 @@ function seminario_customize_register($wp_customize) {
         'type'     => 'text',
     ));
     
-    // Timeline Items (7 items as in the original)
+    // Timeline Items (9 items total)
     $timeline_defaults = array(
         1 => array('time' => '08:00 - 09:00', 'title' => 'Credenciamento e Coffee Break', 'description' => 'Recepção dos participantes e networking inicial'),
         2 => array('time' => '09:00 - 10:30', 'title' => 'Abertura: Panorama da Segurança no Audiovisual', 'description' => 'Visão geral dos principais desafios e oportunidades do setor'),
@@ -505,10 +505,12 @@ function seminario_customize_register($wp_customize) {
         4 => array('time' => '12:00 - 13:30', 'title' => 'Almoço e Networking', 'description' => 'Oportunidade para conexões profissionais'),
         5 => array('time' => '13:30 - 15:00', 'title' => 'Segurança em Sets de Filmagem', 'description' => 'Protocolos e equipamentos de proteção essenciais'),
         6 => array('time' => '15:15 - 16:30', 'title' => 'Saúde Mental na Indústria Audiovisual', 'description' => 'Estratégias para bem-estar psicológico no trabalho'),
-        7 => array('time' => '16:45 - 18:00', 'title' => 'Mesa Redonda e Encerramento', 'description' => 'Discussão aberta e considerações finais')
+        7 => array('time' => '16:45 - 17:30', 'title' => 'Tecnologias Emergentes em Segurança', 'description' => 'Inovações e ferramentas digitais para prevenção de acidentes'),
+        8 => array('time' => '17:30 - 18:15', 'title' => 'Legislação e Normas Regulamentárias', 'description' => 'Atualizações sobre leis trabalhistas e normas de segurança'),
+        9 => array('time' => '18:15 - 19:00', 'title' => 'Mesa Redonda e Encerramento', 'description' => 'Discussão aberta e considerações finais')
     );
     
-    for ($i = 1; $i <= 7; $i++) {
+    for ($i = 1; $i <= 9; $i++) {
         // Time
         $wp_customize->add_setting("seminario_program_item{$i}_time", array(
             'default' => $timeline_defaults[$i]['time'],
