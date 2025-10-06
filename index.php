@@ -8,7 +8,7 @@
             <div class="hero-content">
                 <!-- Sindcine Logo -->
                 <div class="sindcine-hero-logo">
-                    <img src="<?php echo get_template_directory_uri(); ?>/logo_sindicine.png" alt="Sindcine" class="sindcine-logo-hero">
+                    <img src="<?php echo get_template_directory_uri(); ?>/image.png" alt="Sindcine" class="sindcine-logo-hero">
                 </div>
                 <h1 class="hero-title">
                     <span class="highlight"><?php echo get_theme_mod('seminario_hero_title_line1', '2º Seminário de'); ?></span><br>
@@ -85,34 +85,65 @@
                     <?php echo get_theme_mod('seminario_program_subtitle', 'Agenda completa com palestras e workshops especializados'); ?>
                 </p>
             </div>
-            <div class="program-timeline">
-                <?php 
-                // Valores padrão para a timeline
-                $timeline_defaults = array(
-                    1 => array('time' => '08:00 - 09:00', 'title' => 'Credenciamento e Coffee Break', 'description' => 'Recepção dos participantes e networking inicial'),
-                    2 => array('time' => '09:00 - 10:30', 'title' => 'Abertura: Panorama da Segurança no Audiovisual', 'description' => 'Visão geral dos principais desafios e oportunidades do setor'),
-                    3 => array('time' => '10:45 - 12:00', 'title' => 'Ergonomia em Estúdios de Gravação', 'description' => 'Práticas para prevenção de lesões ocupacionais'),
-                    4 => array('time' => '12:00 - 13:30', 'title' => 'Almoço e Networking', 'description' => 'Oportunidade para conexões profissionais'),
-                    5 => array('time' => '13:30 - 15:00', 'title' => 'Segurança em Sets de Filmagem', 'description' => 'Protocolos e equipamentos de proteção essenciais'),
-                    6 => array('time' => '15:15 - 16:30', 'title' => 'Saúde Mental na Indústria Audiovisual', 'description' => 'Estratégias para bem-estar psicológico no trabalho'),
-                    7 => array('time' => '16:45 - 17:30', 'title' => 'Tecnologias Emergentes em Segurança', 'description' => 'Inovações e ferramentas digitais para prevenção de acidentes'),
-                    8 => array('time' => '17:30 - 18:15', 'title' => 'Legislação e Normas Regulamentárias', 'description' => 'Atualizações sobre leis trabalhistas e normas de segurança'),
-                    9 => array('time' => '18:15 - 19:00', 'title' => 'Mesa Redonda e Encerramento', 'description' => 'Discussão aberta e considerações finais')
-                );
-                
-                for ($i = 1; $i <= 9; $i++): 
-                    $time = get_theme_mod("seminario_program_item{$i}_time", $timeline_defaults[$i]['time']);
-                    $title = get_theme_mod("seminario_program_item{$i}_title", $timeline_defaults[$i]['title']);
-                    $description = get_theme_mod("seminario_program_item{$i}_description", $timeline_defaults[$i]['description']);
-                    ?>
-                    <div class="timeline-item">
-                        <div class="timeline-time"><?php echo esc_html($time); ?></div>
-                        <div class="timeline-content">
-                            <h3><?php echo esc_html($title); ?></h3>
-                            <p><?php echo esc_html($description); ?></p>
-                        </div>
+            <div class="program-container">
+                <!-- Dia 1 -->
+                <div class="program-day">
+                    <h3 class="day-title">Dia 1 - <?php echo get_theme_mod('seminario_program_day1_date', '15 de Dezembro'); ?></h3>
+                    <div class="program-timeline">
+                        <?php 
+                        // Valores padrão para a timeline do Dia 1
+                        $timeline_day1_defaults = array(
+                            1 => array('time' => '08:00 - 09:00', 'title' => 'Credenciamento e Coffee Break', 'description' => 'Recepção dos participantes e networking inicial'),
+                            2 => array('time' => '09:00 - 10:30', 'title' => 'Abertura: Panorama da Segurança no Audiovisual', 'description' => 'Visão geral dos principais desafios e oportunidades do setor'),
+                            3 => array('time' => '10:45 - 12:00', 'title' => 'Ergonomia em Estúdios de Gravação', 'description' => 'Práticas para prevenção de lesões ocupacionais'),
+                            4 => array('time' => '12:00 - 13:30', 'title' => 'Almoço e Networking', 'description' => 'Oportunidade para conexões profissionais'),
+                            5 => array('time' => '13:30 - 15:00', 'title' => 'Segurança em Sets de Filmagem', 'description' => 'Protocolos e equipamentos de proteção essenciais')
+                        );
+                        
+                        for ($i = 1; $i <= 5; $i++): 
+                            $time = get_theme_mod("seminario_program_day1_item{$i}_time", $timeline_day1_defaults[$i]['time']);
+                            $title = get_theme_mod("seminario_program_day1_item{$i}_title", $timeline_day1_defaults[$i]['title']);
+                            $description = get_theme_mod("seminario_program_day1_item{$i}_description", $timeline_day1_defaults[$i]['description']);
+                            ?>
+                            <div class="timeline-item">
+                                <div class="timeline-time"><?php echo esc_html($time); ?></div>
+                                <div class="timeline-content">
+                                    <h3><?php echo esc_html($title); ?></h3>
+                                    <p><?php echo esc_html($description); ?></p>
+                                </div>
+                            </div>
+                        <?php endfor; ?>
                     </div>
-                <?php endfor; ?>
+                </div>
+                
+                <!-- Dia 2 -->
+                <div class="program-day">
+                    <h3 class="day-title">Dia 2 - <?php echo get_theme_mod('seminario_program_day2_date', '16 de Dezembro'); ?></h3>
+                    <div class="program-timeline">
+                        <?php 
+                        // Valores padrão para a timeline do Dia 2
+                        $timeline_day2_defaults = array(
+                            1 => array('time' => '08:30 - 09:30', 'title' => 'Coffee Break e Boas-vindas', 'description' => 'Segundo dia com energização e networking'),
+                            2 => array('time' => '09:30 - 11:00', 'title' => 'Saúde Mental na Indústria Audiovisual', 'description' => 'Estratégias para bem-estar psicológico no trabalho'),
+                            3 => array('time' => '11:15 - 12:30', 'title' => 'Tecnologias Emergentes em Segurança', 'description' => 'Inovações e ferramentas digitais para prevenção de acidentes'),
+                            4 => array('time' => '14:00 - 15:30', 'title' => 'Mesa Redonda e Encerramento', 'description' => 'Discussão aberta e considerações finais')
+                        );
+                        
+                        for ($i = 1; $i <= 4; $i++): 
+                            $time = get_theme_mod("seminario_program_day2_item{$i}_time", $timeline_day2_defaults[$i]['time']);
+                            $title = get_theme_mod("seminario_program_day2_item{$i}_title", $timeline_day2_defaults[$i]['title']);
+                            $description = get_theme_mod("seminario_program_day2_item{$i}_description", $timeline_day2_defaults[$i]['description']);
+                            ?>
+                            <div class="timeline-item">
+                                <div class="timeline-time"><?php echo esc_html($time); ?></div>
+                                <div class="timeline-content">
+                                    <h3><?php echo esc_html($title); ?></h3>
+                                    <p><?php echo esc_html($description); ?></p>
+                                </div>
+                            </div>
+                        <?php endfor; ?>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -326,7 +357,7 @@
                             <h3>Local do Evento</h3>
                             <p class="venue-name"><?php echo get_theme_mod('seminario_location_venue_name', get_theme_mod('seminario_event_location', 'Centro de Convenções - São Paulo')); ?></p>
                             <p class="full-address">
-                                <?php echo nl2br(get_theme_mod('seminario_location_address', 'Rua das Convenções, 1000\nVila Olímpia - São Paulo/SP\nCEP: 04551-000')); ?>
+                                <?php echo nl2br(get_theme_mod('seminario_location_address', 'Rua das Convenções, 1000\n Vila Olímpia - São Paulo/SP \n CEP: 04551-000')); ?>
                             </p>
                         </div>
                     </div>
@@ -367,21 +398,32 @@
                 </div>
                 
                 <div class="map-container">
-                    <div class="map-placeholder">
-                        <i class="fas fa-map"></i>
-                        <p>Mapa interativo será carregado aqui</p>
-                        <small>
-                            Para integrar com Google Maps, adicione sua API key<br>
-                            em: Aparência → Personalizar → Configurações do Seminário
-                        </small>
+                    <?php 
+                    $custom_map_image = get_theme_mod('seminario_location_map_image', '');
+                    $default_map_image = get_template_directory_uri() . '/loc.png';
+                    
+                    if (!empty($custom_map_image)) {
+                        // Se houver imagem personalizada via Customizer
+                        $map_image = $custom_map_image;
+                        $map_alt = get_theme_mod('seminario_location_map_alt', 'Localização do evento');
+                    } else {
+                        // Usar loc.png como imagem padrão
+                        $map_image = $default_map_image;
+                        $map_alt = 'Localização do ' . get_theme_mod('seminario_event_location', 'evento');
+                    }
+                    ?>
+                    <div class="static-map">
+                        <img src="<?php echo esc_url($map_image); ?>" 
+                             alt="<?php echo esc_attr($map_alt); ?>" 
+                             class="map-image">
                     </div>
                     <div class="map-actions">
-                        <a href="https://maps.google.com/?q=Centro+de+Convenções+Vila+Olímpia+São+Paulo" 
+                        <a href="https://maps.google.com/?q=<?php echo urlencode(get_theme_mod('seminario_event_location', 'Centro de Convenções - São Paulo')); ?>" 
                            target="_blank" class="map-link">
                             <i class="fas fa-external-link-alt"></i>
                             Ver no Google Maps
                         </a>
-                        <a href="https://www.waze.com/ul?q=Centro+de+Convenções+Vila+Olímpia+São+Paulo" 
+                        <a href="https://www.waze.com/ul?q=<?php echo urlencode(get_theme_mod('seminario_event_location', 'Centro de Convenções - São Paulo')); ?>" 
                            target="_blank" class="map-link">
                             <i class="fab fa-waze"></i>
                             Abrir no Waze

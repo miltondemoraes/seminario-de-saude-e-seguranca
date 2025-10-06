@@ -11,7 +11,18 @@
         <div class="container">
             <nav class="nav">
                 <div class="logo">
-                    <span class="logo-text"><?php echo get_theme_mod('seminario_site_name', 'Seminário AV'); ?></span>
+                    <?php 
+                    $custom_logo = get_theme_mod('seminario_logo', '');
+                    $default_logo = get_template_directory_uri() . '/image.png';
+                    
+                    if (!empty($custom_logo)) {
+                        // Se houver logo personalizada via Customizer
+                        echo '<img src="' . esc_url($custom_logo) . '" alt="' . esc_attr(get_bloginfo('name')) . '" class="logo-img">';
+                    } else {
+                        // Usar image.png como logo padrão
+                        echo '<img src="' . esc_url($default_logo) . '" alt="' . esc_attr(get_theme_mod('seminario_site_name', 'Seminário AV')) . '" class="logo-img">';
+                    }
+                    ?>
                 </div>
                 <?php
                 wp_nav_menu(array(

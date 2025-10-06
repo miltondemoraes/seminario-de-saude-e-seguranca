@@ -168,6 +168,19 @@ body {
     transition: all 0.3s ease;
 }
 
+.logo-img {
+    max-height: 80px;
+    max-width: 280px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    transition: all 0.3s ease;
+}
+
+.logo-img:hover {
+    transform: scale(1.05);
+}
+
 /* Remover Archives e Categories do footer */
 .footer .widget_archive,
 .footer .widget_categories,
@@ -333,8 +346,8 @@ aside[class*="widget_categories"] {
 }
 
 .sindcine-logo-hero {
-    max-height: 80px;
-    max-width: 300px;
+    max-height: 180px;
+    max-width: 550px;
     width: auto;
     height: auto;
     object-fit: contain;
@@ -523,6 +536,56 @@ section {
 .timeline-content p {
     color: var(--text-gray);
     line-height: 1.6;
+}
+
+/* Dual Timeline Layout */
+.program-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.program-day {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    padding: 30px;
+    border: 1px solid rgba(255, 204, 2, 0.2);
+}
+
+.day-title {
+    font-size: 1.5em;
+    color: var(--primary-yellow);
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid var(--primary-yellow);
+    font-weight: 700;
+}
+
+@media (max-width: 768px) {
+    .program-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .program-day {
+        padding: 20px;
+    }
+    
+    .day-title {
+        font-size: 1.3em;
+    }
+    
+    .timeline-time {
+        min-width: 120px;
+        font-size: 1rem;
+        margin-left: 50px;
+    }
+    
+    .timeline-content h3 {
+        font-size: 1.2rem;
+    }
 }
 
 /* Speakers Section */
@@ -943,6 +1006,17 @@ section {
     .speaker-card {
         padding: 2rem 1.5rem;
     }
+    
+    /* Header logo image adjustments for small screens */
+    .logo-img {
+        max-height: 55px;
+        max-width: 180px;
+    }
+    
+    /* Mobile map image */
+    .map-image {
+        height: 250px;
+    }
 }
 
 /* Smooth scrolling */
@@ -1264,6 +1338,25 @@ html {
     margin-bottom: 20px;
 }
 
+/* Static Map Styles */
+.static-map {
+    width: 100%;
+    overflow: hidden;
+}
+
+.map-image {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    object-position: center;
+    border: none;
+    transition: transform 0.3s ease;
+}
+
+.map-image:hover {
+    transform: scale(1.02);
+}
+
 .map-actions {
     display: flex;
     gap: 15px;
@@ -1412,8 +1505,8 @@ html {
 }
 
 .sindcine-logo {
-    max-height: 120px;
-    max-width: 300px;
+    max-height: 80px;
+    max-width: 200px;
     width: auto;
     height: auto;
     object-fit: contain;
@@ -1925,8 +2018,8 @@ html {
     }
 
     .sindcine-logo {
-        max-height: 80px;
-        max-width: 200px;
+        max-height: 50px;
+        max-width: 120px;
     }
     
     /* Sindcine hero logo adjustments */
@@ -2049,8 +2142,8 @@ html {
     }
     
     .sindcine-logo {
-        max-height: 100px;
-        max-width: 250px;
+        max-height: 60px;
+        max-width: 150px;
     }
     
     /* Sindcine hero logo adjustments */
@@ -2067,6 +2160,12 @@ html {
     /* Header logo text adjustments */
     .logo-text {
         font-size: 1rem;
+    }
+    
+    /* Header logo image adjustments */
+    .logo-img {
+        max-height: 65px;
+        max-width: 220px;
     }
     
     .mobile-menu-toggle {
@@ -2287,5 +2386,10 @@ html {
     .elementor-container {
         padding-left: 15px;
         padding-right: 15px;
+    }
+    
+    /* Responsive map image */
+    .map-image {
+        height: 300px;
     }
 }

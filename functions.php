@@ -497,49 +497,117 @@ function seminario_customize_register($wp_customize) {
         'type'     => 'text',
     ));
     
-    // Timeline Items (9 items total)
-    $timeline_defaults = array(
+        $wp_customize->add_control('seminario_program_description', array(
+        'label'    => 'Descrição',
+        'section'  => 'seminario_program',
+        'type'     => 'textarea',
+    ));
+    
+    // Datas dos dias
+    $wp_customize->add_setting('seminario_program_day1_date', array(
+        'default' => '15 de Dezembro',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('seminario_program_day1_date', array(
+        'label'    => 'Data do Dia 1',
+        'section'  => 'seminario_program',
+        'type'     => 'text',
+    ));
+    
+    $wp_customize->add_setting('seminario_program_day2_date', array(
+        'default' => '16 de Dezembro',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('seminario_program_day2_date', array(
+        'label'    => 'Data do Dia 2',
+        'section'  => 'seminario_program',
+        'type'     => 'text',
+    ));
+    
+    // Timeline Items - Dia 1 (5 items)
+    $timeline_day1_defaults = array(
         1 => array('time' => '08:00 - 09:00', 'title' => 'Credenciamento e Coffee Break', 'description' => 'Recepção dos participantes e networking inicial'),
         2 => array('time' => '09:00 - 10:30', 'title' => 'Abertura: Panorama da Segurança no Audiovisual', 'description' => 'Visão geral dos principais desafios e oportunidades do setor'),
         3 => array('time' => '10:45 - 12:00', 'title' => 'Ergonomia em Estúdios de Gravação', 'description' => 'Práticas para prevenção de lesões ocupacionais'),
         4 => array('time' => '12:00 - 13:30', 'title' => 'Almoço e Networking', 'description' => 'Oportunidade para conexões profissionais'),
-        5 => array('time' => '13:30 - 15:00', 'title' => 'Segurança em Sets de Filmagem', 'description' => 'Protocolos e equipamentos de proteção essenciais'),
-        6 => array('time' => '15:15 - 16:30', 'title' => 'Saúde Mental na Indústria Audiovisual', 'description' => 'Estratégias para bem-estar psicológico no trabalho'),
-        7 => array('time' => '16:45 - 17:30', 'title' => 'Tecnologias Emergentes em Segurança', 'description' => 'Inovações e ferramentas digitais para prevenção de acidentes'),
-        8 => array('time' => '17:30 - 18:15', 'title' => 'Legislação e Normas Regulamentárias', 'description' => 'Atualizações sobre leis trabalhistas e normas de segurança'),
-        9 => array('time' => '18:15 - 19:00', 'title' => 'Mesa Redonda e Encerramento', 'description' => 'Discussão aberta e considerações finais')
+        5 => array('time' => '13:30 - 15:00', 'title' => 'Segurança em Sets de Filmagem', 'description' => 'Protocolos e equipamentos de proteção essenciais')
     );
     
-    for ($i = 1; $i <= 9; $i++) {
+    // Timeline Items - Dia 2 (4 items)
+    $timeline_day2_defaults = array(
+        1 => array('time' => '08:30 - 09:30', 'title' => 'Coffee Break e Boas-vindas', 'description' => 'Segundo dia com energização e networking'),
+        2 => array('time' => '09:30 - 11:00', 'title' => 'Saúde Mental na Indústria Audiovisual', 'description' => 'Estratégias para bem-estar psicológico no trabalho'),
+        3 => array('time' => '11:15 - 12:30', 'title' => 'Tecnologias Emergentes em Segurança', 'description' => 'Inovações e ferramentas digitais para prevenção de acidentes'),
+        4 => array('time' => '14:00 - 15:30', 'title' => 'Mesa Redonda e Encerramento', 'description' => 'Discussão aberta e considerações finais')
+    );
+    
+    // Campos para Dia 1
+    for ($i = 1; $i <= 5; $i++) {
         // Time
-        $wp_customize->add_setting("seminario_program_item{$i}_time", array(
-            'default' => $timeline_defaults[$i]['time'],
+        $wp_customize->add_setting("seminario_program_day1_item{$i}_time", array(
+            'default' => $timeline_day1_defaults[$i]['time'],
             'sanitize_callback' => 'sanitize_text_field',
         ));
-        $wp_customize->add_control("seminario_program_item{$i}_time", array(
-            'label'    => "Item {$i} - Horário",
+        $wp_customize->add_control("seminario_program_day1_item{$i}_time", array(
+            'label'    => "Dia 1 - Item {$i} - Horário",
             'section'  => 'seminario_program',
             'type'     => 'text',
         ));
         
         // Title
-        $wp_customize->add_setting("seminario_program_item{$i}_title", array(
-            'default' => $timeline_defaults[$i]['title'],
+        $wp_customize->add_setting("seminario_program_day1_item{$i}_title", array(
+            'default' => $timeline_day1_defaults[$i]['title'],
             'sanitize_callback' => 'sanitize_text_field',
         ));
-        $wp_customize->add_control("seminario_program_item{$i}_title", array(
-            'label'    => "Item {$i} - Título",
+        $wp_customize->add_control("seminario_program_day1_item{$i}_title", array(
+            'label'    => "Dia 1 - Item {$i} - Título",
             'section'  => 'seminario_program',
             'type'     => 'text',
         ));
         
         // Description
-        $wp_customize->add_setting("seminario_program_item{$i}_description", array(
-            'default' => $timeline_defaults[$i]['description'],
+        $wp_customize->add_setting("seminario_program_day1_item{$i}_description", array(
+            'default' => $timeline_day1_defaults[$i]['description'],
             'sanitize_callback' => 'sanitize_textarea_field',
         ));
-        $wp_customize->add_control("seminario_program_item{$i}_description", array(
-            'label'    => "Item {$i} - Descrição",
+        $wp_customize->add_control("seminario_program_day1_item{$i}_description", array(
+            'label'    => "Dia 1 - Item {$i} - Descrição",
+            'section'  => 'seminario_program',
+            'type'     => 'textarea',
+        ));
+    }
+    
+    // Campos para Dia 2
+    for ($i = 1; $i <= 4; $i++) {
+        // Time
+        $wp_customize->add_setting("seminario_program_day2_item{$i}_time", array(
+            'default' => $timeline_day2_defaults[$i]['time'],
+            'sanitize_callback' => 'sanitize_text_field',
+        ));
+        $wp_customize->add_control("seminario_program_day2_item{$i}_time", array(
+            'label'    => "Dia 2 - Item {$i} - Horário",
+            'section'  => 'seminario_program',
+            'type'     => 'text',
+        ));
+        
+        // Title
+        $wp_customize->add_setting("seminario_program_day2_item{$i}_title", array(
+            'default' => $timeline_day2_defaults[$i]['title'],
+            'sanitize_callback' => 'sanitize_text_field',
+        ));
+        $wp_customize->add_control("seminario_program_day2_item{$i}_title", array(
+            'label'    => "Dia 2 - Item {$i} - Título",
+            'section'  => 'seminario_program',
+            'type'     => 'text',
+        ));
+        
+        // Description
+        $wp_customize->add_setting("seminario_program_day2_item{$i}_description", array(
+            'default' => $timeline_day2_defaults[$i]['description'],
+            'sanitize_callback' => 'sanitize_textarea_field',
+        ));
+        $wp_customize->add_control("seminario_program_day2_item{$i}_description", array(
+            'label'    => "Dia 2 - Item {$i} - Descrição",
             'section'  => 'seminario_program',
             'type'     => 'textarea',
         ));
@@ -876,7 +944,7 @@ function seminario_customize_register($wp_customize) {
     ));
     $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'seminario_logo', array(
         'label'    => 'Logo do Seminário',
-        'description' => 'Faça upload da logo que aparecerá no header. Se não configurada, mostrará o nome do site.',
+        'description' => 'Faça upload de uma logo personalizada. Se não configurada, usará a imagem padrão (image.png).',
         'section'  => 'seminario_header_footer',
     )));
     
@@ -898,6 +966,36 @@ function seminario_customize_register($wp_customize) {
     $wp_customize->add_control('seminario_footer_description', array(
         'label'    => 'Descrição do Footer',
         'section'  => 'seminario_header_footer',
+        'type'     => 'text',
+    ));
+    
+    // Localização Section (Imagem Estática)
+    $wp_customize->add_section('seminario_location', array(
+        'title'    => 'Localização do Evento',
+        'priority' => 80,
+        'description' => 'Configure a imagem do mapa e informações de localização.',
+    ));
+    
+    // Imagem do Mapa
+    $wp_customize->add_setting('seminario_location_map_image', array(
+        'default' => '',
+        'sanitize_callback' => 'esc_url_raw',
+    ));
+    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'seminario_location_map_image', array(
+        'label'    => 'Imagem do Mapa',
+        'description' => 'Faça upload de uma imagem personalizada do mapa. Se não configurada, usará a imagem padrão (loc.png).',
+        'section'  => 'seminario_location',
+    )));
+    
+    // Texto alternativo da imagem
+    $wp_customize->add_setting('seminario_location_map_alt', array(
+        'default' => 'Localização do evento',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('seminario_location_map_alt', array(
+        'label'    => 'Texto Alternativo da Imagem',
+        'description' => 'Descrição da imagem para acessibilidade (ex: Mapa do Centro de Convenções)',
+        'section'  => 'seminario_location',
         'type'     => 'text',
     ));
 }
