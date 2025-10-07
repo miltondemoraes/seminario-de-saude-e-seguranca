@@ -95,7 +95,16 @@ function seminario_scripts_styles() {
 add_action('wp_enqueue_scripts', 'seminario_scripts_styles');
 
 function seminario_handle_registration() {
-    check_ajax_referer('seminario_nonce', 'nonce');
+    // Verificar se a requisição é AJAX
+    if (!wp_doing_ajax()) {
+        wp_die('Acesso negado');
+    }
+    
+    // Verificar nonce
+    if (!check_ajax_referer('seminario_nonce', 'nonce', false)) {
+        wp_send_json_error('Token de segurança inválido');
+        wp_die();
+    }
     
     $nome = sanitize_text_field($_POST['nome']);
     $email = sanitize_email($_POST['email']);
@@ -107,148 +116,339 @@ function seminario_handle_registration() {
     
     if(empty($nome) || empty($email) || empty($telefone) || empty($experiencia)) {
         wp_send_json_error('Campos obrigatórios não preenchidos');
+        wp_die();
     }
     
     if(!is_email($email)) {
         wp_send_json_error('Email inválido');
+        wp_die();
     }
     
-    global $wpdb;
-    $table_name = $wpdb->prefix . 'seminario_registrations';
+    // Salvar dados NO ARQUIVO data/inscricoes.txt DO TEMA
+    $data_dir = get_template_directory() . '/data';
+    $file_path = $data_dir . '/inscricoes.txt';
     
-    $result = $wpdb->insert(
-        $table_name,
-        array(
-            'nome' => $nome,
-            'email' => $email,
-            'telefone' => $telefone,
-            'empresa' => $empresa,
-            'cargo' => $cargo,
-            'experiencia' => $experiencia,
-            'newsletter' => $newsletter,
-            'data_cadastro' => current_time('mysql')
-        ),
-        array('%s', '%s', '%s', '%s', '%s', '%s', '%d', '%s')
+    // Criar diretório se não existir
+    if (!file_exists($data_dir)) {
+        if (!wp_mkdir_p($data_dir)) {
+            // Se não conseguir criar, tentar criar com permissões básicas
+            @mkdir($data_dir, 0755, true);
+        }
+    }
+    
+    // Preparar dados para salvar
+    $data_line = sprintf(
+        "%s|%s|%s|%s|%s|%s|%s|%s\n",
+        current_time('d/m/Y H:i'),
+        str_replace('|', '-', $nome),
+        str_replace('|', '-', $email),
+        str_replace('|', '-', $telefone),
+        str_replace('|', '-', $empresa ?: 'Não informado'),
+        str_replace('|', '-', $cargo ?: 'Não informado'),
+        str_replace('|', '-', $experiencia),
+        $newsletter ? 'Sim' : 'Não'
     );
     
-    if($result === false) {
-        wp_send_json_error('Erro ao salvar cadastro');
+    // MÉTODO DIRETO E SIMPLES - garantir que funcione
+    $saved = false;
+    
+    // Tentar método 1: file_put_contents
+    if (is_writable($data_dir) || !file_exists($file_path)) {
+        $saved = @file_put_contents($file_path, $data_line, FILE_APPEND | LOCK_EX);
     }
     
-    $admin_email = get_option('admin_email');
-    $subject = 'Nova inscrição - Seminário AV';
-    $message = "Nova inscrição recebida:\n\n";
-    $message .= "Nome: {$nome}\n";
-    $message .= "Email: {$email}\n";
-    $message .= "Telefone: {$telefone}\n";
-    $message .= "Empresa: {$empresa}\n";
-    $message .= "Cargo: {$cargo}\n";
-    $message .= "Experiência: {$experiencia}\n";
-    $message .= "Newsletter: " . ($newsletter ? 'Sim' : 'Não') . "\n";
+    // Tentar método 2: fopen/fwrite se o primeiro falhou
+    if ($saved === false) {
+        $handle = @fopen($file_path, 'a');
+        if ($handle) {
+            $saved = @fwrite($handle, $data_line);
+            @fclose($handle);
+        }
+    }
     
-    wp_mail($admin_email, $subject, $message);
+    // Tentar método 3: criar arquivo com permissões e tentar novamente
+    if ($saved === false) {
+        @touch($file_path);
+        @chmod($file_path, 0666);
+        $saved = @file_put_contents($file_path, $data_line, FILE_APPEND | LOCK_EX);
+    }
     
-    $user_subject = 'Confirmação de Inscrição - Seminário de Saúde e Segurança no Audiovisual';
-    $user_message = "Olá {$nome},\n\n";
-    $user_message .= "Obrigado por se inscrever no Seminário de Saúde e Segurança no Audiovisual!\n\n";
-    $user_message .= "Dados do evento:\n";
-    $user_message .= "Data: 15 de Dezembro, 2025\n";
-    $user_message .= "Horário: 8h às 18h\n";
-    $user_message .= "Local: Centro de Convenções - São Paulo\n\n";
-    $user_message .= "Em breve enviaremos mais informações sobre o evento.\n\n";
-    $user_message .= "Atenciosamente,\n";
-    $user_message .= "Equipe Seminário AV";
-    
-    wp_mail($email, $user_subject, $user_message);
+    // Se AINDA não conseguiu salvar no arquivo, erro claro
+    if($saved === false) {
+        wp_send_json_error('ERRO: Não foi possível salvar no arquivo ' . $file_path . '. Verifique permissões da pasta.');
+        wp_die();
+    }
     
     wp_send_json_success('Cadastro realizado com sucesso!');
+    wp_die();
 }
 add_action('wp_ajax_seminario_registration', 'seminario_handle_registration');
 add_action('wp_ajax_nopriv_seminario_registration', 'seminario_handle_registration');
 
-function seminario_create_registration_table() {
-    global $wpdb;
-    
-    $table_name = $wpdb->prefix . 'seminario_registrations';
-    
-    $charset_collate = $wpdb->get_charset_collate();
-    
-    $sql = "CREATE TABLE $table_name (
-        id mediumint(9) NOT NULL AUTO_INCREMENT,
-        nome varchar(255) NOT NULL,
-        email varchar(255) NOT NULL,
-        telefone varchar(20) NOT NULL,
-        empresa varchar(255),
-        cargo varchar(255),
-        experiencia varchar(100) NOT NULL,
-        newsletter tinyint(1) DEFAULT 0,
-        data_cadastro datetime DEFAULT CURRENT_TIMESTAMP,
-        PRIMARY KEY (id)
-    ) $charset_collate;";
-    
-    require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
-    dbDelta($sql);
-}
-register_activation_hook(__FILE__, 'seminario_create_registration_table');
-
-function seminario_admin_menu() {
-    add_menu_page(
-        'Inscrições Seminário',
-        'Seminário AV',
-        'manage_options',
-        'seminario-inscricoes',
-        'seminario_admin_page',
-        'dashicons-groups',
-        30
-    );
-}
-add_action('admin_menu', 'seminario_admin_menu');
-
-function seminario_admin_page() {
-    global $wpdb;
-    $table_name = $wpdb->prefix . 'seminario_registrations';
-    
-    $registrations = $wpdb->get_results("SELECT * FROM $table_name ORDER BY data_cadastro DESC");
-    
-    echo '<div class="wrap">';
-    echo '<h1>Inscrições do Seminário</h1>';
-    
-    if(!empty($registrations)) {
-        echo '<table class="wp-list-table widefat fixed striped">';
-        echo '<thead>';
-        echo '<tr>';
-        echo '<th>Nome</th>';
-        echo '<th>Email</th>';
-        echo '<th>Telefone</th>';
-        echo '<th>Empresa</th>';
-        echo '<th>Cargo</th>';
-        echo '<th>Experiência</th>';
-        echo '<th>Newsletter</th>';
-        echo '<th>Data Cadastro</th>';
-        echo '</tr>';
-        echo '</thead>';
-        echo '<tbody>';
+// FUNÇÃO DE TESTE - REMOVER DEPOIS
+function teste_salvamento_inscricao() {
+    if (isset($_GET['teste_inscricao']) && $_GET['teste_inscricao'] === 'sim') {
+        $data_dir = get_template_directory() . '/data';
+        $file_path = $data_dir . '/inscricoes.txt';
         
-        foreach($registrations as $reg) {
-            echo '<tr>';
-            echo '<td>' . esc_html($reg->nome) . '</td>';
-            echo '<td>' . esc_html($reg->email) . '</td>';
-            echo '<td>' . esc_html($reg->telefone) . '</td>';
-            echo '<td>' . esc_html($reg->empresa) . '</td>';
-            echo '<td>' . esc_html($reg->cargo) . '</td>';
-            echo '<td>' . esc_html($reg->experiencia) . '</td>';
-            echo '<td>' . ($reg->newsletter ? 'Sim' : 'Não') . '</td>';
-            echo '<td>' . date('d/m/Y H:i', strtotime($reg->data_cadastro)) . '</td>';
-            echo '</tr>';
+        echo "<h1>TESTE DE SALVAMENTO</h1>";
+        echo "<p><strong>Pasta do tema:</strong> " . get_template_directory() . "</p>";
+        echo "<p><strong>Diretório data:</strong> " . $data_dir . "</p>";
+        echo "<p><strong>Arquivo completo:</strong> " . $file_path . "</p>";
+        echo "<p><strong>Pasta existe?</strong> " . (file_exists($data_dir) ? 'SIM' : 'NÃO') . "</p>";
+        echo "<p><strong>Arquivo existe?</strong> " . (file_exists($file_path) ? 'SIM' : 'NÃO') . "</p>";
+        echo "<p><strong>Pasta é gravável?</strong> " . (is_writable($data_dir) ? 'SIM' : 'NÃO') . "</p>";
+        
+        // Tentar criar a pasta se não existir
+        if (!file_exists($data_dir)) {
+            $created = wp_mkdir_p($data_dir);
+            echo "<p><strong>Tentativa de criar pasta:</strong> " . ($created ? 'SUCESSO' : 'FALHOU') . "</p>";
         }
         
-        echo '</tbody>';
-        echo '</table>';
-    } else {
-        echo '<p>Nenhuma inscrição encontrada.</p>';
+        // Tentar escrever uma linha de teste
+        $linha_teste = date('d/m/Y H:i') . "|Teste Manual|teste@manual.com|(11) 99999-9999|Teste|Teste|Iniciante|Sim\n";
+        $resultado = file_put_contents($file_path, $linha_teste, FILE_APPEND | LOCK_EX);
+        
+        echo "<p><strong>Tentativa de escrita:</strong> " . ($resultado !== false ? 'SUCESSO (' . $resultado . ' bytes)' : 'FALHOU') . "</p>";
+        
+        if (file_exists($file_path)) {
+            echo "<h2>CONTEÚDO DO ARQUIVO:</h2>";
+            echo "<pre>" . htmlspecialchars(file_get_contents($file_path)) . "</pre>";
+        }
+        
+        exit;
+    }
+}
+add_action('init', 'teste_salvamento_inscricao');
+
+// Sistema de roteamento para página de gerenciamento
+function seminario_gerencia_route() {
+    // Verificar se a URL é /gerencia
+    if ($_SERVER['REQUEST_URI'] === '/gerencia' || $_SERVER['REQUEST_URI'] === '/gerencia/') {
+        seminario_gerencia_page();
+        exit;
+    }
+}
+add_action('init', 'seminario_gerencia_route');
+
+// Página de gerenciamento protegida por senha
+function seminario_gerencia_page() {
+    session_start();
+    
+    $senha_correta = 'adm2025!';
+    $autenticado = isset($_SESSION['seminario_auth']) && $_SESSION['seminario_auth'] === true;
+    
+    // Processar login
+    if (isset($_POST['senha'])) {
+        if ($_POST['senha'] === $senha_correta) {
+            $_SESSION['seminario_auth'] = true;
+            $autenticado = true;
+        } else {
+            $erro_login = 'Senha incorreta!';
+        }
     }
     
-    echo '</div>';
+    // Processar logout
+    if (isset($_GET['logout'])) {
+        session_destroy();
+        header('Location: /gerencia');
+        exit;
+    }
+    
+    ?>
+    <!DOCTYPE html>
+    <html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Gerenciamento - Seminário AV</title>
+        <style>
+            * { margin: 0; padding: 0; box-sizing: border-box; }
+            body { font-family: Arial, sans-serif; background: #f5f5f5; }
+            .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+            .login-box { 
+                background: white; 
+                padding: 30px; 
+                border-radius: 8px; 
+                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+                max-width: 400px;
+                margin: 50px auto;
+                text-align: center;
+            }
+            .header { 
+                background: #333; 
+                color: white; 
+                padding: 20px; 
+                border-radius: 8px; 
+                margin-bottom: 20px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .data-table { 
+                background: white; 
+                border-radius: 8px; 
+                overflow: hidden;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            }
+            table { width: 100%; border-collapse: collapse; }
+            th, td { padding: 12px; text-align: left; border-bottom: 1px solid #ddd; }
+            th { background: #f8f9fa; font-weight: bold; }
+            tr:hover { background: #f8f9fa; }
+            .btn { 
+                padding: 10px 20px; 
+                background: #007cba; 
+                color: white; 
+                border: none; 
+                border-radius: 4px; 
+                cursor: pointer;
+                text-decoration: none;
+                display: inline-block;
+            }
+            .btn:hover { background: #005a87; }
+            .btn-danger { background: #dc3545; }
+            .btn-danger:hover { background: #c82333; }
+            input[type="password"] { 
+                width: 100%; 
+                padding: 10px; 
+                margin: 10px 0; 
+                border: 1px solid #ddd; 
+                border-radius: 4px; 
+            }
+            .error { color: #dc3545; margin: 10px 0; }
+            .stats { 
+                display: grid; 
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+                gap: 20px; 
+                margin-bottom: 20px; 
+            }
+            .stat-card { 
+                background: white; 
+                padding: 20px; 
+                border-radius: 8px; 
+                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+                text-align: center;
+            }
+            .stat-number { font-size: 2em; font-weight: bold; color: #007cba; }
+        </style>
+    </head>
+    <body>
+        <?php if (!$autenticado): ?>
+            <div class="login-box">
+                <h2>🔒 Acesso Restrito</h2>
+                <p>Digite a senha para acessar o gerenciamento:</p>
+                
+                <?php if (isset($erro_login)): ?>
+                    <div class="error"><?php echo $erro_login; ?></div>
+                <?php endif; ?>
+                
+                <form method="POST">
+                    <input type="password" name="senha" placeholder="Digite a senha..." required>
+                    <button type="submit" class="btn">Entrar</button>
+                </form>
+            </div>
+        <?php else: ?>
+            <div class="container">
+                <div class="header">
+                    <h1>📊 Gerenciamento de Inscrições</h1>
+                    <a href="?logout=1" class="btn btn-danger">Sair</a>
+                </div>
+                
+                <?php
+                // Ler dados do arquivo data/inscricoes.txt
+                $file_path = get_template_directory() . '/data/inscricoes.txt';
+                $inscricoes = array();
+                
+                // Tentar ler do arquivo primeiro
+                if (file_exists($file_path)) {
+                    $lines = file($file_path, FILE_IGNORE_NEW_LINES);
+                    foreach ($lines as $line) {
+                        if (!empty(trim($line))) {
+                            $dados = explode('|', $line);
+                            if (count($dados) >= 8) {
+                                $inscricoes[] = array(
+                                    'data' => $dados[0],
+                                    'nome' => $dados[1],
+                                    'email' => $dados[2],
+                                    'telefone' => $dados[3],
+                                    'empresa' => $dados[4],
+                                    'cargo' => $dados[5],
+                                    'experiencia' => $dados[6],
+                                    'newsletter' => $dados[7]
+                                );
+                            }
+                        }
+                    }
+                }
+                
+                // Se não encontrou no arquivo, ler das options
+                if (empty($inscricoes)) {
+                    $inscricoes_options = get_option('seminario_inscricoes', array());
+                    if (!empty($inscricoes_options)) {
+                        $inscricoes = $inscricoes_options;
+                    }
+                }
+                
+                $total_inscricoes = count($inscricoes);
+                $com_newsletter = count(array_filter($inscricoes, function($i) { return $i['newsletter'] === 'Sim'; }));
+                ?>
+                
+                <div class="stats">
+                    <div class="stat-card">
+                        <div class="stat-number"><?php echo $total_inscricoes; ?></div>
+                        <div>Total de Inscrições</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number"><?php echo $com_newsletter; ?></div>
+                        <div>Querem Newsletter</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number"><?php echo date('d/m/Y'); ?></div>
+                        <div>Última Atualização</div>
+                    </div>
+                </div>
+                
+                <div class="data-table">
+                    <?php if (empty($inscricoes)): ?>
+                        <div style="padding: 40px; text-align: center; color: #666;">
+                            📝 Nenhuma inscrição encontrada ainda.
+                        </div>
+                    <?php else: ?>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Data/Hora</th>
+                                    <th>Nome</th>
+                                    <th>Email</th>
+                                    <th>Telefone</th>
+                                    <th>Empresa</th>
+                                    <th>Cargo</th>
+                                    <th>Experiência</th>
+                                    <th>Newsletter</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach (array_reverse($inscricoes) as $inscricao): ?>
+                                    <tr>
+                                        <td><?php echo htmlspecialchars($inscricao['data']); ?></td>
+                                        <td><?php echo htmlspecialchars($inscricao['nome']); ?></td>
+                                        <td><?php echo htmlspecialchars($inscricao['email']); ?></td>
+                                        <td><?php echo htmlspecialchars($inscricao['telefone']); ?></td>
+                                        <td><?php echo htmlspecialchars($inscricao['empresa']); ?></td>
+                                        <td><?php echo htmlspecialchars($inscricao['cargo']); ?></td>
+                                        <td><?php echo htmlspecialchars($inscricao['experiencia']); ?></td>
+                                        <td><?php echo $inscricao['newsletter'] === 'Sim' ? '✅' : '❌'; ?></td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    <?php endif; ?>
+                </div>
+            </div>
+        <?php endif; ?>
+    </body>
+    </html>
+    <?php
 }
 
 function seminario_custom_body_classes($classes) {
@@ -639,14 +839,31 @@ function seminario_customize_register($wp_customize) {
         'type'     => 'text',
     ));
     
-    // Individual Speakers (3 speakers as in the original)
+    // Individual Speakers (20 speakers)
     $speakers_defaults = array(
-        1 => array('name' => 'Dr. Carlos Silva', 'title' => 'Especialista em Ergonomia', 'bio' => '20 anos de experiência em ergonomia ocupacional'),
-        2 => array('name' => 'Dra. Maria Santos', 'title' => 'Psicóloga Ocupacional', 'bio' => 'Especialista em saúde mental no trabalho'),
-        3 => array('name' => 'Eng. João Costa', 'title' => 'Engenheiro de Segurança', 'bio' => 'Consultor em segurança para a indústria audiovisual')
+        1 => array('name' => 'Dr. Carlos Silva', 'title' => 'Especialista em Ergonomia'),
+        2 => array('name' => 'Dra. Maria Santos', 'title' => 'Psicóloga Ocupacional'),
+        3 => array('name' => 'Eng. João Costa', 'title' => 'Engenheiro de Segurança'),
+        4 => array('name' => 'Dra. Ana Paula', 'title' => 'Medicina do Trabalho'),
+        5 => array('name' => 'Prof. Roberto Lima', 'title' => 'Audiologia Ocupacional'),
+        6 => array('name' => 'Dra. Fernanda Cruz', 'title' => 'Fisioterapia do Trabalho'),
+        7 => array('name' => 'Eng. Marcos Oliveira', 'title' => 'Segurança em Altura'),
+        8 => array('name' => 'Dra. Juliana Rocha', 'title' => 'Toxicologia Ocupacional'),
+        9 => array('name' => 'Prof. André Souza', 'title' => 'Ergonomia Cognitiva'),
+        10 => array('name' => 'Dra. Patricia Alves', 'title' => 'Saúde Mental'),
+        11 => array('name' => 'Eng. Lucas Martins', 'title' => 'Prevenção de Acidentes'),
+        12 => array('name' => 'Dra. Camila Ferreira', 'title' => 'Dermatologia Ocupacional'),
+        13 => array('name' => 'Prof. Diego Santos', 'title' => 'Biomecânica'),
+        14 => array('name' => 'Dra. Renata Silva', 'title' => 'Pneumologia Ocupacional'),
+        15 => array('name' => 'Eng. Rafael Costa', 'title' => 'Gestão de Riscos'),
+        16 => array('name' => 'Dra. Vanessa Lima', 'title' => 'Neurologia do Trabalho'),
+        17 => array('name' => 'Prof. Thiago Pereira', 'title' => 'Acústica e Ruído'),
+        18 => array('name' => 'Dra. Carolina Dias', 'title' => 'Oftalmologia Ocupacional'),
+        19 => array('name' => 'Eng. Gabriel Mendes', 'title' => 'Segurança Elétrica'),
+        20 => array('name' => 'Dra. Beatriz Rodrigues', 'title' => 'Epidemiologia Ocupacional')
     );
     
-    for ($i = 1; $i <= 3; $i++) {
+    for ($i = 1; $i <= 20; $i++) {
         // Speaker Name
         $wp_customize->add_setting("seminario_speaker{$i}_name", array(
             'default' => $speakers_defaults[$i]['name'],
@@ -668,27 +885,6 @@ function seminario_customize_register($wp_customize) {
             'section'  => 'seminario_speakers',
             'type'     => 'text',
         ));
-        
-        // Speaker Bio
-        $wp_customize->add_setting("seminario_speaker{$i}_bio", array(
-            'default' => $speakers_defaults[$i]['bio'],
-            'sanitize_callback' => 'sanitize_textarea_field',
-        ));
-        $wp_customize->add_control("seminario_speaker{$i}_bio", array(
-            'label'    => "Palestrante {$i} - Descrição",
-            'section'  => 'seminario_speakers',
-            'type'     => 'textarea',
-        ));
-        
-        // Speaker Image
-        $wp_customize->add_setting("seminario_speaker{$i}_image", array(
-            'default' => '',
-            'sanitize_callback' => 'esc_url_raw',
-        ));
-        $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, "seminario_speaker{$i}_image", array(
-            'label'    => "Palestrante {$i} - Foto",
-            'section'  => 'seminario_speakers',
-        )));
     }
     
     // Exhibition Section
@@ -1000,45 +1196,6 @@ function seminario_customize_register($wp_customize) {
     ));
 }
 add_action('customize_register', 'seminario_customize_register');
-
-function seminario_export_registrations() {
-    if(!current_user_can('manage_options')) {
-        return;
-    }
-    
-    global $wpdb;
-    $table_name = $wpdb->prefix . 'seminario_registrations';
-    $registrations = $wpdb->get_results("SELECT * FROM $table_name ORDER BY data_cadastro DESC", ARRAY_A);
-    
-    if(!empty($registrations)) {
-        header('Content-Type: text/csv; charset=utf-8');
-        header('Content-Disposition: attachment; filename=inscricoes-seminario.csv');
-        
-        $output = fopen('php://output', 'w');
-        
-        fputcsv($output, array('Nome', 'Email', 'Telefone', 'Empresa', 'Cargo', 'Experiência', 'Newsletter', 'Data Cadastro'));
-        
-        foreach($registrations as $reg) {
-            fputcsv($output, array(
-                $reg['nome'],
-                $reg['email'],
-                $reg['telefone'],
-                $reg['empresa'],
-                $reg['cargo'],
-                $reg['experiencia'],
-                $reg['newsletter'] ? 'Sim' : 'Não',
-                $reg['data_cadastro']
-            ));
-        }
-        
-        fclose($output);
-    }
-    exit;
-}
-
-if(isset($_GET['export_seminario']) && $_GET['export_seminario'] === 'csv') {
-    add_action('init', 'seminario_export_registrations');
-}
 
 function seminario_widgets_init() {
     register_sidebar(array(

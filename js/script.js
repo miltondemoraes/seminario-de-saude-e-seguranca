@@ -280,8 +280,12 @@ jQuery(document).ready(function($) {
             url: seminario_ajax.ajax_url,
             type: 'POST',
             data: formData,
+            timeout: 30000, // 30 segundos de timeout
+            dataType: 'json',
             success: function(response) {
-                if (response.success) {
+                console.log('Response:', response); // Debug
+                
+                if (response && response.success) {
                     registrationForm[0].reset();
                     
                     const formFields = $('#registrationForm input, #registrationForm select');
@@ -292,11 +296,27 @@ jQuery(document).ready(function($) {
                     
                     showSuccessModal();
                 } else {
-                    showNotification(response.data || 'Erro ao enviar cadastro', 'error');
+                    const errorMessage = response && response.data ? response.data : 'Erro ao enviar cadastro';
+                    showNotification(errorMessage, 'error');
+                    console.error('Error response:', response);
                 }
             },
-            error: function() {
-                showNotification('Erro de conexão. Tente novamente.', 'error');
+            error: function(xhr, status, error) {
+                console.error('AJAX Error:', {xhr, status, error}); // Debug
+                
+                let errorMessage = 'Erro de conexão. Tente novamente.';
+                
+                if (status === 'timeout') {
+                    errorMessage = 'Tempo limite excedido. Tente novamente.';
+                } else if (xhr.status === 403) {
+                    errorMessage = 'Acesso negado. Recarregue a página e tente novamente.';
+                } else if (xhr.status === 500) {
+                    errorMessage = 'Erro interno do servidor. Tente novamente.';
+                } else if (xhr.responseJSON && xhr.responseJSON.data) {
+                    errorMessage = xhr.responseJSON.data;
+                }
+                
+                showNotification(errorMessage, 'error');
             },
             complete: function() {
                 submitButton.html(originalText).prop('disabled', false);

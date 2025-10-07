@@ -159,30 +159,37 @@
             </div>
             <div class="speakers-grid">
                 <?php 
-                // Valores padrão para palestrantes
+                // Valores padrão para 20 palestrantes
                 $speakers_defaults = array(
-                    1 => array('name' => 'Dr. Carlos Silva', 'title' => 'Especialista em Ergonomia', 'bio' => '20 anos de experiência em ergonomia ocupacional'),
-                    2 => array('name' => 'Dra. Maria Santos', 'title' => 'Psicóloga Ocupacional', 'bio' => 'Especialista em saúde mental no trabalho'),
-                    3 => array('name' => 'Eng. João Costa', 'title' => 'Engenheiro de Segurança', 'bio' => 'Consultor em segurança para a indústria audiovisual')
+                    1 => array('name' => 'Dr. Carlos Silva', 'title' => 'Especialista em Ergonomia'),
+                    2 => array('name' => 'Dra. Maria Santos', 'title' => 'Psicóloga Ocupacional'),
+                    3 => array('name' => 'Eng. João Costa', 'title' => 'Engenheiro de Segurança'),
+                    4 => array('name' => 'Dra. Ana Paula', 'title' => 'Medicina do Trabalho'),
+                    5 => array('name' => 'Prof. Roberto Lima', 'title' => 'Audiologia Ocupacional'),
+                    6 => array('name' => 'Dra. Fernanda Cruz', 'title' => 'Fisioterapia do Trabalho'),
+                    7 => array('name' => 'Eng. Marcos Oliveira', 'title' => 'Segurança em Altura'),
+                    8 => array('name' => 'Dra. Juliana Rocha', 'title' => 'Toxicologia Ocupacional'),
+                    9 => array('name' => 'Prof. André Souza', 'title' => 'Ergonomia Cognitiva'),
+                    10 => array('name' => 'Dra. Patricia Alves', 'title' => 'Saúde Mental'),
+                    11 => array('name' => 'Eng. Lucas Martins', 'title' => 'Prevenção de Acidentes'),
+                    12 => array('name' => 'Dra. Camila Ferreira', 'title' => 'Dermatologia Ocupacional'),
+                    13 => array('name' => 'Prof. Diego Santos', 'title' => 'Biomecânica'),
+                    14 => array('name' => 'Dra. Renata Silva', 'title' => 'Pneumologia Ocupacional'),
+                    15 => array('name' => 'Eng. Rafael Costa', 'title' => 'Gestão de Riscos'),
+                    16 => array('name' => 'Dra. Vanessa Lima', 'title' => 'Neurologia do Trabalho'),
+                    17 => array('name' => 'Prof. Thiago Pereira', 'title' => 'Acústica e Ruído'),
+                    18 => array('name' => 'Dra. Carolina Dias', 'title' => 'Oftalmologia Ocupacional'),
+                    19 => array('name' => 'Eng. Gabriel Mendes', 'title' => 'Segurança Elétrica'),
+                    20 => array('name' => 'Dra. Beatriz Rodrigues', 'title' => 'Epidemiologia Ocupacional')
                 );
                 
-                for ($i = 1; $i <= 3; $i++): 
+                for ($i = 1; $i <= 20; $i++): 
                     $name = get_theme_mod("seminario_speaker{$i}_name", $speakers_defaults[$i]['name']);
                     $title = get_theme_mod("seminario_speaker{$i}_title", $speakers_defaults[$i]['title']);
-                    $bio = get_theme_mod("seminario_speaker{$i}_bio", $speakers_defaults[$i]['bio']);
-                    $image = get_theme_mod("seminario_speaker{$i}_image");
                     ?>
                     <div class="speaker-card">
-                        <div class="speaker-photo">
-                            <?php if ($image): ?>
-                                <img src="<?php echo esc_url($image); ?>" alt="<?php echo esc_attr($name); ?>" />
-                            <?php else: ?>
-                                <i class="fas fa-user-circle"></i>
-                            <?php endif; ?>
-                        </div>
                         <h3 class="speaker-name"><?php echo esc_html($name); ?></h3>
                         <p class="speaker-title"><?php echo esc_html($title); ?></p>
-                        <p class="speaker-bio"><?php echo esc_html($bio); ?></p>
                     </div>
                 <?php endfor; ?>
             </div>
