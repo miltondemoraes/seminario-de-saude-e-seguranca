@@ -88,19 +88,24 @@
             <div class="program-container">
                 <!-- Dia 1 -->
                 <div class="program-day">
-                    <h3 class="day-title">Dia 1 - <?php echo get_theme_mod('seminario_program_day1_date', '15 de Dezembro'); ?></h3>
+                    <h3 class="day-title">Dia 1 - <?php echo get_theme_mod('seminario_program_day1_date', '25/11'); ?></h3>
                     <div class="program-timeline">
                         <?php 
                         // Valores padrão para a timeline do Dia 1
                         $timeline_day1_defaults = array(
-                            1 => array('time' => '08:00 - 09:00', 'title' => 'Credenciamento e Coffee Break', 'description' => 'Recepção dos participantes e networking inicial'),
-                            2 => array('time' => '09:00 - 10:30', 'title' => 'Abertura: Panorama da Segurança no Audiovisual', 'description' => 'Visão geral dos principais desafios e oportunidades do setor'),
-                            3 => array('time' => '10:45 - 12:00', 'title' => 'Ergonomia em Estúdios de Gravação', 'description' => 'Práticas para prevenção de lesões ocupacionais'),
-                            4 => array('time' => '12:00 - 13:30', 'title' => 'Almoço e Networking', 'description' => 'Oportunidade para conexões profissionais'),
-                            5 => array('time' => '13:30 - 15:00', 'title' => 'Segurança em Sets de Filmagem', 'description' => 'Protocolos e equipamentos de proteção essenciais')
+                            1 => array('time' => '09:00 - 09:50', 'title' => 'Credenciamento', 'description' => 'Recepção dos participantes'),
+                            2 => array('time' => '09:50 - 10:00', 'title' => 'Abertura do Seminário', 'description' => 'Presidente do Sindcine - Sonia Santana'),
+                            3 => array('time' => '10:00 - 10:30', 'title' => 'Mesa 1 - Conceituação de Risco / Condutas de Risco', 'description' => 'Conceituação de risco, boas práticas e legislação'),
+                            4 => array('time' => '10:30 - 11:00', 'title' => 'Coffee Break', 'description' => 'Intervalo para networking'),
+                            5 => array('time' => '11:00 - 13:00', 'title' => 'Continuação Mesa 1', 'description' => 'Conceituação de risco, boas práticas e legislação'),
+                            6 => array('time' => '13:00 - 14:30', 'title' => 'Almoço', 'description' => 'Intervalo para refeição'),
+                            7 => array('time' => '14:30 - 16:00', 'title' => 'Mesa 2 - Riscos Específicos e Riscos Iminentes', 'description' => 'Riscos específicos na produção, jornadas excessivas, filmagens em vias públicas'),
+                            8 => array('time' => '16:00 - 16:30', 'title' => 'Coffee Break', 'description' => 'Intervalo para networking'),
+                            9 => array('time' => '16:30 - 19:30', 'title' => 'Continuação Mesa 2', 'description' => 'Riscos específicos na produção, jornadas excessivas, filmagens em vias públicas'),
+                            10 => array('time' => '19:30', 'title' => 'Encerramento', 'description' => 'Encerramento do primeiro dia')
                         );
                         
-                        for ($i = 1; $i <= 5; $i++): 
+                        for ($i = 1; $i <= 10; $i++): 
                             $time = get_theme_mod("seminario_program_day1_item{$i}_time", $timeline_day1_defaults[$i]['time']);
                             $title = get_theme_mod("seminario_program_day1_item{$i}_title", $timeline_day1_defaults[$i]['title']);
                             $description = get_theme_mod("seminario_program_day1_item{$i}_description", $timeline_day1_defaults[$i]['description']);
@@ -118,18 +123,25 @@
                 
                 <!-- Dia 2 -->
                 <div class="program-day">
-                    <h3 class="day-title">Dia 2 - <?php echo get_theme_mod('seminario_program_day2_date', '16 de Dezembro'); ?></h3>
+                    <h3 class="day-title">Dia 2 - <?php echo get_theme_mod('seminario_program_day2_date', '26/11'); ?></h3>
                     <div class="program-timeline">
                         <?php 
                         // Valores padrão para a timeline do Dia 2
                         $timeline_day2_defaults = array(
-                            1 => array('time' => '08:30 - 09:30', 'title' => 'Coffee Break e Boas-vindas', 'description' => 'Segundo dia com energização e networking'),
-                            2 => array('time' => '09:30 - 11:00', 'title' => 'Saúde Mental na Indústria Audiovisual', 'description' => 'Estratégias para bem-estar psicológico no trabalho'),
-                            3 => array('time' => '11:15 - 12:30', 'title' => 'Tecnologias Emergentes em Segurança', 'description' => 'Inovações e ferramentas digitais para prevenção de acidentes'),
-                            4 => array('time' => '14:00 - 15:30', 'title' => 'Mesa Redonda e Encerramento', 'description' => 'Discussão aberta e considerações finais')
+                            1 => array('time' => '09:00 - 09:50', 'title' => 'Credenciamento', 'description' => 'Recepção dos participantes'),
+                            2 => array('time' => '09:50 - 10:00', 'title' => 'Abertura do Seminário', 'description' => '1º Secretário do Sindcine - Claudio Leone (Diretor de Fotografia)'),
+                            3 => array('time' => '10:00 - 10:30', 'title' => 'Mesa 1 - Cultura de Segurança no Mercado', 'description' => 'Processo de produção deve levar em conta, em todos os momentos, a questão da segurança'),
+                            4 => array('time' => '10:30 - 11:00', 'title' => 'Coffee Break', 'description' => 'Intervalo para networking'),
+                            5 => array('time' => '11:00 - 13:00', 'title' => 'Continuação Mesa 1', 'description' => 'Cultura de Segurança no Mercado'),
+                            6 => array('time' => '13:00 - 14:30', 'title' => 'Almoço', 'description' => 'Intervalo para refeição'),
+                            7 => array('time' => '14:30 - 16:00', 'title' => 'Mesa 2 - Responsabilidade Civil e Criminal/Contratação', 'description' => 'Dano, responsabilidade subjetiva, dolo e culpa, culpa concorrente, responsabilidade objetiva'),
+                            8 => array('time' => '16:00 - 16:30', 'title' => 'Coffee Break', 'description' => 'Intervalo para networking'),
+                            9 => array('time' => '16:30 - 18:00', 'title' => 'Mesa 3 - Saúde (Mental e Física), Assédio e Violência', 'description' => 'Palestrante: Izabella Camargo'),
+                            10 => array('time' => '18:00 - 18:30', 'title' => 'Entrega Selo Sindcine', 'description' => 'Cerimônia de entrega do selo'),
+                            11 => array('time' => '18:30', 'title' => 'Coquetel / Encerramento', 'description' => 'Confraternização e encerramento do evento')
                         );
                         
-                        for ($i = 1; $i <= 4; $i++): 
+                        for ($i = 1; $i <= 11; $i++): 
                             $time = get_theme_mod("seminario_program_day2_item{$i}_time", $timeline_day2_defaults[$i]['time']);
                             $title = get_theme_mod("seminario_program_day2_item{$i}_title", $timeline_day2_defaults[$i]['title']);
                             $description = get_theme_mod("seminario_program_day2_item{$i}_description", $timeline_day2_defaults[$i]['description']);

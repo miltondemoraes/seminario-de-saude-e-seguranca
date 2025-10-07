@@ -97,54 +97,165 @@ get_header(); ?>
                     Agenda completa com palestras e workshops especializados
                 </p>
             </div>
-            <div class="program-timeline">
-                <div class="timeline-item">
-                    <div class="timeline-time">08:00 - 09:00</div>
-                    <div class="timeline-content">
-                        <h3>Credenciamento e Coffee Break</h3>
-                        <p>Recepção dos participantes e networking inicial</p>
+            <div class="program-container">
+                <!-- Dia 1 - 25/11 -->
+                <div class="program-day">
+                    <h3 class="day-title">Dia 1 - 25/11</h3>
+                    <div class="program-timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-time">09:00 - 09:50</div>
+                            <div class="timeline-content">
+                                <h3>Credenciamento</h3>
+                                <p>Recepção dos participantes</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">09:50 - 10:00</div>
+                            <div class="timeline-content">
+                                <h3>Abertura do Seminário</h3>
+                                <p>Presidente do Sindcine - Sonia Santana</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">10:00 - 10:30</div>
+                            <div class="timeline-content">
+                                <h3>Mesa 1 - Conceituação de Risco / Condutas de Risco</h3>
+                                <p>Conceituação de risco, boas práticas e legislação</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">10:30 - 11:00</div>
+                            <div class="timeline-content">
+                                <h3>Coffee Break</h3>
+                                <p>Intervalo para networking</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">11:00 - 13:00</div>
+                            <div class="timeline-content">
+                                <h3>Continuação Mesa 1</h3>
+                                <p>Conceituação de risco, boas práticas e legislação</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">13:00 - 14:30</div>
+                            <div class="timeline-content">
+                                <h3>Almoço</h3>
+                                <p>Intervalo para refeição</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">14:30 - 16:00</div>
+                            <div class="timeline-content">
+                                <h3>Mesa 2 - Riscos Específicos e Riscos Iminentes em Sets de Filmagens</h3>
+                                <p>Riscos específicos na produção, jornadas excessivas, filmagens em vias públicas</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">16:00 - 16:30</div>
+                            <div class="timeline-content">
+                                <h3>Coffee Break</h3>
+                                <p>Intervalo para networking</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">16:30 - 19:30</div>
+                            <div class="timeline-content">
+                                <h3>Continuação Mesa 2</h3>
+                                <p>Riscos específicos na produção, jornadas excessivas, filmagens em vias públicas</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">19:30</div>
+                            <div class="timeline-content">
+                                <h3>Encerramento</h3>
+                                <p>Encerramento do primeiro dia</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-time">09:00 - 10:30</div>
-                    <div class="timeline-content">
-                        <h3>Abertura: Panorama da Segurança no Audiovisual</h3>
-                        <p>Visão geral dos principais desafios e oportunidades do setor</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-time">10:45 - 12:00</div>
-                    <div class="timeline-content">
-                        <h3>Ergonomia em Estúdios de Gravação</h3>
-                        <p>Práticas para prevenção de lesões ocupacionais</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-time">12:00 - 13:30</div>
-                    <div class="timeline-content">
-                        <h3>Almoço e Networking</h3>
-                        <p>Oportunidade para conexões profissionais</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-time">13:30 - 15:00</div>
-                    <div class="timeline-content">
-                        <h3>Segurança em Sets de Filmagem</h3>
-                        <p>Protocolos e equipamentos de proteção essenciais</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-time">15:15 - 16:30</div>
-                    <div class="timeline-content">
-                        <h3>Saúde Mental na Indústria Audiovisual</h3>
-                        <p>Estratégias para bem-estar psicológico no trabalho</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-time">16:45 - 18:00</div>
-                    <div class="timeline-content">
-                        <h3>Mesa Redonda e Encerramento</h3>
-                        <p>Discussão aberta e considerações finais</p>
+                
+                <!-- Dia 2 - 26/11 -->
+                <div class="program-day">
+                    <h3 class="day-title">Dia 2 - 26/11</h3>
+                    <div class="program-timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-time">09:00 - 09:50</div>
+                            <div class="timeline-content">
+                                <h3>Credenciamento</h3>
+                                <p>Recepção dos participantes</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">09:50 - 10:00</div>
+                            <div class="timeline-content">
+                                <h3>Abertura do Seminário</h3>
+                                <p>1º Secretário do Sindcine - Claudio Leone (Diretor de Fotografia)</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">10:00 - 10:30</div>
+                            <div class="timeline-content">
+                                <h3>Mesa 1 - Cultura de Segurança no Mercado</h3>
+                                <p>Processo de produção deve levar em conta, em todos os momentos, a questão da segurança</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">10:30 - 11:00</div>
+                            <div class="timeline-content">
+                                <h3>Coffee Break</h3>
+                                <p>Intervalo para networking</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">11:00 - 13:00</div>
+                            <div class="timeline-content">
+                                <h3>Continuação Mesa 1</h3>
+                                <p>Cultura de Segurança no Mercado</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">13:00 - 14:30</div>
+                            <div class="timeline-content">
+                                <h3>Almoço</h3>
+                                <p>Intervalo para refeição</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">14:30 - 16:00</div>
+                            <div class="timeline-content">
+                                <h3>Mesa 2 - Responsabilidade Civil e Criminal/Contratação</h3>
+                                <p>Dano, responsabilidade subjetiva, dolo e culpa, culpa concorrente, responsabilidade objetiva</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">16:00 - 16:30</div>
+                            <div class="timeline-content">
+                                <h3>Coffee Break</h3>
+                                <p>Intervalo para networking</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">16:30 - 18:00</div>
+                            <div class="timeline-content">
+                                <h3>Mesa 3 - Saúde (Mental e Física), Assédio e Violência</h3>
+                                <p>Palestrante: Izabella Camargo</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">18:00 - 18:30</div>
+                            <div class="timeline-content">
+                                <h3>Entrega Selo Sindcine</h3>
+                                <p>Cerimônia de entrega do selo</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">18:30</div>
+                            <div class="timeline-content">
+                                <h3>Coquetel / Encerramento</h3>
+                                <p>Confraternização e encerramento do evento</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
