@@ -339,7 +339,7 @@ aside[class*="widget_categories"] {
 /* Sindcine Logo in Hero Section */
 .sindcine-hero-logo {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     margin-bottom: 2.5rem;
     padding-top: 1rem;
@@ -2026,6 +2026,7 @@ html {
     .sindcine-hero-logo {
         margin-bottom: 1.5rem;
         padding-top: 0.5rem;
+        justify-content: flex-start;
     }
     
     /* Header logo text adjustments */
@@ -2150,6 +2151,7 @@ html {
     .sindcine-hero-logo {
         margin-bottom: 2rem;
         padding-top: 0.8rem;
+        justify-content: flex-start;
     }
     
     /* Header logo text adjustments */
