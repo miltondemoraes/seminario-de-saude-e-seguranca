@@ -419,7 +419,7 @@
                 <div class="map-container">
                     <?php 
                     $custom_map_image = get_theme_mod('seminario_location_map_image', '');
-                    $default_map_image = get_template_directory_uri() . '/loc.png';
+                    $default_map_image = get_template_directory_uri() . '/Loc.png';
                     
                     if (!empty($custom_map_image)) {
                         // Se houver imagem personalizada via Customizer

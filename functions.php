@@ -1179,7 +1179,7 @@ function seminario_customize_register($wp_customize) {
     ));
     $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'seminario_location_map_image', array(
         'label'    => 'Imagem do Mapa',
-        'description' => 'Faça upload de uma imagem personalizada do mapa. Se não configurada, usará a imagem padrão (loc.png).',
+        'description' => 'Faça upload de uma imagem personalizada do mapa. Se não configurada, usará a imagem padrão (Loc.png).',
         'section'  => 'seminario_location',
     )));
     
