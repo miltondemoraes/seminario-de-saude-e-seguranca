@@ -42,7 +42,7 @@ get_header(); ?>
                         <h4>Benefícios Inclusos:</h4>
                         <ul class="benefits-list">
                             <li><i class="fas fa-check"></i> Logo principal em todo material de divulgação</li>
-                            <li><i class="fas fa-check"></i> Estande premium na área de exposição</li>
+                            <li><i class="fas fa-check"></i> Estande premium na área de expositores</li>
                             <li><i class="fas fa-check"></i> Palestra exclusiva de 30 minutos</li>
                             <li><i class="fas fa-check"></i> 10 ingressos VIP para o evento</li>
                             <li><i class="fas fa-check"></i> Menção em todas as redes sociais</li>
@@ -72,7 +72,7 @@ get_header(); ?>
                         <h4>Benefícios Inclusos:</h4>
                         <ul class="benefits-list">
                             <li><i class="fas fa-check"></i> Logo em materiais de divulgação</li>
-                            <li><i class="fas fa-check"></i> Estande na área de exposição</li>
+                            <li><i class="fas fa-check"></i> Estande na área de expositores</li>
                             <li><i class="fas fa-check"></i> 6 ingressos para o evento</li>
                             <li><i class="fas fa-check"></i> Menção nas redes sociais</li>
                             <li><i class="fas fa-check"></i> Material promocional nos kits</li>
@@ -143,7 +143,7 @@ get_header(); ?>
                         <i class="fas fa-chart-line"></i>
                     </div>
                     <h3>Visibilidade de Marca</h3>
-                    <p>Exposição em evento de referência no setor com ampla divulgação</p>
+                    <p>Presença em evento de referência no setor com ampla divulgação</p>
                 </div>
                 
                 <div class="reason-item">

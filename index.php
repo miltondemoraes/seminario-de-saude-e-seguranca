@@ -212,7 +212,7 @@
     <section id="exposicao" class="exhibition">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title"><?php echo get_theme_mod('seminario_exhibition_title', 'Exposição'); ?></h2>
+                <h2 class="section-title"><?php echo get_theme_mod('seminario_exhibition_title', 'Expositores'); ?></h2>
                 <p class="section-subtitle">
                     <?php echo get_theme_mod('seminario_exhibition_subtitle', 'Conheça as empresas parceiras e suas soluções inovadoras'); ?>
                 </p>
@@ -224,33 +224,139 @@
                     </p>
                 </div>
                 <div class="exhibitors-grid">
-                    <?php 
-                    // Valores padrão para expositores
-                    $exhibitors_defaults = array(
-                        1 => array('name' => 'TechSafety Pro', 'description' => 'Equipamentos de proteção individual especializados para audiovisual', 'booth' => 'Estande A1'),
-                        2 => array('name' => 'ErgoMedia Solutions', 'description' => 'Móveis ergonômicos e soluções para estúdios', 'booth' => 'Estande A2'),
-                        3 => array('name' => 'WellBeing Media', 'description' => 'Programas de bem-estar e saúde ocupacional', 'booth' => 'Estande A3'),
-                        4 => array('name' => 'AudioSafe Tech', 'description' => 'Tecnologia em monitoramento de segurança em sets', 'booth' => 'Estande B1'),
-                        5 => array('name' => 'Emergency AV', 'description' => 'Kits de primeiros socorros e treinamentos de emergência', 'booth' => 'Estande B2'),
-                        6 => array('name' => 'CertifiAV', 'description' => 'Certificações e auditorias em segurança audiovisual', 'booth' => 'Estande B3')
-                    );
+                    <?php
+                    // Carregar dados dos expositores
+                    $expositores_file = __DIR__ . '/data/expositores.json';
+                    $expositores = [];
                     
-                    $icons = ['fas fa-building', 'fas fa-shield-alt', 'fas fa-heartbeat', 'fas fa-tools', 'fas fa-first-aid', 'fas fa-certificate'];
+                    if (file_exists($expositores_file)) {
+                        $content = file_get_contents($expositores_file);
+                        $expositores = json_decode($content, true) ?: [];
+                    }
+
+                    // Calcular base URL do site para caminhos absolutos
+                    $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
+                    $host = $_SERVER['HTTP_HOST'];
+                    $scriptDir = dirname($_SERVER['SCRIPT_NAME']);
+                    $base_url = rtrim($protocol . '://' . $host . $scriptDir, '/');
+
+                    // Se não há dados salvos, usar dados padrão
+                    if (empty($expositores)) {
+                        $expositores = [
+                            [
+                                'id' => 1,
+                                'nome' => 'TechSafety Pro',
+                                'descricao' => 'Equipamentos de proteção individual especializados para audiovisual',
+                                'stand' => 'Estande A1',
+                                'imagem' => '',
+                                'icone' => 'fas fa-building'
+                            ],
+                            [
+                                'id' => 2,
+                                'nome' => 'ErgoMedia Solutions',
+                                'descricao' => 'Móveis ergonômicos e soluções para estúdios',
+                                'stand' => 'Estande A2',
+                                'imagem' => '',
+                                'icone' => 'fas fa-shield-alt'
+                            ],
+                            [
+                                'id' => 3,
+                                'nome' => 'WellBeing Media',
+                                'descricao' => 'Programas de bem-estar e saúde ocupacional',
+                                'stand' => 'Estande A3',
+                                'imagem' => '',
+                                'icone' => 'fas fa-heartbeat'
+                            ],
+                            [
+                                'id' => 4,
+                                'nome' => 'AudioSafe Tech',
+                                'descricao' => 'Tecnologia em monitoramento de segurança em sets',
+                                'stand' => 'Estande B1',
+                                'imagem' => '',
+                                'icone' => 'fas fa-tools'
+                            ],
+                            [
+                                'id' => 5,
+                                'nome' => 'Emergency AV',
+                                'descricao' => 'Kits de primeiros socorros e treinamentos de emergência',
+                                'stand' => 'Estande B2',
+                                'imagem' => '',
+                                'icone' => 'fas fa-first-aid'
+                            ],
+                            [
+                                'id' => 6,
+                                'nome' => 'CertifiAV',
+                                'descricao' => 'Certificações e auditorias em segurança audiovisual',
+                                'stand' => 'Estande B3',
+                                'imagem' => '',
+                                'icone' => 'fas fa-certificate'
+                            ],
+                            [
+                                'id' => 7,
+                                'nome' => 'SafeSound Studios',
+                                'descricao' => 'Isolamento acústico e proteção auditiva profissional',
+                                'stand' => 'Estande C1',
+                                'imagem' => '',
+                                'icone' => 'fas fa-volume-up'
+                            ],
+                            [
+                                'id' => 8,
+                                'nome' => 'LightGuard Pro',
+                                'descricao' => 'Equipamentos de iluminação segura e eficiente',
+                                'stand' => 'Estande C2',
+                                'imagem' => '',
+                                'icone' => 'fas fa-lightbulb'
+                            ],
+                            [
+                                'id' => 9,
+                                'nome' => 'WorkFlow Security',
+                                'descricao' => 'Sistemas de segurança e monitoramento para produções',
+                                'stand' => 'Estande C3',
+                                'imagem' => '',
+                                'icone' => 'fas fa-video'
+                            ],
+                            [
+                                'id' => 10,
+                                'nome' => 'EcoMedia Solutions',
+                                'descricao' => 'Soluções sustentáveis e eco-friendly para audiovisual',
+                                'stand' => 'Estande D1',
+                                'imagem' => '',
+                                'icone' => 'fas fa-leaf'
+                            ],
+                            [
+                                'id' => 11,
+                                'nome' => 'ProHealth AV',
+                                'descricao' => 'Serviços de saúde ocupacional especializados',
+                                'stand' => 'Estande D2',
+                                'imagem' => '',
+                                'icone' => 'fas fa-user-md'
+                            ],
+                            [
+                                'id' => 12,
+                                'nome' => 'TechRescue Media',
+                                'descricao' => 'Equipamentos de resgate e emergência em sets',
+                                'stand' => 'Estande D3',
+                                'imagem' => '',
+                                'icone' => 'fas fa-ambulance'
+                            ]
+                        ];
+                    }
                     
-                    for ($i = 1; $i <= 6; $i++): 
-                        $name = get_theme_mod("seminario_exhibitor{$i}_name", $exhibitors_defaults[$i]['name']);
-                        $description = get_theme_mod("seminario_exhibitor{$i}_description", $exhibitors_defaults[$i]['description']);
-                        $booth = get_theme_mod("seminario_exhibitor{$i}_booth", $exhibitors_defaults[$i]['booth']);
-                        ?>
-                        <div class="exhibitor-card">
-                            <div class="exhibitor-logo">
-                                <i class="<?php echo $icons[$i-1]; ?>"></i>
-                            </div>
-                            <h3 class="exhibitor-name"><?php echo esc_html($name); ?></h3>
-                            <p class="exhibitor-description"><?php echo esc_html($description); ?></p>
-                            <div class="exhibitor-booth"><?php echo esc_html($booth); ?></div>
+                    foreach ($expositores as $expositor) :
+                    ?>
+                    <div class="exhibitor-card">
+                        <div class="exhibitor-logo">
+                            <?php if ($expositor['imagem']) : ?>
+                                <img src="<?php echo get_template_directory_uri(); ?>/images/<?php echo $expositor['imagem']; ?>" class="expositor-image">
+                            <?php else : ?>
+                                <i class="<?php echo $expositor['icone']; ?>"></i>
+                            <?php endif; ?>
                         </div>
-                    <?php endfor; ?>
+                        <h3 class="exhibitor-name"><?php echo $expositor['nome']; ?></h3>
+                        <p class="exhibitor-description"><?php echo $expositor['descricao']; ?></p>
+                        <div class="exhibitor-booth"><?php echo $expositor['stand']; ?></div>
+                    </div>
+                    <?php endforeach; ?>
                 </div>
                 <div class="exhibition-cta">
                     <h3><?php echo get_theme_mod('seminario_exhibition_cta_title', 'Interessado em expor?'); ?></h3>

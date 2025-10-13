@@ -1099,7 +1099,7 @@ html {
 }
 
 /* ====================================
-   EXHIBITION SECTION
+   EXPOSITORES SECTION
 ==================================== */
 .exhibition {
     padding: 100px 0;
@@ -1109,21 +1109,47 @@ html {
 
 .exhibitors-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
     margin-top: 50px;
-    max-width: 1200px;
+    max-width: 1400px;
     margin-left: auto;
     margin-right: auto;
 }
 
+/* Responsive grid para tablets */
+@media (max-width: 1024px) {
+    .exhibitors-grid {
+        grid-template-columns: repeat(3, 1fr);
+        max-width: 900px;
+    }
+}
+
+/* Responsive grid para mobile */
+@media (max-width: 768px) {
+    .exhibitors-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .exhibitors-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+
 .exhibitor-card {
     background: white;
-    padding: 30px;
+    padding: 25px;
     border-radius: 15px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
     border-top: 4px solid var(--primary-yellow);
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
 }
 
 .exhibitor-card:hover {
@@ -1132,16 +1158,33 @@ html {
 }
 
 .exhibitor-logo {
-    width: 80px;
-    height: 80px;
+    width: 70px;
+    height: 70px;
     background: var(--gradient-yellow);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 20px;
-    font-size: 2rem;
+    margin: 0 auto 15px;
+    font-size: 1.8rem;
     color: var(--primary-black);
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.expositor-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+}
+
+.exhibitor-logo img.expositor-image {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    border-radius: 50% !important;
 }
 
 .exhibitor-name {

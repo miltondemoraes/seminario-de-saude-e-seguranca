@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Teste API V2</title>
+</head>
+<body>
+    <h2>Teste API Expositores V2</h2>
+    <button onclick="testar()">Testar Edição</button>
+    <div id="resultado"></div>
+
+    <script>
+        function testar() {
+            // Primeiro fazer login
+            fetch('auth-session.php', {
+                method: 'POST',
+                body: new URLSearchParams({
+                    'action': 'login',
+                    'senha': 'adm2025!'
+                })
+            })
+            .then(response => response.json())
+            .then(loginData => {
+                console.log('Login:', loginData);
+                
+                // Agora testar a API
+                const formData = new FormData();
+                formData.append('action', 'editar');
+                formData.append('id', '1');
+                formData.append('nome', 'Teste Nome');
+                formData.append('descricao', 'Teste Descrição');
+                formData.append('stand', 'Teste Stand');
+                
+                return fetch('api-expositores.php', {
+                    method: 'POST',
+                    body: formData
+                });
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('API Result:', data);
+                document.getElementById('resultado').innerHTML = '<pre>' + JSON.stringify(data, null, 2) + '</pre>';
+            })
+            .catch(error => {
+                console.error('Erro:', error);
+                document.getElementById('resultado').innerHTML = 'Erro: ' + error.message;
+            });
+        }
+    </script>
+</body>
+</html>

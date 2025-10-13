@@ -48,7 +48,7 @@ Este é um tema WordPress personalizado desenvolvido especificamente para o "Sem
 2. **Sobre o Evento** - Descrição detalhada e estatísticas  
 3. **Programação** - Timeline interativo com horários das atividades
 4. **Palestrantes** - Cards dos especialistas com informações
-5. **Exposição** - Área de exibidores e estandes de parceiros
+5. **Expositores** - Área de exibidores e estandes de parceiros
 6. **Inscrição** - Formulário funcional com validação AJAX
 7. **Como Chegar** - Mapa interativo e opções de transporte
 8. **Sobre o Sindcine** - Informações institucionais
@@ -86,7 +86,7 @@ O tema automaticamente:
    - Evento (`#evento`)
    - Programação (`#programacao`) 
    - Palestrantes (`#palestrantes`)
-   - Exposição (`#exposicao`)
+   - Expositores (`#exposicao`)
    - Contato (`#contato`)
    - Patrocínio (link para página de patrocínio)
    - Como Chegar (`#como-chegar`)

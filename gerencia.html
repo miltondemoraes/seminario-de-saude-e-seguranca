@@ -1,0 +1,1409 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciamento - Seminário de Saúde e Segurança no Audiovisual</title>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Reset e Variáveis do Tema */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-yellow: #FFD700;
+            --dark-yellow: #FFA500;
+            --primary-black: #0d0d0d;
+            --light-black: #2d2d2d;
+            --text-white: #ffffff;
+            --text-gray: #cccccc;
+            --text-dark: #333333;
+            --accent-yellow: #FFED4A;
+            --shadow: rgba(0, 0, 0, 0.3);
+            --gradient-yellow: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            --gradient-dark: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            min-height: 100vh;
+        }
+
+        /* Header da Página */
+        .admin-header {
+            background: var(--gradient-dark);
+            color: var(--text-white);
+            padding: 2rem 0;
+            box-shadow: 0 5px 20px var(--shadow);
+        }
+
+        .admin-header .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .admin-title {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .admin-title h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-white);
+        }
+
+        .admin-title .icon {
+            background: var(--gradient-yellow);
+            color: var(--primary-black);
+            padding: 0.75rem;
+            border-radius: 50%;
+            font-size: 1.5rem;
+        }
+
+        .admin-nav {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+
+        .btn-primary {
+            background: var(--gradient-yellow);
+            color: var(--primary-black);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-white);
+            border: 2px solid var(--primary-yellow);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-yellow);
+            color: var(--primary-black);
+        }
+
+        .btn-danger {
+            background: #dc3545;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #c82333;
+            transform: translateY(-2px);
+        }
+
+        /* Container Principal */
+        .admin-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 3rem 20px;
+        }
+
+        /* Cards de Estatísticas */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            border-top: 4px solid var(--primary-yellow);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .stat-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .stat-icon {
+            background: var(--gradient-yellow);
+            color: var(--primary-black);
+            padding: 1rem;
+            border-radius: 50%;
+            font-size: 1.5rem;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--primary-black);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-dark);
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .stat-change {
+            font-size: 0.9rem;
+            color: #28a745;
+            font-weight: 600;
+        }
+
+        /* Tabela de Dados */
+        .data-section {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .data-header {
+            background: var(--gradient-dark);
+            color: var(--text-white);
+            padding: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .data-header h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .data-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .search-box {
+            position: relative;
+            margin: 1.5rem 2rem;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 1rem 1rem 1rem 3rem;
+            border: 2px solid #e1e5e9;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary-yellow);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+            font-size: 1.2rem;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            max-height: 600px;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .data-table th {
+            background: #f8f9fa;
+            color: var(--text-dark);
+            font-weight: 600;
+            padding: 1.5rem 1rem;
+            text-align: left;
+            border-bottom: 2px solid #e1e5e9;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .data-table td {
+            padding: 1.25rem 1rem;
+            border-bottom: 1px solid #e1e5e9;
+            vertical-align: middle;
+        }
+
+        .data-table tr:hover {
+            background: #f8f9fa;
+        }
+
+        .table-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        .badge-success {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .badge-secondary {
+            background: #e2e3e5;
+            color: #383d41;
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: #666;
+        }
+
+        .empty-icon {
+            font-size: 4rem;
+            color: #ddd;
+            margin-bottom: 1rem;
+        }
+
+        .empty-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .empty-description {
+            font-size: 1rem;
+            color: #666;
+        }
+
+        /* Login Box */
+        .login-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--gradient-dark);
+        }
+
+        .login-box {
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 450px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .login-icon {
+            background: var(--gradient-yellow);
+            color: var(--primary-black);
+            padding: 1.5rem;
+            border-radius: 50%;
+            font-size: 2rem;
+            margin: 0 auto 2rem;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .login-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-black);
+            margin-bottom: 0.5rem;
+        }
+
+        .login-subtitle {
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e1e5e9;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary-yellow);
+        }
+
+        .error-message {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            border: 1px solid #f5c6cb;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .admin-header .container {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .data-header {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .data-actions {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .login-box {
+                margin: 1rem;
+                padding: 2rem;
+            }
+
+            .table-container {
+                font-size: 0.875rem;
+            }
+
+            .data-table th,
+            .data-table td {
+                padding: 1rem 0.5rem;
+            }
+        }
+
+        /* Animações */
+        .fade-in {
+            animation: fadeIn 0.6s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- Estado de Login -->
+        <div id="loginState" class="login-container" style="display: none;">
+            <div class="login-box fade-in">
+                <div class="login-icon">
+                    <i class="fas fa-lock"></i>
+                </div>
+                <h1 class="login-title">Acesso Restrito</h1>
+                <p class="login-subtitle">Digite suas credenciais para acessar o painel de gerenciamento</p>
+                
+                <div id="errorMessage" class="error-message" style="display: none;">
+                    <i class="fas fa-exclamation-triangle"></i> Senha incorreta! Tente novamente.
+                </div>
+                
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label class="form-label" for="password">Senha de Acesso</label>
+                        <input type="password" id="password" class="form-input" placeholder="Digite a senha..." required>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">
+                        <i class="fas fa-sign-in-alt"></i>
+                        Entrar no Sistema
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Estado Autenticado -->
+        <div id="adminState" style="display: none;">
+            <!-- Header -->
+            <header class="admin-header">
+                <div class="container">
+                    <div class="admin-title">
+                        <div class="icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h1>Painel de Gerenciamento</h1>
+                    </div>
+                    <nav class="admin-nav">
+                        <a href="../index.html" class="btn btn-secondary">
+                            <i class="fas fa-home"></i>
+                            Voltar ao Site
+                        </a>
+                        <button id="logoutBtn" class="btn btn-danger">
+                            <i class="fas fa-sign-out-alt"></i>
+                            Sair
+                        </button>
+                    </nav>
+                </div>
+            </header>
+
+            <!-- Container Principal -->
+            <main class="admin-container">
+                <!-- Estatísticas -->
+                <section class="stats-grid">
+                    <div class="stat-card fade-in">
+                        <div class="stat-header">
+                            <div class="stat-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                        </div>
+                        <div class="stat-number" id="totalInscricoes">0</div>
+                        <div class="stat-label">Total de Inscrições</div>
+                        <div class="stat-change">
+                            <i class="fas fa-arrow-up"></i> +5 esta semana
+                        </div>
+                    </div>
+
+                    <div class="stat-card fade-in">
+                        <div class="stat-header">
+                            <div class="stat-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                        </div>
+                        <div class="stat-number" id="newsletterCount">0</div>
+                        <div class="stat-label">Inscritos na Newsletter</div>
+                        <div class="stat-change">
+                            <i class="fas fa-arrow-up"></i> +3 esta semana
+                        </div>
+                    </div>
+
+                    <div class="stat-card fade-in">
+                        <div class="stat-header">
+                            <div class="stat-icon">
+                                <i class="fas fa-calendar"></i>
+                            </div>
+                        </div>
+                        <div class="stat-number" id="todayDate">-</div>
+                        <div class="stat-label">Última Atualização</div>
+                        <div class="stat-change">
+                            <i class="fas fa-clock"></i> Agora mesmo
+                        </div>
+                    </div>
+
+                    <div class="stat-card fade-in">
+                        <div class="stat-header">
+                            <div class="stat-icon">
+                                <i class="fas fa-building"></i>
+                            </div>
+                        </div>
+                        <div class="stat-number" id="empresasCount">0</div>
+                        <div class="stat-label">Empresas Representadas</div>
+                        <div class="stat-change">
+                            <i class="fas fa-arrow-up"></i> Crescendo
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Tabela de Dados -->
+                <section class="data-section fade-in">
+                    <div class="data-header">
+                        <h2><i class="fas fa-table"></i> Lista de Inscrições</h2>
+                        <div class="data-actions">
+                            <button class="btn btn-primary" onclick="exportarDados()">
+                                <i class="fas fa-download"></i>
+                                Exportar CSV
+                            </button>
+                            <button class="btn btn-secondary" onclick="atualizarDados()">
+                                <i class="fas fa-sync-alt"></i>
+                                Atualizar
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="search-box">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" id="searchInput" class="search-input" placeholder="Buscar por nome, email, empresa...">
+                    </div>
+
+                    <div class="table-container">
+                        <table class="data-table" id="inscricoesTable">
+                            <thead>
+                                <tr>
+                                    <th><i class="fas fa-clock"></i> Data/Hora</th>
+                                    <th><i class="fas fa-user"></i> Nome</th>
+                                    <th><i class="fas fa-envelope"></i> Email</th>
+                                    <th><i class="fas fa-phone"></i> Telefone</th>
+                                    <th><i class="fas fa-building"></i> Empresa</th>
+                                    <th><i class="fas fa-briefcase"></i> Cargo</th>
+                                    <th><i class="fas fa-star"></i> Experiência</th>
+                                    <th><i class="fas fa-bell"></i> Newsletter</th>
+                                </tr>
+                            </thead>
+                            <tbody id="inscricoesTableBody">
+                                <!-- Dados serão inseridos via JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div id="emptyState" class="empty-state" style="display: none;">
+                        <div class="empty-icon">
+                            <i class="fas fa-inbox"></i>
+                        </div>
+                        <h3 class="empty-title">Nenhuma inscrição encontrada</h3>
+                        <p class="empty-description">As inscrições aparecerão aqui conforme forem sendo realizadas no site.</p>
+                    </div>
+                </section>
+
+                <!-- Seção de Gerenciamento de Expositores -->
+                <section class="data-section fade-in" style="margin-top: 3rem;">
+                    <div class="data-header">
+                        <h2><i class="fas fa-building"></i> Gerenciar Expositores</h2>
+                        <div class="data-actions">
+                            <button class="btn btn-secondary" onclick="carregarExpositores()">
+                                <i class="fas fa-sync-alt"></i>
+                                Atualizar Lista
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="expositors-grid" id="expositoresGrid">
+                        <!-- Os cards dos expositores serão inseridos aqui -->
+                    </div>
+
+                    <!-- Modal para Editar Expositor -->
+                    <div id="expositorModal" class="modal" style="display: none;">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3><i class="fas fa-edit"></i> Editar Expositor</h3>
+                                <button class="modal-close" onclick="fecharModal()">&times;</button>
+                            </div>
+                            <form id="expositorForm" enctype="multipart/form-data">
+                                <input type="hidden" id="expositorId" name="id">
+                                <input type="hidden" name="action" value="editar">
+                                
+                                <div class="form-group">
+                                    <label class="form-label">Nome do Expositor</label>
+                                    <input type="text" id="expositorNome" name="nome" class="form-input" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label">Descrição</label>
+                                    <textarea id="expositorDescricao" name="descricao" class="form-input" rows="3" required></textarea>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label">Stand/Local</label>
+                                    <input type="text" id="expositorStand" name="stand" class="form-input" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label">Imagem do Expositor</label>
+                                    <input type="file" id="expositorImagem" name="imagem" class="form-input" accept="image/*">
+                                    <small style="color: #666; font-size: 0.9rem;">Formatos aceitos: JPG, PNG, GIF, WebP (máx. 5MB)</small>
+                                    
+                                    <div id="imagemPreview" style="margin-top: 1rem; display: none;">
+                                        <img id="imagemAtual" style="width: 100px; height: 100px; object-fit: cover; border-radius: 10px; border: 2px solid #ddd;">
+                                        <button type="button" onclick="removerImagem()" style="margin-left: 1rem; background: #dc3545; color: white; border: none; padding: 0.5rem 1rem; border-radius: 5px; cursor: pointer;">
+                                            <i class="fas fa-trash"></i> Remover
+                                        </button>
+                                        <input type="hidden" id="removerImagemFlag" name="remover_imagem" value="0">
+                                    </div>
+                                </div>
+                                
+                                <div class="modal-actions">
+                                    <button type="button" class="btn btn-secondary" onclick="fecharModal()">
+                                        <i class="fas fa-times"></i>
+                                        Cancelar
+                                    </button>
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="fas fa-save"></i>
+                                        Salvar Alterações
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <style>
+        /* Estilos para Grid de Expositores */
+        .expositors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .expositor-card-admin {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e1e5e9;
+            transition: all 0.3s ease;
+        }
+
+        .expositor-card-admin:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .expositor-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .expositor-logo-admin {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-yellow);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--primary-black);
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .expositor-logo-admin img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .expositor-info h3 {
+            margin: 0;
+            color: var(--primary-black);
+            font-size: 1.1rem;
+        }
+
+        .expositor-info p {
+            margin: 0.25rem 0 0 0;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .expositor-description {
+            color: var(--text-dark);
+            font-size: 0.95rem;
+            line-height: 1.4;
+            margin-bottom: 1rem;
+        }
+
+        .expositor-stand {
+            background: var(--primary-yellow);
+            color: var(--primary-black);
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .expositor-actions {
+            text-align: center;
+        }
+
+        .btn-edit {
+            background: var(--primary-yellow);
+            color: var(--primary-black);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-edit:hover {
+            background: var(--dark-yellow);
+            transform: translateY(-2px);
+        }
+
+        /* Modal Styles */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 15px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .modal-header h3 {
+            margin: 0;
+            color: var(--primary-black);
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #999;
+        }
+
+        .modal-close:hover {
+            color: var(--primary-black);
+        }
+
+        .modal form {
+            padding: 2rem;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+            margin-top: 2rem;
+        }
+
+        .form-input textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+    </style>
+
+    <script>
+        // Configurações
+        const SENHA_CORRETA = 'adm2025!';
+        let dadosInscricoes = [];
+        let dadosFiltrados = [];
+        let expositores = [];
+
+        // Elementos DOM
+        const loginState = document.getElementById('loginState');
+        const adminState = document.getElementById('adminState');
+        const loginForm = document.getElementById('loginForm');
+        const errorMessage = document.getElementById('errorMessage');
+        const logoutBtn = document.getElementById('logoutBtn');
+        const searchInput = document.getElementById('searchInput');
+
+        // Inicialização
+        document.addEventListener('DOMContentLoaded', function() {
+            verificarAutenticacao();
+            setupEventListeners();
+            carregarDadosReais(); // Tentar carregar dados reais primeiro
+        });
+
+        function verificarAutenticacao() {
+            const isAuthenticated = sessionStorage.getItem('seminario_auth') === 'true';
+            
+            if (isAuthenticated) {
+                // Verificar se a sessão PHP também está ativa e sincronizar se necessário
+                fetch('auth-session.php', {
+                    method: 'POST',
+                    body: new URLSearchParams({
+                        'action': 'verificar'
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (!data.authenticated) {
+                        // Se a sessão PHP não está ativa, recriar
+                        fetch('auth-session.php', {
+                            method: 'POST',
+                            body: new URLSearchParams({
+                                'action': 'login',
+                                'senha': 'adm2025!'
+                            })
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.error('Erro ao verificar sessão PHP:', error);
+                });
+                
+                mostrarPainelAdmin();
+            } else {
+                mostrarLogin();
+            }
+        }
+
+        function mostrarLogin() {
+            loginState.style.display = 'flex';
+            adminState.style.display = 'none';
+        }
+
+        function mostrarPainelAdmin() {
+            loginState.style.display = 'none';
+            adminState.style.display = 'block';
+            atualizarEstatisticas();
+            renderizarTabela();
+        }
+
+        function setupEventListeners() {
+            // Login form
+            loginForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const senha = document.getElementById('password').value;
+                
+                if (senha === SENHA_CORRETA) {
+                    // Definir no sessionStorage
+                    sessionStorage.setItem('seminario_auth', 'true');
+                    
+                    // Também definir na sessão PHP usando o endpoint simplificado
+                    fetch('login-sync.php', {
+                        method: 'POST',
+                        body: new URLSearchParams({
+                            'senha': senha
+                        })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log('Sessão PHP sincronizada:', data);
+                        if (data.success) {
+                            errorMessage.style.display = 'none';
+                            mostrarPainelAdmin();
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Erro ao sincronizar sessão:', error);
+                        // Continuar mesmo se der erro na sincronização
+                        errorMessage.style.display = 'none';
+                        mostrarPainelAdmin();
+                    });
+                } else {
+                    errorMessage.style.display = 'block';
+                    document.getElementById('password').value = '';
+                }
+            });
+
+            // Logout
+            logoutBtn.addEventListener('click', function() {
+                sessionStorage.removeItem('seminario_auth');
+                
+                // Também fazer logout na sessão PHP
+                fetch('auth-session.php', {
+                    method: 'POST',
+                    body: new URLSearchParams({
+                        'action': 'logout'
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Logout PHP:', data);
+                })
+                .catch(error => {
+                    console.error('Erro no logout PHP:', error);
+                });
+                
+                mostrarLogin();
+            });
+
+            // Pesquisa
+            searchInput.addEventListener('input', function() {
+                filtrarDados(this.value);
+            });
+        }
+
+        function carregarDadosReais() {
+            // Carregar dados reais da API
+            fetch('api-inscricoes.php?action=dados')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        dadosInscricoes = data.data || [];
+                        dadosFiltrados = [...dadosInscricoes];
+                        atualizarEstatisticas();
+                        renderizarTabela();
+                    } else {
+                        console.error('Erro ao carregar dados:', data.error);
+                        carregarDadosSimulados(); // Fallback para dados simulados
+                    }
+                })
+                .catch(error => {
+                    console.error('Erro na requisição:', error);
+                    carregarDadosSimulados(); // Fallback para dados simulados
+                });
+        }
+
+        function carregarDadosSimulados() {
+            // Dados de exemplo como fallback
+            dadosInscricoes = [
+                {
+                    data: '10/10/2025 14:30',
+                    nome: 'João Silva Santos',
+                    email: 'joao.silva@email.com',
+                    telefone: '(11) 99999-9999',
+                    empresa: 'Produtora Audiovisual XYZ',
+                    cargo: 'Diretor de Fotografia',
+                    experiencia: '5-10 anos',
+                    newsletter: 'Sim'
+                },
+                {
+                    data: '10/10/2025 15:45',
+                    nome: 'Maria Oliveira Costa',
+                    email: 'maria.costa@email.com',
+                    telefone: '(11) 88888-8888',
+                    empresa: 'Estúdio ABC Cinema',
+                    cargo: 'Produtora Executiva',
+                    experiencia: '10+ anos',
+                    newsletter: 'Sim'
+                },
+                {
+                    data: '09/10/2025 16:20',
+                    nome: 'Carlos Eduardo Lima',
+                    email: 'carlos.lima@email.com',
+                    telefone: '(11) 77777-7777',
+                    empresa: 'Freelancer',
+                    cargo: 'Editor de Vídeo',
+                    experiencia: '1-5 anos',
+                    newsletter: 'Não'
+                }
+            ];
+
+            dadosFiltrados = [...dadosInscricoes];
+        }
+
+        function atualizarEstatisticas() {
+            const total = dadosInscricoes.length;
+            const newsletter = dadosInscricoes.filter(i => i.newsletter === 'Sim').length;
+            const empresas = new Set(dadosInscricoes.map(i => i.empresa)).size;
+            const hoje = new Date().toLocaleDateString('pt-BR');
+
+            document.getElementById('totalInscricoes').textContent = total;
+            document.getElementById('newsletterCount').textContent = newsletter;
+            document.getElementById('empresasCount').textContent = empresas;
+            document.getElementById('todayDate').textContent = hoje;
+        }
+
+        function renderizarTabela() {
+            const tbody = document.getElementById('inscricoesTableBody');
+            const emptyState = document.getElementById('emptyState');
+
+            if (dadosFiltrados.length === 0) {
+                tbody.innerHTML = '';
+                emptyState.style.display = 'block';
+                return;
+            }
+
+            emptyState.style.display = 'none';
+
+            tbody.innerHTML = dadosFiltrados.map(inscricao => `
+                <tr>
+                    <td>${inscricao.data}</td>
+                    <td><strong>${inscricao.nome}</strong></td>
+                    <td>${inscricao.email}</td>
+                    <td>${inscricao.telefone}</td>
+                    <td>${inscricao.empresa}</td>
+                    <td>${inscricao.cargo}</td>
+                    <td>${inscricao.experiencia}</td>
+                    <td>
+                        <span class="table-badge ${inscricao.newsletter === 'Sim' ? 'badge-success' : 'badge-secondary'}">
+                            ${inscricao.newsletter === 'Sim' ? '✅ Sim' : '❌ Não'}
+                        </span>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function filtrarDados(termo) {
+            if (!termo) {
+                dadosFiltrados = [...dadosInscricoes];
+            } else {
+                const termoBusca = termo.toLowerCase();
+                dadosFiltrados = dadosInscricoes.filter(inscricao => 
+                    inscricao.nome.toLowerCase().includes(termoBusca) ||
+                    inscricao.email.toLowerCase().includes(termoBusca) ||
+                    inscricao.empresa.toLowerCase().includes(termoBusca) ||
+                    inscricao.cargo.toLowerCase().includes(termoBusca)
+                );
+            }
+            renderizarTabela();
+        }
+
+        function exportarDados() {
+            // Tentar usar a API para exportar, se disponível
+            const useAPI = dadosInscricoes.length > 0 && !dadosInscricoes[0].nome.includes('João Silva'); // Detectar se são dados reais
+            
+            if (useAPI) {
+                // Usar API para download direto
+                window.open('api-inscricoes.php?action=exportar', '_blank');
+            } else {
+                // Fallback: exportar dados locais
+                const csv = [
+                    ['Data/Hora', 'Nome', 'Email', 'Telefone', 'Empresa', 'Cargo', 'Experiência', 'Newsletter'],
+                    ...dadosFiltrados.map(i => [i.data, i.nome, i.email, i.telefone, i.empresa, i.cargo, i.experiencia, i.newsletter])
+                ].map(row => row.join(',')).join('\n');
+
+                const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+                const link = document.createElement('a');
+                const url = URL.createObjectURL(blob);
+                link.setAttribute('href', url);
+                link.setAttribute('download', `inscricoes-seminario-${new Date().toISOString().split('T')[0]}.csv`);
+                link.style.visibility = 'hidden';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            }
+        }
+
+        function atualizarDados() {
+            const btn = event.target;
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Atualizando...';
+            btn.disabled = true;
+
+            // Tentar recarregar dados da API
+            carregarDadosReais();
+
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            }, 1500);
+        }
+
+        // Animações de entrada
+        document.addEventListener('DOMContentLoaded', function() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.stat-card, .data-section').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Carregar expositores na inicialização
+            carregarExpositores();
+        });
+
+        // ========== FUNÇÕES PARA GERENCIAMENTO DE EXPOSITORES ==========
+
+        function carregarExpositores() {
+            fetch('api-expositores.php?action=listar')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        expositores = data.data;
+                        renderizarExpositores();
+                    } else {
+                        console.error('Erro ao carregar expositores:', data.error);
+                        // Usar dados padrão em caso de erro
+                        expositores = [
+                            {
+                                id: 1,
+                                nome: 'TechSafety Pro',
+                                descricao: 'Equipamentos de proteção individual especializados para audiovisual',
+                                stand: 'Estande A1',
+                                imagem: '',
+                                icone: 'fas fa-building'
+                            },
+                            {
+                                id: 2,
+                                nome: 'ErgoMedia Solutions',
+                                descricao: 'Móveis ergonômicos e soluções para estúdios',
+                                stand: 'Estande A2',
+                                imagem: '',
+                                icone: 'fas fa-shield-alt'
+                            },
+                            {
+                                id: 3,
+                                nome: 'WellBeing Media',
+                                descricao: 'Programas de bem-estar e saúde ocupacional',
+                                stand: 'Estande A3',
+                                imagem: '',
+                                icone: 'fas fa-heartbeat'
+                            },
+                            {
+                                id: 4,
+                                nome: 'AudioSafe Tech',
+                                descricao: 'Tecnologia em monitoramento de segurança em sets',
+                                stand: 'Estande B1',
+                                imagem: '',
+                                icone: 'fas fa-tools'
+                            },
+                            {
+                                id: 5,
+                                nome: 'Emergency AV',
+                                descricao: 'Kits de primeiros socorros e treinamentos de emergência',
+                                stand: 'Estande B2',
+                                imagem: '',
+                                icone: 'fas fa-first-aid'
+                            },
+                            {
+                                id: 6,
+                                nome: 'CertifiAV',
+                                descricao: 'Certificações e auditorias em segurança audiovisual',
+                                stand: 'Estande B3',
+                                imagem: '',
+                                icone: 'fas fa-certificate'
+                            }
+                        ];
+                        renderizarExpositores();
+                    }
+                })
+                .catch(error => {
+                    console.error('Erro na requisição:', error);
+                    // Usar dados padrão em caso de erro de rede
+                    expositores = [
+                        {
+                            id: 1,
+                            nome: 'TechSafety Pro',
+                            descricao: 'Equipamentos de proteção individual especializados para audiovisual',
+                            stand: 'Estande A1',
+                            imagem: '',
+                            icone: 'fas fa-building'
+                        }
+                        // ... outros expositores padrão
+                    ];
+                    renderizarExpositores();
+                });
+        }
+
+        function renderizarExpositores() {
+            const grid = document.getElementById('expositoresGrid');
+            
+            if (expositores.length === 0) {
+                grid.innerHTML = `
+                    <div class="empty-state" style="grid-column: 1 / -1;">
+                        <div class="empty-icon">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <h3 class="empty-title">Nenhum expositor cadastrado</h3>
+                        <p class="empty-description">Os expositores aparecerão aqui quando forem cadastrados.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            grid.innerHTML = expositores.map(expositor => `
+                <div class="expositor-card-admin">
+                    <div class="expositor-header">
+                        <div class="expositor-logo-admin">
+                            ${expositor.imagem ? 
+                                `<img src="images/${expositor.imagem}" alt="${expositor.nome}">` : 
+                                `<i class="${expositor.icone || 'fas fa-building'}"></i>`
+                            }
+                        </div>
+                        <div class="expositor-info">
+                            <h3>${expositor.nome}</h3>
+                            <p>${expositor.stand}</p>
+                        </div>
+                    </div>
+                    <p class="expositor-description">${expositor.descricao}</p>
+                    <div class="expositor-actions">
+                        <button class="btn-edit" onclick="editarExpositor(${expositor.id})">
+                            <i class="fas fa-edit"></i>
+                            Editar
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function editarExpositor(id) {
+            const expositor = expositores.find(e => e.id === id);
+            if (!expositor) return;
+
+            // Preencher o formulário
+            document.getElementById('expositorId').value = expositor.id;
+            document.getElementById('expositorNome').value = expositor.nome;
+            document.getElementById('expositorDescricao').value = expositor.descricao;
+            document.getElementById('expositorStand').value = expositor.stand;
+
+            // Mostrar imagem atual se existir
+            const imagemPreview = document.getElementById('imagemPreview');
+            const imagemAtual = document.getElementById('imagemAtual');
+            if (expositor.imagem) {
+                imagemAtual.src = `images/${expositor.imagem}`;
+                imagemPreview.style.display = 'block';
+            } else {
+                imagemPreview.style.display = 'none';
+            }
+
+            // Reset flag de remoção
+            document.getElementById('removerImagemFlag').value = '0';
+
+            // Mostrar modal
+            document.getElementById('expositorModal').style.display = 'flex';
+        }
+
+        function fecharModal() {
+            document.getElementById('expositorModal').style.display = 'none';
+            document.getElementById('expositorForm').reset();
+        }
+
+        function removerImagem() {
+            document.getElementById('imagemPreview').style.display = 'none';
+            document.getElementById('removerImagemFlag').value = '1';
+        }
+
+        // Envio do formulário de expositor
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('expositorForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const formData = new FormData(this);
+                const submitBtn = this.querySelector('button[type="submit"]');
+                const originalText = submitBtn.innerHTML;
+                
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Salvando...';
+                submitBtn.disabled = true;
+
+                fetch('api-expositores.php', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        fecharModal();
+                        carregarExpositores();
+                        
+                        // Mostrar notificação de sucesso
+                        const notification = document.createElement('div');
+                        notification.style.cssText = `
+                            position: fixed;
+                            top: 20px;
+                            right: 20px;
+                            background: #28a745;
+                            color: white;
+                            padding: 1rem 1.5rem;
+                            border-radius: 8px;
+                            z-index: 1001;
+                            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+                        `;
+                        notification.innerHTML = `<i class="fas fa-check"></i> ${data.message}`;
+                        document.body.appendChild(notification);
+                        
+                        setTimeout(() => {
+                            notification.remove();
+                        }, 3000);
+                    } else {
+                        alert('Erro: ' + data.error);
+                    }
+                })
+                .catch(error => {
+                    console.error('Erro:', error);
+                    alert('Erro ao salvar expositor. Tente novamente.');
+                })
+                .finally(() => {
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                });
+            });
+        });
+
+        // Preview de imagem
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('expositorImagem').addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        const imagemAtual = document.getElementById('imagemAtual');
+                        imagemAtual.src = e.target.result;
+                        document.getElementById('imagemPreview').style.display = 'block';
+                        document.getElementById('removerImagemFlag').value = '0';
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

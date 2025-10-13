@@ -225,7 +225,9 @@ add_action('init', 'teste_salvamento_inscricao');
 function seminario_gerencia_route() {
     // Verificar se a URL é /gerencia
     if ($_SERVER['REQUEST_URI'] === '/gerencia' || $_SERVER['REQUEST_URI'] === '/gerencia/') {
-        seminario_gerencia_page();
+        // Redirecionar para a nova página HTML estática
+        $redirect_url = get_template_directory_uri() . '/gerencia.html';
+        wp_redirect($redirect_url);
         exit;
     }
 }
@@ -889,12 +891,12 @@ function seminario_customize_register($wp_customize) {
     
     // Exhibition Section
     $wp_customize->add_section('seminario_exhibition', array(
-        'title'    => 'Seção Exposição',
+        'title'    => 'Seção Expositores',
         'priority' => 55,
     ));
     
     $wp_customize->add_setting('seminario_exhibition_title', array(
-        'default' => 'Exposição',
+        'default' => 'Expositores',
         'sanitize_callback' => 'sanitize_text_field',
     ));
     $wp_customize->add_control('seminario_exhibition_title', array(
