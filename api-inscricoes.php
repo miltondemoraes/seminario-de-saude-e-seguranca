@@ -4,6 +4,9 @@
  * Arquivo: api-inscricoes.php
  */
 
+// Definir fuso horário para o Brasil
+date_default_timezone_set('America/Sao_Paulo');
+
 // Definir headers para CORS e JSON
 header('Content-Type: application/json; charset=utf-8');
 header('Access-Control-Allow-Origin: *');
@@ -48,7 +51,10 @@ function calcularEstatisticas($inscricoes) {
         'total' => $total,
         'newsletter' => $newsletter,
         'empresas' => $empresas,
-        'data_atualizacao' => date('d/m/Y H:i:s')
+        'data_atualizacao' => (function() { 
+            date_default_timezone_set('America/Sao_Paulo'); 
+            return date('d/m/Y H:i:s'); 
+        })()
     );
 }
 

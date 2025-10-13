@@ -1,8 +1,8 @@
 [
     {
         "id": 1,
-        "nome": "TechSafety Pro",
-        "descricao": "Equipamentos de prote\u00e7\u00e3o individual especializados para audiovisual",
+        "nome": "TechSafety Pro 2",
+        "descricao": "Equipamentos de prote\u00e7\u00e3o individual especializados para audiovisual e seguran\u00e7a",
         "stand": "Estande A1",
         "imagem": "",
         "icone": "fas fa-building"
@@ -12,7 +12,7 @@
         "nome": "ErgoMedia Solutions",
         "descricao": "M\u00f3veis ergon\u00f4micos e solu\u00e7\u00f5es para est\u00fadios",
         "stand": "Estande A2",
-        "imagem": "expositor_2.png",
+        "imagem": "",
         "icone": "fas fa-shield-alt"
     },
     {
@@ -20,7 +20,7 @@
         "nome": "WellBeing ",
         "descricao": "Programas de bem-estar e sa\u00fade ocupacional. Excelente",
         "stand": "Estande A3",
-        "imagem": "expositor_3.png",
+        "imagem": "",
         "icone": "fas fa-heartbeat"
     },
     {
@@ -28,7 +28,7 @@
         "nome": "AudioSafe Tech",
         "descricao": "Tecnologia em monitoramento de seguran\u00e7a em sets",
         "stand": "Estande B1",
-        "imagem": "expositor_4.jpg",
+        "imagem": "",
         "icone": "fas fa-tools"
     },
     {

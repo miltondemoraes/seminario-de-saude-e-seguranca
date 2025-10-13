@@ -1,4 +1,7 @@
 <?php
+// Definir fuso horário para o Brasil
+date_default_timezone_set('America/Sao_Paulo');
+
 function seminario_theme_setup() {
     add_theme_support('title-tag');
     add_theme_support('post-thumbnails');
@@ -136,10 +139,13 @@ function seminario_handle_registration() {
         }
     }
     
-    // Preparar dados para salvar
+    // Preparar dados para salvar - usar horário de Brasília (GMT-3)
+    date_default_timezone_set('America/Sao_Paulo');
+    $horario_brasil = date('d/m/Y H:i');
+    
     $data_line = sprintf(
         "%s|%s|%s|%s|%s|%s|%s|%s\n",
-        current_time('d/m/Y H:i'),
+        $horario_brasil,
         str_replace('|', '-', $nome),
         str_replace('|', '-', $email),
         str_replace('|', '-', $telefone),
@@ -205,7 +211,8 @@ function teste_salvamento_inscricao() {
             echo "<p><strong>Tentativa de criar pasta:</strong> " . ($created ? 'SUCESSO' : 'FALHOU') . "</p>";
         }
         
-        // Tentar escrever uma linha de teste
+        // Tentar escrever uma linha de teste - usar horário de Brasília
+        date_default_timezone_set('America/Sao_Paulo');
         $linha_teste = date('d/m/Y H:i') . "|Teste Manual|teste@manual.com|(11) 99999-9999|Teste|Teste|Iniciante|Sim\n";
         $resultado = file_put_contents($file_path, $linha_teste, FILE_APPEND | LOCK_EX);
         
@@ -1383,5 +1390,18 @@ function seminario_remove_footer_elements() {
     <?php
 }
 add_action('wp_footer', 'seminario_remove_footer_elements');
+
+// Função para testar o horário - adicione ?teste_horario=1 na URL para testar
+function seminario_teste_horario() {
+    if (isset($_GET['teste_horario']) && $_GET['teste_horario'] == '1') {
+        echo '<div style="position: fixed; top: 10px; right: 10px; background: #000; color: #fff; padding: 10px; z-index: 9999;">';
+        echo '<h4>Teste de Horário</h4>';
+        echo '<p><strong>Horário atual (Brasil):</strong> ' . date('d/m/Y H:i:s') . '</p>';
+        echo '<p><strong>Fuso horário ativo:</strong> ' . date_default_timezone_get() . '</p>';
+        echo '<p><strong>Timestamp:</strong> ' . time() . '</p>';
+        echo '</div>';
+    }
+}
+add_action('wp_footer', 'seminario_teste_horario');
 
 ?>
