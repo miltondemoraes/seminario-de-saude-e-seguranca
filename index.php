@@ -370,6 +370,122 @@
         </div>
     </section>
 
+    <!-- Supporters Section -->
+    <section id="apoiadores" class="supporters">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title"><?php echo get_theme_mod('seminario_supporters_title', 'Apoiadores'); ?></h2>
+                <p class="section-subtitle">
+                    <?php echo get_theme_mod('seminario_supporters_subtitle', 'Conheça as instituições e organizações que apoiam nossa iniciativa'); ?>
+                </p>
+            </div>
+            <div class="supporters-content">
+                <div class="supporters-info">
+                    <p>
+                        <?php echo get_theme_mod('seminario_supporters_text', 'O sucesso deste seminário só é possível graças ao apoio de importantes instituições do setor audiovisual, que compartilham nossa visão de promover um ambiente de trabalho mais seguro e saudável.'); ?>
+                    </p>
+                </div>
+                <div class="supporters-grid">
+                    <?php
+                    // Carregar dados dos apoiadores
+                    $apoiadores_file = __DIR__ . '/data/apoiadores.json';
+                    $apoiadores = [];
+                    
+                    if (file_exists($apoiadores_file)) {
+                        $content = file_get_contents($apoiadores_file);
+                        $apoiadores = json_decode($content, true) ?: [];
+                    }
+
+                    // Se não há dados salvos, usar dados padrão
+                    if (empty($apoiadores)) {
+                        $apoiadores = [
+                            [
+                                'id' => 1,
+                                'nome' => 'SINDCINE-SP',
+                                'descricao' => 'Sindicato dos Trabalhadores na Indústria Cinematográfica de São Paulo',
+                                'categoria' => 'Sindicato',
+                                'imagem' => '',
+                                'icone' => 'fas fa-users'
+                            ],
+                            [
+                                'id' => 2,
+                                'nome' => 'ABET - Associação Brasileira de Exposições e Feiras',
+                                'descricao' => 'Organização que promove o desenvolvimento do setor de eventos',
+                                'categoria' => 'Associação',
+                                'imagem' => '',
+                                'icone' => 'fas fa-handshake'
+                            ],
+                            [
+                                'id' => 3,
+                                'nome' => 'SET - Sociedade Brasileira de Engenharia de Televisão',
+                                'descricao' => 'Entidade técnico-científica para o desenvolvimento da TV brasileira',
+                                'categoria' => 'Sociedade Técnica',
+                                'imagem' => '',
+                                'icone' => 'fas fa-broadcast-tower'
+                            ],
+                            [
+                                'id' => 4,
+                                'nome' => 'ANCINE - Agência Nacional do Cinema',
+                                'descricao' => 'Agência reguladora vinculada ao Ministério da Cultura',
+                                'categoria' => 'Órgão Público',
+                                'imagem' => '',
+                                'icone' => 'fas fa-film'
+                            ],
+                            [
+                                'id' => 5,
+                                'nome' => 'ABRACI - Associação Brasileira de Cinematografia',
+                                'descricao' => 'Representação dos profissionais de cinematografia no Brasil',
+                                'categoria' => 'Associação',
+                                'imagem' => '',
+                                'icone' => 'fas fa-camera'
+                            ],
+                            [
+                                'id' => 6,
+                                'nome' => 'Ministério do Trabalho e Emprego',
+                                'descricao' => 'Órgão federal responsável pelas políticas de trabalho e emprego',
+                                'categoria' => 'Órgão Público',
+                                'imagem' => '',
+                                'icone' => 'fas fa-briefcase'
+                            ],
+                            [
+                                'id' => 7,
+                                'nome' => 'FUNDACENTRO',
+                                'descricao' => 'Fundação Jorge Duprat Figueiredo de Segurança e Medicina do Trabalho',
+                                'categoria' => 'Fundação',
+                                'imagem' => '',
+                                'icone' => 'fas fa-shield-alt'
+                            ],
+                            [
+                                'id' => 8,
+                                'nome' => 'SEBRAE - São Paulo',
+                                'descricao' => 'Serviço Brasileiro de Apoio às Micro e Pequenas Empresas',
+                                'categoria' => 'Instituição',
+                                'imagem' => '',
+                                'icone' => 'fas fa-chart-line'
+                            ]
+                        ];
+                    }
+                    
+                    foreach ($apoiadores as $apoiador) :
+                    ?>
+                    <div class="supporter-card">
+                        <div class="supporter-logo">
+                            <?php if ($apoiador['imagem']) : ?>
+                                <img src="<?php echo get_template_directory_uri(); ?>/images/<?php echo $apoiador['imagem']; ?>" class="apoiador-image">
+                            <?php else : ?>
+                                <i class="<?php echo $apoiador['icone']; ?>"></i>
+                            <?php endif; ?>
+                        </div>
+                        <h3 class="supporter-name"><?php echo $apoiador['nome']; ?></h3>
+                        <p class="supporter-description"><?php echo $apoiador['descricao']; ?></p>
+                        <div class="supporter-category"><?php echo $apoiador['categoria']; ?></div>
+                    </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Registration Section -->
     <section id="cadastro" class="registration">
         <div class="container">

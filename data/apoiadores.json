@@ -1,0 +1,66 @@
+[
+    {
+        "id": 1,
+        "nome": "SINDCINE-SP",
+        "descricao": "Sindicato dos Trabalhadores na Indústria Cinematográfica de São Paulo",
+        "categoria": "Sindicato",
+        "imagem": "",
+        "icone": "fas fa-users"
+    },
+    {
+        "id": 2,
+        "nome": "ABET - Associação Brasileira de Exposições e Feiras",
+        "descricao": "Organização que promove o desenvolvimento do setor de eventos",
+        "categoria": "Associação",
+        "imagem": "apoiador_2.png",
+        "icone": "fas fa-handshake"
+    },
+    {
+        "id": 3,
+        "nome": "SET - Sociedade Brasileira de Engenharia de Televisão",
+        "descricao": "Entidade técnico-científica para o desenvolvimento da TV brasileira",
+        "categoria": "Sociedade Técnica",
+        "imagem": "",
+        "icone": "fas fa-broadcast-tower"
+    },
+    {
+        "id": 4,
+        "nome": "ANCINE - Agência Nacional do Cinema",
+        "descricao": "Agência reguladora vinculada ao Ministério da Cultura",
+        "categoria": "Órgão Público",
+        "imagem": "",
+        "icone": "fas fa-film"
+    },
+    {
+        "id": 5,
+        "nome": "ABRACI - Associação Brasileira de Cinematografia",
+        "descricao": "Representação dos profissionais de cinematografia no Brasil",
+        "categoria": "Associação",
+        "imagem": "",
+        "icone": "fas fa-camera"
+    },
+    {
+        "id": 6,
+        "nome": "Ministério do Trabalho e Emprego",
+        "descricao": "Órgão federal responsável pelas políticas de trabalho e emprego",
+        "categoria": "Órgão Público",
+        "imagem": "",
+        "icone": "fas fa-briefcase"
+    },
+    {
+        "id": 7,
+        "nome": "FUNDACENTRO",
+        "descricao": "Fundação Jorge Duprat Figueiredo de Segurança e Medicina do Trabalho",
+        "categoria": "Fundação",
+        "imagem": "",
+        "icone": "fas fa-shield-alt"
+    },
+    {
+        "id": 8,
+        "nome": "SEBRAE - São Paulo",
+        "descricao": "Serviço Brasileiro de Apoio às Micro e Pequenas Empresas",
+        "categoria": "Instituição",
+        "imagem": "",
+        "icone": "fas fa-chart-line"
+    }
+]

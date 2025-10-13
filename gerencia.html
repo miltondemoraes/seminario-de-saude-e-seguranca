@@ -688,6 +688,77 @@
                         </div>
                     </div>
                 </section>
+
+                <!-- Seção de Gerenciamento de Apoiadores -->
+                <section class="data-section fade-in" style="margin-top: 3rem;">
+                    <div class="data-header">
+                        <h2><i class="fas fa-heart"></i> Gerenciar Apoiadores</h2>
+                        <div class="data-actions">
+                            <button class="btn btn-secondary" onclick="carregarApoiadores()">
+                                <i class="fas fa-sync-alt"></i>
+                                Atualizar Lista
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="supporters-grid" id="apoiadoresGrid">
+                        <!-- Os cards dos apoiadores serão inseridos aqui -->
+                    </div>
+
+                    <!-- Modal para Editar Apoiador -->
+                    <div id="apoiadorModal" class="modal" style="display: none;">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3><i class="fas fa-edit"></i> Editar Apoiador</h3>
+                                <button class="modal-close" onclick="fecharModalApoiador()">&times;</button>
+                            </div>
+                            <form id="apoiadorForm" enctype="multipart/form-data">
+                                <input type="hidden" id="apoiadorId" name="id">
+                                <input type="hidden" name="action" value="editar">
+                                
+                                <div class="form-group">
+                                    <label class="form-label">Nome do Apoiador</label>
+                                    <input type="text" id="apoiadorNome" name="nome" class="form-input" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label">Descrição</label>
+                                    <textarea id="apoiadorDescricao" name="descricao" class="form-input" rows="3" required></textarea>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label">Categoria</label>
+                                    <input type="text" id="apoiadorCategoria" name="categoria" class="form-input" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label">Imagem do Apoiador</label>
+                                    <input type="file" id="apoiadorImagem" name="imagem" class="form-input" accept="image/*">
+                                    <small style="color: #666; font-size: 0.9rem;">Formatos aceitos: JPG, PNG, GIF, WebP (máx. 5MB)</small>
+                                    
+                                    <div id="imagemPreviewApoiador" style="margin-top: 1rem; display: none;">
+                                        <img id="imagemAtualApoiador" style="width: 100px; height: 100px; object-fit: cover; border-radius: 10px; border: 2px solid #ddd;">
+                                        <button type="button" onclick="removerImagemApoiador()" style="margin-left: 1rem; background: #dc3545; color: white; border: none; padding: 0.5rem 1rem; border-radius: 5px; cursor: pointer;">
+                                            <i class="fas fa-trash"></i> Remover
+                                        </button>
+                                        <input type="hidden" id="removerImagemFlagApoiador" name="remover_imagem" value="0">
+                                    </div>
+                                </div>
+                                
+                                <div class="modal-actions">
+                                    <button type="button" class="btn btn-secondary" onclick="fecharModalApoiador()">
+                                        <i class="fas fa-times"></i>
+                                        Cancelar
+                                    </button>
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="fas fa-save"></i>
+                                        Salvar Alterações
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </section>
             </main>
         </div>
     </div>
@@ -856,6 +927,91 @@
             resize: vertical;
             min-height: 80px;
         }
+
+        /* Estilos para Grid de Apoiadores */
+        .supporters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .apoiador-card-admin {
+            background: var(--gradient-dark);
+            color: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e1e5e9;
+            transition: all 0.3s ease;
+        }
+
+        .apoiador-card-admin:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .apoiador-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .apoiador-logo-admin {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-yellow);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--primary-black);
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .apoiador-logo-admin img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .apoiador-info h3 {
+            margin: 0;
+            color: white;
+            font-size: 1.1rem;
+        }
+
+        .apoiador-info p {
+            margin: 0.25rem 0 0 0;
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        .apoiador-description {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            line-height: 1.4;
+            margin-bottom: 1rem;
+        }
+
+        .apoiador-category {
+            background: var(--primary-yellow);
+            color: var(--primary-black);
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .apoiador-actions {
+            text-align: center;
+        }
     </style>
 
     <script>
@@ -864,6 +1020,7 @@
         let dadosInscricoes = [];
         let dadosFiltrados = [];
         let expositores = [];
+        let apoiadores = [];
 
         // Elementos DOM
         const loginState = document.getElementById('loginState');
@@ -1167,8 +1324,9 @@
                 observer.observe(el);
             });
 
-            // Carregar expositores na inicialização
+            // Carregar expositores e apoiadores na inicialização
             carregarExpositores();
+            carregarApoiadores();
         });
 
         // ========== FUNÇÕES PARA GERENCIAMENTO DE EXPOSITORES ==========
@@ -1399,6 +1557,197 @@
                         imagemAtual.src = e.target.result;
                         document.getElementById('imagemPreview').style.display = 'block';
                         document.getElementById('removerImagemFlag').value = '0';
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+        });
+
+        // ========== FUNÇÕES PARA GERENCIAMENTO DE APOIADORES ==========
+
+        function carregarApoiadores() {
+            fetch('api-apoiadores.php?action=listar')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        apoiadores = data.data;
+                        renderizarApoiadores();
+                    } else {
+                        console.error('Erro ao carregar apoiadores:', data.error);
+                        // Usar dados padrão em caso de erro
+                        apoiadores = [
+                            {
+                                id: 1,
+                                nome: 'SINDCINE-SP',
+                                descricao: 'Sindicato dos Trabalhadores na Indústria Cinematográfica de São Paulo',
+                                categoria: 'Sindicato',
+                                imagem: '',
+                                icone: 'fas fa-users'
+                            },
+                            {
+                                id: 2,
+                                nome: 'ABET - Associação Brasileira de Exposições e Feiras',
+                                descricao: 'Organização que promove o desenvolvimento do setor de eventos',
+                                categoria: 'Associação',
+                                imagem: '',
+                                icone: 'fas fa-handshake'
+                            }
+                        ];
+                        renderizarApoiadores();
+                    }
+                })
+                .catch(error => {
+                    console.error('Erro na requisição:', error);
+                    apoiadores = [];
+                    renderizarApoiadores();
+                });
+        }
+
+        function renderizarApoiadores() {
+            const grid = document.getElementById('apoiadoresGrid');
+            
+            if (apoiadores.length === 0) {
+                grid.innerHTML = `
+                    <div class="empty-state" style="grid-column: 1 / -1;">
+                        <div class="empty-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3 class="empty-title">Nenhum apoiador cadastrado</h3>
+                        <p class="empty-description">Os apoiadores aparecerão aqui quando forem cadastrados.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            grid.innerHTML = apoiadores.map(apoiador => `
+                <div class="apoiador-card-admin">
+                    <div class="apoiador-header">
+                        <div class="apoiador-logo-admin">
+                            ${apoiador.imagem ? 
+                                `<img src="images/${apoiador.imagem}" alt="${apoiador.nome}">` : 
+                                `<i class="${apoiador.icone || 'fas fa-heart'}"></i>`
+                            }
+                        </div>
+                        <div class="apoiador-info">
+                            <h3>${apoiador.nome}</h3>
+                            <p>${apoiador.categoria}</p>
+                        </div>
+                    </div>
+                    <p class="apoiador-description">${apoiador.descricao}</p>
+                    <div class="apoiador-actions">
+                        <button class="btn-edit" onclick="editarApoiador(${apoiador.id})">
+                            <i class="fas fa-edit"></i>
+                            Editar
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function editarApoiador(id) {
+            const apoiador = apoiadores.find(e => e.id === id);
+            if (!apoiador) return;
+
+            // Preencher o formulário
+            document.getElementById('apoiadorId').value = apoiador.id;
+            document.getElementById('apoiadorNome').value = apoiador.nome;
+            document.getElementById('apoiadorDescricao').value = apoiador.descricao;
+            document.getElementById('apoiadorCategoria').value = apoiador.categoria;
+
+            // Mostrar imagem atual se existir
+            const imagemPreview = document.getElementById('imagemPreviewApoiador');
+            const imagemAtual = document.getElementById('imagemAtualApoiador');
+            if (apoiador.imagem) {
+                imagemAtual.src = `images/${apoiador.imagem}`;
+                imagemPreview.style.display = 'block';
+            } else {
+                imagemPreview.style.display = 'none';
+            }
+
+            // Reset flag de remoção
+            document.getElementById('removerImagemFlagApoiador').value = '0';
+
+            // Mostrar modal
+            document.getElementById('apoiadorModal').style.display = 'flex';
+        }
+
+        function fecharModalApoiador() {
+            document.getElementById('apoiadorModal').style.display = 'none';
+            document.getElementById('apoiadorForm').reset();
+        }
+
+        function removerImagemApoiador() {
+            document.getElementById('imagemPreviewApoiador').style.display = 'none';
+            document.getElementById('removerImagemFlagApoiador').value = '1';
+        }
+
+        // Envio do formulário de apoiador
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('apoiadorForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const formData = new FormData(this);
+                const submitBtn = this.querySelector('button[type="submit"]');
+                const originalText = submitBtn.innerHTML;
+                
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Salvando...';
+                submitBtn.disabled = true;
+
+                fetch('api-apoiadores.php', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        fecharModalApoiador();
+                        carregarApoiadores();
+                        
+                        // Mostrar notificação de sucesso
+                        const notification = document.createElement('div');
+                        notification.style.cssText = `
+                            position: fixed;
+                            top: 20px;
+                            right: 20px;
+                            background: #28a745;
+                            color: white;
+                            padding: 1rem 1.5rem;
+                            border-radius: 8px;
+                            z-index: 1001;
+                            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+                        `;
+                        notification.innerHTML = `<i class="fas fa-check"></i> ${data.message}`;
+                        document.body.appendChild(notification);
+                        
+                        setTimeout(() => {
+                            notification.remove();
+                        }, 3000);
+                    } else {
+                        alert('Erro: ' + data.error);
+                    }
+                })
+                .catch(error => {
+                    console.error('Erro:', error);
+                    alert('Erro ao salvar apoiador. Tente novamente.');
+                })
+                .finally(() => {
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                });
+            });
+        });
+
+        // Preview de imagem para apoiadores
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('apoiadorImagem').addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        const imagemAtual = document.getElementById('imagemAtualApoiador');
+                        imagemAtual.src = e.target.result;
+                        document.getElementById('imagemPreviewApoiador').style.display = 'block';
+                        document.getElementById('removerImagemFlagApoiador').value = '0';
                     };
                     reader.readAsDataURL(file);
                 }
