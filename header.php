@@ -45,11 +45,10 @@ function seminario_default_menu() {
     echo '<a href="#evento" class="nav-link">Evento</a>';
     echo '<a href="#programacao" class="nav-link">Programação</a>';
     echo '<a href="#palestrantes" class="nav-link">Palestrantes</a>';
-    echo '<a href="#exposicao" class="nav-link">Expositores</a>';
     echo '<a href="#apoiadores" class="nav-link">Apoiadores</a>';
-    echo '<a href="#contato" class="nav-link">Contato</a>';
-    echo '<a href="' . esc_url(get_page_link(get_page_by_path('patrocinio')->ID ?? '#')) . '" class="nav-link">Patrocínio</a>';
+    echo '<a href="#exposicao" class="nav-link">Expositores</a>';
     echo '<a href="#como-chegar" class="nav-link">Como Chegar</a>';
+    echo '<a href="#sobre-sindcine" class="nav-link">Sobre o Sindcine</a>';
     echo '<a href="#cadastro" class="nav-link btn-cadastro">Inscreva-se</a>';
     echo '</div>';
 }

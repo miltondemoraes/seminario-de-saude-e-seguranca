@@ -115,7 +115,7 @@ function seminario_handle_registration() {
     $empresa = sanitize_text_field($_POST['empresa']);
     $cargo = sanitize_text_field($_POST['cargo']);
     $experiencia = sanitize_text_field($_POST['experiencia']);
-    $newsletter = isset($_POST['newsletter']) ? 1 : 0;
+    $newsletter = !empty($_POST['newsletter']) && $_POST['newsletter'] == '1' ? 1 : 0;
     
     if(empty($nome) || empty($email) || empty($telefone) || empty($experiencia)) {
         wp_send_json_error('Campos obrigatórios não preenchidos');
@@ -398,6 +398,29 @@ function seminario_gerencia_page() {
                     }
                 }
                 
+                // Inverter array para mostrar mais recentes primeiro - ORDENAR POR DATA
+                if (!empty($inscricoes)) {
+                    // Ordenar por data/hora decrescente (mais recente primeiro)
+                    usort($inscricoes, function($a, $b) {
+                        // Converter data brasileira DD/MM/YYYY HH:MM para timestamp
+                        $dataA = DateTime::createFromFormat('d/m/Y H:i', $a['data']);
+                        $dataB = DateTime::createFromFormat('d/m/Y H:i', $b['data']);
+                        
+                        if ($dataA && $dataB) {
+                            // Ordem DECRESCENTE: maior timestamp primeiro (mais recente)
+                            // Se A > B, retorna -1 (A vem antes)
+                            // Se B > A, retorna 1 (B vem antes)
+                            $timestampA = $dataA->getTimestamp();
+                            $timestampB = $dataB->getTimestamp();
+                            
+                            if ($timestampA > $timestampB) return -1;  // A mais recente, vem primeiro
+                            if ($timestampA < $timestampB) return 1;   // B mais recente, vem primeiro
+                            return 0;
+                        }
+                        return 0;
+                    });
+                }
+                
                 $total_inscricoes = count($inscricoes);
                 $com_newsletter = count(array_filter($inscricoes, function($i) { return $i['newsletter'] === 'Sim'; }));
                 ?>
@@ -437,7 +460,7 @@ function seminario_gerencia_page() {
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php foreach (array_reverse($inscricoes) as $inscricao): ?>
+                                <?php foreach ($inscricoes as $inscricao): ?>
                                     <tr>
                                         <td><?php echo htmlspecialchars($inscricao['data']); ?></td>
                                         <td><?php echo htmlspecialchars($inscricao['nome']); ?></td>

@@ -57,6 +57,7 @@ get_header(); ?>
                         <?php if(get_the_content()): ?>
                             <?php the_content(); ?>
                         <?php else: ?>
+                            <img src="<?php echo get_template_directory_uri(); ?>/cinemateca.jpg" alt="Cinemateca" style="width:100%;max-width:800px;height:auto;margin-bottom:2rem;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,0.1);">
                             <p>
                                 O 2º Seminário de Saúde e Segurança no Audiovisual é um evento único que reúne
                                 especialistas, profissionais e estudantes da área para discutir as melhores

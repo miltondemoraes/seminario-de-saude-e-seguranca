@@ -1155,6 +1155,8 @@
                 .then(data => {
                     if (data.success) {
                         dadosInscricoes = data.data || [];
+                        // INVERTER ORDEM - mais recentes primeiro
+                        dadosInscricoes.reverse();
                         dadosFiltrados = [...dadosInscricoes];
                         atualizarEstatisticas();
                         renderizarTabela();

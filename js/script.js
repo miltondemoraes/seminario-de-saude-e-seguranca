@@ -340,15 +340,15 @@ jQuery(document).ready(function($) {
                         <div class="success-details">
                             <div class="detail-item">
                                 <i class="fas fa-calendar"></i>
-                                <span>15 de Dezembro, 2025</span>
+                                <span>25 e 26 de Novembro, 2025</span>
                             </div>
                             <div class="detail-item">
                                 <i class="fas fa-clock"></i>
-                                <span>8h às 18h</span>
+                                <span>9h às 18h</span>
                             </div>
                             <div class="detail-item">
                                 <i class="fas fa-map-marker-alt"></i>
-                                <span>Centro de Convenções - São Paulo</span>
+                                <span>Cinemateca Brasileira - São Paulo</span>
                             </div>
                         </div>
                         <button class="modal-close-btn" onclick="closeSuccessModal()">
@@ -797,4 +797,59 @@ jQuery(document).ready(function($) {
     `;
     
     $('head').append(additionalStyles);
+    
+    // ====================================
+    // TERMS MODAL FUNCTIONALITY
+    // ====================================
+    
+    const termsModal = $('#termsModal');
+    const openTermsBtn = $('#openTermsModal');
+    const closeTermsBtn = $('#closeTermsModal');
+    const acceptTermsBtn = $('#acceptTermsBtn');
+    const termsCheckbox = $('#termos');
+    
+    // Open modal when clicking on "termos de uso" link
+    openTermsBtn.on('click', function(e) {
+        e.preventDefault();
+        termsModal.fadeIn(300);
+        $('body').css('overflow', 'hidden');
+    });
+    
+    // Close modal when clicking X button
+    closeTermsBtn.on('click', function() {
+        termsModal.fadeOut(300);
+        $('body').css('overflow', 'auto');
+    });
+    
+    // Close modal when clicking outside
+    termsModal.on('click', function(e) {
+        if ($(e.target).is('.terms-modal-overlay')) {
+            termsModal.fadeOut(300);
+            $('body').css('overflow', 'auto');
+        }
+    });
+    
+    // Accept terms - check checkbox and close modal
+    acceptTermsBtn.on('click', function() {
+        termsCheckbox.prop('checked', true);
+        termsCheckbox.removeClass('error');
+        
+        // Remove error message if exists
+        const errorElement = termsCheckbox.parent().find('.error-message');
+        errorElement.hide();
+        
+        termsModal.fadeOut(300);
+        $('body').css('overflow', 'auto');
+        
+        // Show success feedback
+        showNotification('Termos aceitos com sucesso!', 'success');
+    });
+    
+    // Close modal with ESC key
+    $(document).on('keydown', function(e) {
+        if (e.key === 'Escape' && termsModal.is(':visible')) {
+            termsModal.fadeOut(300);
+            $('body').css('overflow', 'auto');
+        }
+    });
 });
