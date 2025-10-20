@@ -16,7 +16,7 @@
                     <span class="highlight"><?php echo get_theme_mod('seminario_hero_title_line3', 'no Audiovisual'); ?></span>
                 </h1>
                 <p class="hero-description">
-                    <?php echo get_theme_mod('seminario_hero_description', 'Um evento essencial para profissionais que buscam conhecimento em práticas seguras e saudáveis na indústria audiovisual.'); ?>
+                    <?php echo get_theme_mod('seminario_hero_description', 'Serão dois dias durante os quais reuniremos especialistas em tecnologia, legislação, saúde e comportamento para discutir os seguintes temas:<br><br>• Riscos dentro de um set de filmagens<br>• Normas de segurança do audiovisual<br>• Contratação e uso de seguros<br>• Segurança em filmagens de rua<br>• Assédio e violência em filmagens<br>• Saúde física e mental'); ?>
                 </p>
                 <div class="hero-info">
                     <div class="info-item">
@@ -563,7 +563,6 @@
                             </label>
                         </div>
                         <button type="submit" class="submit-button">
-                            <i class="fas fa-user-plus"></i>
                             Confirmar Cadastro
                         </button>
                     </form>
@@ -578,7 +577,7 @@
             <div class="terms-modal-header">
                 <h2>Termo de Uso e Política de Privacidade</h2>
                 <button class="terms-modal-close" id="closeTermsModal">
-                    <i class="fas fa-times"></i>
+                    ×
                 </button>
             </div>
             <div class="terms-modal-content">
@@ -610,7 +609,6 @@
             </div>
             <div class="terms-modal-footer">
                 <button class="terms-accept-btn" id="acceptTermsBtn">
-                    <i class="fas fa-check"></i>
                     Li e Concordo
                 </button>
             </div>
@@ -825,11 +823,10 @@
                     <h3>Faça Parte do Sindcine</h3>
                     <p>Junte-se a nós e contribua para um audiovisual mais seguro e profissional</p>
                     <div class="cta-buttons">
-                        <a href="#" class="cta-button">
-                            <i class="fas fa-user-plus"></i>
+                        <a href="https://infosind.com.br/Filiacao?ewid=2390945" class="cta-button" target="_blank">
                             Torne-se Associado
                         </a>
-                        <a href="#contato" class="cta-button-secondary">
+                        <a href="https://sindcine.com.br/" class="cta-button-secondary" target="_blank">
                             <i class="fas fa-info-circle"></i>
                             Saiba Mais
                         </a>

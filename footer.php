@@ -9,45 +9,26 @@
                     <p><?php echo get_theme_mod('seminario_footer_description', 'Promovendo saúde e segurança na indústria audiovisual.'); ?></p>
                 </div>
                 
-                <?php if(is_active_sidebar('footer-1') || is_active_sidebar('footer-2') || is_active_sidebar('footer-3')): ?>
-                    <?php if(is_active_sidebar('footer-1')): ?>
-                        <div class="footer-section">
-                            <?php dynamic_sidebar('footer-1'); ?>
-                        </div>
-                    <?php endif; ?>
-                    
-                    <?php if(is_active_sidebar('footer-2')): ?>
-                        <div class="footer-section">
-                            <?php dynamic_sidebar('footer-2'); ?>
-                        </div>
-                    <?php endif; ?>
-                    
-                    <?php if(is_active_sidebar('footer-3')): ?>
-                        <div class="footer-section">
-                            <?php dynamic_sidebar('footer-3'); ?>
-                        </div>
-                    <?php endif; ?>
-                <?php else: ?>
-                    <div class="footer-section">
-                        <h3>Contato</h3>
-                        <div class="contact-info">
-                            <p><i class="fas fa-envelope"></i> contato@seminarioav.com.br</p>
-                            <p><i class="fas fa-phone"></i> (11) 9999-9999</p>
-                        </div>
+                <div class="footer-section">
+                    <h3><?php echo get_theme_mod('seminario_footer_contact_title', 'Contato Sindcine'); ?></h3>
+                    <div class="contact-info">
+                        <p><i class="fas fa-phone"></i> <?php echo get_theme_mod('seminario_footer_phone', '(011) 5539 0955'); ?></p>
+                        <p><i class="fas fa-envelope"></i> <?php echo get_theme_mod('seminario_footer_email', 'contato@sindcine.com.br'); ?></p>
                     </div>
-                    <div class="footer-section">
-                        <h3>Redes Sociais</h3>
-                        <div class="social-links">
-                            <a href="#"><i class="fab fa-facebook"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                            <a href="#"><i class="fab fa-linkedin"></i></a>
-                            <a href="#"><i class="fab fa-youtube"></i></a>
-                        </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3><?php echo get_theme_mod('seminario_footer_participate_title', 'Participe'); ?></h3>
+                    <div class="footer-links">
+                        <p><a href="<?php echo get_theme_mod('seminario_footer_link1_url', '#cadastro'); ?>"><i class="fas fa-user-plus"></i> <?php echo get_theme_mod('seminario_footer_link1_text', 'Inscreva-se no Evento'); ?></a></p>
+                        <p><a href="<?php echo get_theme_mod('seminario_footer_link2_url', 'mailto:contato@sindcine.com.br?subject=Interesse em ser Expositor'); ?>"><i class="fas fa-user-plus"></i> <?php echo get_theme_mod('seminario_footer_link2_text', 'Torne-se Expositor'); ?></a></p>
+                        <p><a href="<?php echo get_theme_mod('seminario_footer_link3_url', 'https://sindcine.com.br/'); ?>" target="_blank"><i class="fas fa-info-circle"></i> <?php echo get_theme_mod('seminario_footer_link3_text', 'Sobre o Sindcine'); ?></a></p>
                     </div>
-                <?php endif; ?>
+                </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; <?php echo date('Y'); ?> 2º Seminário de Saúde e Segurança no Audiovisual. Todos os direitos reservados.</p>
+                <p>&copy; <?php echo date('Y'); ?> <?php echo get_theme_mod('seminario_footer_copyright', '2º Seminário de Saúde e Segurança no Audiovisual. Todos os direitos reservados.'); ?></p>
+                <p class="developer-credit">Desenvolvido por <a href="https://sepoltech.com.br/site/" target="_blank" rel="noopener">sepolTECH</a></p>
             </div>
         </div>
     </footer>

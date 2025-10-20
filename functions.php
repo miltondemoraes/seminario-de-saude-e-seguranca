@@ -1226,6 +1226,136 @@ function seminario_customize_register($wp_customize) {
         'section'  => 'seminario_location',
         'type'     => 'text',
     ));
+    
+    // ====================================
+    // FOOTER SETTINGS
+    // ====================================
+    
+    $wp_customize->add_section('seminario_footer', array(
+        'title'    => 'Rodapé',
+        'priority' => 160,
+    ));
+    
+    // Título da seção de contato
+    $wp_customize->add_setting('seminario_footer_contact_title', array(
+        'default' => 'Contato Sindcine',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('seminario_footer_contact_title', array(
+        'label'    => 'Título da Seção de Contato',
+        'section'  => 'seminario_footer',
+        'type'     => 'text',
+    ));
+    
+    // Telefone
+    $wp_customize->add_setting('seminario_footer_phone', array(
+        'default' => '(011) 5539 0955',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('seminario_footer_phone', array(
+        'label'    => 'Telefone',
+        'section'  => 'seminario_footer',
+        'type'     => 'text',
+    ));
+    
+    // Email
+    $wp_customize->add_setting('seminario_footer_email', array(
+        'default' => 'contato@sindcine.com.br',
+        'sanitize_callback' => 'sanitize_email',
+    ));
+    $wp_customize->add_control('seminario_footer_email', array(
+        'label'    => 'Email',
+        'section'  => 'seminario_footer',
+        'type'     => 'email',
+    ));
+    
+    // Título da seção Participe
+    $wp_customize->add_setting('seminario_footer_participate_title', array(
+        'default' => 'Participe',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('seminario_footer_participate_title', array(
+        'label'    => 'Título da Seção Participe',
+        'section'  => 'seminario_footer',
+        'type'     => 'text',
+    ));
+    
+    // Link 1 - Texto
+    $wp_customize->add_setting('seminario_footer_link1_text', array(
+        'default' => 'Inscreva-se no Evento',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('seminario_footer_link1_text', array(
+        'label'    => 'Link 1 - Texto',
+        'section'  => 'seminario_footer',
+        'type'     => 'text',
+    ));
+    
+    // Link 1 - URL
+    $wp_customize->add_setting('seminario_footer_link1_url', array(
+        'default' => '#cadastro',
+        'sanitize_callback' => 'esc_url_raw',
+    ));
+    $wp_customize->add_control('seminario_footer_link1_url', array(
+        'label'    => 'Link 1 - URL',
+        'section'  => 'seminario_footer',
+        'type'     => 'url',
+    ));
+    
+    // Link 2 - Texto
+    $wp_customize->add_setting('seminario_footer_link2_text', array(
+        'default' => 'Torne-se Expositor',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('seminario_footer_link2_text', array(
+        'label'    => 'Link 2 - Texto',
+        'section'  => 'seminario_footer',
+        'type'     => 'text',
+    ));
+    
+    // Link 2 - URL
+    $wp_customize->add_setting('seminario_footer_link2_url', array(
+        'default' => 'mailto:contato@sindcine.com.br?subject=Interesse em ser Expositor',
+        'sanitize_callback' => 'esc_url_raw',
+    ));
+    $wp_customize->add_control('seminario_footer_link2_url', array(
+        'label'    => 'Link 2 - URL',
+        'section'  => 'seminario_footer',
+        'type'     => 'url',
+    ));
+    
+    // Link 3 - Texto
+    $wp_customize->add_setting('seminario_footer_link3_text', array(
+        'default' => 'Sobre o Sindcine',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('seminario_footer_link3_text', array(
+        'label'    => 'Link 3 - Texto',
+        'section'  => 'seminario_footer',
+        'type'     => 'text',
+    ));
+    
+    // Link 3 - URL
+    $wp_customize->add_setting('seminario_footer_link3_url', array(
+        'default' => 'https://sindcine.com.br/',
+        'sanitize_callback' => 'esc_url_raw',
+    ));
+    $wp_customize->add_control('seminario_footer_link3_url', array(
+        'label'    => 'Link 3 - URL',
+        'section'  => 'seminario_footer',
+        'type'     => 'url',
+    ));
+    
+    // Copyright
+    $wp_customize->add_setting('seminario_footer_copyright', array(
+        'default' => '2º Seminário de Saúde e Segurança no Audiovisual. Todos os direitos reservados.',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('seminario_footer_copyright', array(
+        'label'    => 'Texto de Copyright',
+        'section'  => 'seminario_footer',
+        'type'     => 'text',
+    ));
 }
 add_action('customize_register', 'seminario_customize_register');
 

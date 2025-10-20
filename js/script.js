@@ -330,7 +330,7 @@ jQuery(document).ready(function($) {
                 <div class="success-modal">
                     <div class="success-modal-content">
                         <div class="success-icon">
-                            <i class="fas fa-check-circle"></i>
+                            ✓
                         </div>
                         <h3>Cadastro Realizado com Sucesso!</h3>
                         <p>
@@ -388,9 +388,12 @@ jQuery(document).ready(function($) {
                 }
                 
                 .success-icon {
-                    font-size: 4rem;
+                    font-size: 5rem;
                     color: #27ae60;
                     margin-bottom: 1.5rem;
+                    font-weight: bold;
+                    line-height: 1;
+                    font-family: Arial, sans-serif;
                 }
                 
                 .success-modal h3 {

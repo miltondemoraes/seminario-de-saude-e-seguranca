@@ -822,6 +822,35 @@ section {
     width: 20px;
 }
 
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.footer-links p {
+    margin: 0;
+}
+
+.footer-links a {
+    color: var(--text-white);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--primary-yellow);
+    transform: translateX(5px);
+}
+
+.footer-links i {
+    color: var(--primary-yellow);
+    width: 20px;
+}
+
 .social-links {
     display: flex;
     gap: 1rem;
@@ -843,6 +872,28 @@ section {
     padding-top: 2rem;
     text-align: center;
     color: var(--text-gray);
+}
+
+.footer-bottom p {
+    margin: 0.5rem 0;
+}
+
+.developer-credit {
+    font-size: 0.9rem;
+    color: var(--text-gray);
+    margin-top: 0.5rem;
+}
+
+.developer-credit a {
+    color: var(--primary-yellow);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.developer-credit a:hover {
+    color: var(--accent-yellow);
+    text-decoration: underline;
 }
 
 /* WordPress Form Styles */
@@ -2600,16 +2651,19 @@ html {
 .terms-modal-close {
     background: none;
     border: none;
-    font-size: 1.5rem;
+    font-size: 2rem;
     color: var(--primary-black);
     cursor: pointer;
     padding: 0.5rem;
     line-height: 1;
     transition: transform 0.3s ease;
+    font-weight: 300;
+    font-family: Arial, sans-serif;
 }
 
 .terms-modal-close:hover {
     transform: rotate(90deg);
+    color: #666;
 }
 
 .terms-modal-content {
