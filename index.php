@@ -53,10 +53,18 @@
                 <div class="about-text">
                     <img src="<?php echo get_template_directory_uri(); ?>/cinemateca.jpg" alt="Cinemateca" style="width:100%;max-width:800px;height:auto;margin-bottom:2rem;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,0.1);">
                     <p>
-                        <?php echo get_theme_mod('seminario_about_text1', 'O 2º Seminário de Saúde e Segurança no Audiovisual é um evento único que reúne especialistas, profissionais e estudantes da área para discutir as melhores práticas em segurança ocupacional e bem-estar no setor audiovisual.'); ?>
+                        <?php echo get_theme_mod('seminario_about_text1', 'Com o objetivo de melhorar as condições de trabalho e proteger a integridade e a vida dos técnicos do audiovisual, o Sindcine promoverá o II Seminário de Saúde e Segurança em Filmagens, dias 25 e 26 de novembro, na Cinemateca Brasileira em São Paulo.'); ?>
                     </p>
                     <p>
-                        <?php echo get_theme_mod('seminario_about_text2', 'Durante um dia completo de palestras, workshops e networking, você terá acesso a conteúdos exclusivos sobre ergonomia, segurança em sets de filmagem, prevenção de acidentes e muito mais.'); ?>
+                        <?php echo get_theme_mod('seminario_about_text2', 'Serão dois dias durante os quais reuniremos especialistas em tecnologia, legislação, saúde e comportamento para discutir os seguintes temas:'); ?>
+                    </p>
+                    <p>
+                        • Riscos dentro de um set de filmagens<br>
+                        • Normas de segurança do audiovisual<br>
+                        • Contratação e uso de seguros<br>
+                        • Segurança em filmagens de rua<br>
+                        • Assédio e violência em filmagens<br>
+                        • Saúde física e mental
                     </p>
                 </div>
                 <div class="stats">
