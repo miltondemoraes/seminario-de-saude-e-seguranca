@@ -5,7 +5,8 @@
         "descricao": "Equipamentos de prote\u00e7\u00e3o individual especializados para audiovisual e seguran\u00e7a",
         "stand": "Estande A1",
         "imagem": "",
-        "icone": "fas fa-building"
+        "icone": "fas fa-building",
+        "link": ""
     },
     {
         "id": 2,
@@ -13,7 +14,8 @@
         "descricao": "M\u00f3veis ergon\u00f4micos e solu\u00e7\u00f5es para est\u00fadios",
         "stand": "Estande A2",
         "imagem": "",
-        "icone": "fas fa-shield-alt"
+        "icone": "fas fa-shield-alt",
+        "link": "https:\/\/sinmedal.com\/"
     },
     {
         "id": 3,
@@ -21,7 +23,8 @@
         "descricao": "Programas de bem-estar e sa\u00fade ocupacional. Excelente",
         "stand": "Estande A3",
         "imagem": "",
-        "icone": "fas fa-heartbeat"
+        "icone": "fas fa-heartbeat",
+        "link": ""
     },
     {
         "id": 4,
@@ -29,7 +32,8 @@
         "descricao": "Tecnologia em monitoramento de seguran\u00e7a em sets",
         "stand": "Estande B1",
         "imagem": "",
-        "icone": "fas fa-tools"
+        "icone": "fas fa-tools",
+        "link": ""
     },
     {
         "id": 5,
@@ -37,7 +41,8 @@
         "descricao": "Kits de primeiros socorros e treinamentos de emerg\u00eancia",
         "stand": "Estande B2",
         "imagem": "",
-        "icone": "fas fa-first-aid"
+        "icone": "fas fa-first-aid",
+        "link": ""
     },
     {
         "id": 6,
@@ -45,7 +50,8 @@
         "descricao": "Certifica\u00e7\u00f5es e auditorias em seguran\u00e7a audiovisual",
         "stand": "Estande B3",
         "imagem": "",
-        "icone": "fas fa-certificate"
+        "icone": "fas fa-certificate",
+        "link": ""
     },
     {
         "id": 7,
@@ -53,7 +59,8 @@
         "descricao": "Isolamento ac\u00fastico e prote\u00e7\u00e3o auditiva profissional",
         "stand": "Estande C1",
         "imagem": "",
-        "icone": "fas fa-volume-up"
+        "icone": "fas fa-volume-up",
+        "link": ""
     },
     {
         "id": 8,
@@ -61,7 +68,8 @@
         "descricao": "Equipamentos de ilumina\u00e7\u00e3o segura e eficiente",
         "stand": "Estande C2",
         "imagem": "",
-        "icone": "fas fa-lightbulb"
+        "icone": "fas fa-lightbulb",
+        "link": ""
     },
     {
         "id": 9,
@@ -69,7 +77,8 @@
         "descricao": "Sistemas de seguran\u00e7a e monitoramento para produ\u00e7\u00f5es",
         "stand": "Estande C3",
         "imagem": "",
-        "icone": "fas fa-video"
+        "icone": "fas fa-video",
+        "link": ""
     },
     {
         "id": 10,
@@ -77,7 +86,8 @@
         "descricao": "Solu\u00e7\u00f5es sustent\u00e1veis e eco-friendly para audiovisual",
         "stand": "Estande D1",
         "imagem": "",
-        "icone": "fas fa-leaf"
+        "icone": "fas fa-leaf",
+        "link": ""
     },
     {
         "id": 11,
@@ -85,7 +95,8 @@
         "descricao": "Servi\u00e7os de sa\u00fade ocupacional especializados",
         "stand": "Estande D2",
         "imagem": "",
-        "icone": "fas fa-user-md"
+        "icone": "fas fa-user-md",
+        "link": ""
     },
     {
         "id": 12,
@@ -93,6 +104,7 @@
         "descricao": "Equipamentos de resgate e emerg\u00eancia em sets",
         "stand": "Estande D3",
         "imagem": "",
-        "icone": "fas fa-ambulance"
+        "icone": "fas fa-ambulance",
+        "link": ""
     }
 ]

@@ -649,6 +649,12 @@
                                 </div>
                                 
                                 <div class="form-group">
+                                    <label class="form-label">Link (URL)</label>
+                                    <input type="url" id="expositorLink" name="link" class="form-input" placeholder="https://exemplo.com">
+                                    <small style="color: #666; font-size: 0.9rem;">Link do site ou página do expositor</small>
+                                </div>
+                                
+                                <div class="form-group">
                                     <label class="form-label">Imagem do Expositor</label>
                                     <input type="file" id="expositorImagem" name="imagem" class="form-input" accept="image/*">
                                     <small style="color: #666; font-size: 0.9rem;">Formatos aceitos: JPG, PNG, GIF, WebP (máx. 5MB)</small>
@@ -1452,6 +1458,7 @@
             document.getElementById('expositorNome').value = expositor.nome;
             document.getElementById('expositorDescricao').value = expositor.descricao;
             document.getElementById('expositorStand').value = expositor.stand;
+            document.getElementById('expositorLink').value = expositor.link || '';
 
             // Mostrar imagem atual se existir
             const imagemPreview = document.getElementById('imagemPreview');

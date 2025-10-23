@@ -11,7 +11,7 @@
         <div class="container">
             <nav class="nav">
                 <div class="logo">
-                    <span class="logo-text">SSAD</span>
+                    <span class="logo-text">2º Sem. SSAV</span>
                 </div>
                 <?php
                 wp_nav_menu(array(

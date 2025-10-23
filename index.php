@@ -479,7 +479,12 @@
                         </div>
                         <h3 class="exhibitor-name"><?php echo $expositor['nome']; ?></h3>
                         <p class="exhibitor-description"><?php echo $expositor['descricao']; ?></p>
-                        <div class="exhibitor-booth"><?php echo $expositor['stand']; ?></div>
+                        <?php if (!empty($expositor['link'])) : ?>
+                            <a href="<?php echo esc_url($expositor['link']); ?>" target="_blank" rel="noopener noreferrer" class="exhibitor-link">
+                                <i class="fas fa-globe"></i>
+                                Saiba Mais
+                            </a>
+                        <?php endif; ?>
                     </div>
                     <?php endforeach; ?>
                 </div>

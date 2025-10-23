@@ -17,12 +17,12 @@ if (!is_dir(dirname($data_file))) mkdir(dirname($data_file), 0777, true);
 
 // Dados padrão
 $default_data = [
-    ['id' => 1, 'nome' => 'TechSafety Pro', 'descricao' => 'Equipamentos de proteção individual especializados para audiovisual', 'stand' => 'Estande A1', 'imagem' => '', 'icone' => 'fas fa-building'],
-    ['id' => 2, 'nome' => 'ErgoMedia Solutions', 'descricao' => 'Móveis ergonômicos e soluções para estúdios', 'stand' => 'Estande A2', 'imagem' => '', 'icone' => 'fas fa-shield-alt'],
-    ['id' => 3, 'nome' => 'WellBeing Media', 'descricao' => 'Programas de bem-estar e saúde ocupacional', 'stand' => 'Estande A3', 'imagem' => '', 'icone' => 'fas fa-heartbeat'],
-    ['id' => 4, 'nome' => 'AudioSafe Tech', 'descricao' => 'Tecnologia em monitoramento de segurança em sets', 'stand' => 'Estande B1', 'imagem' => '', 'icone' => 'fas fa-tools'],
-    ['id' => 5, 'nome' => 'Emergency AV', 'descricao' => 'Kits de primeiros socorros e treinamentos de emergência', 'stand' => 'Estande B2', 'imagem' => '', 'icone' => 'fas fa-first-aid'],
-    ['id' => 6, 'nome' => 'CertifiAV', 'descricao' => 'Certificações e auditorias em segurança audiovisual', 'stand' => 'Estande B3', 'imagem' => '', 'icone' => 'fas fa-certificate']
+    ['id' => 1, 'nome' => 'TechSafety Pro', 'descricao' => 'Equipamentos de proteção individual especializados para audiovisual', 'stand' => 'Estande A1', 'imagem' => '', 'icone' => 'fas fa-building', 'link' => ''],
+    ['id' => 2, 'nome' => 'ErgoMedia Solutions', 'descricao' => 'Móveis ergonômicos e soluções para estúdios', 'stand' => 'Estande A2', 'imagem' => '', 'icone' => 'fas fa-shield-alt', 'link' => ''],
+    ['id' => 3, 'nome' => 'WellBeing Media', 'descricao' => 'Programas de bem-estar e saúde ocupacional', 'stand' => 'Estande A3', 'imagem' => '', 'icone' => 'fas fa-heartbeat', 'link' => ''],
+    ['id' => 4, 'nome' => 'AudioSafe Tech', 'descricao' => 'Tecnologia em monitoramento de segurança em sets', 'stand' => 'Estande B1', 'imagem' => '', 'icone' => 'fas fa-tools', 'link' => ''],
+    ['id' => 5, 'nome' => 'Emergency AV', 'descricao' => 'Kits de primeiros socorros e treinamentos de emergência', 'stand' => 'Estande B2', 'imagem' => '', 'icone' => 'fas fa-first-aid', 'link' => ''],
+    ['id' => 6, 'nome' => 'CertifiAV', 'descricao' => 'Certificações e auditorias em segurança audiovisual', 'stand' => 'Estande B3', 'imagem' => '', 'icone' => 'fas fa-certificate', 'link' => '']
 ];
 
 // Carregar dados
@@ -43,6 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['action'] === 'editar') {
     $nome = $_POST['nome'];
     $descricao = $_POST['descricao'];
     $stand = $_POST['stand'];
+    $link = isset($_POST['link']) ? $_POST['link'] : '';
     
     // Encontrar o expositor
     foreach ($expositores as &$exp) {
@@ -50,6 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['action'] === 'editar') {
             $exp['nome'] = $nome;
             $exp['descricao'] = $descricao;
             $exp['stand'] = $stand;
+            $exp['link'] = $link;
             
             // Upload de imagem
             if (isset($_FILES['imagem']) && $_FILES['imagem']['error'] === 0) {
