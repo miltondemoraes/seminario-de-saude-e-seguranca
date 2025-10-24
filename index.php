@@ -481,7 +481,7 @@
                         <p class="exhibitor-description"><?php echo $expositor['descricao']; ?></p>
                         <?php if (!empty($expositor['link'])) : ?>
                             <a href="<?php echo esc_url($expositor['link']); ?>" target="_blank" rel="noopener noreferrer" class="exhibitor-link">
-                                <i class="fas fa-globe"></i>
+                                <span class="exhibitor-link-icon">🌐</span>
                                 Saiba Mais
                             </a>
                         <?php endif; ?>
