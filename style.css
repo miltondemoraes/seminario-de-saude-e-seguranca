@@ -546,6 +546,21 @@ section {
     line-height: 1.6;
 }
 
+.timeline-item.highlight {
+    background: rgba(255, 215, 0, 0.05);
+    padding: 1.5rem;
+    border-radius: 10px;
+    border-left: 4px solid var(--primary-yellow);
+}
+
+.timeline-item.highlight .timeline-content h3 {
+    color: var(--primary-yellow);
+}
+
+.timeline-item.highlight .timeline-content p {
+    color: #e0e0e0;
+}
+
 /* Dual Timeline Layout */
 .program-container {
     display: grid;
@@ -761,6 +776,84 @@ section {
 .checkbox-label input[type="checkbox"] {
     width: auto;
     margin: 0;
+}
+
+/* Palestras Group Styles */
+.palestras-group {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 2px solid #e9ecef;
+}
+
+.palestras-label {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--primary-black);
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.palestras-subtitle {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+.palestra-option {
+    background: white;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 0.75rem;
+    border: 2px solid #e9ecef;
+    transition: all 0.3s ease;
+}
+
+.palestra-option:hover {
+    border-color: var(--primary-yellow);
+    box-shadow: 0 4px 12px rgba(255, 215, 0, 0.1);
+}
+
+.palestra-option .checkbox-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin: 0;
+}
+
+.palestra-info {
+    flex: 1;
+    line-height: 1.6;
+}
+
+.palestra-info strong {
+    color: var(--primary-black);
+    font-size: 1rem;
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+.palestra-descricao {
+    color: #333;
+    font-weight: 600;
+    font-size: 0.95rem;
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+.palestra-palestrantes {
+    color: #666;
+    font-size: 0.85rem;
+    font-style: italic;
+    display: block;
+}
+
+.palestra-option input[type="checkbox"]:checked ~ .palestra-info {
+    color: var(--primary-black);
+}
+
+.palestra-option input[type="checkbox"]:checked {
+    accent-color: var(--primary-yellow);
 }
 
 .terms-link {

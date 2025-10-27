@@ -97,72 +97,180 @@
             <div class="program-container">
                 <!-- Dia 1 -->
                 <div class="program-day">
-                    <h3 class="day-title">Dia 1 - <?php echo get_theme_mod('seminario_program_day1_date', '25/11'); ?></h3>
+                    <h3 class="day-title">1º Dia - 25 de Novembro de 2025</h3>
                     <div class="program-timeline">
-                        <?php 
-                        // Valores padrão para a timeline do Dia 1
-                        $timeline_day1_defaults = array(
-                            1 => array('time' => '09:00 - 09:50', 'title' => 'Credenciamento', 'description' => 'Recepção dos participantes'),
-                            2 => array('time' => '09:50 - 10:00', 'title' => 'Abertura do Seminário', 'description' => 'Presidente do Sindcine - Sonia Santana'),
-                            3 => array('time' => '10:00 - 10:30', 'title' => 'Mesa 1 - Conceituação de Risco / Condutas de Risco', 'description' => 'Conceituação de risco, boas práticas e legislação'),
-                            4 => array('time' => '10:30 - 11:00', 'title' => 'Coffee Break', 'description' => 'Intervalo para networking'),
-                            5 => array('time' => '11:00 - 13:00', 'title' => 'Continuação Mesa 1', 'description' => 'Conceituação de risco, boas práticas e legislação'),
-                            6 => array('time' => '13:00 - 14:30', 'title' => 'Almoço', 'description' => 'Intervalo para refeição'),
-                            7 => array('time' => '14:30 - 16:00', 'title' => 'Mesa 2 - Riscos Específicos e Riscos Iminentes', 'description' => 'Riscos específicos na produção, jornadas excessivas, filmagens em vias públicas'),
-                            8 => array('time' => '16:00 - 16:30', 'title' => 'Coffee Break', 'description' => 'Intervalo para networking'),
-                            9 => array('time' => '16:30 - 19:30', 'title' => 'Continuação Mesa 2', 'description' => 'Riscos específicos na produção, jornadas excessivas, filmagens em vias públicas'),
-                            10 => array('time' => '19:30', 'title' => 'Encerramento', 'description' => 'Encerramento do primeiro dia')
-                        );
-                        
-                        for ($i = 1; $i <= 10; $i++): 
-                            $time = get_theme_mod("seminario_program_day1_item{$i}_time", $timeline_day1_defaults[$i]['time']);
-                            $title = get_theme_mod("seminario_program_day1_item{$i}_title", $timeline_day1_defaults[$i]['title']);
-                            $description = get_theme_mod("seminario_program_day1_item{$i}_description", $timeline_day1_defaults[$i]['description']);
-                            ?>
-                            <div class="timeline-item">
-                                <div class="timeline-time"><?php echo esc_html($time); ?></div>
-                                <div class="timeline-content">
-                                    <h3><?php echo esc_html($title); ?></h3>
-                                    <p><?php echo esc_html($description); ?></p>
-                                </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">09:00 - 09:50</div>
+                            <div class="timeline-content">
+                                <h3>Credenciamento</h3>
+                                <p>Recepção dos participantes</p>
                             </div>
-                        <?php endfor; ?>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-time">09:50</div>
+                            <div class="timeline-content">
+                                <h3>Fala de Abertura do Seminário</h3>
+                                <p><strong>Presidente do SINDCINE - Sonia Santana</strong></p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item highlight">
+                            <div class="timeline-time">10:00</div>
+                            <div class="timeline-content">
+                                <h3>Mesa 1 - Conceituação de Risco/Condutas de Risco</h3>
+                                <p>Nesta mesa, pretendemos conceituar o risco de uma forma geral, bem como demonstrar práticas para mitigar a exposição ao perigo. Também vamos tratar da questão da conscientização dos técnicos. Além disso, será abordada a legislação relativa à segurança do trabalhador.</p>
+                                <p><strong>Mediador:</strong> Flávia Guerra</p>
+                                <p><strong>Debatedores:</strong><br>
+                                • Pedro Tourinho – Fundacentro (30')</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-time">10:30</div>
+                            <div class="timeline-content">
+                                <h3>Coffee Break</h3>
+                                <p>Intervalo para networking</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item highlight">
+                            <div class="timeline-time">11:00</div>
+                            <div class="timeline-content">
+                                <h3>Continuação Mesa 1</h3>
+                                <p><strong>Debatedores:</strong><br>
+                                • Edson Martinho e Marcelo Mutto - Abracopel (30')<br>
+                                • Marcelo Vazzoler - Vertical Pro (30')<br>
+                                • SPcine (30')<br>
+                                • CET (30')</p>
+                                <p><strong>Abertura para Perguntas (30')</strong></p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-time">13:00</div>
+                            <div class="timeline-content">
+                                <h3>Pausa Almoço</h3>
+                                <p>Intervalo para refeição</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item highlight">
+                            <div class="timeline-time">14:30</div>
+                            <div class="timeline-content">
+                                <h3>Mesa 2 - Riscos Específicos e Riscos Iminentes em Sets de Filmagens</h3>
+                                <p>O debate tratará dos riscos específicos na produção, jornadas excessivas, filmagens em vias públicas e locais não autorizados, utilização de equipamento de proteção individual (EPIs). Profissionais de filmagens de risco, como produções subaquáticas e pilotagem de precisão, apresentarão técnicas de segurança.</p>
+                                <p><strong>Mediador:</strong> Flávia Guerra</p>
+                                <p><strong>Debatedores:</strong><br>
+                                • Poliana Brandão – Produtora de Locação (25')<br>
+                                • Max Lima – Produtor de Locação (25')<br>
+                                • Telma Fonseca - Diretora de Produção (30')<br>
+                                • Arnaldo Mesquita – Diretor de Fotografia (30')<br>
+                                • José Macedo de Medeiros (Jamelão) – Gaffer (30')<br>
+                                • Rosiane Evangelista Matias – Elétrica (30')<br>
+                                • Lucas Pupo – Especialista em Filmagens Subaquáticas (40')<br>
+                                • Agnaldo Bueno – Dublê (30')<br>
+                                • Walter Carrasco – Efeitos Armas/Bombeiro Especializado (30')<br>
+                                • Anderson de Souza – Coordenador de Ação/Piloto de Precisão<br>
+                                • Raíssa Drumond – Produtora Executiva (30')</p>
+                                <p><strong>Abertura para Perguntas (30')</strong></p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-time">19:30</div>
+                            <div class="timeline-content">
+                                <h3>Encerramento</h3>
+                                <p>Encerramento do primeiro dia</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
                 <!-- Dia 2 -->
                 <div class="program-day">
-                    <h3 class="day-title">Dia 2 - <?php echo get_theme_mod('seminario_program_day2_date', '26/11'); ?></h3>
+                    <h3 class="day-title">2º Dia - 26 de Novembro de 2025</h3>
                     <div class="program-timeline">
-                        <?php 
-                        // Valores padrão para a timeline do Dia 2
-                        $timeline_day2_defaults = array(
-                            1 => array('time' => '09:00 - 09:50', 'title' => 'Credenciamento', 'description' => 'Recepção dos participantes'),
-                            2 => array('time' => '09:50 - 10:00', 'title' => 'Abertura do Seminário', 'description' => '1º Secretário do Sindcine - Claudio Leone (Diretor de Fotografia)'),
-                            3 => array('time' => '10:00 - 10:30', 'title' => 'Mesa 1 - Cultura de Segurança no Mercado', 'description' => 'Processo de produção deve levar em conta, em todos os momentos, a questão da segurança'),
-                            4 => array('time' => '10:30 - 11:00', 'title' => 'Coffee Break', 'description' => 'Intervalo para networking'),
-                            5 => array('time' => '11:00 - 13:00', 'title' => 'Continuação Mesa 1', 'description' => 'Cultura de Segurança no Mercado'),
-                            6 => array('time' => '13:00 - 14:30', 'title' => 'Almoço', 'description' => 'Intervalo para refeição'),
-                            7 => array('time' => '14:30 - 16:00', 'title' => 'Mesa 2 - Responsabilidade Civil e Criminal/Contratação', 'description' => 'Dano, responsabilidade subjetiva, dolo e culpa, culpa concorrente, responsabilidade objetiva'),
-                            8 => array('time' => '16:00 - 16:30', 'title' => 'Coffee Break', 'description' => 'Intervalo para networking'),
-                            9 => array('time' => '16:30 - 18:00', 'title' => 'Mesa 3 - Saúde (Mental e Física), Assédio e Violência', 'description' => 'Palestrante: Izabella Camargo'),
-                            10 => array('time' => '18:00 - 18:30', 'title' => 'Entrega Selo Sindcine', 'description' => 'Cerimônia de entrega do selo'),
-                            11 => array('time' => '18:30', 'title' => 'Coquetel / Encerramento', 'description' => 'Confraternização e encerramento do evento')
-                        );
-                        
-                        for ($i = 1; $i <= 11; $i++): 
-                            $time = get_theme_mod("seminario_program_day2_item{$i}_time", $timeline_day2_defaults[$i]['time']);
-                            $title = get_theme_mod("seminario_program_day2_item{$i}_title", $timeline_day2_defaults[$i]['title']);
-                            $description = get_theme_mod("seminario_program_day2_item{$i}_description", $timeline_day2_defaults[$i]['description']);
-                            ?>
-                            <div class="timeline-item">
-                                <div class="timeline-time"><?php echo esc_html($time); ?></div>
-                                <div class="timeline-content">
-                                    <h3><?php echo esc_html($title); ?></h3>
-                                    <p><?php echo esc_html($description); ?></p>
-                                </div>
+                        <div class="timeline-item">
+                            <div class="timeline-time">09:00 - 09:50</div>
+                            <div class="timeline-content">
+                                <h3>Credenciamento</h3>
+                                <p>Recepção dos participantes</p>
                             </div>
-                        <?php endfor; ?>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-time">09:50</div>
+                            <div class="timeline-content">
+                                <h3>Fala de Abertura do Seminário</h3>
+                                <p><strong>Presidente do SINDCINE - Sonia Santana</strong><br>
+                                <strong>1º Secretário do SINDCINE - Claudio Leone (Diretor de Fotografia)</strong></p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item highlight">
+                            <div class="timeline-time">10:00</div>
+                            <div class="timeline-content">
+                                <h3>Mesa 1 - Cultura de Segurança no Mercado</h3>
+                                <p>A atitude de todos os envolvidos no processo de produção precisa levar em conta, em todos os momentos, a questão da segurança. Assim, é necessário que clientes, agências, produtoras e profissionais adotem a cultura da prevenção.</p>
+                                <p><strong>Mediadores:</strong> Sonia Santana / Claudio Leone</p>
+                                <p><strong>Debatedores:</strong><br>
+                                • Roberto Tourinho / Patricia Alexandre - SINAPRO SP (30')<br>
+                                • Paulo Dantas – Movieart (30')<br>
+                                • Esli Leal - O2 Filmes (30')<br>
+                                • Georgia Costa - Coração da Selva (30')<br>
+                                • Pingo – Produtor Executivo (30')<br>
+                                • Renata Rezende – HBO</p>
+                                <p><strong>Abertura para Perguntas (30')</strong></p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-time">13:00</div>
+                            <div class="timeline-content">
+                                <h3>Pausa Almoço</h3>
+                                <p>Intervalo para refeição</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item highlight">
+                            <div class="timeline-time">14:30</div>
+                            <div class="timeline-content">
+                                <h3>Mesa 2 - Responsabilidade Civil e Criminal/Contratação e Assédio e Violência</h3>
+                                <p>Dano, responsabilidade subjetiva, dolo e culpa, culpa concorrente, responsabilidade objetiva, quantificação do dano, danos materiais, extensão do dano, acidente ou doença profissional, incapacidade (total e permanente, total e temporária, parcial e permanente, parcial e temporária), danos morais (conceitos jurídicos envolvidos na responsabilidade do contratante). A responsabilidade criminal no caso do acidente de trabalho. Ausência do suporte do INSS e a responsabilidade direta do empregador ou contratante.</p>
+                                <p><strong>Mediador:</strong> Dr. Marcelo de Campos Mendes Pereira (Advogado SINDCINE)</p>
+                                <p><strong>Debatedores:</strong><br>
+                                • Gleice Aguillar - Corretora filmSeg (30')<br>
+                                • Dra Raquel Lemos – Advogada Especializada em Audiovisual (30')<br>
+                                • Amanda Gabriele (30')</p>
+                                <p><strong>Abertura para Perguntas (30')</strong></p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item highlight">
+                            <div class="timeline-time">16:30</div>
+                            <div class="timeline-content">
+                                <h3>Mesa 3 - Saúde Mental e Física</h3>
+                                <p><strong>Palestrante:</strong> Izabella Camargo (1h)</p>
+                                <p><strong>Abertura para Perguntas (30')</strong></p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-time">18:00</div>
+                            <div class="timeline-content">
+                                <h3>Entrega Selo Sindcine</h3>
+                                <p>Cerimônia de entrega do selo</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-time">18:30</div>
+                            <div class="timeline-content">
+                                <h3>Coquetel / Encerramento</h3>
+                                <p>Confraternização e encerramento do evento</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -561,6 +669,72 @@
                                 <option value="outros">Outros</option>
                             </select>
                         </div>
+                        
+                        <div class="form-group palestras-group">
+                            <label class="palestras-label">Palestras de Interesse (selecione uma ou mais) *</label>
+                            <p class="palestras-subtitle">Escolha as mesas das quais deseja participar:</p>
+                            
+                            <div class="palestra-option">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="palestras[]" value="mesa1_dia1">
+                                    <span class="checkmark"></span>
+                                    <span class="palestra-info">
+                                        <strong>25/11 - 10h - Mesa 1</strong><br>
+                                        <span class="palestra-descricao">Conceituação de Risco/Condutas de Risco</span><br>
+                                        <span class="palestra-palestrantes">Pedro Tourinho, Edson Martinho, Marcelo Mutto, Marcelo Vazzoler</span>
+                                    </span>
+                                </label>
+                            </div>
+                            
+                            <div class="palestra-option">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="palestras[]" value="mesa2_dia1">
+                                    <span class="checkmark"></span>
+                                    <span class="palestra-info">
+                                        <strong>25/11 - 14h30 - Mesa 2</strong><br>
+                                        <span class="palestra-descricao">Riscos Específicos e Riscos Iminentes em Sets de Filmagens</span><br>
+                                        <span class="palestra-palestrantes">Poliana Brandão, Max Lima, Telma Fonseca, Arnaldo Mesquita, José Macedo de Medeiros (Jamelão), Rosiane Evangelista Matias, Lucas Pupo, Agnaldo Bueno, Walter Carrasco, Anderson de Souza, Raíssa Drumond</span>
+                                    </span>
+                                </label>
+                            </div>
+                            
+                            <div class="palestra-option">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="palestras[]" value="mesa1_dia2">
+                                    <span class="checkmark"></span>
+                                    <span class="palestra-info">
+                                        <strong>26/11 - 10h - Mesa 1</strong><br>
+                                        <span class="palestra-descricao">Cultura de Segurança no Mercado</span><br>
+                                        <span class="palestra-palestrantes">Roberto Tourinho, Patricia Alexandre, Paulo Dantas, Esli Leal, Georgia Costa, Pingo</span>
+                                    </span>
+                                </label>
+                            </div>
+                            
+                            <div class="palestra-option">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="palestras[]" value="mesa2_dia2">
+                                    <span class="checkmark"></span>
+                                    <span class="palestra-info">
+                                        <strong>26/11 - 14h30 - Mesa 2</strong><br>
+                                        <span class="palestra-descricao">Responsabilidade Civil e Criminal/Contratação e Assédio e Violência</span><br>
+                                        <span class="palestra-palestrantes">Gleice Aguillar, Dra Raquel Lemos</span>
+                                    </span>
+                                </label>
+                            </div>
+                            
+                            <div class="palestra-option">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="palestras[]" value="mesa3_dia2">
+                                    <span class="checkmark"></span>
+                                    <span class="palestra-info">
+                                        <strong>26/11 - 16h30 - Mesa 3</strong><br>
+                                        <span class="palestra-descricao">Saúde Mental e Física</span><br>
+                                        <span class="palestra-palestrantes">Izabella Camargo</span>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                        
                         <div class="form-group checkbox-group">
                             <label class="checkbox-label">
                                 <input type="checkbox" id="newsletter" name="newsletter">

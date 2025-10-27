@@ -243,6 +243,16 @@ jQuery(document).ready(function($) {
             isFormValid = false;
         }
         
+        // Validar seleção de palestras
+        const palestrasChecked = $('input[name="palestras[]"]:checked').length;
+        if (palestrasChecked === 0) {
+            showNotification('Por favor, selecione pelo menos uma palestra', 'error');
+            $('html, body').animate({
+                scrollTop: $('.palestras-group').offset().top - 100
+            }, 500);
+            isFormValid = false;
+        }
+        
         if (isFormValid) {
             submitForm();
         } else {
@@ -252,6 +262,10 @@ jQuery(document).ready(function($) {
                     scrollTop: firstError.offset().top - 100
                 }, 500);
                 firstError.focus();
+            }
+            
+            if (palestrasChecked === 0) {
+                return; // Já mostrou a notificação acima
             }
             
             showNotification('Por favor, corrija os erros no formulário', 'error');
@@ -264,6 +278,12 @@ jQuery(document).ready(function($) {
         
         submitButton.html('<i class="fas fa-spinner fa-spin"></i> Enviando...').prop('disabled', true);
         
+        // Coletar palestras selecionadas
+        const palestras = [];
+        $('input[name="palestras[]"]:checked').each(function() {
+            palestras.push($(this).val());
+        });
+        
         const formData = {
             action: 'seminario_registration',
             nonce: $('#seminario_nonce').val(),
@@ -273,7 +293,8 @@ jQuery(document).ready(function($) {
             empresa: $('#empresa').val(),
             cargo: $('#cargo').val(),
             experiencia: $('#experiencia').val(),
-            newsletter: $('#newsletter').prop('checked') ? 1 : 0
+            newsletter: $('#newsletter').prop('checked') ? 1 : 0,
+            palestras: palestras.join(',')
         };
         
         $.ajax({

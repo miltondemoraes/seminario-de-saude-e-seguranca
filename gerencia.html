@@ -299,6 +299,25 @@
             color: #383d41;
         }
 
+        /* Palestras Styles */
+        .palestras-cell {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            max-width: 300px;
+        }
+
+        .palestra-badge {
+            display: inline-block;
+            background: #fff3cd;
+            color: #856404;
+            padding: 0.3rem 0.7rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
         /* Empty State */
         .empty-state {
             text-align: center;
@@ -588,6 +607,7 @@
                                     <th><i class="fas fa-building"></i> Empresa</th>
                                     <th><i class="fas fa-briefcase"></i> Cargo</th>
                                     <th><i class="fas fa-star"></i> Experiência</th>
+                                    <th><i class="fas fa-chalkboard-teacher"></i> Palestras</th>
                                     <th><i class="fas fa-bell"></i> Newsletter</th>
                                 </tr>
                             </thead>
@@ -1215,6 +1235,24 @@
             document.getElementById('todayDate').textContent = hoje;
         }
 
+        function formatarPalestras(palestras) {
+            if (!palestras) return '<span style="color: #999;">Nenhuma</span>';
+            
+            const palestrasMap = {
+                'mesa1_dia1': '25/11 10h - Mesa 1',
+                'mesa2_dia1': '25/11 14h30 - Mesa 2',
+                'mesa1_dia2': '26/11 10h - Mesa 1',
+                'mesa2_dia2': '26/11 14h30 - Mesa 2',
+                'mesa3_dia2': '26/11 16h30 - Mesa 3'
+            };
+            
+            const palestrasArray = palestras.split(',');
+            return palestrasArray.map(p => {
+                const nome = palestrasMap[p.trim()] || p;
+                return `<span class="palestra-badge">${nome}</span>`;
+            }).join('');
+        }
+
         function renderizarTabela() {
             const tbody = document.getElementById('inscricoesTableBody');
             const emptyState = document.getElementById('emptyState');
@@ -1236,6 +1274,11 @@
                     <td>${inscricao.empresa}</td>
                     <td>${inscricao.cargo}</td>
                     <td>${inscricao.experiencia}</td>
+                    <td>
+                        <div class="palestras-cell">
+                            ${formatarPalestras(inscricao.palestras)}
+                        </div>
+                    </td>
                     <td>
                         <span class="table-badge ${inscricao.newsletter === 'Sim' ? 'badge-success' : 'badge-secondary'}">
                             ${inscricao.newsletter === 'Sim' ? '✅ Sim' : '❌ Não'}
@@ -1270,8 +1313,8 @@
             } else {
                 // Fallback: exportar dados locais
                 const csv = [
-                    ['Data/Hora', 'Nome', 'Email', 'Telefone', 'Empresa', 'Cargo', 'Experiência', 'Newsletter'],
-                    ...dadosFiltrados.map(i => [i.data, i.nome, i.email, i.telefone, i.empresa, i.cargo, i.experiencia, i.newsletter])
+                    ['Data/Hora', 'Nome', 'Email', 'Telefone', 'Empresa', 'Cargo', 'Experiência', 'Palestras', 'Newsletter'],
+                    ...dadosFiltrados.map(i => [i.data, i.nome, i.email, i.telefone, i.empresa, i.cargo, i.experiencia, i.palestras || '', i.newsletter])
                 ].map(row => row.join(',')).join('\n');
 
                 const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });

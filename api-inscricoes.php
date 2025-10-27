@@ -32,7 +32,8 @@ function lerInscricoes() {
                     'empresa' => $dados[4],
                     'cargo' => $dados[5],
                     'experiencia' => $dados[6],
-                    'newsletter' => $dados[7]
+                    'newsletter' => $dados[7],
+                    'palestras' => isset($dados[8]) ? $dados[8] : ''
                 );
             }
         }
@@ -103,6 +104,7 @@ switch ($method) {
                     'Empresa',
                     'Cargo',
                     'Experiência',
+                    'Palestras',
                     'Newsletter'
                 ));
                 
@@ -116,6 +118,7 @@ switch ($method) {
                         $inscricao['empresa'],
                         $inscricao['cargo'],
                         $inscricao['experiencia'],
+                        $inscricao['palestras'],
                         $inscricao['newsletter']
                     ));
                 }

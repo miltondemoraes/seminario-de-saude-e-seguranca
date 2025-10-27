@@ -116,9 +116,15 @@ function seminario_handle_registration() {
     $cargo = sanitize_text_field($_POST['cargo']);
     $experiencia = sanitize_text_field($_POST['experiencia']);
     $newsletter = !empty($_POST['newsletter']) && $_POST['newsletter'] == '1' ? 1 : 0;
+    $palestras = sanitize_text_field($_POST['palestras']);
     
     if(empty($nome) || empty($email) || empty($telefone) || empty($experiencia)) {
         wp_send_json_error('Campos obrigatórios não preenchidos');
+        wp_die();
+    }
+    
+    if(empty($palestras)) {
+        wp_send_json_error('Selecione pelo menos uma palestra');
         wp_die();
     }
     
@@ -144,7 +150,7 @@ function seminario_handle_registration() {
     $horario_brasil = date('d/m/Y H:i');
     
     $data_line = sprintf(
-        "%s|%s|%s|%s|%s|%s|%s|%s\n",
+        "%s|%s|%s|%s|%s|%s|%s|%s|%s\n",
         $horario_brasil,
         str_replace('|', '-', $nome),
         str_replace('|', '-', $email),
@@ -152,7 +158,8 @@ function seminario_handle_registration() {
         str_replace('|', '-', $empresa ?: 'Não informado'),
         str_replace('|', '-', $cargo ?: 'Não informado'),
         str_replace('|', '-', $experiencia),
-        $newsletter ? 'Sim' : 'Não'
+        $newsletter ? 'Sim' : 'Não',
+        str_replace('|', '-', $palestras)
     );
     
     // MÉTODO DIRETO E SIMPLES - garantir que funcione
