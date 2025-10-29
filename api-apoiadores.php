@@ -51,6 +51,7 @@ try {
             $nome = trim($_POST['nome'] ?? '');
             $descricao = trim($_POST['descricao'] ?? '');
             $categoria = trim($_POST['categoria'] ?? '');
+            $link = trim($_POST['link'] ?? '');
 
             if (!$id || !$nome || !$descricao || !$categoria) {
                 throw new Exception('Dados obrigatórios não fornecidos');
@@ -116,6 +117,7 @@ try {
             $apoiadores[$apoiador_index]['descricao'] = $descricao;
             $apoiadores[$apoiador_index]['categoria'] = $categoria;
             $apoiadores[$apoiador_index]['imagem'] = $imagem_nome;
+            $apoiadores[$apoiador_index]['link'] = $link;
 
             // Salvar
             if (!salvarApoiadores($apoiadores_file, $apoiadores)) {

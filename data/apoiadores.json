@@ -5,7 +5,8 @@
         "descricao": "Sindicato dos Trabalhadores na Indústria Cinematográfica de São Paulo",
         "categoria": "Sindicato",
         "imagem": "",
-        "icone": "fas fa-users"
+        "icone": "fas fa-users",
+        "link": "https:\/\/www.sindcine.com.br\/"
     },
     {
         "id": 2,
@@ -13,7 +14,8 @@
         "descricao": "Organização que promove o desenvolvimento do setor de eventos",
         "categoria": "Associação",
         "imagem": "",
-        "icone": "fas fa-handshake"
+        "icone": "fas fa-handshake",
+        "link": ""
     },
     {
         "id": 3,
@@ -21,7 +23,8 @@
         "descricao": "Entidade técnico-científica para o desenvolvimento da TV brasileira",
         "categoria": "Sociedade Técnica",
         "imagem": "",
-        "icone": "fas fa-broadcast-tower"
+        "icone": "fas fa-broadcast-tower",
+        "link": ""
     },
     {
         "id": 4,
@@ -29,7 +32,8 @@
         "descricao": "Agência reguladora vinculada ao Ministério da Cultura",
         "categoria": "Órgão Público",
         "imagem": "",
-        "icone": "fas fa-film"
+        "icone": "fas fa-film",
+        "link": ""
     },
     {
         "id": 5,
@@ -37,7 +41,8 @@
         "descricao": "Representação dos profissionais de cinematografia no Brasil",
         "categoria": "Associação",
         "imagem": "",
-        "icone": "fas fa-camera"
+        "icone": "fas fa-camera",
+        "link": ""
     },
     {
         "id": 6,
@@ -45,7 +50,8 @@
         "descricao": "Órgão federal responsável pelas políticas de trabalho e emprego",
         "categoria": "Órgão Público",
         "imagem": "",
-        "icone": "fas fa-briefcase"
+        "icone": "fas fa-briefcase",
+        "link": ""
     },
     {
         "id": 7,
@@ -53,7 +59,8 @@
         "descricao": "Fundação Jorge Duprat Figueiredo de Segurança e Medicina do Trabalho",
         "categoria": "Fundação",
         "imagem": "",
-        "icone": "fas fa-shield-alt"
+        "icone": "fas fa-shield-alt",
+        "link": ""
     },
     {
         "id": 8,
@@ -61,6 +68,79 @@
         "descricao": "Serviço Brasileiro de Apoio às Micro e Pequenas Empresas",
         "categoria": "Instituição",
         "imagem": "",
-        "icone": "fas fa-chart-line"
+        "icone": "fas fa-chart-line",
+        "link": ""
+    },
+    {
+        "id": 9,
+        "nome": "ABERT - Associação Brasileira de Emissoras de Rádio e Televisão",
+        "descricao": "Entidade representante das emissoras de rádio e TV no Brasil",
+        "categoria": "Associação",
+        "imagem": "",
+        "icone": "fas fa-tower-broadcast",
+        "link": ""
+    },
+    {
+        "id": 10,
+        "nome": "SINDASP - Sindicato dos Atores",
+        "descricao": "Sindicato dos atores de São Paulo",
+        "categoria": "Sindicato",
+        "imagem": "",
+        "icone": "fas fa-masks-theater",
+        "link": ""
+    },
+    {
+        "id": 11,
+        "nome": "ABPD - Associação Brasileira de Produtoras de Conteúdo",
+        "descricao": "Organização de produtoras de conteúdo e audiovisual",
+        "categoria": "Associação",
+        "imagem": "",
+        "icone": "fas fa-video",
+        "link": ""
+    },
+    {
+        "id": 12,
+        "nome": "INSS - Instituto Nacional do Seguro Social",
+        "descricao": "Órgão responsável pela previdência social no Brasil",
+        "categoria": "Órgão Público",
+        "imagem": "",
+        "icone": "fas fa-hospital",
+        "link": ""
+    },
+    {
+        "id": 13,
+        "nome": "Cinemateca Brasileira",
+        "descricao": "Instituição dedicada à preservação e pesquisa de cinema",
+        "categoria": "Instituição",
+        "imagem": "",
+        "icone": "fas fa-film-roll",
+        "link": ""
+    },
+    {
+        "id": 14,
+        "nome": "TV Cultura",
+        "descricao": "Emissora pública de televisão de São Paulo",
+        "categoria": "Organização",
+        "imagem": "",
+        "icone": "fas fa-tv",
+        "link": ""
+    },
+    {
+        "id": 15,
+        "nome": "SPCine - Agência Paulista de Cinema",
+        "descricao": "Agência de fomento à cinematografia do Estado de São Paulo",
+        "categoria": "Órgão Público",
+        "imagem": "",
+        "icone": "fas fa-clapperboard",
+        "link": ""
+    },
+    {
+        "id": 16,
+        "nome": "Prefeitura de São Paulo - Secretaria de Cultura",
+        "descricao": "Secretaria municipal responsável pelas políticas culturais",
+        "categoria": "Órgão Público",
+        "imagem": "",
+        "icone": "fas fa-landmark",
+        "link": ""
     }
 ]

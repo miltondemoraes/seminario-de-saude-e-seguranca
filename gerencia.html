@@ -746,6 +746,12 @@
                                 </div>
                                 
                                 <div class="form-group">
+                                    <label class="form-label">Link (URL)</label>
+                                    <input type="url" id="apoiadorLink" name="link" class="form-input" placeholder="https://exemplo.com">
+                                    <small style="color: #666; font-size: 0.9rem;">Link do site ou página do apoiador</small>
+                                </div>
+                                
+                                <div class="form-group">
                                     <label class="form-label">Imagem do Apoiador</label>
                                     <input type="file" id="apoiadorImagem" name="imagem" class="form-input" accept="image/*">
                                     <small style="color: #666; font-size: 0.9rem;">Formatos aceitos: JPG, PNG, GIF, WebP (máx. 5MB)</small>
@@ -1693,6 +1699,7 @@
             document.getElementById('apoiadorNome').value = apoiador.nome;
             document.getElementById('apoiadorDescricao').value = apoiador.descricao;
             document.getElementById('apoiadorCategoria').value = apoiador.categoria;
+            document.getElementById('apoiadorLink').value = apoiador.link || '';
 
             // Mostrar imagem atual se existir
             const imagemPreview = document.getElementById('imagemPreviewApoiador');

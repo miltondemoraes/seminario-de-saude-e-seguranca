@@ -102,6 +102,51 @@ jQuery(document).ready(function($) {
         });
     }
 
+    // Initialize palestras checkbox selector
+    function initializePalestrasCheckboxes() {
+        const palestrasCheckboxes = $('.palestra-checkbox');
+        const palestrasHidden = $('#palestras-hidden');
+        const palestrasDropdownToggle = $('#palestrasDropdownToggle');
+        const palestrasDropdownPanel = $('#palestrasDropdownPanel');
+        const palestrasCount = $('#palestrasCount');
+
+        // Handle checkbox changes
+        palestrasCheckboxes.on('change', function() {
+            const selectedValues = palestrasCheckboxes.filter(':checked').map(function() {
+                return $(this).val();
+            }).get();
+            
+            palestrasHidden.val(selectedValues.join(','));
+            
+            // Update count display
+            const count = selectedValues.length;
+            if (count > 0) {
+                palestrasCount.text(count).show();
+            } else {
+                palestrasCount.hide();
+            }
+        });
+
+        // Handle dropdown toggle
+        palestrasDropdownToggle.on('click', function(e) {
+            e.preventDefault();
+            palestrasDropdownPanel.slideToggle(300);
+            palestrasDropdownToggle.toggleClass('open');
+        });
+
+        // Close dropdown when clicking outside
+        $(document).on('click', function(e) {
+            if (!$(e.target).closest('.palestras-group').length) {
+                if (palestrasDropdownPanel.is(':visible')) {
+                    palestrasDropdownPanel.slideUp(300);
+                    palestrasDropdownToggle.removeClass('open');
+                }
+            }
+        });
+    }
+
+    initializePalestrasCheckboxes();
+
     function validateField(event) {
         const field = $(event.target);
         const fieldName = field.attr('name');
@@ -243,9 +288,9 @@ jQuery(document).ready(function($) {
             isFormValid = false;
         }
         
-        // Validar seleção de palestras
-        const palestrasChecked = $('input[name="palestras[]"]:checked').length;
-        if (palestrasChecked === 0) {
+        // Validar seleção de palestras (checkboxes)
+        const palestrasSelected = $('.palestra-checkbox:checked').length;
+        if (palestrasSelected === 0) {
             showNotification('Por favor, selecione pelo menos uma palestra', 'error');
             $('html, body').animate({
                 scrollTop: $('.palestras-group').offset().top - 100
@@ -264,7 +309,7 @@ jQuery(document).ready(function($) {
                 firstError.focus();
             }
             
-            if (palestrasChecked === 0) {
+            if (palestrasSelected === 0) {
                 return; // Já mostrou a notificação acima
             }
             
@@ -278,11 +323,10 @@ jQuery(document).ready(function($) {
         
         submitButton.html('<i class="fas fa-spinner fa-spin"></i> Enviando...').prop('disabled', true);
         
-        // Coletar palestras selecionadas
-        const palestras = [];
-        $('input[name="palestras[]"]:checked').each(function() {
-            palestras.push($(this).val());
-        });
+        // Coletar palestras selecionadas a partir dos checkboxes
+        const palestras = $('.palestra-checkbox:checked').map(function() {
+            return $(this).val();
+        }).get();
         
         const formData = {
             action: 'seminario_registration',
@@ -314,6 +358,10 @@ jQuery(document).ready(function($) {
                     
                     const errorMessages = $('.error-message, .success-message');
                     errorMessages.hide();
+                    
+                    // Reset palestras hidden field and uncheck all checkboxes
+                    $('#palestras-hidden').val('');
+                    $('.palestra-checkbox').prop('checked', false);
                     
                     showSuccessModal();
                 } else {

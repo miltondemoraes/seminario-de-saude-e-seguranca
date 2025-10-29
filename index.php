@@ -360,7 +360,8 @@
                                 'descricao' => 'Sindicato dos Trabalhadores na Indústria Cinematográfica de São Paulo',
                                 'categoria' => 'Sindicato',
                                 'imagem' => '',
-                                'icone' => 'fas fa-users'
+                                'icone' => 'fas fa-users',
+                                'link' => ''
                             ],
                             [
                                 'id' => 2,
@@ -368,7 +369,8 @@
                                 'descricao' => 'Organização que promove o desenvolvimento do setor de eventos',
                                 'categoria' => 'Associação',
                                 'imagem' => '',
-                                'icone' => 'fas fa-handshake'
+                                'icone' => 'fas fa-handshake',
+                                'link' => ''
                             ],
                             [
                                 'id' => 3,
@@ -376,7 +378,8 @@
                                 'descricao' => 'Entidade técnico-científica para o desenvolvimento da TV brasileira',
                                 'categoria' => 'Sociedade Técnica',
                                 'imagem' => '',
-                                'icone' => 'fas fa-broadcast-tower'
+                                'icone' => 'fas fa-broadcast-tower',
+                                'link' => ''
                             ],
                             [
                                 'id' => 4,
@@ -384,7 +387,8 @@
                                 'descricao' => 'Agência reguladora vinculada ao Ministério da Cultura',
                                 'categoria' => 'Órgão Público',
                                 'imagem' => '',
-                                'icone' => 'fas fa-film'
+                                'icone' => 'fas fa-film',
+                                'link' => ''
                             ],
                             [
                                 'id' => 5,
@@ -392,7 +396,8 @@
                                 'descricao' => 'Representação dos profissionais de cinematografia no Brasil',
                                 'categoria' => 'Associação',
                                 'imagem' => '',
-                                'icone' => 'fas fa-camera'
+                                'icone' => 'fas fa-camera',
+                                'link' => ''
                             ],
                             [
                                 'id' => 6,
@@ -400,7 +405,8 @@
                                 'descricao' => 'Órgão federal responsável pelas políticas de trabalho e emprego',
                                 'categoria' => 'Órgão Público',
                                 'imagem' => '',
-                                'icone' => 'fas fa-briefcase'
+                                'icone' => 'fas fa-briefcase',
+                                'link' => ''
                             ],
                             [
                                 'id' => 7,
@@ -408,7 +414,8 @@
                                 'descricao' => 'Fundação Jorge Duprat Figueiredo de Segurança e Medicina do Trabalho',
                                 'categoria' => 'Fundação',
                                 'imagem' => '',
-                                'icone' => 'fas fa-shield-alt'
+                                'icone' => 'fas fa-shield-alt',
+                                'link' => ''
                             ],
                             [
                                 'id' => 8,
@@ -416,7 +423,80 @@
                                 'descricao' => 'Serviço Brasileiro de Apoio às Micro e Pequenas Empresas',
                                 'categoria' => 'Instituição',
                                 'imagem' => '',
-                                'icone' => 'fas fa-chart-line'
+                                'icone' => 'fas fa-chart-line',
+                                'link' => ''
+                            ],
+                            [
+                                'id' => 9,
+                                'nome' => 'ABERT - Associação Brasileira de Emissoras de Rádio e Televisão',
+                                'descricao' => 'Entidade representante das emissoras de rádio e TV no Brasil',
+                                'categoria' => 'Associação',
+                                'imagem' => '',
+                                'icone' => 'fas fa-tower-broadcast',
+                                'link' => ''
+                            ],
+                            [
+                                'id' => 10,
+                                'nome' => 'SINDASP - Sindicato dos Atores',
+                                'descricao' => 'Sindicato dos atores de São Paulo',
+                                'categoria' => 'Sindicato',
+                                'imagem' => '',
+                                'icone' => 'fas fa-masks-theater',
+                                'link' => ''
+                            ],
+                            [
+                                'id' => 11,
+                                'nome' => 'ABPD - Associação Brasileira de Produtoras de Conteúdo',
+                                'descricao' => 'Organização de produtoras de conteúdo e audiovisual',
+                                'categoria' => 'Associação',
+                                'imagem' => '',
+                                'icone' => 'fas fa-video',
+                                'link' => ''
+                            ],
+                            [
+                                'id' => 12,
+                                'nome' => 'INSS - Instituto Nacional do Seguro Social',
+                                'descricao' => 'Órgão responsável pela previdência social no Brasil',
+                                'categoria' => 'Órgão Público',
+                                'imagem' => '',
+                                'icone' => 'fas fa-hospital',
+                                'link' => ''
+                            ],
+                            [
+                                'id' => 13,
+                                'nome' => 'Cinemateca Brasileira',
+                                'descricao' => 'Instituição dedicada à preservação e pesquisa de cinema',
+                                'categoria' => 'Instituição',
+                                'imagem' => '',
+                                'icone' => 'fas fa-film-roll',
+                                'link' => ''
+                            ],
+                            [
+                                'id' => 14,
+                                'nome' => 'TV Cultura',
+                                'descricao' => 'Emissora pública de televisão de São Paulo',
+                                'categoria' => 'Organização',
+                                'imagem' => '',
+                                'icone' => 'fas fa-tv',
+                                'link' => ''
+                            ],
+                            [
+                                'id' => 15,
+                                'nome' => 'SPCine - Agência Paulista de Cinema',
+                                'descricao' => 'Agência de fomento à cinematografia do Estado de São Paulo',
+                                'categoria' => 'Órgão Público',
+                                'imagem' => '',
+                                'icone' => 'fas fa-clapperboard',
+                                'link' => ''
+                            ],
+                            [
+                                'id' => 16,
+                                'nome' => 'Prefeitura de São Paulo - Secretaria de Cultura',
+                                'descricao' => 'Secretaria municipal responsável pelas políticas culturais',
+                                'categoria' => 'Órgão Público',
+                                'imagem' => '',
+                                'icone' => 'fas fa-landmark',
+                                'link' => ''
                             ]
                         ];
                     }
@@ -434,6 +514,12 @@
                         <h3 class="supporter-name"><?php echo $apoiador['nome']; ?></h3>
                         <p class="supporter-description"><?php echo $apoiador['descricao']; ?></p>
                         <div class="supporter-category"><?php echo $apoiador['categoria']; ?></div>
+                        <?php if (!empty($apoiador['link'])) : ?>
+                            <a href="<?php echo esc_url($apoiador['link']); ?>" target="_blank" rel="noopener noreferrer" class="supporter-link">
+                                <span class="supporter-link-icon">🌐</span>
+                                Saiba Mais
+                            </a>
+                        <?php endif; ?>
                     </div>
                     <?php endforeach; ?>
                 </div>
@@ -672,66 +758,60 @@
                         
                         <div class="form-group palestras-group">
                             <label class="palestras-label">Palestras de Interesse (selecione uma ou mais) *</label>
-                            <p class="palestras-subtitle">Escolha as mesas das quais deseja participar:</p>
-                            
-                            <div class="palestra-option">
-                                <label class="checkbox-label">
-                                    <input type="checkbox" name="palestras[]" value="mesa1_dia1">
-                                    <span class="checkmark"></span>
-                                    <span class="palestra-info">
-                                        <strong>25/11 - 10h - Mesa 1</strong><br>
-                                        <span class="palestra-descricao">Conceituação de Risco/Condutas de Risco</span><br>
-                                        <span class="palestra-palestrantes">Pedro Tourinho, Edson Martinho, Marcelo Mutto, Marcelo Vazzoler</span>
-                                    </span>
-                                </label>
-                            </div>
-                            
-                            <div class="palestra-option">
-                                <label class="checkbox-label">
-                                    <input type="checkbox" name="palestras[]" value="mesa2_dia1">
-                                    <span class="checkmark"></span>
-                                    <span class="palestra-info">
-                                        <strong>25/11 - 14h30 - Mesa 2</strong><br>
-                                        <span class="palestra-descricao">Riscos Específicos e Riscos Iminentes em Sets de Filmagens</span><br>
-                                        <span class="palestra-palestrantes">Poliana Brandão, Max Lima, Telma Fonseca, Arnaldo Mesquita, José Macedo de Medeiros (Jamelão), Rosiane Evangelista Matias, Lucas Pupo, Agnaldo Bueno, Walter Carrasco, Anderson de Souza, Raíssa Drumond</span>
-                                    </span>
-                                </label>
-                            </div>
-                            
-                            <div class="palestra-option">
-                                <label class="checkbox-label">
-                                    <input type="checkbox" name="palestras[]" value="mesa1_dia2">
-                                    <span class="checkmark"></span>
-                                    <span class="palestra-info">
-                                        <strong>26/11 - 10h - Mesa 1</strong><br>
-                                        <span class="palestra-descricao">Cultura de Segurança no Mercado</span><br>
-                                        <span class="palestra-palestrantes">Roberto Tourinho, Patricia Alexandre, Paulo Dantas, Esli Leal, Georgia Costa, Pingo</span>
-                                    </span>
-                                </label>
-                            </div>
-                            
-                            <div class="palestra-option">
-                                <label class="checkbox-label">
-                                    <input type="checkbox" name="palestras[]" value="mesa2_dia2">
-                                    <span class="checkmark"></span>
-                                    <span class="palestra-info">
-                                        <strong>26/11 - 14h30 - Mesa 2</strong><br>
-                                        <span class="palestra-descricao">Responsabilidade Civil e Criminal/Contratação e Assédio e Violência</span><br>
-                                        <span class="palestra-palestrantes">Gleice Aguillar, Dra Raquel Lemos</span>
-                                    </span>
-                                </label>
-                            </div>
-                            
-                            <div class="palestra-option">
-                                <label class="checkbox-label">
-                                    <input type="checkbox" name="palestras[]" value="mesa3_dia2">
-                                    <span class="checkmark"></span>
-                                    <span class="palestra-info">
-                                        <strong>26/11 - 16h30 - Mesa 3</strong><br>
-                                        <span class="palestra-descricao">Saúde Mental e Física</span><br>
-                                        <span class="palestra-palestrantes">Izabella Camargo</span>
-                                    </span>
-                                </label>
+
+                            <!-- Hidden field to store comma-separated values for submission -->
+                            <input type="hidden" id="palestras-hidden" name="palestras" value="">
+
+                            <!-- Dropdown Toggle Button -->
+                            <button type="button" class="palestras-dropdown-toggle" id="palestrasDropdownToggle">
+                                <span class="dropdown-text">Selecione as palestras...</span>
+                                <span class="dropdown-count" id="palestrasCount"></span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+
+                            <!-- Collapsible Checkboxes Panel -->
+                            <div class="palestras-dropdown-panel" id="palestrasDropdownPanel" style="display: none;">
+                                <div class="palestras-options">
+                                    <label class="palestra-checkbox-item">
+                                        <input type="checkbox" class="palestra-checkbox" value="mesa1_dia1">
+                                        <span class="palestra-option-text">
+                                            <strong>Mesa 1 - 25/11 (10h)</strong>
+                                            <span class="palestra-title">Conceituação de Risco/Condutas de Risco</span>
+                                        </span>
+                                    </label>
+
+                                    <label class="palestra-checkbox-item">
+                                        <input type="checkbox" class="palestra-checkbox" value="mesa2_dia1">
+                                        <span class="palestra-option-text">
+                                            <strong>Mesa 2 - 25/11 (14h30)</strong>
+                                            <span class="palestra-title">Riscos Específicos e Riscos Iminentes em Sets</span>
+                                        </span>
+                                    </label>
+
+                                    <label class="palestra-checkbox-item">
+                                        <input type="checkbox" class="palestra-checkbox" value="mesa1_dia2">
+                                        <span class="palestra-option-text">
+                                            <strong>Mesa 1 - 26/11 (10h)</strong>
+                                            <span class="palestra-title">Cultura de Segurança no Mercado</span>
+                                        </span>
+                                    </label>
+
+                                    <label class="palestra-checkbox-item">
+                                        <input type="checkbox" class="palestra-checkbox" value="mesa2_dia2">
+                                        <span class="palestra-option-text">
+                                            <strong>Mesa 2 - 26/11 (14h30)</strong>
+                                            <span class="palestra-title">Responsabilidade Civil e Criminal/Contratação e Assédio</span>
+                                        </span>
+                                    </label>
+
+                                    <label class="palestra-checkbox-item">
+                                        <input type="checkbox" class="palestra-checkbox" value="mesa3_dia2">
+                                        <span class="palestra-option-text">
+                                            <strong>Mesa 3 - 26/11 (16h30)</strong>
+                                            <span class="palestra-title">Saúde Mental e Física</span>
+                                        </span>
+                                    </label>
+                                </div>
                             </div>
                         </div>
                         
@@ -941,81 +1021,31 @@
                 <div class="sindcine-logo-container">
                     <img src="<?php echo get_template_directory_uri(); ?>/logo_sindicine.png" alt="Logo Sindcine" class="sindcine-logo">
                 </div>
-                <h2 class="section-title"><?php echo get_theme_mod('seminario_sindcine_title', 'Sobre o Sindcine'); ?></h2>
-                <p class="section-subtitle">
-                    <?php echo get_theme_mod('seminario_sindcine_subtitle', 'Conheça o Sindicato dos Trabalhadores nas Indústrias Cinematográficas e do Audiovisual'); ?>
-                </p>
+                <h2 class="section-title">Sobre o Sindcine</h2>
             </div>
             <div class="sindcine-content">
                 <div class="sindcine-info">
                     <div class="sindcine-text">
                         <p>
-                            <?php echo get_theme_mod('seminario_sindcine_text1', 'O Sindcine é o sindicato que representa os trabalhadores da indústria cinematográfica e audiovisual, lutando por melhores condições de trabalho, segurança e bem-estar de todos os profissionais do setor.'); ?>
+                            Com 39 anos de atividade ininterrupta desde 1986, o Sindcine é a entidade que organiza e protege os direitos dos trabalhadores do cinema e audiovisual dos Estados de São Paulo, Rio Grande do Sul, Mato Grosso, Mato Grosso do Sul, Goiás, Tocantins e Distrito Federal. O Sindcine se empenha na regularização da situação profissional dos técnicos do setor de cinema e audiovisual e também da sua preparação técnica, de forma a elevar a qualidade das produções e reduzir os riscos de acidentes de trabalho. Os associados do Sindcine são tanto profissionais contratados (CLT) como autônomos (freelancers), e contam com assessoria jurídica, previdenciária entre outros benefícios.
                         </p>
                         <p>
-                            <?php echo get_theme_mod('seminario_sindcine_text2', 'Fundado com o objetivo de promover os direitos trabalhistas e a segurança ocupacional, o Sindcine tem sido um pilar fundamental na organização de eventos como este seminário, sempre focado na educação e capacitação dos profissionais.'); ?>
+                            Uma das principais lutas do Sindcine é pela implementação de práticas seguras nas produções audiovisuais, com o objetivo de preservar a integridade física e mental dos trabalhadores. Não se trata apenas de prevenir acidentes e utilizar equipamentos de proteção, mas principalmente criar uma cultura de segurança durante todo a produção, inclusive fora dos sets de filmagem. Também evitar situações de exaustão, que podem debilitar o profissional, encurtar sua carreira e levar a doenças precoces. Nossa meta é que a profissão de técnico do audiovisual ofereça qualidade de vida, saúde e segurança.
                         </p>
                     </div>
-                    <div class="sindcine-stats">
-                        <div class="stat-item">
-                            <div class="stat-number">2.500+</div>
-                            <div class="stat-label">Associados Ativos</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">15</div>
-                            <div class="stat-label">Anos de Atuação</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">50+</div>
-                            <div class="stat-label">Eventos Realizados</div>
-                        </div>
-                    </div>
                 </div>
                 
-                <div class="sindcine-mission">
-                    <h3>Nossa Missão</h3>
-                    <div class="mission-grid">
-                        <div class="mission-item">
-                            <i class="fas fa-shield-alt"></i>
-                            <div>
-                                <h4>Segurança</h4>
-                                <p>Promover práticas seguras em todos os ambientes de trabalho audiovisual</p>
-                            </div>
-                        </div>
-                        <div class="mission-item">
-                            <i class="fas fa-graduation-cap"></i>
-                            <div>
-                                <h4>Educação</h4>
-                                <p>Capacitar profissionais com conhecimento especializado e atualizado</p>
-                            </div>
-                        </div>
-                        <div class="mission-item">
-                            <i class="fas fa-handshake"></i>
-                            <div>
-                                <h4>Representação</h4>
-                                <p>Defender os direitos e interesses dos trabalhadores do audiovisual</p>
-                            </div>
-                        </div>
-                        <div class="mission-item">
-                            <i class="fas fa-network-wired"></i>
-                            <div>
-                                <h4>Networking</h4>
-                                <p>Conectar profissionais e promover o crescimento do setor</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="sindcine-cta">
-                    <h3>Faça Parte do Sindcine</h3>
-                    <p>Junte-se a nós e contribua para um audiovisual mais seguro e profissional</p>
-                    <div class="cta-buttons">
-                        <a href="https://infosind.com.br/Filiacao?ewid=2390945" class="cta-button" target="_blank">
-                            Torne-se Associado
+                <div class="sindcine-links">
+                    <h3>Para saber mais sobre o Sindcine e tornar-se um filiado, acesse nossas site e redes sociais:</h3>
+                    <div class="social-links">
+                        <a href="http://www.sindcine.com.br" target="_blank" rel="noopener noreferrer" class="social-link">
+                            <span>Nosso Site</span>
                         </a>
-                        <a href="https://sindcine.com.br/" class="cta-button-secondary" target="_blank">
-                            <i class="fas fa-info-circle"></i>
-                            Saiba Mais
+                        <a href="https://www.instagram.com/sindcine" target="_blank" rel="noopener noreferrer" class="social-link">
+                            <span>Instagram</span>
+                        </a>
+                        <a href="https://www.facebook.com/Sindcine" target="_blank" rel="noopener noreferrer" class="social-link">
+                            <span>Facebook</span>
                         </a>
                     </div>
                 </div>
