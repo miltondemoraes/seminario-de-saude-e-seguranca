@@ -290,26 +290,26 @@
                 <?php 
                 // Valores padrão para 20 palestrantes
                 $speakers_defaults = array(
-                    1 => array('name' => 'Dr. Carlos Silva', 'title' => 'Especialista em Ergonomia'),
-                    2 => array('name' => 'Dra. Maria Santos', 'title' => 'Psicóloga Ocupacional'),
-                    3 => array('name' => 'Eng. João Costa', 'title' => 'Engenheiro de Segurança'),
-                    4 => array('name' => 'Dra. Ana Paula', 'title' => 'Medicina do Trabalho'),
-                    5 => array('name' => 'Prof. Roberto Lima', 'title' => 'Audiologia Ocupacional'),
-                    6 => array('name' => 'Dra. Fernanda Cruz', 'title' => 'Fisioterapia do Trabalho'),
-                    7 => array('name' => 'Eng. Marcos Oliveira', 'title' => 'Segurança em Altura'),
-                    8 => array('name' => 'Dra. Juliana Rocha', 'title' => 'Toxicologia Ocupacional'),
-                    9 => array('name' => 'Prof. André Souza', 'title' => 'Ergonomia Cognitiva'),
-                    10 => array('name' => 'Dra. Patricia Alves', 'title' => 'Saúde Mental'),
-                    11 => array('name' => 'Eng. Lucas Martins', 'title' => 'Prevenção de Acidentes'),
-                    12 => array('name' => 'Dra. Camila Ferreira', 'title' => 'Dermatologia Ocupacional'),
-                    13 => array('name' => 'Prof. Diego Santos', 'title' => 'Biomecânica'),
-                    14 => array('name' => 'Dra. Renata Silva', 'title' => 'Pneumologia Ocupacional'),
-                    15 => array('name' => 'Eng. Rafael Costa', 'title' => 'Gestão de Riscos'),
-                    16 => array('name' => 'Dra. Vanessa Lima', 'title' => 'Neurologia do Trabalho'),
-                    17 => array('name' => 'Prof. Thiago Pereira', 'title' => 'Acústica e Ruído'),
-                    18 => array('name' => 'Dra. Carolina Dias', 'title' => 'Oftalmologia Ocupacional'),
-                    19 => array('name' => 'Eng. Gabriel Mendes', 'title' => 'Segurança Elétrica'),
-                    20 => array('name' => 'Dra. Beatriz Rodrigues', 'title' => 'Epidemiologia Ocupacional')
+                    1 => array('name' => 'Agnaldo Bueno', 'title' => 'Dublê e coordenador de ação; mais de 500 projetos em 30 anos de atividade; especialista em cenas de ação (acidentes, quedas, fogo, lutas); trabalhou em Carandiru, Cangaço Novo, Cidade de Deus e dezenas de outros'),
+                    2 => array('name' => 'Marcelo Vazzoller', 'title' => 'Diretor da Vertical Pro Treinamentos e Serviços em Altura; Técnico em Segurança do Trabalho; alpinista; especialista em resgate em altura; organizador de cursos de resgate em montanha e em espaços confinados'),
+                    3 => array('name' => 'Edson Martinho', 'title' => 'Presidente da Abracopel – Ass. Bras. de Conscientização para os Perigos da Eletricidade; Engenheiro Eletricista e de Segurança do Trabalho; Coordenador da Norma de Segurança com Eletricidade ABNT NBR 16384'),
+                    4 => array('name' => 'Geórgia Costa Araújo', 'title' => 'Diretora da Coração da Selva; reconhecida por introduzir inovação e tecnologia em seus projetos; produziu "Beleza Fatal", novela da Max; fundou o CineHub e faz parte do conselho da BRAVI'),
+                    5 => array('name' => 'Valter Carrasco Junior', 'title' => 'Começou no cinema em 1990 com efeitos especiais e dublê; foi Corpo de Bombeiros de São Paulo (1988–2016); efeitos com fogo, altura, chuva, explosões e outros; sócio da Carrasco FX Team'),
+                    6 => array('name' => 'Anderson de Souza', 'title' => 'Dublê e Precision-driver desde 1996; coordenador de ação da equipe Dublês Brasil desde 1999; cenas com carros, perseguições, colisões, capotagens e 2 rodas; instrutor de direção defensiva e evasiva'),
+                    7 => array('name' => 'Gleice Kelly Aguilar', 'title' => 'Consultora de riscos e corretora de seguros especializada no audiovisual há mais de 15 anos; à frente da filmSEG; atua em estruturação de seguros e estratégias de prevenção para produções'),
+                    8 => array('name' => 'Izabella Camargo', 'title' => 'Repórter e apresentadora das TVs Globo, Band e SBT; idealizadora do movimento pela produtividade sustentável e manifesto em prol da saúde mental; autora de best-seller \'Dá Um Tempo\'; top voice do LinkedIn'),
+                    9 => array('name' => 'Lucas Puppo', 'title' => 'Fotógrafo, cinematógrafo, produtor e mergulhador; portfólio de centenas de projetos; dona da LiquidoPhoto Underwater; planeja e executa filmagens na água'),
+                    10 => array('name' => 'Max Lima', 'title' => 'Produtor de locações especializado em organizar e coordenar estruturas de produção; experiência em longas, séries e publicidade; atua desde o planejamento logístico até a execução'),
+                    11 => array('name' => 'Polyana Brandão', 'title' => 'Profissional do audiovisual desde 2005; fundadora da A Cores Locações em 2013; atua em conteúdo e locações para longas e séries de grandes plataformas'),
+                    12 => array('name' => 'Raquel Lemos', 'title' => 'Advogada e consultora em propriedade intelectual e entretenimento; atua em governança cultural, gestão de pessoas, desenvolvimento de projetos audiovisuais e estruturação jurídica'),
+                    13 => array('name' => 'Telma Fonseca', 'title' => 'Diretora de produção; iniciou na Terracota Produções; passou a atuar na Academia de Filmes; mais de 28 anos de experiência em produção e realização audiovisual'),
+                    14 => array('name' => 'Bruno Gomes', 'title' => 'Formado em Cinema pela FAAP; experiência com produções independentes e publicidade; atua há cinco anos na Spcine e na São Paulo Film Commission'),
+                    15 => array('name' => 'Rósiani Evangelista', 'title' => 'Eletricista formada pelo Senai; estudou Iluminação e Câmera pelo Senac; atuou na TV Diário (Globo); atualmente trabalha em publicidade como eletricista'),
+                    16 => array('name' => 'Paulo Dantas', 'title' => 'Produtor e coprodutor de longas como "Sonho Sem Fim", "Nunca Fomos Tão Felizes", "Terra Estrangeira", "Noel, O Poeta da Vila", "Última Parada 174" e outros; sócio das produtoras LANDIA, Fauna, Immigrant e Soma'),
+                    17 => array('name' => 'Segurança Elétrica', 'title' => 'Especialidade mencionada'),
+                    18 => array('name' => 'Epidemiologia Ocupacional', 'title' => 'Especialidade mencionada'),
+                    19 => array('name' => 'Acústica e Ruído', 'title' => 'Especialidade mencionada'),
+                    20 => array('name' => 'Oftalmologia Ocupacional', 'title' => 'Especialidade mencionada')
                 );
                 
                 for ($i = 1; $i <= 20; $i++): 

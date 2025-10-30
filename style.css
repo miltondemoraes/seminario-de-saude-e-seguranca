@@ -618,22 +618,24 @@ section {
 
 .speakers-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 1rem;
-    max-width: 1200px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1400px;
     margin: 0 auto;
 }
 
 .speaker-card {
     background: white;
-    padding: 1.2rem 1rem;
+    padding: 2rem;
     border-radius: 12px;
     text-align: center;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
-    min-height: 100px;
+    min-height: auto;
+    display: flex;
+    flex-direction: column;
 }
 
 .speaker-card::before {
@@ -644,6 +646,23 @@ section {
     width: 100%;
     height: 5px;
     background: var(--gradient-yellow);
+}
+
+.speaker-name {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--primary-black);
+    margin: 1rem 0 0.8rem 0;
+    line-height: 1.3;
+}
+
+.speaker-title {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.6;
+    flex-grow: 1;
+    margin: 0;
+    text-align: left;
 }
 
 .speaker-card:hover {
@@ -1193,23 +1212,23 @@ section {
     }
     
     .speakers-grid {
-        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-        gap: 0.8rem;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
     }
     
     .speaker-card {
-        padding: 1rem 0.8rem;
+        padding: 1.5rem;
         border-radius: 8px;
-        min-height: 80px;
+        min-height: auto;
     }
     
     .speaker-name {
-        font-size: 1rem;
-        margin-bottom: 0.2rem;
+        font-size: 1.05rem;
+        margin-bottom: 0.8rem;
     }
     
     .speaker-title {
-        font-size: 0.8rem;
+        font-size: 0.9rem;
     }
     
     .stat-number {
@@ -1233,6 +1252,19 @@ section {
     
     .registration-form-container {
         padding: 2rem 1.5rem;
+    }
+    
+    .sindcine-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .sindcine-links {
+        position: static;
+    }
+    
+    .social-links {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     }
     
     .footer-content {
@@ -2034,13 +2066,16 @@ html {
 
 .sindcine-content {
     margin-top: 50px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 60px;
+    align-items: start;
 }
 
 .sindcine-info {
     display: grid;
     grid-template-columns: 1fr;
     gap: 60px;
-    margin-bottom: 60px;
     align-items: start;
 }
 
@@ -2053,32 +2088,35 @@ html {
 }
 
 .sindcine-links {
-    margin-top: 50px;
     padding: 40px;
     background: rgba(255, 215, 0, 0.08);
     border-radius: 15px;
     border: 2px solid rgba(255, 215, 0, 0.2);
+    height: fit-content;
+    position: sticky;
+    top: 20px;
 }
 
 .sindcine-links h3 {
     color: var(--primary-yellow);
-    font-size: 1.3rem;
-    margin-bottom: 30px;
+    font-size: 1.2rem;
+    margin-bottom: 25px;
     text-align: center;
     font-weight: 600;
 }
 
 .social-links {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
+    grid-template-columns: 1fr;
+    gap: 15px;
 }
 
 .social-link {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 15px;
-    padding: 20px;
+    padding: 15px 20px;
     background: rgba(255, 215, 0, 0.12);
     border-radius: 12px;
     border: 2px solid rgba(255, 215, 0, 0.25);
@@ -2086,30 +2124,7 @@ html {
     text-decoration: none;
     transition: all 0.3s ease;
     font-weight: 600;
-    font-size: 1rem;
-}
-
-.social-link:hover {
-    background: var(--primary-yellow);
-    color: var(--primary-black);
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(255, 215, 0, 0.3);
-    border-color: var(--primary-yellow);
-}
-
-.social-link {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    padding: 20px;
-    background: rgba(255, 215, 0, 0.12);
-    border-radius: 12px;
-    border: 2px solid rgba(255, 215, 0, 0.25);
-    color: var(--primary-yellow);
-    text-decoration: none;
-    transition: all 0.3s ease;
-    font-weight: 600;
-    font-size: 1rem;
+    font-size: 0.95rem;
 }
 
 .social-link:hover {
