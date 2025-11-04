@@ -98,31 +98,41 @@
                 <!-- Dia 1 -->
                 <div class="program-day">
                     <h3 class="day-title">1º Dia - 25 de Novembro de 2025</h3>
+                    
+                    <div class="program-header">
+                        <p><strong>Apresentação:</strong> Flávia Guerra – jorn. esp. audiovisual</p>
+                        <p><strong>Mediação:</strong> Sonia Santana – Presidente do Sindcine | Claudio Leone – 1º Secretário do Sindcine</p>
+                    </div>
+                    
                     <div class="program-timeline">
                         <div class="timeline-item">
-                            <div class="timeline-time">09:00 - 09:50</div>
+                            <div class="timeline-time">09:00 – 09:50</div>
                             <div class="timeline-content">
                                 <h3>Credenciamento</h3>
-                                <p>Recepção dos participantes</p>
                             </div>
                         </div>
                         
                         <div class="timeline-item">
                             <div class="timeline-time">09:50</div>
                             <div class="timeline-content">
-                                <h3>Fala de Abertura do Seminário</h3>
-                                <p><strong>Presidente do SINDCINE - Sonia Santana</strong></p>
+                                <h3>Abertura do Seminário</h3>
+                                <p><strong>Presidente do Sindcine – Sonia Santana</strong></p>
                             </div>
                         </div>
                         
                         <div class="timeline-item highlight">
                             <div class="timeline-time">10:00</div>
                             <div class="timeline-content">
-                                <h3>Mesa 1 - Conceituação de Risco/Condutas de Risco</h3>
-                                <p>Nesta mesa, pretendemos conceituar o risco de uma forma geral, bem como demonstrar práticas para mitigar a exposição ao perigo. Também vamos tratar da questão da conscientização dos técnicos. Além disso, será abordada a legislação relativa à segurança do trabalhador.</p>
-                                <p><strong>Mediador:</strong> Flávia Guerra</p>
-                                <p><strong>Debatedores:</strong><br>
-                                • Pedro Tourinho – Fundacentro (30')</p>
+                                <h3>Mesa 1 – Conceituação de Risco / Condutas de Risco</h3>
+                                <p>Conceituação de risco; práticas para mitigar riscos; conscientização dos técnicos; legislação relativa à segurança dos trabalhadores</p>
+                                <p><strong>Debatedores:</strong></p>
+                                <ul>
+                                    <li>Domingos Leme – Fundacentro</li>
+                                    <li>Edson Martinho – Abracopel</li>
+                                    <li>Marcelo Mutto – Abracopel</li>
+                                    <li>Marcelo Vazzoler – Vertical Pro</li>
+                                    <li>Bruno Gomes – SPcine</li>
+                                </ul>
                             </div>
                         </div>
                         
@@ -130,7 +140,6 @@
                             <div class="timeline-time">10:30</div>
                             <div class="timeline-content">
                                 <h3>Coffee Break</h3>
-                                <p>Intervalo para networking</p>
                             </div>
                         </div>
                         
@@ -138,50 +147,42 @@
                             <div class="timeline-time">11:00</div>
                             <div class="timeline-content">
                                 <h3>Continuação Mesa 1</h3>
-                                <p><strong>Debatedores:</strong><br>
-                                • Edson Martinho e Marcelo Mutto - Abracopel (30')<br>
-                                • Marcelo Vazzoler - Vertical Pro (30')<br>
-                                • SPcine (30')<br>
-                                • CET (30')</p>
-                                <p><strong>Abertura para Perguntas (30')</strong></p>
                             </div>
                         </div>
                         
                         <div class="timeline-item">
                             <div class="timeline-time">13:00</div>
                             <div class="timeline-content">
-                                <h3>Pausa Almoço</h3>
-                                <p>Intervalo para refeição</p>
+                                <h3>Almoço</h3>
                             </div>
                         </div>
                         
                         <div class="timeline-item highlight">
                             <div class="timeline-time">14:30</div>
                             <div class="timeline-content">
-                                <h3>Mesa 2 - Riscos Específicos e Riscos Iminentes em Sets de Filmagens</h3>
-                                <p>O debate tratará dos riscos específicos na produção, jornadas excessivas, filmagens em vias públicas e locais não autorizados, utilização de equipamento de proteção individual (EPIs). Profissionais de filmagens de risco, como produções subaquáticas e pilotagem de precisão, apresentarão técnicas de segurança.</p>
-                                <p><strong>Mediador:</strong> Flávia Guerra</p>
-                                <p><strong>Debatedores:</strong><br>
-                                • Poliana Brandão – Produtora de Locação (25')<br>
-                                • Max Lima – Produtor de Locação (25')<br>
-                                • Telma Fonseca - Diretora de Produção (30')<br>
-                                • Arnaldo Mesquita – Diretor de Fotografia (30')<br>
-                                • José Macedo de Medeiros (Jamelão) – Gaffer (30')<br>
-                                • Rosiane Evangelista Matias – Elétrica (30')<br>
-                                • Lucas Pupo – Especialista em Filmagens Subaquáticas (40')<br>
-                                • Agnaldo Bueno – Dublê (30')<br>
-                                • Walter Carrasco – Efeitos Armas/Bombeiro Especializado (30')<br>
-                                • Anderson de Souza – Coordenador de Ação/Piloto de Precisão<br>
-                                • Raíssa Drumond – Produtora Executiva (30')</p>
-                                <p><strong>Abertura para Perguntas (30')</strong></p>
+                                <h3>Mesa 2 – Riscos Específicos e Riscos Iminentes em Sets de Filmagens</h3>
+                                <p>Riscos específicos na produção, jornadas excessivas, filmagens em vias públicas, equipamentos de proteção individual (EPIs); filmagens de risco, como subaquáticas e pilotagem de precisão</p>
+                                <p><strong>Debatedores:</strong></p>
+                                <ul>
+                                    <li>Poliana Brandão – Produtora de Locação</li>
+                                    <li>Max Lima – Produtor de Locação</li>
+                                    <li>Telma Fonseca – Diretora de Produção</li>
+                                    <li>Arnaldo Mesquita – Diretor de Fotografia</li>
+                                    <li>José Macedo de Medeiros (Jamelão) – Gaffer</li>
+                                    <li>Rosiane Evangelista Matias – Elétrica</li>
+                                    <li>Lucas Pupo – Especialista em Filmagens Subaquáticas</li>
+                                    <li>Agnaldo Bueno – Dublê</li>
+                                    <li>Walter Carrasco – Efeitos Armas / Bombeiro Especializado</li>
+                                    <li>Anderson de Souza – Coordenador de Ação / Piloto de Precisão</li>
+                                    <li>Raíssa Drumond – Produtora Executiva</li>
+                                </ul>
                             </div>
                         </div>
                         
                         <div class="timeline-item">
                             <div class="timeline-time">19:30</div>
                             <div class="timeline-content">
-                                <h3>Encerramento</h3>
-                                <p>Encerramento do primeiro dia</p>
+                                <h3>Encerramento Dia 1</h3>
                             </div>
                         </div>
                     </div>
@@ -190,85 +191,96 @@
                 <!-- Dia 2 -->
                 <div class="program-day">
                     <h3 class="day-title">2º Dia - 26 de Novembro de 2025</h3>
+                    
+                    <div class="program-header">
+                        <p><strong>Apresentação:</strong> Flávia Guerra – jorn. esp. audiovisual</p>
+                        <p><strong>Mediação:</strong> Sonia Santana – Presidente do Sindcine | Claudio Leone – 1º Secretário do Sindcine</p>
+                    </div>
+                    
                     <div class="program-timeline">
                         <div class="timeline-item">
-                            <div class="timeline-time">09:00 - 09:50</div>
+                            <div class="timeline-time">09:00 – 09:50</div>
                             <div class="timeline-content">
                                 <h3>Credenciamento</h3>
-                                <p>Recepção dos participantes</p>
                             </div>
                         </div>
                         
                         <div class="timeline-item">
                             <div class="timeline-time">09:50</div>
                             <div class="timeline-content">
-                                <h3>Fala de Abertura do Seminário</h3>
-                                <p><strong>Presidente do SINDCINE - Sonia Santana</strong><br>
-                                <strong>1º Secretário do SINDCINE - Claudio Leone (Diretor de Fotografia)</strong></p>
+                                <h3>Abertura do segundo dia do Seminário</h3>
                             </div>
                         </div>
                         
                         <div class="timeline-item highlight">
                             <div class="timeline-time">10:00</div>
                             <div class="timeline-content">
-                                <h3>Mesa 1 - Cultura de Segurança no Mercado</h3>
-                                <p>A atitude de todos os envolvidos no processo de produção precisa levar em conta, em todos os momentos, a questão da segurança. Assim, é necessário que clientes, agências, produtoras e profissionais adotem a cultura da prevenção.</p>
-                                <p><strong>Mediadores:</strong> Sonia Santana / Claudio Leone</p>
-                                <p><strong>Debatedores:</strong><br>
-                                • Roberto Tourinho / Patricia Alexandre - SINAPRO SP (30')<br>
-                                • Paulo Dantas – Movieart (30')<br>
-                                • Esli Leal - O2 Filmes (30')<br>
-                                • Georgia Costa - Coração da Selva (30')<br>
-                                • Pingo – Produtor Executivo (30')<br>
-                                • Renata Rezende – HBO</p>
-                                <p><strong>Abertura para Perguntas (30')</strong></p>
+                                <h3>Mesa 1 – Cultura de Segurança no Mercado</h3>
+                                <p>A segurança deve ser levada em conta em todos os momentos da produção e por todos os participantes: clientes, agências, produtoras e profissionais</p>
+                                <p><strong>Debatedores:</strong></p>
+                                <ul>
+                                    <li>Roberto Tourinho – Sinapro SP</li>
+                                    <li>Patricia Alexandre – Sinapro SP</li>
+                                    <li>Paulo Dantas – Movie&Arte</li>
+                                    <li>Esli Leal – O2 Filmes</li>
+                                    <li>Georgia Costa – Coração da Selva</li>
+                                    <li>Wellington Pingo – Produtor Executivo</li>
+                                    <li>Guilherme Sabato – Safecine</li>
+                                </ul>
                             </div>
                         </div>
                         
                         <div class="timeline-item">
                             <div class="timeline-time">13:00</div>
                             <div class="timeline-content">
-                                <h3>Pausa Almoço</h3>
-                                <p>Intervalo para refeição</p>
+                                <h3>Almoço</h3>
                             </div>
                         </div>
                         
                         <div class="timeline-item highlight">
                             <div class="timeline-time">14:30</div>
                             <div class="timeline-content">
-                                <h3>Mesa 2 - Responsabilidade Civil e Criminal/Contratação e Assédio e Violência</h3>
-                                <p>Dano, responsabilidade subjetiva, dolo e culpa, culpa concorrente, responsabilidade objetiva, quantificação do dano, danos materiais, extensão do dano, acidente ou doença profissional, incapacidade (total e permanente, total e temporária, parcial e permanente, parcial e temporária), danos morais (conceitos jurídicos envolvidos na responsabilidade do contratante). A responsabilidade criminal no caso do acidente de trabalho. Ausência do suporte do INSS e a responsabilidade direta do empregador ou contratante.</p>
-                                <p><strong>Mediador:</strong> Dr. Marcelo de Campos Mendes Pereira (Advogado SINDCINE)</p>
-                                <p><strong>Debatedores:</strong><br>
-                                • Gleice Aguillar - Corretora filmSeg (30')<br>
-                                • Dra Raquel Lemos – Advogada Especializada em Audiovisual (30')<br>
-                                • Amanda Gabriele (30')</p>
-                                <p><strong>Abertura para Perguntas (30')</strong></p>
+                                <h3>Mesa 2 – Responsabilidade Civil e Criminal/Contratação e Assédio e Violência</h3>
+                                <p>Dano, responsabilidade subjetiva, dolo e culpa; responsabilidade criminal em acidentes de trabalho</p>
+                                <p><strong>Mediação:</strong> Dr. Marcelo de Campos Mendes Pereira – Advogado do Sindcine</p>
+                                <p><strong>Debatedores:</strong></p>
+                                <ul>
+                                    <li>Gleice Aguillar – Corretora filmSEG</li>
+                                    <li>Dra Raquel Lemos – Advogada especializada em audiovisual</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-time">16:00</div>
+                            <div class="timeline-content">
+                                <h3>Coffee Break</h3>
                             </div>
                         </div>
                         
                         <div class="timeline-item highlight">
                             <div class="timeline-time">16:30</div>
                             <div class="timeline-content">
-                                <h3>Mesa 3 - Saúde Mental e Física</h3>
-                                <p><strong>Palestrante:</strong> Izabella Camargo (1h)</p>
-                                <p><strong>Abertura para Perguntas (30')</strong></p>
+                                <h3>Mesa 3 – Saúde Mental e Física</h3>
+                                <p><strong>Palestrante:</strong></p>
+                                <ul>
+                                    <li>Izabella Camargo – jornalista; idealizadora do movimento pela produtividade sustentável e do manifesto em prol da saúde mental; autora do best-seller Dá Um Tempo</li>
+                                </ul>
                             </div>
                         </div>
                         
                         <div class="timeline-item">
                             <div class="timeline-time">18:00</div>
                             <div class="timeline-content">
-                                <h3>Entrega Selo Sindcine</h3>
-                                <p>Cerimônia de entrega do selo</p>
+                                <h3>Entrega do Selo Sindcine</h3>
+                                <p>Cerimônia de entrega do "Selo Sindcine de Conformidade" para produções que atendem, com excelência, as cláusulas da Convenção Coletiva de Trabalho (CCT)</p>
                             </div>
                         </div>
                         
                         <div class="timeline-item">
                             <div class="timeline-time">18:30</div>
                             <div class="timeline-content">
-                                <h3>Coquetel / Encerramento</h3>
-                                <p>Confraternização e encerramento do evento</p>
+                                <h3>Coquetel de encerramento do Seminário</h3>
                             </div>
                         </div>
                     </div>
@@ -746,7 +758,7 @@
                             <label for="experiencia">Área de Experiência *</label>
                             <select id="experiencia" name="experiencia" required>
                                 <option value="">Selecione...</option>
-                                <option value="producao">Produção Audiovisual</option>
+                                <option value="producao">Audiovisual</option>
                                 <option value="tecnica">Área Técnica</option>
                                 <option value="seguranca">Segurança do Trabalho</option>
                                 <option value="saude">Saúde Ocupacional</option>

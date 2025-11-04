@@ -544,6 +544,19 @@ section {
 .timeline-content p {
     color: var(--text-gray);
     line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.timeline-content ul {
+    margin: 12px 0;
+    padding-left: 20px;
+    color: var(--text-gray);
+}
+
+.timeline-content ul li {
+    margin-bottom: 6px;
+    line-height: 1.5;
+    font-size: 0.95rem;
 }
 
 .timeline-item.highlight {
@@ -558,6 +571,11 @@ section {
 }
 
 .timeline-item.highlight .timeline-content p {
+    color: #e0e0e0;
+}
+
+.timeline-item.highlight .timeline-content ul,
+.timeline-item.highlight .timeline-content li {
     color: #e0e0e0;
 }
 
@@ -584,6 +602,20 @@ section {
     padding-bottom: 15px;
     border-bottom: 2px solid var(--primary-yellow);
     font-weight: 700;
+}
+
+.program-header {
+    background: rgba(255, 215, 0, 0.08);
+    padding: 20px;
+    border-left: 4px solid var(--primary-yellow);
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+
+.program-header p {
+    margin: 8px 0;
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.85);
 }
 
 @media (max-width: 768px) {
