@@ -114,23 +114,43 @@ function seminario_handle_registration() {
     $telefone = sanitize_text_field($_POST['telefone']);
     $empresa = sanitize_text_field($_POST['empresa']);
     $cargo = sanitize_text_field($_POST['cargo']);
-    $experiencia = sanitize_text_field($_POST['experiencia']);
-    $newsletter = !empty($_POST['newsletter']) && $_POST['newsletter'] == '1' ? 1 : 0;
-    $palestras = sanitize_text_field($_POST['palestras']);
+    $areaAtuacao = sanitize_text_field($_POST['areaAtuacao']);
+    $outroArea = sanitize_text_field($_POST['outroArea'] ?? '');
+    $temDRT = sanitize_text_field($_POST['temDRT'] ?? '');
+    $funcaoAudiovisual = sanitize_text_field($_POST['funcaoAudiovisual'] ?? '');
+    $outroAudiovisual = sanitize_text_field($_POST['outroAudiovisual'] ?? '');
+    $newsletter = !empty($_POST['newsletter']) && $_POST['newsletter'] == '1' ? 'Sim' : 'Não';
     
-    if(empty($nome) || empty($email) || empty($telefone) || empty($experiencia)) {
+    // Validações obrigatórias
+    if(empty($nome) || empty($email) || empty($telefone) || empty($empresa) || empty($cargo) || empty($areaAtuacao)) {
         wp_send_json_error('Campos obrigatórios não preenchidos');
-        wp_die();
-    }
-    
-    if(empty($palestras)) {
-        wp_send_json_error('Selecione pelo menos uma palestra');
         wp_die();
     }
     
     if(!is_email($email)) {
         wp_send_json_error('Email inválido');
         wp_die();
+    }
+    
+    // Validações condicionais
+    if($areaAtuacao === 'outro' && empty($outroArea)) {
+        wp_send_json_error('Especifique sua área de atuação');
+        wp_die();
+    }
+    
+    if($areaAtuacao === 'audiovisual') {
+        if(empty($temDRT)) {
+            wp_send_json_error('Selecione se tem DRT');
+            wp_die();
+        }
+        if(empty($funcaoAudiovisual)) {
+            wp_send_json_error('Selecione sua função no audiovisual');
+            wp_die();
+        }
+        if($funcaoAudiovisual === 'outro_audiovisual' && empty($outroAudiovisual)) {
+            wp_send_json_error('Especifique sua função no audiovisual');
+            wp_die();
+        }
     }
     
     // Salvar dados NO ARQUIVO data/inscricoes.txt DO TEMA
@@ -140,7 +160,6 @@ function seminario_handle_registration() {
     // Criar diretório se não existir
     if (!file_exists($data_dir)) {
         if (!wp_mkdir_p($data_dir)) {
-            // Se não conseguir criar, tentar criar com permissões básicas
             @mkdir($data_dir, 0755, true);
         }
     }
@@ -149,17 +168,69 @@ function seminario_handle_registration() {
     date_default_timezone_set('America/Sao_Paulo');
     $horario_brasil = date('d/m/Y H:i');
     
+    // Determinar experiência (categoria)
+    $experiencia = $areaAtuacao;
+    if($areaAtuacao === 'outro') {
+        $experiencia = $outroArea;
+    }
+    
+    // Determinar função (cargo específico para audiovisual)
+    $cargo_final = $cargo;
+    if($areaAtuacao === 'audiovisual' && !empty($funcaoAudiovisual)) {
+        // Mapa de valores para labels legíveis
+        $funcoes_mapa = array(
+            'assistencia_set' => 'Assistência de Set',
+            'assistencia_arte' => 'Assistência de Arte',
+            'assistencia_camera' => 'Assistência de Câmera',
+            'assistencia_direcao' => 'Assistência de Direção',
+            'assistencia_eletrica' => 'Assistência de Elétrica',
+            'assistencia_figurino' => 'Assistência de Figurino',
+            'assistencia_producao' => 'Assistência de Produção',
+            'camera' => 'Câmera',
+            'contrarregra' => 'Contrarregra',
+            'direcao' => 'Direção',
+            'direcao_arte' => 'Direção de Arte',
+            'direcao_elenco' => 'Direção de Elenco',
+            'direcao_fotografia' => 'Direção de Fotografia',
+            'direcao_producao' => 'Direção de Produção',
+            'dit' => 'DIT',
+            'efeitos_especiais' => 'Efeitos Especiais',
+            'eletrica' => 'Elétrica',
+            'figurino' => 'Figurino',
+            'gma' => 'GMA',
+            'making_of' => 'Making-of',
+            'maquiagem' => 'Maquiagem',
+            'maquinaria' => 'Maquinária',
+            'montagem' => 'Montagem',
+            'pos_producao' => 'Pós-produção',
+            'producao' => 'Produção',
+            'producao_arte' => 'Produção de Arte',
+            'producao_executiva' => 'Produção Executiva',
+            'producao_objetos' => 'Produção de Objetos',
+            'roteiro' => 'Roteiro',
+            'still' => 'Still',
+            'som' => 'Som',
+            'vfx' => 'VFX',
+            'outro_audiovisual' => $outroAudiovisual
+        );
+        
+        $cargo_final = isset($funcoes_mapa[$funcaoAudiovisual]) ? $funcoes_mapa[$funcaoAudiovisual] : $cargo;
+    }
+    
+    // Montar a linha de dados
     $data_line = sprintf(
-        "%s|%s|%s|%s|%s|%s|%s|%s|%s\n",
+        "%s|%s|%s|%s|%s|%s|%s|%s|%s|%s|%s\n",
         $horario_brasil,
         str_replace('|', '-', $nome),
         str_replace('|', '-', $email),
         str_replace('|', '-', $telefone),
-        str_replace('|', '-', $empresa ?: 'Não informado'),
-        str_replace('|', '-', $cargo ?: 'Não informado'),
+        str_replace('|', '-', $empresa),
+        str_replace('|', '-', $cargo_final),
         str_replace('|', '-', $experiencia),
-        $newsletter ? 'Sim' : 'Não',
-        str_replace('|', '-', $palestras)
+        $newsletter,
+        str_replace('|', '-', $areaAtuacao),
+        str_replace('|', '-', $temDRT),
+        ''  // Reservado para palestras/mesas
     );
     
     // MÉTODO DIRETO E SIMPLES - garantir que funcione

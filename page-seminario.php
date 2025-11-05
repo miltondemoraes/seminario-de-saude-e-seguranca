@@ -343,53 +343,147 @@ get_header(); ?>
                 <div class="registration-form-container">
                     <form class="registration-form" id="registrationForm">
                         <?php wp_nonce_field('seminario_nonce', 'seminario_nonce'); ?>
-                        <div class="form-group">
-                            <label for="nome">Nome Completo *</label>
-                            <input type="text" id="nome" name="nome" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">E-mail *</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="telefone">Telefone *</label>
-                            <input type="tel" id="telefone" name="telefone" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="empresa">Empresa/Instituição</label>
-                            <input type="text" id="empresa" name="empresa">
-                        </div>
-                        <div class="form-group">
-                            <label for="cargo">Cargo/Função</label>
-                            <input type="text" id="cargo" name="cargo">
-                        </div>
-                        <div class="form-group">
-                            <label for="experiencia">Área de Experiência *</label>
-                            <select id="experiencia" name="experiencia" required>
-                                <option value="">Selecione...</option>
-                                <option value="producao">Produção Audiovisual</option>
-                                <option value="tecnica">Área Técnica</option>
-                                <option value="seguranca">Segurança do Trabalho</option>
-                                <option value="saude">Saúde Ocupacional</option>
-                                <option value="gestao">Gestão/Administração</option>
-                                <option value="estudante">Estudante</option>
-                                <option value="outros">Outros</option>
-                            </select>
-                        </div>
-                        <div class="form-group checkbox-group">
-                            <label class="checkbox-label">
-                                <input type="checkbox" id="newsletter" name="newsletter">
-                                <span class="checkmark"></span>
-                                Quero receber informações sobre futuros eventos
-                            </label>
-                        </div>
-                        <div class="form-group checkbox-group">
-                            <label class="checkbox-label">
-                                <input type="checkbox" id="termos" name="termos" required>
-                                <span class="checkmark"></span>
-                                Concordo com os <a href="#" class="terms-link">termos de uso</a> e política de privacidade *
-                            </label>
-                        </div>
+                        
+                        <!-- Informações Básicas -->
+                        <fieldset class="form-fieldset">
+                            <legend class="fieldset-title">Informações Básicas</legend>
+                            
+                            <div class="form-group">
+                                <label for="nome">Nome Completo *</label>
+                                <input type="text" id="nome" name="nome" required placeholder="Digite seu nome completo">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">E-mail *</label>
+                                <input type="email" id="email" name="email" required placeholder="seu.email@exemplo.com">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="telefone">Telefone *</label>
+                                <input type="tel" id="telefone" name="telefone" required placeholder="(11) 98765-4321">
+                            </div>
+                        </fieldset>
+
+                        <!-- Dados Profissionais -->
+                        <fieldset class="form-fieldset">
+                            <legend class="fieldset-title">Dados Profissionais</legend>
+                            
+                            <div class="form-group">
+                                <label for="empresa">Empresa / Instituição *</label>
+                                <input type="text" id="empresa" name="empresa" required placeholder="Nome da sua empresa ou instituição">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="cargo">Cargo / Função *</label>
+                                <input type="text" id="cargo" name="cargo" required placeholder="Seu cargo ou função">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="areaAtuacao">Área de Atuação *</label>
+                                <select id="areaAtuacao" name="areaAtuacao" required>
+                                    <option value="">Selecione uma área...</option>
+                                    <option value="audiovisual">Audiovisual</option>
+                                    <option value="seguranca">Segurança do Trabalho</option>
+                                    <option value="saude">Saúde Ocupacional</option>
+                                    <option value="gestao">Gestão / Administração</option>
+                                    <option value="estudante">Estudante</option>
+                                    <option value="outro">Outro</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group" id="outroAreaGroup" style="display: none;">
+                                <label for="outroArea">Qual a sua área de atuação?</label>
+                                <input type="text" id="outroArea" name="outroArea" placeholder="Especifique sua área de atuação">
+                            </div>
+                        </fieldset>
+
+                        <!-- Seção para Profissionais do Audiovisual -->
+                        <fieldset class="form-fieldset" id="audiovisualSection" style="display: none;">
+                            <legend class="fieldset-title">Informações Audiovisual</legend>
+                            
+                            <div class="form-group">
+                                <label for="temDRT">Tem DRT? *</label>
+                                <div class="radio-group">
+                                    <label class="radio-label">
+                                        <input type="radio" name="temDRT" value="sim">
+                                        <span class="radio-checkmark"></span>
+                                        Sim
+                                    </label>
+                                    <label class="radio-label">
+                                        <input type="radio" name="temDRT" value="nao">
+                                        <span class="radio-checkmark"></span>
+                                        Não
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="funcaoAudiovisual">Qual sua função no audiovisual? *</label>
+                                <select id="funcaoAudiovisual" name="funcaoAudiovisual">
+                                    <option value="">Selecione uma função...</option>
+                                    <option value="assistencia_set">Assistência de Set</option>
+                                    <option value="assistencia_arte">Assistência de Arte</option>
+                                    <option value="assistencia_camera">Assistência de Câmera</option>
+                                    <option value="assistencia_direcao">Assistência de Direção</option>
+                                    <option value="assistencia_eletrica">Assistência de Elétrica</option>
+                                    <option value="assistencia_figurino">Assistência de Figurino</option>
+                                    <option value="assistencia_producao">Assistência de Produção</option>
+                                    <option value="camera">Câmera</option>
+                                    <option value="contrarregra">Contrarregra</option>
+                                    <option value="direcao">Direção</option>
+                                    <option value="direcao_arte">Direção de Arte</option>
+                                    <option value="direcao_elenco">Direção de Elenco</option>
+                                    <option value="direcao_fotografia">Direção de Fotografia</option>
+                                    <option value="direcao_producao">Direção de Produção</option>
+                                    <option value="dit">DIT</option>
+                                    <option value="efeitos_especiais">Efeitos Especiais</option>
+                                    <option value="eletrica">Elétrica</option>
+                                    <option value="figurino">Figurino</option>
+                                    <option value="gma">GMA</option>
+                                    <option value="making_of">Making-of</option>
+                                    <option value="maquiagem">Maquiagem</option>
+                                    <option value="maquinaria">Maquinária</option>
+                                    <option value="montagem">Montagem</option>
+                                    <option value="pos_producao">Pós-produção</option>
+                                    <option value="producao">Produção</option>
+                                    <option value="producao_arte">Produção de Arte</option>
+                                    <option value="producao_executiva">Produção Executiva</option>
+                                    <option value="producao_objetos">Produção de Objetos</option>
+                                    <option value="roteiro">Roteiro</option>
+                                    <option value="still">Still</option>
+                                    <option value="som">Som</option>
+                                    <option value="vfx">VFX</option>
+                                    <option value="outro_audiovisual">Outro</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group" id="outroAudiovisualGroup" style="display: none;">
+                                <label for="outroAudiovisual">Qual sua função?</label>
+                                <input type="text" id="outroAudiovisual" name="outroAudiovisual" placeholder="Especifique sua função no audiovisual">
+                            </div>
+                        </fieldset>
+
+                        <!-- Preferências e Consentimento -->
+                        <fieldset class="form-fieldset">
+                            <legend class="fieldset-title">Preferências e Consentimento</legend>
+                            
+                            <div class="form-group checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="newsletter" name="newsletter">
+                                    <span class="checkmark"></span>
+                                    Desejo receber informações sobre futuros eventos e newsletters
+                                </label>
+                            </div>
+                            
+                            <div class="form-group checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="termos" name="termos" required>
+                                    <span class="checkmark"></span>
+                                    Concordo com os <a href="#" id="openTermsModal" class="terms-link">termos de uso</a> e <a href="#" class="terms-link">política de privacidade</a> *
+                                </label>
+                            </div>
+                        </fieldset>
+
                         <button type="submit" class="submit-button">
                             <i class="fas fa-user-plus"></i>
                             Confirmar Cadastro
