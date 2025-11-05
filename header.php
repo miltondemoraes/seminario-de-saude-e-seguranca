@@ -11,7 +11,7 @@
         <div class="container">
             <nav class="nav">
                 <div class="logo">
-                    <span class="logo-text">2º Sem. SSAV</span>
+                    <span class="logo-text">2º SEMIN SAÚDE E SEG AV</span>
                 </div>
                 <?php
                 wp_nav_menu(array(

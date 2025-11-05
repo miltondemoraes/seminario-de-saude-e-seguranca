@@ -752,14 +752,33 @@
                         </div>
                         <div class="form-group">
                             <label for="cargo">Cargo/Função</label>
-                            <input type="text" id="cargo" name="cargo">
+                            <select id="cargo" name="cargo">
+                                <option value="">Selecione...</option>
+                                <option value="produtor">Produtor</option>
+                                <option value="diretor">Diretor</option>
+                                <option value="cinematografia">Diretor de Fotografia/Cinematografia</option>
+                                <option value="audio">Técnico de Áudio/Som</option>
+                                <option value="eletricista">Eletricista</option>
+                                <option value="gaffer">Gaffer</option>
+                                <option value="iluminacao">Iluminação</option>
+                                <option value="cenografia">Cenógrafo/Cenografia</option>
+                                <option value="figurino">Figurinista</option>
+                                <option value="maquiagem">Maquiador</option>
+                                <option value="dublador">Dublador/Dublê</option>
+                                <option value="assistente">Assistente de Produção</option>
+                                <option value="gerenciador">Gerenciador de Produçao</option>
+                                <option value="outro">Outro</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="drt">DRT</label>
+                            <input type="text" id="drt" name="drt" placeholder="Ex: 12345/SP">
                         </div>
                         <div class="form-group">
                             <label for="experiencia">Área de Experiência *</label>
                             <select id="experiencia" name="experiencia" required>
                                 <option value="">Selecione...</option>
                                 <option value="producao">Audiovisual</option>
-                                <option value="tecnica">Área Técnica</option>
                                 <option value="seguranca">Segurança do Trabalho</option>
                                 <option value="saude">Saúde Ocupacional</option>
                                 <option value="gestao">Gestão/Administração</option>
@@ -821,6 +840,14 @@
                                         <span class="palestra-option-text">
                                             <strong>Mesa 3 - 26/11 (16h30)</strong>
                                             <span class="palestra-title">Saúde Mental e Física</span>
+                                        </span>
+                                    </label>
+
+                                    <label class="palestra-checkbox-item">
+                                        <input type="checkbox" class="palestra-checkbox" value="selo_dia2">
+                                        <span class="palestra-option-text">
+                                            <strong>Entrega do Selo - 26/11 (18h00)</strong>
+                                            <span class="palestra-title">Entrega do Selo Sindcine de Conformidade</span>
                                         </span>
                                     </label>
                                 </div>
@@ -1045,20 +1072,20 @@
                             Uma das principais lutas do Sindcine é pela implementação de práticas seguras nas produções audiovisuais, com o objetivo de preservar a integridade física e mental dos trabalhadores. Não se trata apenas de prevenir acidentes e utilizar equipamentos de proteção, mas principalmente criar uma cultura de segurança durante todo a produção, inclusive fora dos sets de filmagem. Também evitar situações de exaustão, que podem debilitar o profissional, encurtar sua carreira e levar a doenças precoces. Nossa meta é que a profissão de técnico do audiovisual ofereça qualidade de vida, saúde e segurança.
                         </p>
                     </div>
-                </div>
-                
-                <div class="sindcine-links">
-                    <h3>Para saber mais sobre o Sindcine e tornar-se um filiado, acesse nossas site e redes sociais:</h3>
-                    <div class="social-links">
-                        <a href="http://www.sindcine.com.br" target="_blank" rel="noopener noreferrer" class="social-link">
-                            <span>Nosso Site</span>
-                        </a>
-                        <a href="https://www.instagram.com/sindcine" target="_blank" rel="noopener noreferrer" class="social-link">
-                            <span>Instagram</span>
-                        </a>
-                        <a href="https://www.facebook.com/Sindcine" target="_blank" rel="noopener noreferrer" class="social-link">
-                            <span>Facebook</span>
-                        </a>
+                    
+                    <div class="sindcine-links">
+                        <h3>Para saber mais sobre o Sindcine e tornar-se um filiado, acesse nossas site e redes sociais:</h3>
+                        <div class="social-links">
+                            <a href="http://www.sindcine.com.br" target="_blank" rel="noopener noreferrer" class="social-link">
+                                <span>Nosso Site</span>
+                            </a>
+                            <a href="https://www.instagram.com/sindcine" target="_blank" rel="noopener noreferrer" class="social-link">
+                                <span>Instagram</span>
+                            </a>
+                            <a href="https://www.facebook.com/Sindcine" target="_blank" rel="noopener noreferrer" class="social-link">
+                                <span>Facebook</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
