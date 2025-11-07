@@ -33,43 +33,43 @@ jQuery(document).ready(function($) {
 
     function initializeFormConditionalFields() {
         const areaAtuacaoSelect = $('#areaAtuacao');
-        const audiovisualSection = $('#audiovisualSection');
-        const outroAreaGroup = $('#outroAreaGroup');
-        const funcaoAudiovisualSelect = $('#funcaoAudiovisual');
-        const outroAudiovisualGroup = $('#outroAudiovisualGroup');
+        const audiovisualSection = $('#audiovisual_section');
+        const outro_atuacao_group = $('#outro_atuacao_group');
+        const funcaoAudiovisualSelect = $('#funcao_audiovisual');
+        const outro_funcao_group = $('#outro_funcao_group');
 
         // Show/hide other area field
         areaAtuacaoSelect.on('change', function() {
             if ($(this).val() === 'outro') {
-                outroAreaGroup.slideDown(300);
-                $('#outroArea').attr('required', true);
+                outro_atuacao_group.slideDown(300);
+                $('#outroAtuacao').attr('required', true);
             } else {
-                outroAreaGroup.slideUp(300);
-                $('#outroArea').removeAttr('required').val('');
+                outro_atuacao_group.slideUp(300);
+                $('#outroAtuacao').removeAttr('required').val('');
             }
 
-            // Show/hide audiovisual section
+            // Show/hide audiovisual section (including DRT)
             if ($(this).val() === 'audiovisual') {
                 audiovisualSection.slideDown(300);
-                $('#temDRT').attr('required', true);
+                $('input[name="temDRT"]').prop('required', true);
                 funcaoAudiovisualSelect.attr('required', true);
             } else {
                 audiovisualSection.slideUp(300);
-                $('#temDRT').removeAttr('required');
+                $('input[name="temDRT"]').prop('required', false).prop('checked', false);
                 funcaoAudiovisualSelect.removeAttr('required').val('');
-                outroAudiovisualGroup.slideUp(300);
-                $('#outroAudiovisual').removeAttr('required').val('');
+                outro_funcao_group.slideUp(300);
+                $('#outra_funcao').removeAttr('required').val('');
             }
         });
 
         // Show/hide other audiovisual function field
         funcaoAudiovisualSelect.on('change', function() {
             if ($(this).val() === 'outro_audiovisual') {
-                outroAudiovisualGroup.slideDown(300);
-                $('#outroAudiovisual').attr('required', true);
+                outro_funcao_group.slideDown(300);
+                $('#outra_funcao').attr('required', true);
             } else {
-                outroAudiovisualGroup.slideUp(300);
-                $('#outroAudiovisual').removeAttr('required').val('');
+                outro_funcao_group.slideUp(300);
+                $('#outra_funcao').removeAttr('required').val('');
             }
         });
     }
@@ -246,7 +246,7 @@ jQuery(document).ready(function($) {
                 }
                 break;
 
-            case 'outroArea':
+            case 'outroAtuacao':
                 if ($('#areaAtuacao').val() === 'outro' && !fieldValue) {
                     isValid = false;
                     errorMessage = 'Por favor, especifique sua área de atuação';
@@ -254,24 +254,24 @@ jQuery(document).ready(function($) {
                 break;
 
             case 'temDRT':
-                if ($('#areaAtuacao').val() === 'audiovisual' && !field.prop('checked')) {
-                    const anyRadioChecked = $('input[name="temDRT"]:checked').length > 0;
-                    if (!anyRadioChecked) {
+                if ($('#areaAtuacao').val() === 'audiovisual') {
+                    const isDRTChecked = $('input[name="temDRT"]:checked').length > 0;
+                    if (!isDRTChecked) {
                         isValid = false;
-                        errorMessage = 'Por favor, selecione uma opção';
+                        errorMessage = 'Por favor, selecione uma opção para DRT';
                     }
                 }
                 break;
 
-            case 'funcaoAudiovisual':
+            case 'funcao_audiovisual':
                 if ($('#areaAtuacao').val() === 'audiovisual' && fieldValue === '') {
                     isValid = false;
                     errorMessage = 'Por favor, selecione sua função no audiovisual';
                 }
                 break;
 
-            case 'outroAudiovisual':
-                if ($('#funcaoAudiovisual').val() === 'outro_audiovisual' && !fieldValue) {
+            case 'outra_funcao':
+                if ($('#funcao_audiovisual').val() === 'outro_audiovisual' && !fieldValue) {
                     isValid = false;
                     errorMessage = 'Por favor, especifique sua função no audiovisual';
                 }
@@ -416,10 +416,10 @@ jQuery(document).ready(function($) {
             empresa: $('#empresa').val(),
             cargo: $('#cargo').val(),
             areaAtuacao: $('#areaAtuacao').val(),
-            outroArea: $('#outroArea').val(),
-            temDRT: $('input[name="temDRT"]:checked').val(),
-            funcaoAudiovisual: $('#funcaoAudiovisual').val(),
-            outroAudiovisual: $('#outroAudiovisual').val(),
+            outroAtuacao: $('#outroAtuacao').val(),
+            temDRT: $('input[name="temDRT"]:checked').val() || '',
+            funcaoAudiovisual: $('#funcao_audiovisual').val(),
+            outraFuncao: $('#outra_funcao').val(),
             newsletter: $('#newsletter').prop('checked') ? 1 : 0
         };
         
@@ -442,7 +442,7 @@ jQuery(document).ready(function($) {
                     errorMessages.hide();
                     
                     // Resetar campos condicionais
-                    $('#audiovisualSection, #outroAreaGroup, #outroAudiovisualGroup').slideUp(300);
+                    $('#audiovisual_section, #outro_atuacao_group, #outro_funcao_group').slideUp(300);
                     
                     showSuccessModal();
                 } else {

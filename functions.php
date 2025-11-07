@@ -109,16 +109,16 @@ function seminario_handle_registration() {
         wp_die();
     }
     
-    $nome = sanitize_text_field($_POST['nome']);
-    $email = sanitize_email($_POST['email']);
-    $telefone = sanitize_text_field($_POST['telefone']);
-    $empresa = sanitize_text_field($_POST['empresa']);
-    $cargo = sanitize_text_field($_POST['cargo']);
-    $areaAtuacao = sanitize_text_field($_POST['areaAtuacao']);
-    $outroArea = sanitize_text_field($_POST['outroArea'] ?? '');
+    $nome = sanitize_text_field($_POST['nome'] ?? '');
+    $email = sanitize_email($_POST['email'] ?? '');
+    $telefone = sanitize_text_field($_POST['telefone'] ?? '');
+    $empresa = sanitize_text_field($_POST['empresa'] ?? '');
+    $cargo = sanitize_text_field($_POST['cargo'] ?? '');
+    $areaAtuacao = sanitize_text_field($_POST['areaAtuacao'] ?? '');
+    $outroAtuacao = sanitize_text_field($_POST['outroAtuacao'] ?? '');
     $temDRT = sanitize_text_field($_POST['temDRT'] ?? '');
     $funcaoAudiovisual = sanitize_text_field($_POST['funcaoAudiovisual'] ?? '');
-    $outroAudiovisual = sanitize_text_field($_POST['outroAudiovisual'] ?? '');
+    $outraFuncao = sanitize_text_field($_POST['outraFuncao'] ?? '');
     $newsletter = !empty($_POST['newsletter']) && $_POST['newsletter'] == '1' ? 'Sim' : 'Não';
     
     // Validações obrigatórias
@@ -133,21 +133,21 @@ function seminario_handle_registration() {
     }
     
     // Validações condicionais
-    if($areaAtuacao === 'outro' && empty($outroArea)) {
+    if($areaAtuacao === 'outro' && empty($outroAtuacao)) {
         wp_send_json_error('Especifique sua área de atuação');
         wp_die();
     }
     
     if($areaAtuacao === 'audiovisual') {
-        if(empty($temDRT)) {
-            wp_send_json_error('Selecione se tem DRT');
+        if(empty($temDRT) || ($temDRT !== 'sim' && $temDRT !== 'nao')) {
+            wp_send_json_error('Selecione uma opção para DRT (Sim ou Não)');
             wp_die();
         }
         if(empty($funcaoAudiovisual)) {
             wp_send_json_error('Selecione sua função no audiovisual');
             wp_die();
         }
-        if($funcaoAudiovisual === 'outro_audiovisual' && empty($outroAudiovisual)) {
+        if($funcaoAudiovisual === 'outro_audiovisual' && empty($outraFuncao)) {
             wp_send_json_error('Especifique sua função no audiovisual');
             wp_die();
         }
@@ -171,7 +171,7 @@ function seminario_handle_registration() {
     // Determinar experiência (categoria)
     $experiencia = $areaAtuacao;
     if($areaAtuacao === 'outro') {
-        $experiencia = $outroArea;
+        $experiencia = $outroAtuacao;
     }
     
     // Determinar função (cargo específico para audiovisual)
@@ -211,13 +211,16 @@ function seminario_handle_registration() {
             'still' => 'Still',
             'som' => 'Som',
             'vfx' => 'VFX',
-            'outro_audiovisual' => $outroAudiovisual
+            'outro_audiovisual' => $outraFuncao
         );
         
         $cargo_final = isset($funcoes_mapa[$funcaoAudiovisual]) ? $funcoes_mapa[$funcaoAudiovisual] : $cargo;
     }
     
-    // Montar a linha de dados
+    // Converter temDRT para valor legível
+    $temDRT_valor = ($temDRT === 'sim') ? 'Sim' : (($temDRT === 'nao') ? 'Não' : '');
+    
+    // Montar a linha de dados - 11 campos separados por pipe
     $data_line = sprintf(
         "%s|%s|%s|%s|%s|%s|%s|%s|%s|%s|%s\n",
         $horario_brasil,
@@ -229,7 +232,7 @@ function seminario_handle_registration() {
         str_replace('|', '-', $experiencia),
         $newsletter,
         str_replace('|', '-', $areaAtuacao),
-        str_replace('|', '-', $temDRT),
+        $temDRT_valor,
         ''  // Reservado para palestras/mesas
     );
     
@@ -949,7 +952,7 @@ function seminario_customize_register($wp_customize) {
         'type'     => 'text',
     ));
     
-    // Individual Speakers (20 speakers)
+    // Individual Speakers (32 speakers)
     $speakers_defaults = array(
         1 => array('name' => 'Dr. Carlos Silva', 'title' => 'Especialista em Ergonomia'),
         2 => array('name' => 'Dra. Maria Santos', 'title' => 'Psicóloga Ocupacional'),
@@ -970,10 +973,22 @@ function seminario_customize_register($wp_customize) {
         17 => array('name' => 'Prof. Thiago Pereira', 'title' => 'Acústica e Ruído'),
         18 => array('name' => 'Dra. Carolina Dias', 'title' => 'Oftalmologia Ocupacional'),
         19 => array('name' => 'Eng. Gabriel Mendes', 'title' => 'Segurança Elétrica'),
-        20 => array('name' => 'Dra. Beatriz Rodrigues', 'title' => 'Epidemiologia Ocupacional')
+        20 => array('name' => 'Dra. Beatriz Rodrigues', 'title' => 'Epidemiologia Ocupacional'),
+        21 => array('name' => 'Dr. Ricardo Santos', 'title' => 'Médico do Trabalho especializado em saúde ocupacional no audiovisual'),
+        22 => array('name' => 'Dra. Marina Costa', 'title' => 'Psicóloga especialista em síndrome de burnout e estresse ocupacional'),
+        23 => array('name' => 'Eng. Felipe Rocha', 'title' => 'Engenheiro de Segurança especializado em estruturas temporárias para sets'),
+        24 => array('name' => 'Dra. Carla Mendes', 'title' => 'Fisioterapeuta do Trabalho com foco em lesões por movimentos repetitivos'),
+        25 => array('name' => 'Prof. André Silva', 'title' => 'Professor especialista em ergonomia aplicada ao audiovisual'),
+        26 => array('name' => 'Dra. Beatriz Lima', 'title' => 'Dermatologista ocupacional especializada em exposição solar em sets externos'),
+        27 => array('name' => 'Eng. Carlos Pereira', 'title' => 'Especialista em segurança contra incêndio em estúdios e sets'),
+        28 => array('name' => 'Dra. Juliana Alves', 'title' => 'Nutricionista ocupacional focada em alimentação em longas jornadas'),
+        29 => array('name' => 'Prof. Roberto Dias', 'title' => 'Especialista em treinamentos de segurança para equipes técnicas'),
+        30 => array('name' => 'Dra. Patricia Nunes', 'title' => 'Oftalmologista especializada em fadiga visual e iluminação artificial'),
+        31 => array('name' => 'Eng. Lucas Barros', 'title' => 'Engenheiro especialista em segurança de equipamentos de filmagem'),
+        32 => array('name' => 'Dra. Fernanda Cruz', 'title' => 'Pneumologista ocupacional focada em exposição a fumaças e efeitos especiais')
     );
     
-    for ($i = 1; $i <= 20; $i++) {
+    for ($i = 1; $i <= 32; $i++) {
         // Speaker Name
         $wp_customize->add_setting("seminario_speaker{$i}_name", array(
             'default' => $speakers_defaults[$i]['name'],

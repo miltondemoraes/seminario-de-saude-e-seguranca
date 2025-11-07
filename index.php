@@ -300,7 +300,7 @@
             </div>
             <div class="speakers-grid">
                 <?php 
-                // Valores padrão para 20 palestrantes
+                // Valores padrão para 32 palestrantes
                 $speakers_defaults = array(
                     1 => array('name' => 'Agnaldo Bueno', 'title' => 'Dublê e coordenador de ação; mais de 500 projetos em 30 anos de atividade; especialista em cenas de ação (acidentes, quedas, fogo, lutas); trabalhou em Carandiru, Cangaço Novo, Cidade de Deus e dezenas de outros'),
                     2 => array('name' => 'Marcelo Vazzoller', 'title' => 'Diretor da Vertical Pro Treinamentos e Serviços em Altura; Técnico em Segurança do Trabalho; alpinista; especialista em resgate em altura; organizador de cursos de resgate em montanha e em espaços confinados'),
@@ -321,10 +321,22 @@
                     17 => array('name' => 'Segurança Elétrica', 'title' => 'Especialidade mencionada'),
                     18 => array('name' => 'Epidemiologia Ocupacional', 'title' => 'Especialidade mencionada'),
                     19 => array('name' => 'Acústica e Ruído', 'title' => 'Especialidade mencionada'),
-                    20 => array('name' => 'Oftalmologia Ocupacional', 'title' => 'Especialidade mencionada')
+                    20 => array('name' => 'Oftalmologia Ocupacional', 'title' => 'Especialidade mencionada'),
+                    21 => array('name' => 'Dr. Ricardo Santos', 'title' => 'Médico do Trabalho especializado em saúde ocupacional no audiovisual'),
+                    22 => array('name' => 'Dra. Marina Costa', 'title' => 'Psicóloga especialista em síndrome de burnout e estresse ocupacional'),
+                    23 => array('name' => 'Eng. Felipe Rocha', 'title' => 'Engenheiro de Segurança especializado em estruturas temporárias para sets'),
+                    24 => array('name' => 'Dra. Carla Mendes', 'title' => 'Fisioterapeuta do Trabalho com foco em lesões por movimentos repetitivos'),
+                    25 => array('name' => 'Prof. André Silva', 'title' => 'Professor especialista em ergonomia aplicada ao audiovisual'),
+                    26 => array('name' => 'Dra. Beatriz Lima', 'title' => 'Dermatologista ocupacional especializada em exposição solar em sets externos'),
+                    27 => array('name' => 'Eng. Carlos Pereira', 'title' => 'Especialista em segurança contra incêndio em estúdios e sets'),
+                    28 => array('name' => 'Dra. Juliana Alves', 'title' => 'Nutricionista ocupacional focada em alimentação em longas jornadas'),
+                    29 => array('name' => 'Prof. Roberto Dias', 'title' => 'Especialista em treinamentos de segurança para equipes técnicas'),
+                    30 => array('name' => 'Dra. Patricia Nunes', 'title' => 'Oftalmologista especializada em fadiga visual e iluminação artificial'),
+                    31 => array('name' => 'Eng. Lucas Barros', 'title' => 'Engenheiro especialista em segurança de equipamentos de filmagem'),
+                    32 => array('name' => 'Dra. Fernanda Cruz', 'title' => 'Pneumologista ocupacional focada em exposição a fumaças e efeitos especiais')
                 );
                 
-                for ($i = 1; $i <= 20; $i++): 
+                for ($i = 1; $i <= 32; $i++): 
                     $name = get_theme_mod("seminario_speaker{$i}_name", $speakers_defaults[$i]['name']);
                     $title = get_theme_mod("seminario_speaker{$i}_title", $speakers_defaults[$i]['title']);
                     ?>
@@ -751,40 +763,92 @@
                             <input type="text" id="empresa" name="empresa">
                         </div>
                         <div class="form-group">
-                            <label for="cargo">Cargo/Função</label>
-                            <select id="cargo" name="cargo">
+                            <label for="empresa">Empresa / Instituição *</label>
+                            <input type="text" id="empresa" name="empresa" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cargo">Cargo *</label>
+                            <input type="text" id="cargo" name="cargo" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="areaAtuacao">Área de Atuação *</label>
+                            <select id="areaAtuacao" name="areaAtuacao" required>
                                 <option value="">Selecione...</option>
-                                <option value="produtor">Produtor</option>
-                                <option value="diretor">Diretor</option>
-                                <option value="cinematografia">Diretor de Fotografia/Cinematografia</option>
-                                <option value="audio">Técnico de Áudio/Som</option>
-                                <option value="eletricista">Eletricista</option>
-                                <option value="gaffer">Gaffer</option>
-                                <option value="iluminacao">Iluminação</option>
-                                <option value="cenografia">Cenógrafo/Cenografia</option>
-                                <option value="figurino">Figurinista</option>
-                                <option value="maquiagem">Maquiador</option>
-                                <option value="dublador">Dublador/Dublê</option>
-                                <option value="assistente">Assistente de Produção</option>
-                                <option value="gerenciador">Gerenciador de Produçao</option>
+                                <option value="audiovisual">Audiovisual</option>
+                                <option value="seguranca_trabalho">Segurança do Trabalho</option>
+                                <option value="saude_ocupacional">Saúde Ocupacional</option>
+                                <option value="gestao_administracao">Gestão / Administração</option>
+                                <option value="estudante">Estudante</option>
                                 <option value="outro">Outro</option>
                             </select>
                         </div>
-                        <div class="form-group">
-                            <label for="drt">DRT</label>
-                            <input type="text" id="drt" name="drt" placeholder="Ex: 12345/SP">
+                        <div class="form-group" id="outro_atuacao_group" style="display: none;">
+                            <label for="outroAtuacao">Qual é sua área de atuação?</label>
+                            <input type="text" id="outroAtuacao" name="outroAtuacao" placeholder="Especifique sua área">
                         </div>
-                        <div class="form-group">
-                            <label for="experiencia">Área de Experiência *</label>
-                            <select id="experiencia" name="experiencia" required>
-                                <option value="">Selecione...</option>
-                                <option value="producao">Audiovisual</option>
-                                <option value="seguranca">Segurança do Trabalho</option>
-                                <option value="saude">Saúde Ocupacional</option>
-                                <option value="gestao">Gestão/Administração</option>
-                                <option value="estudante">Estudante</option>
-                                <option value="outros">Outros</option>
-                            </select>
+
+                        <!-- Campos para Profissionais Audiovisual (aparecem apenas se Audiovisual selecionado) -->
+                        <div id="audiovisual_section" style="display: none;">
+                            <div class="form-group">
+                                <label>Tem DRT? *</label>
+                                <div class="radio-group">
+                                    <label class="radio-label">
+                                        <input type="radio" name="temDRT" value="sim">
+                                        <span class="radio-checkmark"></span>
+                                        Sim
+                                    </label>
+                                    <label class="radio-label">
+                                        <input type="radio" name="temDRT" value="nao">
+                                        <span class="radio-checkmark"></span>
+                                        Não
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="funcao_audiovisual">Qual sua função no audiovisual? *</label>
+                                <select id="funcao_audiovisual" name="funcao_audiovisual">
+                                    <option value="">Selecione...</option>
+                                    <option value="assistencia_set">Assistência de Set</option>
+                                    <option value="assistencia_arte">Assistência de Arte</option>
+                                    <option value="assistencia_camera">Assistência de Câmera</option>
+                                    <option value="assistencia_direcao">Assistência de Direção</option>
+                                    <option value="assistencia_eletrica">Assistência de Elétrica</option>
+                                    <option value="assistencia_figurino">Assistência de Figurino</option>
+                                    <option value="assistencia_producao">Assistência de Produção</option>
+                                    <option value="camera">Câmera</option>
+                                    <option value="contrarregra">Contrarregra</option>
+                                    <option value="direcao">Direção</option>
+                                    <option value="direcao_arte">Direção de Arte</option>
+                                    <option value="direcao_elenco">Direção de Elenco</option>
+                                    <option value="direcao_fotografia">Direção de Fotografia</option>
+                                    <option value="direcao_producao">Direção de Produção</option>
+                                    <option value="dit">DIT</option>
+                                    <option value="efeitos_especiais">Efeitos Especiais</option>
+                                    <option value="eletrica">Elétrica</option>
+                                    <option value="figurino">Figurino</option>
+                                    <option value="gma">GMA</option>
+                                    <option value="making_of">Making-of</option>
+                                    <option value="maquiagem">Maquiagem</option>
+                                    <option value="maquinaria">Maquinária</option>
+                                    <option value="montagem">Montagem</option>
+                                    <option value="pos_producao">Pós-produção</option>
+                                    <option value="producao">Produção</option>
+                                    <option value="producao_arte">Produção de Arte</option>
+                                    <option value="producao_executiva">Produção Executiva</option>
+                                    <option value="producao_objetos">Produção de Objetos</option>
+                                    <option value="roteiro">Roteiro</option>
+                                    <option value="still">Still</option>
+                                    <option value="som">Som</option>
+                                    <option value="vfx">VFX</option>
+                                    <option value="outro_audiovisual">Outro</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group" id="outro_funcao_group" style="display: none;">
+                                <label for="outra_funcao">Qual é sua função?</label>
+                                <input type="text" id="outra_funcao" name="outra_funcao" placeholder="Especifique sua função">
+                            </div>
                         </div>
                         
                         <div class="form-group palestras-group">
@@ -855,16 +919,16 @@
                         </div>
                         
                         <div class="form-group checkbox-group">
-                            <label class="checkbox-label">
+                            <label class="checkbox-inline-label">
                                 <input type="checkbox" id="newsletter" name="newsletter">
-                                <span class="checkmark"></span>
+                                <span class="checkbox-inline-mark"></span>
                                 Quero receber informações sobre futuros eventos
                             </label>
                         </div>
                         <div class="form-group checkbox-group">
-                            <label class="checkbox-label">
+                            <label class="checkbox-inline-label">
                                 <input type="checkbox" id="termos" name="termos" required>
-                                <span class="checkmark"></span>
+                                <span class="checkbox-inline-mark"></span>
                                 Concordo com os <a href="#" class="terms-link" id="openTermsModal">termos de uso</a> e política de privacidade *
                             </label>
                         </div>
