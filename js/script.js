@@ -11,10 +11,6 @@ jQuery(document).ready(function($) {
     initializeFormConditionalFields();
 
     function initializeEventListeners() {
-        if (mobileMenuToggle.length) {
-            mobileMenuToggle.on('click', toggleMobileMenu);
-        }
-
         if (registrationForm.length) {
             registrationForm.on('submit', handleFormSubmission);
         }
@@ -37,6 +33,8 @@ jQuery(document).ready(function($) {
         const outro_atuacao_group = $('#outro_atuacao_group');
         const funcaoAudiovisualSelect = $('#funcao_audiovisual');
         const outro_funcao_group = $('#outro_funcao_group');
+        const drt_numero_group = $('#drt_numero_group');
+        const temDRTRadios = $('input[name="temDRT"]');
 
         // Show/hide other area field
         areaAtuacaoSelect.on('change', function() {
@@ -51,14 +49,26 @@ jQuery(document).ready(function($) {
             // Show/hide audiovisual section (including DRT)
             if ($(this).val() === 'audiovisual') {
                 audiovisualSection.slideDown(300);
-                $('input[name="temDRT"]').prop('required', true);
+                temDRTRadios.prop('required', true);
                 funcaoAudiovisualSelect.attr('required', true);
             } else {
                 audiovisualSection.slideUp(300);
-                $('input[name="temDRT"]').prop('required', false).prop('checked', false);
+                temDRTRadios.prop('required', false).prop('checked', false);
+                drt_numero_group.slideUp(300);
+                $('#drt_numero').removeAttr('required').val('');
                 funcaoAudiovisualSelect.removeAttr('required').val('');
                 outro_funcao_group.slideUp(300);
                 $('#outra_funcao').removeAttr('required').val('');
+            }
+        });
+
+        // Show/hide DRT number field when "Sim" is selected
+        temDRTRadios.on('change', function() {
+            if ($('input[name="temDRT"]:checked').val() === 'sim') {
+                drt_numero_group.slideDown(300);
+            } else {
+                drt_numero_group.slideUp(300);
+                $('#drt_numero').val('');
             }
         });
 
@@ -72,17 +82,6 @@ jQuery(document).ready(function($) {
                 $('#outra_funcao').removeAttr('required').val('');
             }
         });
-    }
-
-    function toggleMobileMenu() {
-        navLinks.toggleClass('mobile-open');
-        const icon = mobileMenuToggle.find('i');
-        
-        if (navLinks.hasClass('mobile-open')) {
-            icon.removeClass('fa-bars').addClass('fa-times');
-        } else {
-            icon.removeClass('fa-times').addClass('fa-bars');
-        }
     }
 
     function initializeScrollEffects() {
@@ -418,6 +417,7 @@ jQuery(document).ready(function($) {
             areaAtuacao: $('#areaAtuacao').val(),
             outroAtuacao: $('#outroAtuacao').val(),
             temDRT: $('input[name="temDRT"]:checked').val() || '',
+            drtNumero: $('#drt_numero').val() || '',
             funcaoAudiovisual: $('#funcao_audiovisual').val(),
             outraFuncao: $('#outra_funcao').val(),
             newsletter: $('#newsletter').prop('checked') ? 1 : 0

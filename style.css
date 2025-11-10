@@ -141,6 +141,7 @@ body {
     align-items: center;
     padding: 0.8rem 0;
     min-height: 70px;
+    gap: 1rem;
 }
 
 .logo {
@@ -242,11 +243,60 @@ aside[class*="widget_categories"] {
     box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
 }
 
+.btn-cadastro-header {
+    background: var(--gradient-yellow);
+    color: var(--primary-black) !important;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem !important;
+    border-radius: 25px;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+    margin-right: 1rem;
+    white-space: nowrap;
+}
+
+.btn-cadastro-header::before,
+.btn-cadastro-header::after {
+    display: none !important;
+}
+
+.btn-cadastro-header:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+}
+
 .mobile-menu-toggle {
     display: none;
-    color: var(--text-white);
-    font-size: 1.5rem;
+    background: none;
+    border: none;
     cursor: pointer;
+    padding: 0.5rem;
+    flex-direction: column;
+    gap: 0.4rem;
+    z-index: 1001;
+}
+
+.mobile-menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-white);
+    transition: all 0.3s ease;
+    display: block;
+    border-radius: 2px;
+}
+
+.mobile-menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(8px, 8px);
+}
+
+.mobile-menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
 }
 
 /* Hero Section */
@@ -2729,15 +2779,43 @@ html {
 /* Mobile transition point */
 @media (max-width: 768px) {
     .mobile-menu-toggle {
-        display: block;
-        color: var(--text-white);
-        font-size: 1.5rem;
-        cursor: pointer;
-        border: none;
+        display: flex;
         background: none;
+        border: none;
+        cursor: pointer;
         padding: 0.5rem;
+        flex-direction: column;
+        gap: 0.4rem;
         z-index: 1001;
         position: relative;
+        flex-shrink: 0;
+    }
+    
+    .mobile-menu-toggle span {
+        width: 25px;
+        height: 3px;
+        background-color: var(--text-white);
+        transition: all 0.3s ease;
+        display: block;
+        border-radius: 2px;
+    }
+    
+    .mobile-menu-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(8px, 8px);
+    }
+
+    .mobile-menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .mobile-menu-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -7px);
+    }
+    
+    .btn-cadastro-header {
+        z-index: 1001;
+        flex-shrink: 0;
+        margin-right: 0.5rem !important;
     }
     
     .nav-links {
@@ -2782,6 +2860,12 @@ html {
         margin-top: 1rem;
         padding: 1rem 2rem !important;
         font-size: 1.1rem !important;
+    }
+    
+    .btn-cadastro-header {
+        padding: 0.5rem 1rem !important;
+        font-size: 0.8rem !important;
+        margin-right: 0.5rem !important;
     }
     
     .header.scrolled {

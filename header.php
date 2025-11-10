@@ -21,24 +21,13 @@
                     'fallback_cb' => 'seminario_default_menu'
                 ));
                 ?>
-                <div class="mobile-menu-toggle">
-                    <i class="fas fa-bars"></i>
-                </div>
+                <a href="#cadastro" class="btn-cadastro-header">Inscreva-se</a>
             </nav>
         </div>
     </header>
 
 <?php
 function seminario_default_menu() {
-    echo '<div class="nav-links">';
-    echo '<a href="#evento" class="nav-link">Evento</a>';
-    echo '<a href="#programacao" class="nav-link">Programação</a>';
-    echo '<a href="#palestrantes" class="nav-link">Palestrantes</a>';
-    echo '<a href="#apoiadores" class="nav-link">Apoiadores</a>';
-    echo '<a href="#exposicao" class="nav-link">Expositores</a>';
-    echo '<a href="#como-chegar" class="nav-link">Como Chegar</a>';
-    echo '<a href="#sobre-sindcine" class="nav-link">Sobre o Sindcine</a>';
-    echo '<a href="#cadastro" class="nav-link btn-cadastro">Inscreva-se</a>';
-    echo '</div>';
+    // Menu mobile removido
 }
 ?>

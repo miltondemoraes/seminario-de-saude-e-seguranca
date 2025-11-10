@@ -759,10 +759,6 @@
                             <input type="tel" id="telefone" name="telefone" required>
                         </div>
                         <div class="form-group">
-                            <label for="empresa">Empresa/Instituição</label>
-                            <input type="text" id="empresa" name="empresa">
-                        </div>
-                        <div class="form-group">
                             <label for="empresa">Empresa / Instituição *</label>
                             <input type="text" id="empresa" name="empresa" required>
                         </div>
@@ -803,6 +799,11 @@
                                         Não
                                     </label>
                                 </div>
+                            </div>
+
+                            <div class="form-group" id="drt_numero_group" style="display: none;">
+                                <label for="drt_numero">Número do DRT</label>
+                                <input type="text" id="drt_numero" name="drt_numero" placeholder="Ex: 12345/SP">
                             </div>
 
                             <div class="form-group">

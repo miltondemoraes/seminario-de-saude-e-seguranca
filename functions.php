@@ -117,6 +117,7 @@ function seminario_handle_registration() {
     $areaAtuacao = sanitize_text_field($_POST['areaAtuacao'] ?? '');
     $outroAtuacao = sanitize_text_field($_POST['outroAtuacao'] ?? '');
     $temDRT = sanitize_text_field($_POST['temDRT'] ?? '');
+    $drtNumero = sanitize_text_field($_POST['drtNumero'] ?? '');
     $funcaoAudiovisual = sanitize_text_field($_POST['funcaoAudiovisual'] ?? '');
     $outraFuncao = sanitize_text_field($_POST['outraFuncao'] ?? '');
     $newsletter = !empty($_POST['newsletter']) && $_POST['newsletter'] == '1' ? 'Sim' : 'Não';
@@ -220,9 +221,9 @@ function seminario_handle_registration() {
     // Converter temDRT para valor legível
     $temDRT_valor = ($temDRT === 'sim') ? 'Sim' : (($temDRT === 'nao') ? 'Não' : '');
     
-    // Montar a linha de dados - 11 campos separados por pipe
+    // Montar a linha de dados - 12 campos separados por pipe
     $data_line = sprintf(
-        "%s|%s|%s|%s|%s|%s|%s|%s|%s|%s|%s\n",
+        "%s|%s|%s|%s|%s|%s|%s|%s|%s|%s|%s|%s\n",
         $horario_brasil,
         str_replace('|', '-', $nome),
         str_replace('|', '-', $email),
@@ -233,6 +234,7 @@ function seminario_handle_registration() {
         $newsletter,
         str_replace('|', '-', $areaAtuacao),
         $temDRT_valor,
+        str_replace('|', '-', $drtNumero),
         ''  // Reservado para palestras/mesas
     );
     
