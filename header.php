@@ -26,5 +26,3 @@
             </nav>
         </div>
     </header>
-
-<?php get_footer(); ?>
