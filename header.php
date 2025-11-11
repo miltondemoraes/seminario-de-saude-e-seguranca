@@ -13,21 +13,18 @@
                 <div class="logo">
                     <span class="logo-text">2º SEMIN SAÚDE E SEG AV</span>
                 </div>
-                <?php
-                wp_nav_menu(array(
-                    'theme_location' => 'primary',
-                    'menu_class' => 'nav-links',
-                    'container' => false,
-                    'fallback_cb' => 'seminario_default_menu'
-                ));
-                ?>
+                <div class="nav-links">
+                    <a href="#evento" class="nav-link">Evento</a>
+                    <a href="#programacao" class="nav-link">Programação</a>
+                    <a href="#palestrantes" class="nav-link">Palestrantes</a>
+                    <a href="#apoiadores" class="nav-link">Apoiadores</a>
+                    <a href="#exposicao" class="nav-link">Expositores</a>
+                    <a href="#como-chegar" class="nav-link">Como Chegar</a>
+                    <a href="#sobre-sindcine" class="nav-link">Sobre o Sindcine</a>
+                </div>
                 <a href="#cadastro" class="btn-cadastro-header">Inscreva-se</a>
             </nav>
         </div>
     </header>
 
-<?php
-function seminario_default_menu() {
-    // Menu mobile removido
-}
-?>
+<?php get_footer(); ?>

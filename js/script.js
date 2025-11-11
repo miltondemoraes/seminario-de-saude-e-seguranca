@@ -1,7 +1,5 @@
 jQuery(document).ready(function($) {
     const registrationForm = $('#registrationForm');
-    const mobileMenuToggle = $('.mobile-menu-toggle');
-    const navLinks = $('.nav-links');
     const header = $('.header');
 
     initializeEventListeners();

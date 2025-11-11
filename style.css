@@ -251,10 +251,11 @@ aside[class*="widget_categories"] {
     border-radius: 25px;
     box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
     text-decoration: none;
-    display: inline-block;
+    display: inline-block !important;
     transition: all 0.3s ease;
     margin-right: 1rem;
     white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .btn-cadastro-header::before,
@@ -2778,94 +2779,36 @@ html {
 
 /* Mobile transition point */
 @media (max-width: 768px) {
-    .mobile-menu-toggle {
-        display: flex;
-        background: none;
-        border: none;
-        cursor: pointer;
-        padding: 0.5rem;
-        flex-direction: column;
-        gap: 0.4rem;
-        z-index: 1001;
-        position: relative;
+    .nav {
+        justify-content: space-between;
+        gap: 0.5rem;
+    }
+    
+    .logo {
         flex-shrink: 0;
+        min-width: auto;
+        max-width: calc(100% - 120px);
     }
     
-    .mobile-menu-toggle span {
-        width: 25px;
-        height: 3px;
-        background-color: var(--text-white);
-        transition: all 0.3s ease;
-        display: block;
-        border-radius: 2px;
-    }
-    
-    .mobile-menu-toggle.active span:nth-child(1) {
-        transform: rotate(45deg) translate(8px, 8px);
-    }
-
-    .mobile-menu-toggle.active span:nth-child(2) {
-        opacity: 0;
-    }
-
-    .mobile-menu-toggle.active span:nth-child(3) {
-        transform: rotate(-45deg) translate(7px, -7px);
-    }
-    
-    .btn-cadastro-header {
-        z-index: 1001;
-        flex-shrink: 0;
-        margin-right: 0.5rem !important;
+    .logo-text {
+        font-size: 0.75rem !important;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
     
     .nav-links {
-        position: fixed;
-        top: 70px;
-        left: 0;
-        width: 100%;
-        height: calc(100vh - 70px);
-        background: var(--primary-black);
-        flex-direction: column;
-        padding: 2rem;
-        gap: 1.5rem;
-        overflow-y: auto;
-        transform: translateX(-100%);
-        opacity: 0;
-        visibility: hidden;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-        z-index: 999;
-    }
-    
-    .nav-links.mobile-open {
-        transform: translateX(0);
-        opacity: 1;
-        visibility: visible;
-        overflow-y: auto;
-    }
-    
-    .nav-link {
-        font-size: 1.1rem;
-        padding: 1rem;
-        text-align: center;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        width: 100%;
-    }
-    
-    .nav-link:last-child {
-        border-bottom: none;
-    }
-    
-    .btn-cadastro {
-        margin-top: 1rem;
-        padding: 1rem 2rem !important;
-        font-size: 1.1rem !important;
+        display: none !important;
     }
     
     .btn-cadastro-header {
-        padding: 0.5rem 1rem !important;
-        font-size: 0.8rem !important;
-        margin-right: 0.5rem !important;
+        z-index: 1001;
+        flex-shrink: 0;
+        margin-right: 0 !important;
+        margin-left: auto;
+        padding: 0.4rem 0.8rem !important;
+        font-size: 0.65rem !important;
+        white-space: nowrap;
     }
     
     .header.scrolled {
