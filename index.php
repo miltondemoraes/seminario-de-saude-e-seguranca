@@ -127,11 +127,11 @@
                                 <p>Conceituação de risco; práticas para mitigar riscos; conscientização dos técnicos; legislação relativa à segurança dos trabalhadores</p>
                                 <p><strong>Debatedores:</strong></p>
                                 <ul>
-                                    <li>Domingos Leme – Fundacentro</li>
+                                    <li>Domingos Lino – Fundacentro</li>
                                     <li>Edson Martinho – Abracopel</li>
                                     <li>Marcelo Mutto – Abracopel</li>
                                     <li>Marcelo Vazzoler – Vertical Pro</li>
-                                    <li>Bruno Gomes – SPcine</li>
+                                    <li>Bruno Gomes Moreira – SPcine</li>
                                 </ul>
                             </div>
                         </div>
@@ -168,7 +168,7 @@
                                     <li>Max Lima – Produtor de Locação</li>
                                     <li>Telma Fonseca – Diretora de Produção</li>
                                     <li>Arnaldo Mesquita – Diretor de Fotografia</li>
-                                    <li>José Macedo de Medeiros (Jamelão) – Gaffer</li>
+                                    <li>Jamelão – Gaffer</li>
                                     <li>Rosiane Evangelista Matias – Elétrica</li>
                                     <li>Lucas Pupo – Especialista em Filmagens Subaquáticas</li>
                                     <li>Agnaldo Bueno – Dublê</li>
@@ -247,6 +247,7 @@
                                 <ul>
                                     <li>Gleice Aguillar – Corretora filmSEG</li>
                                     <li>Dra Raquel Lemos – Advogada especializada em audiovisual</li>
+                                    <li>Alexandre Borghi – Psicólogo</li>
                                 </ul>
                             </div>
                         </div>
