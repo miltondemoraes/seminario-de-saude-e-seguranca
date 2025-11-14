@@ -56,7 +56,11 @@ function lerInscricoes() {
                     'empresa' => $dados[4],
                     'cargo' => $dados[5],
                     'experiencia' => $dados[6],
-                    'newsletter' => $dados[7]
+                    'newsletter' => $dados[7],
+                    'areaAtuacao' => $dados[8] ?? '',
+                    'temDRT' => $dados[9] ?? '',
+                    'drtNumero' => $dados[10] ?? '',
+                    'palestras' => $dados[11] ?? ''
                 ];
             }
         }
@@ -463,6 +467,7 @@ $total = count($inscricoes);
                             <th>Telefone</th>
                             <th>Empresa</th>
                             <th>Cargo</th>
+                            <th>Palestras</th>
                             <th>Newsletter</th>
                         </tr>
                     </thead>
@@ -475,6 +480,7 @@ $total = count($inscricoes);
                             <td><?php echo htmlspecialchars($inscricao['telefone']); ?></td>
                             <td><?php echo htmlspecialchars($inscricao['empresa']); ?></td>
                             <td><?php echo htmlspecialchars($inscricao['cargo']); ?></td>
+                            <td><?php echo htmlspecialchars($inscricao['palestras']); ?></td>
                             <td><?php echo $inscricao['newsletter'] === 'Sim' ? '✅' : '❌'; ?></td>
                         </tr>
                         <?php endforeach; ?>
@@ -501,7 +507,7 @@ if (isset($_GET['exportar']) && $_GET['exportar'] === 'csv' && $total > 0) {
     $output = fopen('php://output', 'w');
     
     // Cabeçalho CSV
-    fputcsv($output, ['Data', 'Nome', 'Email', 'Telefone', 'Empresa', 'Cargo', 'Experiência', 'Newsletter']);
+    fputcsv($output, ['Data', 'Nome', 'Email', 'Telefone', 'Empresa', 'Cargo', 'Experiência', 'Palestras', 'Newsletter']);
     
     // Dados
     foreach ($inscricoes as $inscricao) {
@@ -513,6 +519,7 @@ if (isset($_GET['exportar']) && $_GET['exportar'] === 'csv' && $total > 0) {
             $inscricao['empresa'],
             $inscricao['cargo'],
             $inscricao['experiencia'],
+            $inscricao['palestras'],
             $inscricao['newsletter']
         ]);
     }

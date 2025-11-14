@@ -33,7 +33,10 @@ function lerInscricoes() {
                     'cargo' => $dados[5],
                     'experiencia' => $dados[6],
                     'newsletter' => $dados[7],
-                    'palestras' => isset($dados[8]) ? $dados[8] : ''
+                    'areaAtuacao' => isset($dados[8]) ? $dados[8] : '',
+                    'temDRT' => isset($dados[9]) ? $dados[9] : '',
+                    'drtNumero' => isset($dados[10]) ? $dados[10] : '',
+                    'palestras' => isset($dados[11]) ? $dados[11] : ''
                 );
             }
         }

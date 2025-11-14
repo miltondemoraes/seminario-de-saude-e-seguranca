@@ -418,7 +418,8 @@ jQuery(document).ready(function($) {
             drtNumero: $('#drt_numero').val() || '',
             funcaoAudiovisual: $('#funcao_audiovisual').val(),
             outraFuncao: $('#outra_funcao').val(),
-            newsletter: $('#newsletter').prop('checked') ? 1 : 0
+            newsletter: $('#newsletter').prop('checked') ? 1 : 0,
+            palestras: $('#palestras-hidden').val()
         };
         
         $.ajax({

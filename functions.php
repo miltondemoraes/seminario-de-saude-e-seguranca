@@ -121,6 +121,7 @@ function seminario_handle_registration() {
     $funcaoAudiovisual = sanitize_text_field($_POST['funcaoAudiovisual'] ?? '');
     $outraFuncao = sanitize_text_field($_POST['outraFuncao'] ?? '');
     $newsletter = !empty($_POST['newsletter']) && $_POST['newsletter'] == '1' ? 'Sim' : 'Não';
+    $palestras = sanitize_text_field($_POST['palestras'] ?? '');
     
     // Validações obrigatórias
     if(empty($nome) || empty($email) || empty($telefone) || empty($empresa) || empty($cargo) || empty($areaAtuacao)) {
@@ -235,7 +236,7 @@ function seminario_handle_registration() {
         str_replace('|', '-', $areaAtuacao),
         $temDRT_valor,
         str_replace('|', '-', $drtNumero),
-        ''  // Reservado para palestras/mesas
+        str_replace('|', '-', $palestras)
     );
     
     // MÉTODO DIRETO E SIMPLES - garantir que funcione
