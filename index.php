@@ -1166,7 +1166,7 @@
                 <div class="selo-popup-icon">🏆</div>
                 <h3 class="selo-popup-title">Certificação SINDCINE</h3>
                 <p class="selo-popup-text">Conheça as normas de conformidade e segurança</p>
-                <a href="./selo-sindcine.html" class="selo-popup-btn">
+                <a href="<?php echo get_template_directory_uri(); ?>/selo-sindcine.html" class="selo-popup-btn" target="_blank">
                     Saiba Mais →
                 </a>
             </div>
