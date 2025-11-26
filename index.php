@@ -1157,6 +1157,160 @@
             </div>
         </div>
     </section>
+
+    <!-- Pop-up SINDCINE -->
+    <div id="seloPopup" class="selo-popup">
+        <div class="selo-popup-content">
+            <button class="selo-popup-close" onclick="fecharSeloPopup()">✕</button>
+            <div class="selo-popup-body">
+                <div class="selo-popup-icon">🏆</div>
+                <h3 class="selo-popup-title">Certificação SINDCINE</h3>
+                <p class="selo-popup-text">Conheça as normas de conformidade e segurança</p>
+                <a href="./selo-sindcine.html" class="selo-popup-btn">
+                    Saiba Mais →
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .selo-popup {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+            max-width: 350px;
+            width: 90%;
+            padding: 1.5rem;
+            z-index: 9998;
+            animation: slideInRight 0.5s ease-out;
+            border: 2px solid var(--primary-yellow);
+        }
+
+        .selo-popup-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #999;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .selo-popup-close:hover {
+            color: var(--primary-black);
+        }
+
+        .selo-popup-body {
+            text-align: center;
+        }
+
+        .selo-popup-icon {
+            font-size: 3rem;
+            color: var(--primary-yellow);
+            margin-bottom: 1rem;
+        }
+
+        .selo-popup-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary-black);
+            margin-bottom: 0.5rem;
+        }
+
+        .selo-popup-text {
+            color: #666;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .selo-popup-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--gradient-yellow);
+            color: var(--primary-black);
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .selo-popup-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(400px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideOutRight {
+            from {
+                opacity: 1;
+                transform: translateX(0);
+            }
+            to {
+                opacity: 0;
+                transform: translateX(400px);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .selo-popup {
+                top: 10px;
+                right: 10px;
+                left: 10px;
+                max-width: none;
+            }
+        }
+    </style>
+
+    <script>
+        // Pop-up SINDCINE - desaparece em 10 segundos
+        document.addEventListener('DOMContentLoaded', function() {
+            const popup = document.getElementById('seloPopup');
+            let popupTimeout;
+
+            function fecharSeloPopupAuto() {
+                if (popup) {
+                    popup.style.animation = 'slideOutRight 0.5s ease-out forwards';
+                    setTimeout(function() {
+                        popup.style.display = 'none';
+                    }, 500);
+                }
+            }
+
+            // Fechar automaticamente após 10 segundos
+            popupTimeout = setTimeout(fecharSeloPopupAuto, 10000);
+
+            // Limpar timeout se o usuário fechar manualmente
+            window.fecharSeloPopup = function() {
+                clearTimeout(popupTimeout);
+                fecharSeloPopupAuto();
+            };
+
+            // Limpar timeout se o usuário clicar no botão
+            const botao = document.querySelector('.selo-popup-btn');
+            if (botao) {
+                botao.addEventListener('click', function() {
+                    clearTimeout(popupTimeout);
+                });
+            }
+        });
+    </script>
 </main>
 
 <?php get_footer(); ?>
